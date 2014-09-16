@@ -1,0 +1,5559 @@
+%% $Id: common2e.sty,v 1.42 2007/08/14 11:23:23 fsogni Exp $
+
+%%
+%% ESOFORM class file (ported from esoform.sty)
+%% A M Chavan, ESO, 19-May-2003
+%%
+%% Copyright 1998-2003 by the European Southern Observatory
+
+%% Basic declarations (from minimal.cls)
+%%----------------------------------------
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{common2e}
+\RequirePackage{config}
+\RequirePackage{latexsym}
+\RequirePackage{ifthen}
+
+%% Define boolean variable \pdf
+%%----------------------------------------
+
+%% Define temporary counts
+\newcount\tmpCntOne
+\newcount\tmpCntTwo
+\newcount\tmpCntThree
+\newcount\tmpCntFour
+\newcount\tmpCntFive
+\newcount\tmpCntSix
+
+
+
+%% Stop immediately if we are not using PDF
+%%-----------------------------------------
+  \message{^^J
+*********************************************************************^^J
+* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . *^^J
+* . . .Please use PdfLaTeX and NOT LaTeX to compile this file . . . *^^J
+* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . *^^J
+* . . . . .[See also the User Manual at Sects. 3.9 and 5]. . . . . *^^J
+* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . *^^J
+*********************************************************************^^J
+^^J}
+%  \@@end
+%\fi
+
+\ifx\pdfoptionpdfminorversion\undefined
+    \else
+    \pdfoptionpdfminorversion=3
+\fi
+
+%% Suppress overfull \hbox warnings
+\hfuzz=10cm
+
+%% Basic declarations
+%%----------------------------------------
+
+\renewcommand{\normalsize}{\fontsize{10pt}{12pt}\selectfont}
+  \RequirePackage[pdftex]{graphicx}
+  \pdfpagewidth=210truemm
+  \pdfpageheight=297truemm
+  \pdfcompresslevel=0
+
+%% Font definitions
+%%----------------------------------------
+
+\def\@fon {
+  \fontfamily{cmr}\fontseries{bx}\fontshape{n}
+  \fontsize{8}{9.5pt} \selectfont
+} % small roman bold (cmbx8)
+
+\def\@ftw {
+  \fontfamily{cmss}\fontseries{bx}\fontshape{n}
+  \fontsize{11}{13.6pt} \selectfont
+} % bold sans serif (cmssbx10 \@halfmag)
+
+\def\@fth {
+  \fontfamily{cmss}\fontseries{m}\fontshape{n}
+  \fontsize{8}{9.5pt} \selectfont
+} % small sans serif (cmss8)
+
+\def\@ffo {
+  \fontfamily{cmss}\fontseries{bx}\fontshape{n}
+  \fontsize{12}{14pt} \selectfont
+} % bold sans serif (cmssbx10 \@magscale1)
+
+%Roman font, medium series, normal shape
+\def\sixrm {
+  \fontfamily{cmr}\fontseries{m}\fontshape{n}
+  \fontsize{6}{7pt}\selectfont
+}
+
+\def\sevenrm {
+  \fontfamily{cmr}\fontseries{m}\fontshape{n}
+  \fontsize{7}{8.2pt}\selectfont
+}
+
+\def\svtnrm {
+  \fontfamily{cmr}\fontseries{m}\fontshape{n}
+  \fontsize{17}{22pt}\selectfont
+}
+
+\def\egtrm {
+  \fontfamily{cmr}\fontseries{m}\fontshape{n}
+  \fontsize{8}{9.5pt}\selectfont
+}
+
+\def\tensf {
+  \fontfamily{cmss}\fontseries{m}\fontshape{n}
+  \fontsize{10}{12pt}\selectfont
+}
+
+\def\ninerm {
+  \fontfamily{cmr}\fontseries{m}\fontshape{n}
+  \fontsize{9}{11pt}\selectfont
+}
+
+\def\tenrm {
+  \fontfamily{cmr}\fontseries{m}\fontshape{n}
+  \fontsize{10}{12pt}\selectfont
+}
+
+\def\elvrm {
+  \fontfamily{cmr}\fontseries{m}\fontshape{n}
+  \fontsize{11}{13.6pt}\selectfont
+}
+
+\def\elvsf {
+  \fontfamily{cmss}\fontseries{m}\fontshape{n}
+  \fontsize{11}{13.6pt}\selectfont
+}
+
+\def\twlrm {
+  \fontfamily{cmr}\fontseries{m}\fontshape{n}
+  \fontsize{12}{14pt}\selectfont
+}
+
+\def\twlsf {
+  \fontfamily{cmss}\fontseries{m}\fontshape{n}
+  \fontsize{12}{14pt}\selectfont
+}
+
+\def\svtnsf {
+  \fontfamily{cmss}\fontseries{m}\fontshape{n}
+  \fontsize{13}{13.6pt}\selectfont
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%      New Esoform general layout feature
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\if@twoside 
+        \oddsidemargin -23pt \evensidemargin -23pt 
+        \marginparwidth 0pt
+\else 
+        \oddsidemargin -23pt \evensidemargin -23pt
+        \marginparwidth 0pt
+\fi
+
+\flushbottom
+\marginparsep 0pt
+
+\topmargin -53pt \topskip 0pt
+
+\headheight 0pt 
+\headsep -1pt 
+%\footheight 0pt 
+\footskip 0pt
+%\textheight 830pt 
+%\textwidth 530pt 
+\columnsep 10pt 
+\columnseprule 0pt
+\parindent 0pt
+
+\setcounter{page}{1}
+\pagestyle{empty}
+
+% Set tabular horizontal ruler style parameters
+% Bug fix: 06-Aug-98 C.Boarotto
+\setlength\arrayrulewidth{.4\p@}
+\setlength\doublerulesep{2\p@}
+
+
+%% Macro: @setArticleSettings
+%%
+%% Setup tabular and array column separators like article.sty
+%%
+\def\@setArticleSettings{
+        \setlength\arraycolsep{5\p@}
+        \setlength\tabcolsep{6\p@}
+        \setlength\tabbingsep{\labelsep}
+}
+
+%% Macro: @unsetArticleSettings
+%%
+%% Unset tabular and array column separators
+%%
+\def\@unsetArticleSettings{
+        \setlength\arraycolsep{0\p@}
+        \setlength\tabcolsep{0\p@}
+        \setlength\tabbingsep{0\p@}
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%      List macros (see also D. Knuth - TEXbook pag. 378)
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Token list registers for temporary use
+\toksdef\ta=0 
+\toksdef\tb=2
+
+%% Macro: concatenate
+%%
+%% This very useful macro allows to attach items to a list.
+%%
+%% Warning: \toksdef\ta=0\toksdef\tb=2 token list registers have to be
+%% defined somewhere.
+%%
+%% parameters:  #1 Output list
+%%              #2 Input list
+%%              #3 Item to be added to the input list
+%%
+\def\concatenate#1=#2&#3{
+        \ta=\expandafter{#2}
+        \tb=\expandafter{#3}
+        \edef#1{\the\ta\the\tb}
+}
+
+%% Macro: xappend
+%%
+%% This is a generalization of \concatenate that takes non-slashed first
+%% argument.  Hence, \xappend{a}{bla} is completely equivalent to 
+%% \concatenate{\a}={\a}{bla}
+%%
+%% 11.02.2005: M. Lombardi
+\def\xappend#1#2{%
+  \expandafter\let\expandafter\x@ppend\csname #1\endcsname
+  \ta=\expandafter{\x@ppend}%
+  \tb=\expandafter{#2}%
+  \expandafter\edef\csname #1\endcsname{\the\ta\the\tb}%
+}
+
+%% Boolean variable for generic conditional checks
+
+%% Boolean variable to check if an item is member of a list.
+\newif\if@ismember\@ismembertrue
+
+%% Register: it saves the position of the first found element when
+%% ismember macro is invoked.
+%%
+\gdef\listposition{-1}
+
+%% Macro: ismember
+%%
+%% Check if a given item is member of a given list and set the global
+%% variable \listposition either to the found position or to -1.
+%%
+%% parameters:  #1 item to check
+%%              #2 list
+%%
+%% 09-Feb-2004, amchavan: Fixed bug: setting register \count100 was changing
+%%                        value of variable \runCount in \@checkRunsAndTargets
+\def\ismember#1\of#2{
+        \tmpCntOne=0
+        \@ismemberfalse
+        \def\given{#1}
+        \def\\##1{
+                \def\next{##1}
+                \if@ismember \else \advance\tmpCntOne by 1 \fi
+                % In the original was: \ifx\next\given ... and it was
+                % not working
+                %\typeout{Item: \given}
+                \ifx\next#1 \edef\listposition{\the\tmpCntOne} \@ismembertrue \fi
+        }#2
+}               
+
+%% Macro: select
+%%
+%% Get an index and return the selected item in the list.
+%%
+%% parameters:  #1 count register, externally defined
+%%                      Ex: \count0=2 to select position 2
+%%              #2 list
+%%              #3 returned item variable
+%%
+%% NOTE: the counter value is modified after the macro invocation !!
+%%
+\def\select#1\of#2\to#3{
+        %\typeout{ item number \the#1}
+        \def#3{}
+        \long\def\\##1{
+                \advance#1-1
+                %\typeout{ counter \the#1}
+                \ifnum#1=0 \def#3{##1} \fi
+        }#2
+}
+
+%% Macro: cardinality
+%%
+%% Get the length of a list of items.
+%%
+%% parameters:  #1 List of items
+%%              #2 Counter (set to the list length)
+%%
+\def\cardinality#1\to#2{#2=0 \long\def\\##1{\advance#2 by1}#1}
+
+%% Counter to check single characters belonging to a
+%% string.
+%%
+\newcount\strCount
+\newcount\sepCount
+
+%% End character (delimitator) to check single characters belonging to
+%% a string.
+%%
+\def\@endchar{*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%      Error Handling Macros
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Macro: @mg
+%%
+%% Dump a message to the screen.
+%%
+\def\@mg{
+        \typeout{}
+        \message
+}
+
+\def\@compmsg{
+	\typeout{}
+        \message{************************************************************************}
+        \message{************************************************************************}
+        \message{************** This proposal has compiled successfully. ****************}
+        \message{Please do check for warnings in the corresponding log file.}
+        \message{PLEASE NOTE THE FOLLOWING:}
+        \message{1. The correct institute codes must be entered for EACH Co-I.}
+        \message{A full list of institute codes can be found at: }
+        \message{http://http://www.eso.org/sci/observing/phase1/countryselect.html}
+        \message{2. If the PI username has been filled in incorrectly the receiver will }
+        \message{either reject the proposal or assign the proposal to the wrong user.}
+        \message{************************************************************************}
+        \message{************************************************************************}
+	\typeout{}
+}
+
+%% Macro: stm
+%%
+%% Abort and dump a fatal error to the screen.
+%%
+\def\@stm{
+        \typeout{}
+        \message{--------------------------------------------------------------------}
+        \message{ESOFORM Abort}
+        \typeout{}
+        \batchmode\errmessage{ESOFORM abort}\stop
+}
+
+%% Macro: WarningMsg
+%%
+%% parameters:  #1 warning message
+%%
+\def\WarningMsg#1{
+        \@mg{WARNING - Line \the\inputlineno: #1.}      
+        \typeout{}
+}
+
+%% Macro: WeakValidation
+%%
+%% Check if the parameter is empty. In this case, dump the error and
+%% exit.
+%%
+%% parameters:  #1 parameter to be validated
+%%              #2 parameter name
+%%              #3 macro name
+%%
+\def\WeakValidation#1#2#3{
+
+        \def\@parameterVal{#1}
+
+        \ifx \@emptyValue#1
+                \@mg{ERROR - Line \the\inputlineno: Missing #2 in macro #3!}
+                \@stm
+        \fi
+}
+
+%% Macro: MediumValidation
+%%
+%% Check if the parameter value fits the parameter range, but only
+%% print a warning if the parameter is not in the range.
+%%
+%% parameters:  #1 parameter to be validated
+%%              #2 parameter range (a TeX list)
+%%              #3 parameter name
+%%              #4 macro name
+%%
+\def\MediumValidation#1#2#3#4{
+
+        % Is member explicitly defined here. Calling the ``ismember''
+        % macro, it doesn't work
+        %
+        \tmpCntTwo=0
+        \@ismemberfalse
+        \def\\##1{
+                \def\next{##1}
+                \if@ismember \else \advance\tmpCntTwo by 1 \fi
+                \ifx\next#1 \@ismembertrue \fi
+        }#2
+
+        \if@ismember 
+                % OK, the value is compatible with the range.
+                % Do nothing.
+        \else
+                \def\@rangelist{}
+                \def\@sep{ }
+
+                % Build a list of the allowed values
+                \tmpCntTwo=0
+                \def\\##1{
+                        \def\next{##1}
+                        \advance\tmpCntTwo by 1
+                        \concatenate{\@rangelist}={\@rangelist}&{\next\@sep}
+                }#2
+
+                \@mg{WARNING - Line \the\inputlineno: Wrong #3 value {#1} in macro #4!}
+                \message{It should be one of: \@rangelist.}
+                
+        \fi     
+}
+
+%% Macro: MediumValidation
+%%
+%% Check if the parameter value fits the parameter range, but only
+%% print a warning if the parameter is not in the range.
+%%
+%% parameters:  #1 parameter to be validated
+%%              #2 parameter range (a TeX list)
+%%              #3 parameter name
+%%              #4 macro name
+%%
+\def\MediumNegValidation#1#2#3#4{
+        \tmpCntTwo=0
+        \@ismemberfalse
+        \def\\##1{
+                \def\next{##1}
+                \if@ismember \else \advance\tmpCntTwo by 1 \fi
+                \ifx\next#1 \@ismembertrue \fi
+        }#2
+
+        \if@ismember
+%          \@mg{WARNING - Line \the\inputlineno: Wrong #3 value {#1} in macro #4!}
+        \else
+        \fi
+}
+
+%% Macro: StrongValidation
+%%
+%% Check if the parameter value fits the parameter range.
+%%
+%% parameters:  #1 parameter to be validated
+%%              #2 parameter range (a TeX list)
+%%              #3 parameter name
+%%              #4 macro name
+%%
+\def\StrongValidation#1#2#3#4{
+
+        \WeakValidation{#1}{#3}{#4}
+
+        % Is member explicitly defined here. Calling the ``ismember''
+        % macro, it doesn't work
+        %
+        \tmpCntTwo=0
+        \@ismemberfalse
+        \def\\##1{
+                \def\next{##1}
+                \if@ismember \else \advance\tmpCntTwo by 1 \fi
+                \ifx\next#1 \@ismembertrue \fi
+        }#2
+
+        \if@ismember 
+                % OK, the value is compatible with the range.
+                % Do nothing.
+        \else
+                \def\@rangelist{}
+                \def\@sep{ }
+
+                % Build a list of the allowed values
+                \tmpCntTwo=0
+                \def\\##1{
+                        \def\next{##1}
+                        \advance\tmpCntTwo by 1
+                        \concatenate{\@rangelist}={\@rangelist}&{\next\@sep}
+                }#2
+
+                \@mg{ERROR - Line \the\inputlineno: Wrong #3 value {#1} in macro #4!}
+                \message{It should be one of: \@rangelist.}
+                \@stm
+        \fi     
+}
+
+
+%% Macro: StrongValidation
+%%
+%% Check if the parameter value fits the parameter range.
+%%
+%% parameters:  #1 parameter to be validated
+%%              #2 parameter range (a TeX list)
+%%              #3 parameter name
+%%              #4 macro name
+%%
+\def\ConditionalValidation#1#2{
+
+        %\WeakValidation{#1}{#3}{#4}
+        % Is member explicitly defined here. Calling the ``ismember''
+        % macro, it doesn't work
+        %
+        \tmpCntThree=0
+        \@ismemberfalse
+        \def\\##1{
+                \def\next{##1}
+                \if@ismember \else \advance\tmpCntThree by 1 \fi
+                \ifx\next#1 \@ismembertrue \fi
+        }#2
+
+        \if@ismember 
+                \global\@conditionaltrue
+
+        \else 
+               \global\@conditionalfalse
+        \fi     
+}
+
+%% Macro: RangeValidation
+%%
+%% Check if the parameter value fits the parameter range or skip it if
+%% it's empty.
+%%
+%% parameters:  #1 parameter to be validated
+%%              #2 parameter range (a TeX list)
+%%              #3 parameter name
+%%              #4 macro name
+%%
+\def\RangeValidation#1#2#3#4{
+
+        \ifx \@emptyValue#1
+        \else
+                \StrongValidation{#1}{#2}{#3}{#4}
+        \fi     
+}
+
+%% Macro: NumericValidation
+%%
+%% Check if the parameter value is numeric.
+%%
+%% parameters:  #1 parameter to be validated
+%%              #2 parameter name
+%%              #3 macro name
+%%
+\def\NumericValidation#1#2#3{
+
+        \def\@testChar{#1}
+        \def\@numList{\\{0}\\{1}\\{2}\\{3}\\{4}\\{5}\\{6}\\{7}\\{8}\\{9}}
+        % Check the category
+        \ismember\@testChar\of\@numList
+
+        \if@ismember
+        \else
+                \@mg{ERROR - Line \the\inputlineno: Wrong #2 value {#1}.}
+                \message{It should be numeric.}
+                \@stm
+        \fi     
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%      Esoform internal definitions and simple macros
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Frequently used alias (to fill hboxes)
+\def\@h{\hfil}
+
+%% Empty string
+%%
+\gdef\@emptyValue{}
+
+%% Dump the whole macro stack when showing an error.
+%% C.Boarotto 27-Jan-99
+\errorcontextlines=20
+
+\def\@pageonelength{267}
+\def\@pagetwolength{276}
+
+\def\@startpos{0mm}
+\def\@endpos{180mm}
+
+\def\@pageWidth{185}
+\def\@boxLength{180mm}
+\def\@boxLengthMm{180}
+
+\def\@boxInLength{178mm}
+\def\@tabInsideBoxLength{170mm}
+
+%% Box number temporary counter (it is valid within a page)
+%%
+\newcount\@boxNoCount
+
+%% Box number variable
+%%
+\def\@boxno{0}
+
+%% Global boolean flag. If true it indicates that the next box is a
+%% continuation of the previous one.
+\newif\if@bNewBox\@bNewBoxtrue
+
+%% Macro: @makeGenericBox
+%%
+%% Create a generic frame box (\@boxLengthMm x #2) housing a title and textual 
+%% contents.
+%%
+%% parameters:  #1 Framebox y dimension.
+%%              #2 Box title.
+%%              #3 Box textual contents.
+%%
+\def\@makeGenericBox#1#2#3{
+
+        % If it's a new box increment the box counter
+        \if@bNewBox
+                % A dirty trick ...
+                \@boxNoCount=\@boxno
+                \advance\@boxNoCount by1
+                \xdef\@boxno{\the\@boxNoCount}
+        \else
+                % If it's an extension, reset the boolean value
+                \@bNewBoxtrue   
+        \fi
+
+
+        \def\@thisBoxTitle{#2}
+        \def\@thisBoxText{#3}
+
+        \tmpCntFour=#1
+
+        % C.Boarotto 28-Jan-99
+        % Changed: it was \advance\count250 by-10 
+        %
+        % Therefore it is possible to edit 2 lines in box 1, 9 lines
+        % in box 3 and 3 lines in box 5 
+        \advance\tmpCntFour by-8
+
+        \def\@testBoxText{                      
+                \vbox{
+                        \hsize=170mm 
+                        \@thisBoxText
+                        \vfill
+                }
+        }
+
+        % Necessary to avoid nasty Underfull or Overfull
+        % error message
+        \vbadness=100000000
+        \hbadness=100000000
+        \vfuzz=10000pt
+
+        \def\@maxtestdim{\the\tmpCntFour mm}
+
+        % Check the box length
+        \setbox250=\@testBoxText
+        \setbox251=\vsplit250 to \@maxtestdim
+        \setbox252=\vsplit250 to \@maxtestdim
+
+        \ifvbox252
+                \WarningMsg{Text field too long. 
+                        Internally truncated in Box \@boxno}
+        \fi
+
+        \setlength{\unitlength}{1mm}
+
+        \framebox(\@boxLengthMm,#1)[tl]{
+                \vbox{
+                        \ifx#2\@emptyValue
+                                \vspace{1.5mm}
+                                \hbox to \@boxInLength{
+                                        \hspace{1mm} \box251 \@h
+                                }
+                        \else
+                                \vspace{1.5mm}
+                                \elvsf\hbox to \@boxInLength{
+                                        \makebox[6mm][l]{\@boxno.}{
+                                                \@thisBoxTitle
+                                        } \@h
+                                }
+                                \vspace{1.5mm}
+                                \hbox{\hspace{5mm} {\box251} \@h}
+                                %\box251
+                        \fi
+                        \vfill
+                }
+        }
+
+        \vspace{-0.5pt}
+}
+
+
+%% Macro: @insertGenericBox
+%%
+%% Create a generic frame box (\@boxLengthMm x #2) housing a title and textual 
+%% contents an defining a box number
+%%
+%% parameters:  #1 Framebox y dimension.
+%%              #2 Box title.
+%%              #3 Box textual contents.
+%%              #4 Box number
+\def\@insertGenericBox#1#2#3#4{
+
+
+        \def\@boxNumber{#4}        
+        \def\@thisBoxTitle{#2}
+        \def\@thisBoxText{#3}
+
+        \tmpCntFive=#1
+
+        % C.Boarotto 28-Jan-99
+        % Changed: it was \advance\count250 by-10 
+        %
+        % Therefore it is possible to edit 2 lines in box 1, 9 lines
+        % in box 3 and 3 lines in box 5 
+        \advance\tmpCntFive by-8
+
+        \def\@testBoxText{                      
+                \vbox{
+                        \hsize=170mm 
+                        \@thisBoxText
+                        \vfill
+                }
+        }
+
+        % Necessary to avoid nasty Underfull or Overfull
+        % error message
+        \vbadness=100000000
+        \hbadness=100000000
+        \vfuzz=10000pt
+
+        \def\@maxtestdim{\the\tmpCntFive mm}
+
+        % Check the box length
+        \setbox250=\@testBoxText
+        \setbox251=\vsplit250 to \@maxtestdim
+        \setbox252=\vsplit250 to \@maxtestdim
+
+        \ifvbox252
+                \WarningMsg{Text field too long. 
+                        Internally truncated in Box \@boxNumber}
+        \fi
+
+        \setlength{\unitlength}{1mm}
+        \framebox(\@boxLengthMm,#1)[tl]{
+                \vbox{
+                        \ifx#2\@emptyValue
+                                \vspace{1.5mm}
+                                \hbox to \@boxInLength{
+                                        \hspace{1mm} \box251 \@h
+                                }
+                        \else
+                                \vspace{1.5mm}
+%                                \elvsf\hbox to \@boxInLength{
+%                                        \makebox[6mm][l]{\@boxNumber.}
+%                                        \parbox{165mm}{ \@thisBoxTitle } 
+%                                      } 
+                                \elvsf\makebox[\@boxInLength]{
+                                        \parbox[t]{6mm}{\@boxNumber.}
+                                        \hspace{2mm}
+                                        \parbox[t]{165mm}{ \@thisBoxTitle } 
+                                      } 
+                                      \@h
+
+                                \vspace{1.5mm}
+                                \hbox{\hspace{5mm} {\box251} \@h}
+                                %\box251
+                        \fi
+                        \vfill
+                }
+        }
+
+        \vspace{-0.5pt}
+}
+
+
+
+
+%% Macro: MakePageNumber
+%%
+%% Generate  and increment the page number.
+%%
+\def\MakePageNumber{
+
+        \begin{center}
+        {-\ \ \arabic{page}\ \ -}
+        \end{center}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%      Proposal type definitions (updated: C.Boarotto 16-Aug-99)
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Define the proposal id before printing the proposal
+\def\@proposalID{}
+\def\ProposalID#1{\gdef\@proposalID{#1}}
+
+%% Guaranteed Time Observation program boolean flag.
+%% 
+\newif\if@gto\@gtofalse
+\newif\if@gtocontract\@gtocontractfalse
+
+%% Target of Opportunity program boolean flag.
+%% 
+\newif\if@too\@toofalse
+
+% TOO Prog type
+\newif\if@progtoo\@progtoofalse
+
+%% Calibration program boolean flag
+\newif\if@pcal\@pcalfalse
+
+%% Conditional boolean flag.
+%%
+\newif\if@conditional\@conditionalfalse
+
+
+%% Director Discretionary Time program boolean flag.
+%% 
+\newif\if@ddt\@ddtfalse
+
+%% Large program boolean flag.
+%%
+\newif\if@keyprg\@keyprgfalse
+
+%% Short program boolean flag.	added by ST
+%% 
+\newif\if@shortprg\@shortprgfalse
+
+
+
+%% XMM Satellite boolean flag.
+%%
+\newif\if@xmm\@xmmfalse
+
+%% Timing constraints boolean flag
+\newif\if@timingconstraints\@timingconstraintsfalse
+
+
+%% Gto conflict boolean flag.
+%%
+\newif\if@gtoconflict\@gtoconflictfalse
+
+
+%% RRM boolean flag
+\newif\if@rrm\@rrmfalse
+
+%% Opticon boolean flag.
+%%
+\newif\if@opticon\@opticonfalse
+
+%% Figures boolean flag.
+\newif\if@fig\@figfalse
+
+
+%% Macro: KeyProgramme
+%%
+%% Define a Large Programme.
+%%
+\def\KeyProgramme{\global\@keyprgtrue}
+
+%% Macro: ShortProgramme		Added by ST
+%%
+%% Define a Short Programme.
+%%
+\def\ShortProgramme{\global\@shortprgtrue}
+
+
+
+
+%% Internal variable set by GTO, ToO and DDT macros
+%%
+\def\@specialProposalType{}
+
+%% String containing the send address (changed only if the proposal
+%% type is DDT).
+%% Originally: To be submitted only at: http://www.eso.org/observing/wasp/welcome.do
+%%
+\def\@submitStr{\@h}
+
+%% Internal variable set by GTO conflict  macro
+%%
+\def\@GTOconflict{}
+
+%% Internal variable set by XMM macro
+%%
+\def\@XMMobservation{}
+
+%% Internal variable set by RRM macro
+%%
+\def\@RRMobservation{}
+
+%% Internal variable set by Opticon macro
+%%
+\def\@OPTICONfunded{}
+
+%% Internal variable set by HasTimingConstraints macro
+%%
+\def\@HasTimingConstraints{}
+\def\@tooPage{}
+%% Macro: @specialTypeError
+%%
+%% Dump a type error and abort: only one special type can be specified.
+%%
+%% parameters:  #1 First special type.
+%%              #2 Second special type.
+%%
+\def\@specialTypeError#1#2{
+        \@mg{ERROR - Line \the\inputlineno: #1 cannot be #2 at the
+        same time!}  \@stm }
+
+%% Macro: GuaranteedTimeObservation
+%%
+%% When invoked, this macro sets @specialProposalType internal
+%% variable, to be displayed in the header.
+%%
+\def\ProgrammeType#1{
+
+
+
+        \def\@programmeType{#1}
+        \def\@prgList{\\{NORMAL}\\{LARGE}\\{TOO}\\{GTO}\\{DDT}\\{SHORT}\\{CALIBRATION}\\{MONITORING}}   %%added by ST: short
+             % Check the category
+        \ismember\@programmeType\of\@prgList
+
+        \if@ismember
+        \else
+                \@mg{ERROR - Line \the\inputlineno: Wrong programme type.}
+                \message{It should be one of: NORMAL LARGE SHORT TOO GTO DDT CALIBRATION MONITORING}
+                \@stm
+        \fi     
+
+	\ifthenelse{\equal{#1}{GTO}}{
+ 		\gdef\@specialProposalType{GTO}
+        	\global\@gtotrue
+	}
+
+	\ifthenelse{\equal{#1}{TOO}}{
+ 		\gdef\@specialProposalType{ToO}
+       		\global\@tootrue
+       		\gdef\@tooPage{yes}
+ 		\global\@progtootrue
+	}
+
+	\ifthenelse{\equal{#1}{DDT}}{
+		\gdef\@specialProposalType{DDT}
+        	\global\@ddttrue
+	}
+
+	\ifthenelse{\equal{#1}{MONITORING}}{
+		\gdef\@specialProposalType{MONITORING}
+	} 						
+% Added GH@2013-02-20
+
+
+        \ifthenelse{\equal{#1}{CALIBRATION}}{
+                \gdef\@specialProposalType{CALIBRATION}
+                \global\@pcaltrue
+        }
+   
+}
+
+%% Macro: TargetofOpportunity
+%%
+%% When invoked, this macro sets @specialProposalType internal
+%% variable, to be displayed in the header.
+%%
+\def\TargetofOpportunity{
+        \if@gto
+                \@specialTypeError{ToO}{GTO}
+        \fi 
+        \if@ddt
+                \@specialTypeError{ToO}{DDT}
+        \fi 
+        %\if@xmm
+        %        \@specialTypeError{ToO}{XMM}
+        %\fi
+        \gdef\@specialProposalType{ToO}
+        \global\@tootrue
+}
+
+
+%% Macro: TargetofOpportunityRRM
+%%
+%% When invoked, this macro sets @specialProposalType internal
+%% variable, to be displayed in the header.
+%%
+\def\ObservationInRRM{
+        \if@too
+                \gdef\@RRMobservation{RRM }
+                \global\@rrmtrue
+        \else 
+         \@mg{ERROR - Line \the\inputlineno: In order to use the RRM flag, the ToO macro must be defined     (uncommented) and placed before the RRM macro.}  \@stm
+        \fi
+}
+
+
+%% Macro: DirectorDiscretionaryTime
+%%
+%% When invoked, this macro sets @specialProposalType internal
+%% variable, to be displayed in the header.
+%%
+\def\DirectorDiscretionaryTime{
+        \if@gto
+                \@specialTypeError{DDT}{GTO}
+        \fi 
+        \if@too
+                \@specialTypeError{DDT}{ToO}
+        \fi 
+        %\if@xmm
+        %        \@specialTypeError{DDT}{XMM}
+        %\fi
+        \gdef\@specialProposalType{DDT}
+        \global\@ddttrue
+}
+
+%% Macro: ObservationWithXMM
+%%
+%% When invoked, this macro sets XMMSatelliteFlag internal
+%% variable, to be displayed in the header.
+%%
+%% XMM observations can be performed with regular or Large Programs, only.
+%%
+\def\ObservationWithXMM{
+       %\if@gto
+       %        \@specialTypeError{XMM}{GTO}
+       %\fi
+       %\if@too
+       %         \@specialTypeError{XMM}{ToO}
+       % \fi 
+       \if@ddt
+                \@specialTypeError{XMM}{DDT}
+       \fi 
+
+       \gdef\@XMMobservation{XMM }
+       \global\@xmmtrue
+
+% Added by ST: abort if the XMM macro is called
+%\if@xmm
+%\@mg{ERROR - The VLT-XMM agreement is only available for odd periods.}  \@stm
+%\fi
+}      
+
+%% Macro: GtoConflict
+%%
+%\def\GtoConflict{
+%       \gdef\@GTOconflict{Warning: possible conflict with GTO observations.}
+%       \global\@gtoconflicttrue
+%}      
+% Commented out by G. Mathys 2007-02-25
+
+
+%% Macro: OPTICONfunded
+%%
+%% When invoked, this macro sets OPTICONSatelliteFlag internal
+%% variable, to be displayed in the header.
+%%
+%%  OPTICONfunded
+%%
+
+\def\OPTICONfunded{
+     \gdef\@OPTICONfunded{OPTICON}
+     \global\@opticontrue
+}      
+
+
+%% Macro: GTOcontract
+%% added by ST
+%% modified by G. Mathys 2007-02-25
+\def\@GTOcontractnumber{}
+
+\def\GTOcontract#1{
+
+        \if@gto
+	        \gdef\@GTOcontractnumber{#1}
+	        \StrongValidation{\@GTOcontractnumber}{\GTOcontractlist}
+	        {GTO contract}{GTOcontract}
+                \global\@gtocontracttrue
+        \else 
+                \@mg{ERROR - Line \the\inputlineno: In order to specify a GTO contract, the programme type must be set to GTO.} \@stm
+                \fi
+	}
+
+\def\@GTOcontractprint{
+    \if@gto
+      \if@gtocontract
+        {\@GTOcontractnumber\ }
+     \else
+       \@mg{ERROR - for a GTO proposal the GTO contract to which the proposal pertains must be specified.} \@stm
+     \fi
+    \fi
+}
+
+%% TOO notes handling
+%%
+\def\@TOONotes{}
+\def\@tooRunsNotes{}
+\long\def\TOONotes#1{\gdef\@tooRunsNotes{#1}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%      Astronomical symbols available for use in the proposal templates.
+%%
+%%      ( A&A and AASTeX stuff, from the STScI style files )
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\ang{\AA}                           %Angstrom unit
+\def\degpoint{\mbox{$^\circ\mskip-7.0mu.\,$}}
+\def\halpha{\mbox{H$\alpha$}}
+\def\hbeta{\mbox{H$\beta$}}
+\def\hgamma{\mbox{H$\gamma$}}
+\def\kms{\,km~s$^{-1}$}      % note leading thinspace
+\def\lya{\mbox{Ly$\alpha$}}
+\def\lyb{\mbox{Ly$\beta$}}
+\def\minpoint{\mbox{$'\mskip-4.7mu.\mskip0.8mu$}}
+\def\mv{\mbox{$m_{_V}$}}
+\def\Mv{\mbox{$M_{_V}$}}
+\def\peryr{\mbox{$\>\rm yr^{-1}$}}
+\def\secpoint{\mbox{$''\mskip-7.6mu.\,$}}
+\def\sqdeg{\mbox{${\rm deg}^2$}}
+\def\squig{\sim\!\!}
+\def\subsun{\mbox{$_{\normalsize\odot}$}}
+\def\deg{\hbox{$^\circ$}}
+\def\sun{\hbox{$\odot$}}
+\def\earth{\hbox{$\oplus$}}
+\def\lesssim{\mathrel{\hbox{\rlap{\hbox{\lower4pt\hbox{$\sim$}}}\hbox{$<$}}}}
+\def\gtrsim{\mathrel{\hbox{\rlap{\hbox{\lower4pt\hbox{$\sim$}}}\hbox{$>$}}}}
+\def\la{\mathrel{\hbox{\rlap{\hbox{\lower4pt\hbox{$\sim$}}}\hbox{$<$}}}}
+\def\ga{\mathrel{\hbox{\rlap{\hbox{\lower4pt\hbox{$\sim$}}}\hbox{$>$}}}}
+\def\sq{\hbox{\rlap{$\sqcap$}$\sqcup$}}
+\def\arcmin{\hbox{$^\prime$}}
+\def\arcsec{\hbox{$^{\prime\prime}$}}
+\def\fd{\hbox{$.\!\!^{\rm d}$}}
+\def\fh{\hbox{$.\!\!^{\rm h}$}}
+\def\fm{\hbox{$.\!\!^{\rm m}$}}
+\def\fs{\hbox{$.\!\!^{\rm s}$}}
+\def\fdg{\hbox{$.\!\!^\circ$}}
+\def\farcm{\hbox{$.\mkern-4mu^\prime$}}
+\def\farcs{\hbox{$.\!\!^{\prime\prime}$}}
+\def\fp{\hbox{$.\!\!^{\scriptscriptstyle\rm p}$}}
+\def\micron{\hbox{$\mu$m}}
+\def\case#1#2{\hbox{$\frac{#1}{#2}$}}
+\def\slantfrac#1#2{\hbox{$\,^#1\!/_#2$}}
+\def\onehalf{\slantfrac{1}{2}}
+\def\onethird{\slantfrac{1}{3}}
+\def\twothirds{\slantfrac{2}{3}}
+\def\onequarter{\slantfrac{1}{4}}
+\def\threequarters{\slantfrac{3}{4}}
+\def\ubvr{\hbox{$U\!BV\!R$}}            % UBVR system
+\def\ub{\hbox{$U\!-\!B$}}               % U-B
+\def\bv{\hbox{$B\!-\!V$}}               % B-V
+\def\vr{\hbox{$V\!-\!R$}}               % V-R
+\def\ur{\hbox{$U\!-\!R$}}               % U-R
+\def\jhk{\hbox{$J\!H\!K$}}              % JHK system
+\def\jh{\hbox{$J\!-\!H$}}               % J-H
+\def\hk{\hbox{$H\!-\!K$}}               % H-K
+\def\jk{\hbox{$J\!-\!K$}}               % J-K
+\def\nodata{\multicolumn{1}{c}{$\cdots$}}
+\def\ion#1#2{#1$\;${\small\rm\@Roman{#2}}\relax}
+
+% End of stuff (53 short macros) from A&A and AASTeX
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%      Proposal Header
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Macro: @esologo
+%%
+%% Definition of ESO logo: print a ESO logo.
+%%
+\def\@esologo{
+  \begin{picture}(24.2,32.1)
+    \@ifundefined{includegraphics}{
+      \put(-2,25)  {\framebox(24.1,32.1){\ }}
+      \put( 5,42)  {{\Huge E}}
+      \put( 11,43) {{\Huge S}}
+      \put(7.5,33) {{\Huge O}}
+      \put(8,26.5) {{\LARGE $\ast$}}
+      \put(-1,42.7){{\Large $\ast$}}
+      \put(18,45.5){{\large $\ast$}}
+      \put(10.5,54){{\normalsize $\ast$}}
+    }
+    {
+      \put(-2,25){\includegraphics[height=3.0cm]{esologo}} % esologo
+
+    }
+  \end{picture}
+}
+
+%% Macro: EsoEnglish
+%%
+%% Return the ESO English name.
+%%
+%\def\EsoEnglish{
+%        E\@h U\@h R\@h O\@h P\@h E\@h A\@h N\@h\
+%        \@h S\@h O\@h U\@h T\@h H\@h E\@h R\@h N\@h\
+%        \@h O\@h B\@h S\@h E\@h R\@h V\@h A\@h T\@h O\@h R\@h Y}
+ \def\EsoEnglish{
+          European\@h Organisation\@h
+          for\@h Astronomical\@h Research\@h
+          in\@h the\@h Southern\@h Hemisphere
+ } % Changed back 2008-08-27 and back 2012-08-22
+
+%% Macro: OPOAddress
+%%
+%% Return OPO address, email and telephone.
+%%
+
+\def\OPOAddress{O\@ B\@ S\@ E\@ R\@ V\@ I\@ N\@ G\@\ \@
+        P\@ R\@ O\@ G\@ R\@ A\@ M\@ M\@ E\@ S\@\ \@
+        O\@ F\@ F\@ I\@ C\@ E\@\ $\bullet$
+        K\@ a\@ r\@ l\@-\@
+        S\@ c\@ h\@ w\@ a\@ r\@ z\@ s\@ c\@ h\@ i\@ l\@ d\@-\@
+        S\@ t\@ r\@ a\@\ss\@ e\@\ \@2\@\ \@ $\bullet$
+        D\@-\@8\@5\@7\@4\@8\@\ \@
+        G\@ a\@ r\@ c\@ h\@ i\@ n\@ g\@\ \@ b\@ e\@ i\@\ \@
+        M\@\"{u}\@ n\@ c\@ h\@ e\@ n\@\ \@ $\bullet$
+        e\@-\@ m\@ a\@ i\@ l\@:\@\ \@
+        o\@ p\@ o\@ @\@ e\@ s\@ o\@.\@ o\@ r\@ g\@\ \@ $\bullet$
+        T\@ e\@ l\@.\@\,\@:\@\ \@
+        \@+\@4\@9\@\ \@8\@9\@\ \@3\@2\@0\@\ \@0\@6\@4\@7\@3
+}
+
+\def\EsoHeader{
+        \setlength{\unitlength}{1mm}
+
+        \def\@esoendpos{152mm}
+
+        % Need to specify box dimensions, otherwise it adds a large space
+        % below the eso-header
+        \vbox{\hbox{
+                % Display the ESO logo
+                \@esologo
+                % Fixed coordinates
+                \put(0,30){
+                \vbox{
+%                       \svtnrm\hbox to \@esoendpos{\bf\EsoEnglish}
+% G. Mathys 2007-02-25
+                        \elvrm\hbox{ } % one blank line
+                        \elvrm\hbox{ } % one blank line
+                        \elvrm\hbox to \@esoendpos{\bf\EsoEnglish}
+                        \elvrm\hbox{ } % one blank line
+                        % Print proposal ID if defined
+                        %\batchmode
+                        \@ffo\hbox to 148mm{\@h \@proposalID}
+                        %\errorstopmode
+                }
+                }
+                }
+        }
+}
+
+
+%% Macro: MakeHeader
+%%
+%% This macro create a box to host Eso header, visas address and the header
+%% notes.
+%%
+\def\MakeHeader{
+
+        \setlength{\unitlength}{1mm}
+
+        \vbox{
+
+                \vspace{1mm}
+                \EsoHeader
+
+                \vspace{-22mm}
+
+                \sixrm\hbox to \@endpos{\OPOAddress}
+                \sevenrm\hbox { }
+                \bf\twlsf{
+                        \def\@applicationString{APPLICATION FOR OBSERVING TIME\@h}
+                        \def\@largeString{LARGE PROGRAMME\@h}
+                         \def\@ShortString{SHORT PROGRAMME\@h}	%%added by ST
+                        \def\@periodBox{\hbox{PERIOD: \@ffo\thePeriod}}
+
+                        \if@keyprg 
+                                \hbox to \@endpos{
+                                        \@applicationString \@largeString \@periodBox 
+                                }
+                       \else									%%added by ST
+                       \if@shortprg   							%%added by ST
+                               \hbox to \@endpos{
+                                        \@applicationString \@ShortString \@periodBox 
+                              }
+
+                        \else
+                                \hbox to \@endpos{\@applicationString \@periodBox }
+                        \fi
+                        \fi
+                }
+
+                \sevenrm\hbox { }
+
+                \elvsf{
+%                        \def\@specialTypeBox{\hbox{\@ffo \@GTOconflict \@XMMobservation \@RRMobservation \@specialProposalType}} % G. Mathys 2007-02-25
+                        \def\@specialTypeBox{\hbox{\@ffo \@GTOcontractprint \@XMMobservation \@RRMobservation \@specialProposalType}}
+                        \hbox to \@endpos{\@submitStr \@specialTypeBox}
+                }
+                \vspace{-4mm}
+                \elvsf\hbox{Important Notice:}
+                \vspace{2mm}
+
+                % Generate the note
+                \ninerm\vbox{
+                        \hbox to \@endpos{By submitting this proposal, the PI takes
+                                full responsibility for the content of the
+                                proposal, in particular with regard to the}
+                        \hbox to \@endpos{names of CoIs and the agreement to act 
+                                according to the ESO policy and regulations,
+                                should observing time be granted.}
+                }
+        }
+
+        \vspace{3mm}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%      Title Box
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Boolean variable, if it is true skip all the checks and print an
+%% empty form.
+%% 
+\newif\if@test\@testtrue
+
+%% Boolean variable for panel definitions.
+%% 
+\newif\if@csf\@csftrue
+
+%% Title handling
+\def\@title{}
+\long\def\Title#1{\gdef\@title{#1}}
+
+%% @category, @subcategorycode and @panel global variable
+%% 
+\def\@category{}
+\def\@subcategorycode{}
+\def\@panel{}
+\def\@proprietarytime{}
+\def\proprietarytimevalues{\\{0}\\{1}\\{2}\\{6}\\{12}}
+%% Cycle name. Mandatory flag, the name of the cycle must be predefined.
+%%
+\def\@cycle{}
+
+
+%% Macro: Cycle
+%%
+%% Check the existence of the \Cycle{x} macro.
+%%
+\def\Cycle#1{
+
+        \gdef\@cycle{#1}
+}
+
+
+%% Macro: ProprietaryTime
+%
+% Check and validate the ProprietaryTime macro
+%
+%
+\def\ProprietaryTime#1{
+
+        \gdef\@proprietarytime{#1}
+}
+
+
+%% Macro: SplitCategory
+%% 
+%% Bug fixed: C.Boarotto 24-Mar-99 (added one parameter to process
+%%            subcategories like N10)
+%% Split category definition into @panel and @subcategorycode.
+%%
+\def\SplitCategory#1#2#3{
+        \gdef\@panel{#1}
+        \gdef\@subcategorycode{#2#3}
+}
+
+
+
+%% Macro: SubCategoryCode
+%%
+%% Validate proposal subcategory. Set global variable @subcategorycode 
+%% to the complete subcategory code and global variable @Panel to the 
+%% belonging panel (category).
+%% If the subcategory code is correct then set csf false (global boolean 
+%% variable).
+%% Ex: N7 -> csf = false, @subcategorycode = N7, @Panel = N
+%%
+\def\SubCategoryCode#1{
+
+        \gdef\@category{#1}
+
+
+        % Check the category only if the title is not empty,
+        % otherwise it is considered an empty template
+        \ifx\@title\@emptyValue
+        \else
+                \MediumValidation{\@category}{\Panels}
+                        {subcategory}{SubCategoryCode (first parameter)}
+                \global\@csffalse
+                \SplitCategory#1\@emptyValue
+
+        \fi
+}
+
+\def\CheckPcal{ 
+        \if@pcal
+            \StrongValidation{\@category}{\PcalCodes}{Category}{SubCategoryCode}
+	\else
+           \MediumNegValidation{\@category}{\PcalCodes}{calibcategory}{CalibCategory}
+            \if@ismember
+               \message{ERROR - Wrong ProgrammeType: In order to use Category \@category,  ProgrammeType must be set to CALIBRATION.} \@stm
+            \fi
+
+        \fi
+		\message{\@category}
+
+}
+
+
+
+%% Macro: MakeTitle
+%%
+%% Generate the proposal title and print the proposal header with the
+%% Eso logo
+%%
+\def\MakeTitle{
+
+        % Check for an empty proposal (title+class empty), then suppress
+        % checks to allow the printout of a blank form.
+        \if@test 
+                \ifx \@emptyValue\@title 
+                        \if@csf
+                                \@testfalse
+                        \fi
+                \fi
+        \fi
+
+        \if@test
+                \WeakValidation{\@title}{title}{Title}
+                \WeakValidation{\@cycle}{cycle}{Cycle}
+
+                \WeakValidation{\@proprietarytime}{proprietarytime}{ProprietaryTime}
+                \StrongValidation{\@proprietarytime}{\proprietarytimevalues}
+                        {proprietarytime}{ProprietaryTime (first parameter)}    
+        \fi
+
+        \setlength{\unitlength}{1mm}
+
+        \def\@titleHeader{Title\hfill}
+        \def\@panelBox{\hbox{Category: \@ffo{\@panel--\@subcategorycode} \@h}}
+        \def\@titleboxTitle{\@titleHeader \@panelBox}
+
+        \@makeGenericBox{18}{\@titleboxTitle}{\normalsize\@title}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%      Abstract Box
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Abstract  handling
+\def\@abstract{}
+\long\def\Abstract#1{\gdef\@abstract{#1}}
+
+%% Total amount of time variable for Large Programmes (it
+%% shouldn't be empty - weak validation)
+%% 
+\def\@amountOfTime{}
+\def\TotalAmountOfTime#1{\gdef\@amountOfTime{#1}}
+
+%% Total number of semesters variable for Large Programmes (it
+%% shouldn't be empty - weak validation)
+%% 
+\def\@numberOfSemesters{}
+\def\TotalNumberOfSemesters#1{\gdef\@numberOfSemesters{#1}}
+
+%% Macro: MakeAbstract
+%%
+%% Generate the proposal title and print the proposal header with the
+%% Eso logo
+%%
+\def\MakeAbstract{
+
+        \setlength{\unitlength}{1mm}
+
+        \if@test
+                % Abstract weak validation: it shouldn't be empty \if@test
+                \WeakValidation{\@abstract}{abstract}{Abstract}
+        \fi                     
+
+        % Create the frame box to house the abstract
+        % Note that the box is smaller in case of Large Programme
+        \if@keyprg
+
+                \def\@abstractboxTitle{Abstract / Total Time Requested\@h}
+                \def\@absBoxlen{69}
+
+                % Total number of semesters and total amount of time
+                % to be displayed in the Abstract box for Large
+                % Programmes (Weak validation)
+                %\ifx\@emptyValue\@title
+                %\else
+                %        \WeakValidation{\@amountOfTime}
+                %                {total amount of time}
+                %                {TotalAmountOfTime (first parameter)}
+                %        \WeakValidation{\@numberOfSemesters}
+                %                {total number of semesters}
+                %                {TotalNumberOfSemesters (first parameter)}
+                %\fi                     
+
+                \def\@absBoxText{
+
+                        \parbox[tl]{\@tabInsideBoxLength}{
+                                \elvsf{Total Amount of Time: }
+                                \normalsize\@amountOfTime
+                                \@h             
+                                \elvsf{Total Number of Semesters: }
+                                \normalsize\@numberOfSemesters
+                                \@h
+                                \vspace{2mm}
+                        }
+
+                        \normalsize \@abstract
+                }
+
+        \else
+                \def\@abstractboxTitle{Abstract / Total Time Requested\@h}
+                \def\@absBoxlen{52}
+                \def\@absBoxText{\normalsize\@abstract}
+
+                \def\@absBoxText{
+
+                        \parbox[tl]{\@tabInsideBoxLength}{
+                                \elvsf{Total Amount of Time: }
+                                \normalsize\@amountOfTime
+                                \@h
+                                \vspace{2mm}
+                        }
+
+                        \normalsize \@abstract
+                }
+
+        \fi
+
+        \@makeGenericBox{\@absBoxlen}{\@abstractboxTitle}{\@absBoxText}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%      Observing Run Box
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% List to store already defined observing runs' codes
+%%
+\def\@RunCodeList{}
+
+%% List to store already defined alternative observing runs' codes
+%%
+\def\@RunAltCodeList{}
+
+%% Boolean value alternative
+%%
+\newif\if@altRun\@altRunfalse
+
+
+%% Boolean value to parse the run id
+%%
+\newif\if@validRunCode\@validRunCodetrue
+
+%% Variable to store the run id (without alt)
+%%
+\def\@runcode{}
+
+%% Macro: @setruncode
+%%
+%% Parse the given run code in the form and extract run id (without alt).
+%% Tricky, it uses tail recursion to parse each single character
+%% contained in the input string.
+%%
+%% parameter:   #1 run number (A, A/alt, B, B/alt)
+%%
+\def\@setruncode#1{
+
+        %\typeout{checking character {#1}}
+        \ifx#1\@endchar 
+                \let\next=\relax
+        \else
+                \def\given{#1}
+                % Skip everything after ``/'' because it should
+                % be the alternative indication
+                \if\given/
+                        \@validRunCodefalse
+                \fi
+
+                \if@validRunCode
+                        %\typeout{+++ setting run code: \given}
+                        \gdef\@runcode{#1}
+                \fi
+                \let\next=\@setruncode           
+        \fi
+
+        % Tail recursion
+        \next
+}
+
+
+%% Macro: @CheckRunNum
+%%
+%% Validate run entry
+%%
+%% parameter:   #1 run number (A, A/alt, B, B/alt)
+%%
+\def\@CheckRunNum#1{
+
+        \def\@runPar{#1}
+        \def\@runEntry{\\ {#1}}
+
+        \ismember\@runPar\of\AltRunCodeValues
+        \if@ismember
+                \def\@altPar{alt}
+        \else
+                \def\@altPar{}
+                % Run id validation
+                \StrongValidation{\@runPar}{\RunCodeValues}
+                {observing run code}{ObservingRun (first parameter). If it is an alternate run, the keyword ``alt'' must be lower case }
+        \fi
+
+        % Set the run code (A -> A, A/alt -> A)
+        %\typeout{before checking run {#1}}
+        \@setruncode#1\@endchar
+        % Reset the boolean variable to parse the run code
+        \@validRunCodetrue                
+        %\typeout{after checking run {#1}}
+
+        % Different check if it is an alternative run
+        \ifx\@altPar\@emptyValue
+
+                \@altRunfalse
+                % It is not an alternative but a principal run  
+                % Check if the run number (or code) is unique
+                \ismember\@runPar\of\@RunCodeList
+
+                \if@ismember 
+                        \@mg{ERROR - Line \the\inputlineno: 
+                                Wrong observing run code: 
+                                code {#1} already defined for this programme 
+                                (macro ObservingRun first parameter)!}
+                        \@stm
+                \fi     
+
+                % Append to the already defined run codes list          
+                \concatenate{\@RunCodeList}={\@RunCodeList}&{\@runEntry}
+        \else
+
+                \@altRuntrue
+
+                % Alternative
+                \ismember\@runcode\of\@RunCodeList
+
+                % Check if the primary run is already defined   
+                \if@ismember
+                \else
+                        \@mg{ERROR - Line \the\inputlineno: 
+                                Wrong alternative observing run code: 
+                                code -\@runcode - is not yet defined 
+                                (macro ObservingRun first parameter)!}
+                        \@stm
+                \fi 
+
+                % Check if the alternative run number (or code) is unique
+                \ismember\@runPar\of\@RunAltCodeList
+
+
+                % Append to the already defined alternative run codes list              
+                \concatenate{\@RunAltCodeList}={\@RunAltCodeList}&{\@runEntry}
+        \fi
+}
+
+%% SEST handling variable
+%% Current run sest flag
+\newif\if@isSEST\@isSESTfalse
+%% At least one sest run defined
+\newif\if@DefSEST\@DefSESTfalse
+\def\@sestvar{SEST}
+
+%% Macro: CheckSEST
+%%
+%% Check if the telescope defined is SEST.
+%%
+%% parameters:  #1 Telescope
+%%
+\def\CheckSEST#1{
+        \@isSESTfalse
+        \ifx #1\@sestvar \global\@isSESTtrue \global\@DefSESTtrue \fi
+}
+
+%% ADONIS handling variable
+%%
+\newif\if@DefAdonis\@DefAdonisfalse
+\def\@adonisco{AdonisCO}
+\def\@adonissh{AdonisSH}
+
+
+%% Macro: CheckAdonis
+%%
+%% Check if the instrument defined is ADONIS to set a boolean variable
+%% to force the user to write the adonis-page.
+%%
+%% parameters:  #1 Instrument
+%%
+\def\CheckAdonis#1{
+        \def\@Adonis{\global\@DefAdonistrue}
+        \ifx #1\@adonisco \@Adonis \fi
+        \ifx #1\@adonissh \@Adonis \fi
+}
+
+%% Interferometry handling variable
+%%
+\newif\if@DefInterferometry\@DefInterferometryfalse
+\def\@interferometry{TRUE}
+
+
+%% TOO handling variable
+%%
+\newif\if@DefTOO\@DefTOOfalse
+\def\@too{TRUE}
+
+
+
+%% Macro: SetInterferometry
+%%
+%% Force a variable to true, meaning that a interferometic
+%% page has to be generated.
+%%
+%% parameters:  #1 Flag
+%%
+\def\SetInterferometry#1{
+
+        \def\@Interferometry{\global\@DefInterferometrytrue}
+        \ifx #1\@interferometry \@Interferometry \fi
+
+}
+
+
+%% Macro: SetTOO
+%%
+%% Force a variable to true, meaning that a TOO
+%% page has to be generated.
+%%
+%% parameters:  #1 Flag
+%%
+\def\SetTOO#1{
+
+        \def\@TOO{\global\@DefTOOtrue}
+        \ifx #1\@too \@TOO \fi
+}
+
+
+%% Mapping one to one for the following lists
+\def\usedPeriodList{}
+\def\usedTelescopeList{}
+\def\usedInstrumentList{}
+
+
+%% Observing modes: boolean variables.
+%% When choosing a telescope, these three variables are set according
+%% the VisitorModeTel, ServiceModeTel and RemoteModeTel lists that define
+%% which telescopes can run in a specific mode
+\newif\if@VisitorMode\@VisitorModefalse
+\newif\if@ServiceMode\@ServiceModefalse
+\newif\if@RemoteMode\@RemoteModefalse
+
+%% Macro: @CheckTelObsMode
+%% 
+%% Check the allowed observing modes given a specific telescope.
+%%
+%% parameter:   #1 telescope code
+%%
+\def\@CheckTelObsMode#1{
+
+
+        % Initialize booleans
+        \global\@VisitorModefalse
+        \global\@ServiceModefalse
+        \global\@RemoteModefalse
+
+        % Check visitor mode
+        \ismember#1\of\VisitorTelescopes
+        \if@ismember 
+                % \typeout{telescope #1 visitor mode}
+                \global\@VisitorModetrue 
+        \fi
+
+        % Check service mode
+        \ismember#1\of\ServiceTelescopes
+        \if@ismember 
+                % \typeout{telescope #1 service mode}
+                \global\@ServiceModetrue 
+        \fi
+
+        % Check remote mode
+        \ismember#1\of\RemoteTelescopes
+        \if@ismember 
+                % \typeout{telescope #1 remote mode}
+                \global\@RemoteModetrue 
+        \fi
+}
+
+%%% Visitor instrument page internal flag (if empty no visitor
+%% instrument page).
+\def\@pageVisitorInstrument{}
+
+% Macro: @CheckTelIns
+%%
+%% Validate entered telescope and instrument codes
+%%
+%% parameters:  #1 instrument code
+%%
+\def\@CheckIns#1#2#3#4{
+        \def\@anstel{#1}
+        \def\@ansins{#2}
+        \def\@obsmode{#4}
+        \def\@servicemode{s}
+
+        % Telescope code validation
+        \StrongValidation{\@anstel}{\Telescopes}
+                {telescope code}{ObservingRun (second parameter)}
+        % Get the telescope-instrument sublist
+        \ismember\@anstel\of\Telescopes
+        \tmpCntSix=\listposition
+        \select\tmpCntSix\of\Instruments\to\telInstrList
+        % Instrument code validation: don't check if it's equal to the
+        % visitor instrument
+        % C.Boarotto 25-Sep-98
+
+
+        \ConditionalValidation{\@ansins}{\VisitorInstrumentList}
+        \if@conditional
+            \ifx\@obsmode\@servicemode
+                \@mg{ERROR - Line \the\inputlineno: instrument - \@ansins - cannot be used in service mode}
+                \message{Change it to visitor}
+                \@stm   
+             \fi
+            \gdef\@pageVisitorInstrument{yes}   
+	    
+        \else
+            \StrongValidation{\@ansins}{\telInstrList}{instrument code}{ObservingRun (third parameter)}
+        \fi 
+
+        %\if\@conditional
+        %       \message{it is a visitor instrument}%
+        %       \gdef\@pageVisitorInstrument{yes}
+        %\else
+        %       \message{it is not a visitor instrument}%
+        %        \StrongValidation{\@ansins}{\telInstrList}{instrument code}{ObservingRun (third parameter)}
+        %\fi
+
+        % Add to the defined instruments list
+          \def\@tel{\\ {#1}}
+          \def\@ins{\\ {#2}}
+          \def\@period{\\ {#3}}
+
+        % Check the observing modes allowed for the specified
+        % telescope (set booleans flags)
+        \@CheckTelObsMode{\@anstel}
+
+        % Check if the telescope is SEST
+        \CheckSEST{\@anstel}
+
+        % Different behavior if alternative
+        \if@altRun
+        \else
+
+                % Don't append visitor instruments and their
+                % telescopes to the list of instruments to be configured
+                \if@conditional
+                \else
+                \concatenate{\usedPeriodList}={\usedPeriodList}&{\@period}
+                \concatenate{\usedTelescopeList}={\usedTelescopeList}&{\@tel}
+                \concatenate{\usedInstrumentList}={\usedInstrumentList}&{\@ins}
+                \fi
+
+                % Check if the instrument is Adonis
+                \CheckAdonis{\@ansins}
+
+                                
+        \fi
+}
+
+%% Variables to check the time indication (hours or nights)
+%%
+\newif\if@isnight\@isnightfalse
+\newif\if@ishour\@ishourfalse
+\def\@nightval{n}
+\def\@hourval{h}
+
+%% List of allowed symbols in the time algebra field
+%% Bug fixed: C.Boarotto 21-Sep-98 allow fractional nights (ex: 2.5)
+%%
+\def\@TimeSymbolList{\\{.}\\{0}\\{1}\\{2}\\{3}\\{4}\\{5}\\{6}
+        \\{7}\\{8}\\{9}\\{=}\\{x}\\{+}\\{h}\\{n}\\{H}}
+
+%% Macro: @scanTimeSyntax
+%%
+%% Tricky, it uses tail recursion to parse each single character
+%% contained in the input string.
+%%
+%% parameter:   #1 Input string (and then single char).
+%%
+\def\@scanTimeSyntax#1{
+
+        \ifx#1\@endchar 
+                \let\next=\relax
+        \else
+                % \typeout{checking character {#1}}
+
+                \def\given{#1}
+                \StrongValidation{\given}{\@TimeSymbolList}
+                        {time syntax symbol}{ObservingRun (fourth parameter)}
+
+                \ifx\given\@nightval \global\@isnighttrue \fi
+                \ifx\given\@hourval \global\@ishourtrue \fi
+
+                \advance\strCount by1 
+                \let\next=\@scanTimeSyntax              
+        \fi
+
+        % Tail recursion
+        \next
+}
+
+%% Macro: @CheckTime
+%%
+%% Validate entered time.
+%%
+%% parameter:   #1 time specification
+%%
+\def\@CheckTime#1{
+
+        \@isnightfalse
+        \@ishourfalse
+
+        \def\@anstime{#1}
+
+        % Time validation
+        \WeakValidation{\@anstime}{time}{ObservingRun (fourth parameter)}
+
+        % OK, not empty. Check single characters
+        \strCount=0
+        \@scanTimeSyntax#1\@endchar
+
+        % One and only one time indication must exist
+        \if@isnight
+
+                % Hours and nights cannnot be specified at the same time
+                \if@ishour
+                        \StrongValidation{n AND H}{\\{n}\\{OR}\\{H}}
+                                {time indication 1}{ObservingRun (fourth parameter)}
+                \fi
+
+                % Nights cannot be specified if the telescope is not
+                % supporting visitor mode
+                \if@VisitorMode
+                        %\typeout{visitor mode + nights OK}
+                \else
+                        %\typeout{non visitor mode + nights WRONG}
+                        \StrongValidation{n}{\\{H}}
+                                {time indication (hours required in non visitor mode)}
+                                {ObservingRun (fourth parameter)}
+                \fi
+
+                % Nights cannot be specified if SEST (only hours)
+                \if@isSEST                      
+                        %\typeout{SEST + nights WRONG}
+                        \StrongValidation{n}{\\{H}}
+                                {time indication (SEST requires hours)}
+                                {ObservingRun (fourth parameter)}
+                \fi
+
+        \else
+                \if@ishour
+
+                        % Hour allowed only for SEST, for remote and
+                        % service mode, otherwise error !
+                        \def\@testRes{0}
+                        \def\@bad{0}
+                        \if@ServiceMode \def\@testRes{1} \fi
+                        \if@RemoteMode \def\@testRes{1} \fi
+                        \if@isSEST \def\@testRes{1} \fi
+
+                        \ifnum\@testRes=\@bad
+                                \StrongValidation{H}{\\{n}}
+                                        {time indication 2}
+                                        {ObservingRun (fourth parameter)}
+                        \fi
+
+                \else
+                        \WeakValidation{\@emptyValue}
+                                {time indication (should be n OR h)}
+                                {ObservingRun (fourh parameter)}
+                \fi
+        \fi
+}
+
+%% Macro: SeeingReq
+%%
+%% Set the @seeing variable and performs strong validation check.
+%%
+%% parameter: #1 Seeing requirements (must be 0.4, 0.6, 0.8, 1.0, 1.2,
+%%               1.4 or n)
+%%
+\def\@CheckSeeingReq#1{
+
+        \def\@ansseeing{#1}
+        \StrongValidation{\@ansseeing}{\SeeingValues}
+                {seeing requirements}{ObservingRun (seventh parameter)}
+}
+
+%% Macro: MoonAge
+%%
+%% Set the @moonage variable and performs strong validation check.
+%%
+%% parameter:   #1 MoonAge requirements (must be d, g or n)
+%%
+\def\@CheckMoonAge#1{
+
+        \def\@ansmoon{#1}
+        \StrongValidation{\@ansmoon}{\MoonList}
+                {moon age}{ObservingRun (sixth parameter)}
+}
+
+%% Macro: MoonAge
+%%
+%% Set the @moonage variable and performs strong validation check.
+%%
+%% parameter:   #1 Period requirements (must be 74 75 76 77)
+%%
+\def\@CheckPeriod#1{
+
+        \def\@ansperiod{#1}
+        \StrongValidation{\@ansperiod}{\PeriodList}
+                {period}{ObservingRun (second parameter)}
+}
+
+%% List of all acceptable months
+%%
+\def\@allMonthList{\\{jan}\\{feb}\\{mar}\\{apr}\\{may}\\{jun}
+                        \\{jul}\\{aug}\\{sep}\\{oct}\\{nov}\\{dec}}
+
+%% Macro: @CheckMonth
+%%
+%% Get a sub-list of the allowed month for a specific telescope and
+%% check if the month preference fits with this list.
+%%
+%% parameters:  #1 telescope
+%%              #2 month preference
+%%
+\def\@CheckMonth#1#2{
+
+        \def\@anstel{#1}
+        \def\@ansmonth{#2}
+
+        % If the month is ``any'' skip all the checks.
+        \def\@anymonth{any}     
+
+        \ifx\@ansmonth\@anymonth
+        \else
+
+                % If ddt check the month with all months
+                \if@ddt
+                        \StrongValidation{\@ansmonth}{\@allMonthList}
+                                {primary month}{ObservingRun (fifth parameter)}
+
+                \else   
+                        % Get the telescope-months sublist. 
+                        % It's assumed that the telescope has a valid code
+                        \ismember\@anstel\of\Telescopes
+                        \tmpCntSix=\listposition
+                        \select\tmpCntSix\of\Months\to\telMonthList
+
+                        \StrongValidation{\@ansmonth}{\telMonthList}
+                                {primary month}{ObservingRun (fifth parameter)}
+                \fi
+        \fi
+}
+
+%% Macro: @CheckObsMode
+%%
+%% Strong validation check for the observing mode. Check if the
+%% expressed value is compatible with the observation modes allowed
+%% for the specific telescope.
+%%
+%% parameter:   #1 Observing mode requirements (must be v, s, r)
+%%
+\def\@CheckObsMode#1{
+
+        \def\@ansmode{#1}
+        \def\@allowedModes{}
+
+        \def\@serviceMode{\\ {s}}
+        \def\@visitorMode{\\ {v}}
+        \def\@remoteMode{\\ {r}}
+
+        \StrongValidation{\@ansmode}{\ObsModeValues}
+                {observing mode}{ObservingRun (eigth parameter)}
+
+        % Determinate allowed observing modes (the choosen telescope
+        % sets the boolean flags)
+        \if@VisitorMode
+                \concatenate{\@allowedModes}={\@allowedModes}&{\@visitorMode}
+        \fi
+
+        \if@ServiceMode
+                \concatenate{\@allowedModes}={\@allowedModes}&{\@serviceMode}
+        \fi
+
+        \if@RemoteMode
+                \concatenate{\@allowedModes}={\@allowedModes}&{\@remoteMode}
+        \fi
+
+        % Check given mode with allowed observing modes
+        \StrongValidation{\@ansmode}{\@allowedModes}
+                {observing mode}{ObservingRun (eight parameter)}
+}
+
+%% Macro: CheckSkyTransparency
+%%
+%% Performs strong validation check.
+%%
+%% parameter: #1 Seeing requirements (must be PHO, CLR, THN)
+%%
+\def\@CheckSkyTransparency#1{
+
+        \def\@anstrans{#1}
+        \StrongValidation{\@anstrans}{\SkyTransparencyValues}
+        {sky transparency requirements}
+        {ObservingRun (ninth parameter)}
+}
+
+%% Macro: @formatSeeing
+%%
+%% Print a better seeing format
+%%
+%% parameter:   #1 Seeing value (numeric or n)
+%% 
+\def\@formatSeeing#1{
+        \def\@anssee{#1}
+        \def\@nval{n}
+        \ifx\@anssee\@nval
+                #1
+        \else
+                $\le #1''$
+        \fi
+}
+
+%% Macro: @formatMoonAge
+%%
+%% Print a better moon age format
+%%
+%% parameter:   #1 Moon age  value (numeric or n)
+%% 
+\def\@formatMoonAge#1{
+        \def\@ansmoon{#1}
+        \def\@nval{n}
+        \ifx\@ansmoon\@nval
+                #1
+        \else
+                $\le #1$ days
+        \fi
+}
+
+%% List of the Observing Run data to be displayed in the telescope box
+%% table.
+%% 
+\def\ObservingRunList{}                 % List of runs for box 3
+\newcount\@obsRunCounter                % Size of that list...
+\@obsRunCounter=0                       % ...initially empty
+
+\def\ObservingRunListOverflow{}         % List of runs for overflow box
+\newcount\@obsRunCounterOverflow        % Size of that list...
+\@obsRunCounterOverflow=0               % ...initially empty
+
+%% Macro: ObservingRun
+%%
+%% Validate proposed ObservingRun(s)
+%%
+%% parameters:  #1 observing run code (single capital letter or letter/alt)
+%%              #2 period
+%%              #3 instrument code
+%%              #4 requested time 
+%%              #5 primary month
+%%              #6 moon requirements (a char letter code)
+%%              #7 seeing requirements (a char letter code)
+%%              #9 sky transparency
+%%              #8 observing mode (a char letter code)
+%% %% A M Chavan, 10-Feb-2004: rewritten.  %%
+%-G- \global\def\runentryExtended#1{%
+%-G- \def\runType{#1}}%
+\global\def\ObservingRun#1#2#3#4#5#6#7#8#9{
+  \def\monthPar{#5}
+  \def\moonPar{#6}
+  \def\seeingPar{#7}
+  \def\obsmodePar{#9}
+  \def\runtemp{#1}
+  \def\pertemp{#2}
+  \def\instrtemp{#3}
+  \def\timetemp{#4}
+  \def\skytranstemp{#8}
+    \@CheckRunNum{#1}
+    \@CheckPeriod{#2}
+    \@CheckIns{ALLTELESCOPES}{#3}{#2}{#9}
+    \@CheckTime{#4}   
+    \@CheckMoonAge{#6}              
+    \@CheckSeeingReq{#7}            
+    \@CheckSkyTransparency{#8}
+    \@CheckObsMode{#9}              
+\runentryExtended}
+
+\global\def\runentryExtended#1{%
+\def\runType{#1}
+
+    \edef\runentry{
+        \noexpand\ninerm{\runtemp} & \noexpand\ninerm{\pertemp} & 
+        \noexpand\ninerm{\instrtemp} & \noexpand\ninerm{\timetemp} & 
+         \noexpand\ninerm{\monthPar} & \noexpand\ninerm{\moonPar} & 
+         \noexpand\ninerm{\seeingPar}  & \noexpand\ninerm{\skytranstemp} & 
+        \noexpand\ninerm{\obsmodePar}  & \noexpand\ninerm{\runType} \noexpand\\ }
+
+% This flags up the TOO page if the run type field has been filled in
+% Note that at present this does NOT check if the programme type is also copatible with the allowed run type
+% This check is currently only done at receiver level.
+    \ifx\runType\@emptyValue
+    \else
+       \gdef\@tooPage{yes}
+    \fi
+    \def\@runMaxNum{26}
+    \def\@runOverflowNum{10}
+    \advance\@obsRunCounter by 1 % keep count of rows %% Truncate if there are more than \@runMaxNum runs...
+  \ifx\@title\@emptyValue       % Is the title empty (empty proposal)?  %% YES, do nothing
+  \else                         %% --- This is not an empty proposal...
+     \ifnum\the\@obsRunCounter>\@runMaxNum
+     \WarningMsg{Observing Run number exceeds the maximum number \@runMaxNum
+                               (included alternatives). Internally truncated in Box 3}
+    \else   %% we need to see whether we append %% the run to the regular list or to the overflow list
+        \ifnum\the\@obsRunCounter>\@runOverflowNum      % did we overflow?
+          %% YES, we did overflow.
+          \advance\@obsRunCounterOverflow by 1          % keep overflow count
+          %% If this is the *first* overflow run, add a remark to %% both normal and overflow table
+          \ifnum\the\@obsRunCounterOverflow=1
+            \concatenate{\ObservingRunList}={\ObservingRunList}&{
+              \multicolumn{9}{l}{
+                \it{Following runs moved to box 3a at the end of the document... }} \\}
+            \concatenate{\ObservingRunListOverflow}={\ObservingRunListOverflow}&{%
+              & \multicolumn{4}{l}{
+                \it{...continued from box 3. }} \\}
+          \fi % end of ``if first overflow...''
+          %% Add this run to overflow list
+          \concatenate{\ObservingRunListOverflow}={\ObservingRunListOverflow}&{\runentry}
+        \else
+          %% NO overflow, add this run to normal list
+          \concatenate{\ObservingRunList}={\ObservingRunList}&{\runentry}
+        \fi % end of "if overflow..."
+        %% This is not a large programme: just add this run %% to the normal list
+        %\concatenate{\ObservingRunList}={\ObservingRunList}&{\runentry}
+    \fi % end of ``if truncation...''
+  \fi % end of ``if emptyvalue...''
+}%
+
+
+%% Macro: MakeRunsBox
+%%
+%% Create the main runs box on the first page.
+%% Note that the box is greater in case of Large Programme
+%%
+%% A M Chavan, 10-Feb-2004: rewritten.
+%%
+%%
+\def\MakeRunsBox{
+  \if@keyprg
+     \MakeRunsBoxInternal{\ObservingRunList}{3.}{64}
+  \else
+     \MakeRunsBoxInternal{\ObservingRunList}{3.}{53}
+  \fi
+}
+
+%% Macro: MakeOverflowRunsBox
+%%
+%% Create the overflow runs box (box XXX).
+%%
+%%
+%% A M Chavan, 10-Feb-2004: rewritten.
+%%
+\def\MakeOverflowRunsBox{
+  \MakeRunsBoxInternal{\ObservingRunListOverflow}{3a.}{260}
+}
+
+
+\def\MakeTargets{
+  \MakeTargetsInternal{\@nameuse{TargetList0}}{12.}{280}%
+%GAJH
+}
+
+%% Macro: MakeOverflowTargetsBox
+%%
+%% Create the overflow targets box (box XXX).
+%%
+%% 12.02.2005 M. Lombardi
+\def\MakeOverflowTargets#1{
+  \def\@targetsNotes{}%
+  \@bNewBoxfalse
+   \if@keyprg
+      \xdef\@boxno{12c}
+   \else
+      \xdef\@boxno{11a}
+   \fi
+  \MakeTargetsInternal{\@nameuse{TargetList#1}}{12.}{270}%
+}
+
+
+\def\MakeCoisnew{
+  \@bNewBoxfalse
+        \if@keyprg
+              \xdef\@boxno{4a}
+               \MakecoisnewInternal{\@nameuse{coinewList0}}{12.}{48}%
+              \xdef\@boxno{4}
+        \else
+              \xdef\@boxno{6a}
+                \MakecoisnewInternal{\@nameuse{coinewList0}}{12.}{29}%
+              \xdef\@boxno{6}
+        \fi
+  \@bNewBoxtrue
+}
+
+%% Macro: MakeOverflowTargetsBox
+%%
+%% Create the overflow targets box (box XXX).
+%%
+%% 12.02.2005 G Hussain
+\def\MakeOverflowcoisnew#1{
+  \@bNewBoxfalse
+  \if@keyprg
+      \xdef\@boxno{4b}
+  \else
+      \xdef\@boxno{6b}
+  \fi
+  \MakecoisnewInternal{\@nameuse{coinewList#1}}{12.}{270}%
+}
+
+
+
+
+%% Macro: MakeRunsBoxInternal
+%%
+%% Used internally to create a runs box: it contains a table displaying
+%% requested instruments, amount of time, observing mode, etc.
+%% Parameters:
+%%   #1   A list of \tabular*{} rows
+%%   #2   Box "number"
+%%   #3   Box height in millimeters
+%%
+%% A M Chavan, 10-Feb-2004: rewritten.
+%%
+\def\MakeRunsBoxInternal#1#2#3{
+
+        \ifx\@title\@emptyValue
+        \else
+                \WeakValidation{#1}
+                        {ObservingRun internal list}
+                        {ObservingRun (macro never called)}
+        \fi
+
+        \setlength{\unitlength}{1mm}
+
+        \def\@runsBoxTitle{}
+
+        \def\tableHead{\elvsf{\makebox[4mm][l]{#2} Run} & \elvsf{Period} & 
+                        \elvsf{Instrument} & \elvsf{Time} & 
+                        \elvsf{Month} & \elvsf{Moon} & 
+                        \elvsf{Seeing} &
+                        \elvsf{Sky} & 
+                        \elvsf{Mode} &
+                        \elvsf{Type} \\}
+        \def\@runsText{
+                \begin{tabular*}{\@tabInsideBoxLength}[tl]
+                  {p{15.01mm}p{15mm}p{25mm}p{40mm}p{14mm}p{12mm}p{13mm}p{10mm}p{12mm}p{17mm}}
+
+%{p{15.01mm}p{15mm}p{25mm}p{23mm}p{14mm}p{14mm}p{19mm}p{21mm}p{18mm}}
+                  %%{p{15.01mm}p{15mm}p{20mm}p{40mm}p{10mm}p{10mm}p{15mm}p{17mm}p{19mm}}
+                  \tableHead
+                  \normalsize #1
+                \end{tabular*}
+        }
+
+        % Create the frame box to house the table
+        \@unsetArticleSettings
+        \@makeGenericBox{#3}{\@runsBoxTitle}{\normalsize\@runsText}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%      Requested Nights Box
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Box 4 variables: awarded and required nights
+\def\@awardedNightsTelescopes{}
+\def\@awardedNightsTime{}
+\def\@requiredNightsTelescopes{}
+\def\@requiredNightsTime{}
+
+%% Nights macros
+\def\AwardedNights#1#2{
+        \gdef\@awardedNightsTelescopes{#1}
+        \gdef\@awardedNightsTime{#2}
+}
+\def\FutureNights#1#2{
+        \gdef\@requiredNightsTelescopes{#1}
+        \gdef\@requiredNightsTime{#2}
+}
+
+%% Macro: MakeNightBox
+%%
+%% Not used for large programmes, it generates box 4 with the
+%% indication of how many nights are required for the observing
+%% projects (running over more than one period)
+%%
+\def\MakeNightBox{
+
+        \setlength{\unitlength}{1mm}
+
+        % Empty because the actual title is formatted within the table
+        \def\@nightboxTitle{}
+
+        \def\@nightboxtableHead{\elvsf{4.\ \ Number of nights/hours} & 
+                        \elvsf{Telescope(s)} & 
+                        \elvsf{Amount of time} \\}
+
+        \def\@nightboxText{
+
+                \begin{tabular*}{\@tabInsideBoxLength}[tl]
+                {p{70mm}p{50mm}p{50mm}}
+
+                \@nightboxtableHead
+                \tensf{ a) already awarded to this project:} & 
+                        \@awardedNightsTelescopes & \@awardedNightsTime \\
+                \tensf{ b) still required to complete this project:} & 
+                        \@requiredNightsTelescopes & \@requiredNightsTime
+
+                \end{tabular*}
+        }
+
+        \@makeGenericBox{17}{\@nightboxTitle}{\normalsize\@nightboxText}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%      Special Remark Box
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Remarks handling
+\def\@specialRemarks{}
+\long\def\SpecialRemarks#1{\gdef\@specialRemarks{#1}}
+
+%% Macro: MakeSpecialRemarks
+%%
+%% It generates box 5 for normal programmes, or box 8 for large
+%% programmes, containing special remarks.
+%%
+\def\MakeSpecialRemarks{
+
+        \if@keyprg
+                \def\@remBoxLen{52}
+        \else
+                \def\@remBoxLen{35}
+        \fi     
+
+        \@makeGenericBox{\@remBoxLen}{Special remarks:}{\normalsize\@specialRemarks}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%      Principal Investigator and CoI-Investigators Box
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% PI's variables
+%%
+\def\@PIUsername{}
+
+%% Macro: PI
+%%
+%% Check the PI's data performing strong an weak validation for each
+%% field.
+%%
+%% parameters:  #1 PI's initials
+%%              #2 PI's family name
+%%              #3 PI's institution
+%%              #4 PI's country code
+%%              #5 PI's email address
+%%
+
+\def\PI#1{
+
+        \def\piUsername{#1}
+        % PI parameter validation
+        \ifx\@emptyValue\@title
+        \else
+                \WeakValidation{\piUsername}{PI's User Portal username}{PI (first parameter)}
+        \fi
+
+        % Set the PI variables
+        \gdef\@PIUsername{#1}
+      
+}
+
+%% CoI list
+%%
+\def\@CoIList{}
+
+%% CoI counter
+%%
+\newcounter{CoIcounter}
+
+%% Macro: CoI
+%%
+%% Verify the CoI entry and append it to the CoI list.
+%%
+%% parameters:  #1 CoI's initials
+%%              #2 CoI's family name
+%%              #3 CoI's institution
+%%              #4 CoI's country code
+%%
+
+%% Macro: MakeInvestigator
+%%
+%% Create the PI and CoI box.
+%%
+%% Macro: MakeInvestigator
+%%
+%% Create the PI and CoI box.
+%%
+\def\MakeInvestigator{
+
+        \ifx\@title\@emptyValue
+        \else
+                \WeakValidation{\@PIUsername}
+                        {Principal Investigator}
+                        {PI (macro never called)}
+        \fi
+
+        \def\@investigator{
+                \vbox{
+                        % Line length
+                        \hsize=130mm
+                        \svtnsf{\@PIUsername } 
+                }
+        }
+
+        \def\@coinvestigatorsText{  }
+
+        \if@keyprg
+                \def\@invBoxLen{14}
+        \else
+                \def\@invBoxLen{14}
+        \fi     
+
+        \@makeGenericBox{\@invBoxLen}{Principal Investigator: \@investigator}
+               {\normalsize\@coinvestigatorsText}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%      Description Boxes
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Observation description fields.
+%%
+\def\@scientificRationale{}
+\long\def\ScientificRationale#1{\gdef\@scientificRationale{#1}}
+
+\def\@immediateObjective{}
+\long\def\ImmediateObjective#1{\gdef\@immediateObjective{#1}}
+
+%\def\@telescopeJustification{}
+%\long\def\TelescopeJustification#1{\gdef\@telescopeJustification{#1}}
+
+%\def\@obsModeJustification{}
+%\long\def\ModeJustification#1{\gdef\@obsModeJustification{#1}}
+
+%% List of contents to be written on the additional pages.
+%%
+
+\def\@additionalBoxList{
+  \if@keyprg
+  {}
+  \else
+  {\@continuationBox}
+  \fi
+}
+
+%% Macro: MakeCaption
+%%
+%% Write the additional text on the additional description pages.
+%%
+%% parameter:   #1 Additional (latex) text
+%%
+\long\def\MakeCaption#1{
+
+        \def\@attachedText{#1}
+
+        \ifx\@emptyValue\@attachedText
+        \else
+                \def\@attachedTexTBox{
+                        \vbox{
+                                % Line length
+                                \hsize=170mm
+                                \normalsize{#1}
+                                \vspace{1cm}
+                                \vfill
+                        }
+                }
+
+                \concatenate{\@additionalBoxList}={\@additionalBoxList}&{\@attachedTexTBox}             
+        \fi
+}
+
+%% If a slash is written in the file name it is a absolute pathname
+\def\@absPathNameChar{/}
+
+%% If a comma is written in the file name it is a wrong filename
+\def\@commaChar{,}
+
+%% Macro: @scanFileName
+%%
+%% Tricky, it uses tail recursion to parse each single character
+%% contained in the input string.
+%%
+%% parameter:   #1 Input string (and then single char).
+%%
+\def\@scanFileName#1{
+
+        \ifx#1\@endchar 
+                \let\next=\relax
+        \else
+                % \typeout{checking character {#1}}
+
+                \def\given{#1}
+
+                \ifx\given\@absPathNameChar
+                        \@mg{ERROR - Line \the\inputlineno: 
+                                Absolute file path name in macro MakePicture!}
+                        \@stm
+                \fi
+
+                \ifx\given\@commaChar
+                        \@mg{ERROR - Line \the\inputlineno: 
+                                Wrong file name in macro MakePicture!}
+                        \@stm
+                \fi
+
+                \advance\strCount by1 
+                \let\next=\@scanFileName
+        \fi
+
+        % Tail recursion
+        \next
+}
+
+
+%% Macro: MakePicture
+%%
+%% parameters:  #1 PostScript file
+%%              #2 Picture label
+%%              #3 parameters for the picture:
+%%                 Ex: width=10cm, height=15cm
+%%
+\def\MakePicture#1#2{
+        \def\@psFile{#1}
+        \WeakValidation{\@psFile}{picture file}{MakePicture}
+  \@ifundefined{includegraphics}{
+    %% \WarningMsg{Cannot attach pictures: includegraphics utility not found}
+  }{
+                                % Check the path (reject absolute paths)
+    \strCount=0
+    \@scanFileName#1\@endchar
+    \def\@picFormat{#2}
+    \ifx\@emptyValue\@psFile
+    \else		% Create a vertical box to host the picture
+    \def\@pictureBox{
+      \vbox{
+        \centerline{\includegraphics[#2]{#1}}
+        \vspace{1cm}
+        \vfill
+      }
+    }
+    \concatenate{\@additionalBoxList}={\@additionalBoxList}&{\@pictureBox}
+    \global\@figtrue 
+    \fi
+  }
+}
+%%
+%% Macro: MakeAdditionalPages
+%% Generate the picture pages, splitting the pictures
+%% into two (max) pages for large programmes and one (max) page for 
+%% normal programmes
+%%
+\def\MakeAdditionalPages{
+        \def\@verticalPictureBox{
+                \vbox{
+                        % Line length
+                        \hsize=170mm
+                        \normalsize\@additionalBoxList
+                }
+        }
+        % Split the description into three parts (box111, box112,
+        % box113) that should be written as two different pages.
+        \setbox200=\@verticalPictureBox
+        \setbox201=\vsplit200 to \@maxDescrLen
+        \setbox202=\vsplit200 to \@maxDescrLen
+        \setbox203=\vsplit200 to \@maxDescrLen
+        % If the first box is not empty, generate a page to contain
+        % the associated text.
+        \ifvbox201
+                \begin{picture}(\@pageWidth,\@pagetwolength)
+                \makebox(\@pageWidth,\@pagetwolength)[tl]{
+                        \vbox{
+                                \@bNewBoxfalse
+                                \@makeGenericBox{\@pagetwolength}
+                                        {\@descriptionboxPicTitle \@h}
+                                        {\box201 \@h}
+                                \MakePageNumber
+                        }
+                }
+                \end{picture}
+                \vfill
+                \pagebreak
+        \fi
+\if@keyprg
+        % If the second box is not empty, generate a page to contain
+        % the associated text.
+	% FOR LARGE PROGRAMMES ALLOWED TWO PAGES OF FIGURES
+        \ifvbox202
+                \begin{picture}(\@pageWidth,\@pagetwolength)
+                \makebox(\@pageWidth,\@pagetwolength)[tl]{
+                        \vbox{
+                                \@bNewBoxfalse
+                                \@makeGenericBox{\@pagetwolength}
+                                        {\@descriptionboxPicTitle \@h}
+                                        {\normalsize\box202 \@h}
+                                \MakePageNumber
+                        }
+                }
+                \end{picture}
+                \vfill
+                \pagebreak
+        \fi
+        % If the third box is not empty the description exceeds two
+        % pages, truncate it and display a warning message
+        \ifvbox203
+                \WarningMsg{Attached pictures and text exceed 2 pages.
+                        Internally truncated in macro MakeAdditionalPages}
+        \fi
+\else
+        % If the third box is not empty the description exceeds two
+        % pages, truncate it and display a warning message
+	% FOR NORMAL PROGRAMMES ONLY
+        \ifvbox202
+                \WarningMsg{Combined length of scientific
+                  justification and attachments exceeds 2 pages.
+                        Internally truncated in macro MakeAdditionalPages}
+        \fi
+        % If the third box is not empty the description exceeds two
+        % pages, truncate it and display a warning message
+        \ifvbox203
+                \WarningMsg{Combined length of scientific
+                  justification and attachments exceeds 2 pages.
+                        Internally truncated in macro MakeAdditionalPages}
+        \fi
+\fi
+}
+
+%% Backup programme (only normal programmes)
+%\def\@backUpProgramme{}
+
+%% Macro: BackUpProgramme
+%%
+%% Generate a backup programmes description page.
+%% parameter: #1 Backup programme
+%%
+%\long\def\BackUpProgramme#1{
+
+%        \if@keyprg
+                % Only normal programmes !!
+%        \else
+
+%                \gdef\@backUpProgramme{#1}      
+
+                % % Backup programme weak validation: it shouldn't be
+                % % empty
+                % \WeakValidation{\@backUpProgramme}
+                %       {backup programme}{BackUpProgramme}
+%        \fi
+%}
+
+%% Macro: MakeBackUpProgrammePage
+%%
+%% Generate a backup programme page..
+%%
+%\def\MakeBackUpProgrammePage{
+
+%        \def\@verticalBackUpBox{
+%                \vbox{
+                        % Line length
+%                        \hsize=170mm
+%                        \normalsize\@backUpProgramme
+
+                        % Needed in order to prevent text vertical stretching
+                        % Bug fixed: C. Boarotto 09-Sep-98
+%                        \vfill
+%                }
+%        }
+
+        % Split the description into two parts (box211,
+        % box212). Truncate to one page
+%        \setbox210=\@verticalBackUpBox
+%        \setbox211=\vsplit210 to \@maxDescrLen
+%        \setbox212=\vsplit210 to \@maxDescrLen
+
+        % If the first box is not empty, generate a page to contain
+        % the associated text.
+%        \ifvbox211
+
+%                \begin{picture}(\@pageWidth,\@pagetwolength)
+
+%                \makebox(\@pageWidth,\@pagetwolength)[tl]{
+%                        \vbox{
+%                                \@bNewBoxfalse
+%                                \@makeGenericBox{\@pagetwolength}
+%                                        {\@descriptionboxBackUpTitle \@h}
+%                                        {\normalsize\box211 \@h}
+
+%                                \MakePageNumber
+%                        }
+%                }
+
+%                \end{picture}
+%                \vfill
+%                \pagebreak
+%        \fi
+
+        % If the second box is not empty the description exceeds two
+        % pages, truncate it and display a warning message
+%        \ifvbox212
+%                \WarningMsg{Backup programme text exceed 2 pages.
+%                        Internally truncated in macro MakeBackUpProgramme}
+%        \fi
+%}
+
+%% Macro: MakeDescriptionPages
+%%
+%% Generate the description pages, splitting the description fields
+%% into two (max) pages.
+%%
+\def\MakeDescriptionPages{
+        \@setArticleSettings
+        \ifx\@emptyValue\@title
+        \else
+                % Scientific rationale weak validation: it shouldn't be empty
+                \WeakValidation{\@scientificRationale}
+                        {scientific rationale}{ScientificRationale}
+                % Immediate objective weak validation: it shouldn't be empty
+                \WeakValidation{\@immediateObjective}
+                        {immediate objective}{ImmediateObjective}
+        \fi
+        \def\@descriptionboxTitle{Description of the proposed programme}
+        \def\@descriptionboxTitleCont{Description of the proposed programme (continued)}
+        \def\@descriptionsectPicTitle{
+\if@fig
+        {Attachments (Figures)}
+\else
+        {}
+\fi}
+         \def\@descriptionboxPicTitle{
+\if@keyprg
+        {Attachments (Figures)}
+\else
+        {Description of the proposed programme and attachments}  
+\fi }
+        \def\@descriptionboxBackUpTitle{Backup Programme}
+	\rightmargin 30mm
+        \def\@descriptionboxText{
+          \vbox{
+                        % Line length
+                        \hsize=170mm
+                        \vspace{3mm}
+                        \elvsf{A -- Scientific Rationale: \ }
+                        \tenrm\@scientificRationale
+                        \vfill
+                       \vspace{3mm}
+                        \elvsf{B -- Immediate Objective: \ }
+                        \tenrm\@immediateObjective
+                        \vfill
+                        \if@keyprg
+                               \vspace{3mm}
+                               \elvsf{C -- Telescope Justification: \ }
+                               \tenrm\@telescopeJustification
+			       \vfill
+                               \vspace{3mm}
+                               \elvsf{D -- Observing Mode Justification
+                                       (visitor or service): \ }
+                               \tenrm\@obsModeJustification
+                        \fi
+                        % Needed in order to prevent text vertical stretching
+                        \vfill
+                }
+       }
+        % Necessary to avoid nasty Underfull \vbox (badness 10000)
+        % error message
+        \vbadness=1000000
+        \hbadness=1000000
+        % Max text length within the page (and the frame)
+        \def\@maxDescrLen{260mm}        
+        % Split the description into three parts (box101, box102,
+        % box103) that should be written as two different pages.
+        \setbox100=\@descriptionboxText
+        \setbox101=\vsplit100 to \@maxDescrLen
+        \setbox102=\vsplit100 to \@maxDescrLen
+        \setbox103=\vsplit100 to \@maxDescrLen
+        \setbox104=\vsplit100 to \@maxDescrLen
+
+        % If the first box is not empty, generate a page to contain
+        % the associated text.
+        \ifvbox101
+                \begin{picture}(\@pageWidth,\@pagetwolength)
+                \makebox(\@pageWidth,\@pagetwolength)[tl]{
+                        \vbox{
+                                \@makeGenericBox{\@pagetwolength}
+                                        {\@descriptionboxTitle \@h}{\box101 \@h}
+                                \MakePageNumber
+                        }
+                }
+                \end{picture}
+                \vfill
+                \pagebreak
+        \fi
+% Added by ST: Short program only allows for one page of Describtion        
+\if@keyprg
+\else
+                % If the second box is not empty the description
+                % exceeds one page, truncate it and display a warning
+                % message.
+		% FOR NORMAL PROGRAMMES
+\global\def\@continuationBox{}
+
+                \ifvbox102
+
+     \global\def\@continuationBox{
+
+                        \vbox{
+
+\vspace{3mm}
+
+{\elvsf{\@descriptionboxTitleCont} \@h}
+
+\vspace{3mm}
+
+\unvbox102
+}
+
+%\vspace{5mm}
+
+{\elvsf{\@descriptionsectPicTitle \@h}}
+
+\vspace{8mm}
+
+    }
+
+%    \concatenate{\@additionalBoxList}={\@additionalBoxList}&{\@pictureBox}
+
+%                       \WarningMsg{Description exceeds 1 page. 
+%                        Internally truncated in macro MakeDescriptionPages}
+                \fi
+                 \ifvbox103
+
+                        \WarningMsg{Description exceeds 2 pages. 
+                        Internally truncated in macro MakeDescriptionPages}
+                \fi
+                 \ifvbox104
+
+                        \WarningMsg{Description exceeds 2 pages. 
+                        Internally truncated in macro MakeDescriptionPages}
+                \fi
+\fi
+\if@keyprg
+        % If the second box is not empty, generate a page to contain
+        % the associated text.
+        % Split the description into three parts (box101, box102,
+        % box103) that should be written as two different pages.
+        \ifvbox102
+                \begin{picture}(\@pageWidth,\@pagetwolength)
+                \makebox(\@pageWidth,\@pagetwolength)[tl]{
+                        \vbox{
+                                \@bNewBoxfalse
+                                \@makeGenericBox{\@pagetwolength}
+                                        {\@descriptionboxTitleCont \@h}{\normalsize\box102 \@h}
+                                \MakePageNumber
+                        }
+                }
+                \end{picture}
+                \vfill
+                \pagebreak
+        \fi
+        % Large Programmes provide three description pages. Normal
+        % programmes just two pages.
+        % If the third box is not empty, generate a page to
+        % contain the associated text.
+        % LARGE PROGRAMMES ONLY
+        \ifvbox103
+                 \begin{picture}(\@pageWidth,\@pagetwolength)
+                 \makebox(\@pageWidth,\@pagetwolength)[tl]{
+                           \vbox{
+                                 \@bNewBoxfalse
+                                 \@makeGenericBox{\@pagetwolength}
+                                   {\@descriptionboxTitleCont \@h}
+                                   {\normalsize\box103 \@h}
+                                   \MakePageNumber
+                               }
+                    }
+                  \end{picture}
+                  \vfill
+                  \pagebreak
+         \fi
+
+         % If the fourt box is not empty the description
+         % exceeds three pages, truncate it and display a warning
+         % message
+         % LARGE PROGRAMMES ONLY
+         \ifvbox104
+                       \WarningMsg{Description exceeds 3 pages. 
+                       Internally truncated in macro MakeDescriptionPages}
+          \fi
+
+\fi
+        % Make additional pages if the additional boxes list is not empty
+        \ifx\@emptyValue\@additionalBoxList
+        \else
+                \MakeAdditionalPages
+        \fi
+
+        % Make backup pages if the backup programme is not empty
+        %\ifx\@emptyValue\@backUpProgramme
+        %\else
+        %        \MakeBackUpProgrammePage
+        %\fi
+
+        \@unsetArticleSettings
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%      Applicant's Experience Box
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Applicant's experience handling
+%%
+\def\@experience{}
+\long\def\Experience#1{\gdef\@experience{#1}}
+
+%% Macro: MakeExperienceBox
+%%
+%% Generate a box to contain the @experience text.
+%%
+\def\MakeExperienceBox{
+
+        % Weak validation
+        \ifx\@emptyValue\@title
+        \else
+                \WeakValidation{\@experience}{experience}{Experience}
+        \fi
+
+        \def\@experienceboxTitle{Experience of the applicants with telescopes, 
+                        instruments and data reduction}
+
+        \@makeGenericBox{116}
+                {\@experienceboxTitle}{\normalsize\@experience}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%      Resources Availability Box
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Resources handling
+%%
+\def\@resources{}
+\long\def\Resources#1{\gdef\@resources{#1}}
+
+%% Macro: MakeResourcesBox
+%%
+%% Generate a box to contain the @resources text.
+%%
+\def\MakeResourcesBox{
+
+        % Weak validation
+        \ifx\@emptyValue\@title
+        \else
+                \WeakValidation{\@resources}{resources}{Resources}
+        \fi
+
+        \def\@resourcesboxTitle{Resources available to the team, such as: 
+                        computing facilities, research assistants, etc.}
+
+        \@makeGenericBox{107}
+                {\@resourcesboxTitle}{\normalsize\@resources}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%      Justification of requested observing time
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Why Nights and Lunar Phase text variables
+%%
+\def\@whyNights{}
+\def\@whyLunarPhase{}
+\long\def\WhyNights#1{\gdef\@whyNights{#1}}
+\long\def\WhyLunarPhase#1{\gdef\@whyLunarPhase{#1}}
+\def\@telescopeJustification{}
+\long\def\TelescopeJustification#1{\gdef\@telescopeJustification{#1}}
+
+\def\@obsModeJustification{}
+\long\def\ModeJustification#1{\gdef\@obsModeJustification{#1}}
+
+%% Exposure time calculator
+\def\@expTCBox{}
+
+%% Macro: ExposureTimeCalculator
+%%
+%% parameters:  #1 instrument
+%%              #2 version
+%%
+\def\ExposureTimeCalculator#1#2{
+
+        \gdef\@expTCBox {
+                \parbox[tl]{\@tabInsideBoxLength}{
+                        \elvsf{Exposure Time Calculator:}
+                        \@h
+                        \elvsf{Instrument: }\normalsize{#1}
+                        \@h
+                        \elvsf{Version: }\normalsize{#2}
+                        \@h
+                }
+        }
+}
+
+\def\@stdCalibration{Standard Calibration}
+\def\@isStdCalibrationSet{}
+\def\@calibrationRequest{\@stdCalibration}
+
+%% Macro: MakeNightLunarPhase
+%%
+%% Set the internal variable containing the special calibration
+%% requested to the default value (standard calibration).
+%%
+\def\Calibrations#1#2{
+       
+	
+	\ifthenelse{\equal{#1}{special}}{
+	\gdef\@calibrationRequest{Special Calibration - #2}
+	}
+
+
+}
+
+%% Macro: SpecialCalibration
+%%
+%% Set the internal variable containing the special calibration
+%% requested. It shouldn't be empty.
+%%
+\def\SpecialCalibrations#1{
+
+        \ifx\@emptyValue\@isStdCalibrationSet
+        \else
+                \WarningMsg{Standard calibration already requested}
+        \fi
+
+        \gdef\@calibrationRequest{#1}
+
+        % Special calibration weak validation: it shouldn't be empty
+        \ifx\@emptyValue\@title
+        \else
+                \WeakValidation{\@calibrationRequest}
+                        {special calibration request}{SpecialCalibration}
+        \fi
+}
+
+
+
+
+%% Macro: MakeNightLunarPhase
+%%
+%% Generate box 9 for both large and normal programmes, containing the
+%% justification (text) of requested observing time and lunar phase.
+%%
+\def\MakeNightLunarPhase{
+
+        \@setArticleSettings
+
+        % Why Nights weak validation: it shouldn't be empty
+        % Lunar Phase weak validation: it shouldn't be empty
+        \ifx\@emptyValue\@title
+        \else
+                \WeakValidation{\@whyNights}
+                        {nights justification}{WhyNights}
+                \WeakValidation{\@whyLunarPhase}
+                        {lunar phase justification}{WhyLunarPhase}
+		\if@keyprg
+		\else
+			\WeakValidation{\@telescopeJustification}
+			{telescope justification}{TelescopeJustification}
+			\WeakValidation{\@obsModeJustification}
+			{observation mode justification}{ModeJustification}
+		\fi
+        \fi
+
+        \def\@nightlunarphaseboxTitle{Justification of requested observing time and observing conditions}
+
+        \if@keyprg
+                \def\@nightlunarphaseboxLen{98}
+                \def\@textLen{93mm}
+        \else
+                \def\@nightlunarphaseboxLen{142}
+                \def\@textLen{132mm}
+        \fi
+
+        \def\tableHead{}
+
+        \def\@nightlunarbox{
+                \vbox {
+                        % Line length
+                        \hsize=170mm
+
+                        \ifx\@expTCBox\@emptyValue
+                        \else
+                                \@expTCBox
+                                \vfill
+                        \fi     
+
+                       \vspace{2mm}
+                       \elvsf{Lunar Phase Justification: \ }
+                       \tenrm\@whyLunarPhase
+
+                       \vspace{1mm}
+                       \elvsf{Time Justification: (including seeing overhead) \ }
+                       \tenrm\@whyNights
+                       \vfill
+
+                }
+        }
+        \setbox110=\@nightlunarbox
+        \setbox111=\vsplit110 to \@textLen
+        \setbox112=\vsplit110 to \@textLen
+
+        \ifvbox112
+                \WarningMsg{Description exceeds the maximum text length.
+                        Internally truncated in macro Time/Mode/Lunar phase justification}
+        \fi
+
+
+        \@makeGenericBox{\@nightlunarphaseboxLen}
+                {\@nightlunarphaseboxTitle}{\box111}
+        \@unsetArticleSettings
+	\if@keyprg
+	\else
+	        \def\@requestedDataBoxTitle{Telescope Justification: }
+		\def\tableHead{}
+       		\def\@reqBoxLen{53}
+        	\@insertGenericBox{\@reqBoxLen}{\@requestedDataBoxTitle}{\vspace{-0.4cm}\normalsize\@telescopeJustification}{8a}
+        	\def\@requestedDataBoxTitle{Observing Mode Justification (visitor or service): }
+		\def\tableHead{}
+        	\def\@reqBoxLen{53}
+        	\@insertGenericBox{\@reqBoxLen}{\@requestedDataBoxTitle}{\vspace{-0.4cm}\normalsize\@obsModeJustification}{8b}
+	\fi
+        \def\@requestedDataBoxTitle{Calibration Request: }
+	\def\tableHead{}
+        \def\@reqBoxLen{27}
+	\if@keyprg
+                \@insertGenericBox{\@reqBoxLen}{\@requestedDataBoxTitle}{\vspace{-0.4cm}\normalsize\@calibrationRequest}{9a}
+	\else
+        	\@insertGenericBox{\@reqBoxLen}{\@requestedDataBoxTitle}{\vspace{-0.4cm}\normalsize\@calibrationRequest}{8c}
+	\fi
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%      Report of Last Observation Box
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Variable to handle last programme data
+%%
+\def\@lastProgramme{}
+
+%% Macro: LastProgramme
+%%
+%% If the first parameter is empty don't verify the others, otherwise
+%% check if the second and the third parameters are empty.
+%%
+%% parameters:  #1 Last programme ID
+%%              #2 Last programme PI
+%%              #3 Last programme title
+%%
+\def\LastProgramme#1#2#3{
+
+        \def\parA{#1}
+        \def\parB{#2}
+        \def\parC{#3}
+
+        \ifx \parA\@emptyValue
+
+                % Last programme not defined, OK, skip any further
+                % verification
+
+        \else
+                \WeakValidation{\parB}
+                        {last programme PI}{LastProgramme (second parameter)}
+                \WeakValidation{\parC}{last programme title}
+                        {LastProgramme (third parameter)}
+                \gdef\@lastProgramme{{#1}\ /\ {#2}\ /\ {#3}}
+        \fi
+}
+
+%% Variable to handle last observation data (it's a list)
+%%
+\def\@lastObservationList{}
+
+%% Variable to store time lost reason values
+%%
+\def\@timelostReasonValues{\\{weather}\\{technical}\\{ToO}\\{none}}
+
+%% Macro: LastObservation
+%%
+%% If the first parameter is empty don't verify the others, otherwise
+%% check if the other parameters are empty.
+%%
+%% parameters:  #1 Last observation telescope
+%%              #2 Last observation instrument
+%%              #3 Last observation dates
+%%              #4 Last observation completed fraction
+%%              #5 Last observation time lost fraction
+%%              #6 Last observation reason for time lost (weather 
+%%                 or technical)
+%%
+\def\LastObservation#1#2#3#4#5#6{
+
+        \def\parA{#1}
+        \def\parB{#2}
+        \def\parC{#3}
+        \def\parD{#4}
+        \def\parE{#5}
+        \def\parF{#6}
+
+        \ifx \parA\@emptyValue
+                % Last observation not defined, OK, skip any further
+                % verification
+        \else
+                \WeakValidation{\parB}
+                        {instrument code}{LastObservation (second parameter)}
+                \WeakValidation{\parC}
+                        {dates}{LastObservation (third parameter)}
+                \WeakValidation{\parD}
+                        {completed fraction}{LastObservation (fourth parameter)}
+                \WeakValidation{\parE}
+                        {time lost fraction}{LastObservation (fifth parameter)}
+                % \StrongValidation{\parF}{\@timelostReasonValues}
+                %       {time lost reason}{LastObservation (sixth parameter)}
+
+                % Spacing for the first element is different
+                \def\tableEntry{{#1} & {#2} & {#3} & {#4\%} & {#5\%} & {#6} \\}
+
+                % Append to the last observation list           
+                \concatenate{\@lastObservationList}={\@lastObservationList}&{\tableEntry}
+        \fi
+}
+
+%% Data reduction handling.
+%%
+\def\@dataReductionStatus{}
+\def\@dataReductionStatusValues{\\{paper-submitted}\\{paper-in-press/published}}
+
+%% Macro: Datareduction
+%%
+%% Verify the entered parameter
+%%
+\def\Datareduction#1{
+
+        \def\param{#1}
+
+        \ifx \@emptyValue\param
+                % Skip, OK
+        \else   
+                \ifx\@emptyValue\@dataReductionStatus
+                \else
+                        \WarningMsg{Data reduction status already defined}
+                \fi
+
+                % If no empty it has to be one of the allowed values
+                \StrongValidation{\param}{\@dataReductionStatusValues}
+                                {data reduction status}{Datareduction}
+                \gdef\@dataReductionStatus{#1}
+        \fi
+}
+
+%% Last observation remark handling.
+%%
+\def\@lastObservationRemark{}
+\long\def\LastObservationRemark#1{\gdef\@lastObservationRemark{#1}}
+
+%% Macro: MakeLastProgramme
+%%
+%% Generate box 10 for normal programmes, containing the report of
+%% the last use of the ESO facilities in Chile.
+%%
+\def\MakeLastProgramme{
+
+
+        \def\@lastProgrammeBoxTitle{Report on the use of ESO facilities during the last 2 years}
+
+        %% 170/6=34mm
+        \def\tableHead{}
+
+        \if@keyprg
+                \def\@lastObsBoxLen{44}
+        \@makeGenericBox{\@lastObsBoxLen}{\@lastProgrammeBoxTitle}{\normalsize\@lastObservationRemark}
+
+        \else
+                 \def\@lastObsBoxLen{65}
+        \@makeGenericBox{\@lastObsBoxLen}{\@lastProgrammeBoxTitle}{\normalsize\@lastObservationRemark}
+
+        \fi
+
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%      Publication Box
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Publication handling
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Macro: MakePublications
+%%
+%% Generate box 11 for large programmes or box 11 for normal
+%% programmes, containing the list of all related publications.
+%%
+
+\def\@publications{}
+\long\def\Publications#1{\gdef\@publications{#1}}
+
+
+
+\def\MakePublications{
+
+        \def\@publicationsboxTitle{Applicant's publications related 
+                to the subject of this application during the last 2 years}
+
+        \if@keyprg
+                \def\@publicationsboxLen{110}
+        \else
+                \def\@publicationsboxLen{110}
+        \fi
+
+        \def\@publicationsboxText{\parbox[t]{\@tabInsideBoxLength}{\@publications}}
+
+        \@makeGenericBox{\@publicationsboxLen}
+                {\@publicationsboxTitle}{\normalsize\@publicationsboxText}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%      Target Box
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\@runsHavingTargets{}
+
+%% Macro: @scanRunID
+%%
+%% Tricky, it uses tail recursion to parse each single character
+%% contained in the input string.
+%%
+%% parameter:   #1 Input string (and then single char).
+%%
+\def\@scanRunID#1{
+
+        \ifx#1\@endchar 
+                \let\next=\relax
+        \else
+                %\typeout{checking character {#1}}
+
+                \def\given{#1}
+                \StrongValidation{\given}{\@RunCodeList}
+                {run ID}{Target (second parameter)}
+
+                % Append the run code to the list of the runs having 
+                % at least one target
+                \ismember\given\of\@runsHavingTargets
+                \if@ismember
+                \else
+                        \def\@runentry{\\ {#1}}
+                        \concatenate{\@runsHavingTargets}={\@runsHavingTargets}&{\@runentry}
+                \fi
+
+                \advance\strCount by1 
+                \let\next=\@scanRunID           
+        \fi
+
+        % Tail recursion
+        \next
+}
+
+
+\def\@insRunsHavingTargets{}
+%% Macro: @scanRunIDForIns
+%%
+%% Tricky, it uses tail recursion to parse each single character
+%% contained in the input string.
+%% It's a copy of scanRunID just because I don't have time
+%% to do things properly...(SOG)
+%% parameter:   #1 Input string (and then single char).
+%%
+\def\@scanRunIDForIns#1{
+
+        \ifx#1\@endchar 
+                \let\next=\relax
+        \else
+                %\typeout{checking character {#1}}
+
+                \def\given{#1}
+                \StrongValidation{\given}{\@RunCodeList}
+                {run ID}{INSconfig (first parameter)}
+
+                % Append the run code to the list of the runs having 
+                % at least one target
+                \ismember\given\of\@insRunsHavingTargets
+                \if@ismember
+                \else
+                        \def\@runentry{\\ {#1}}
+                        \concatenate{\@insRunsHavingTargets}={\@insRunsHavingTargets}&{\@runentry}
+                \fi
+
+                \advance\strCount by1 
+                \let\next=\@scanRunIDForIns           
+        \fi
+
+        % Tail recursion
+        \next
+}
+
+\def\@TCritRunsHavingTargets{}
+
+%% Macro: @scanRunIDForTCrit
+%%
+%% Tricky, it uses tail recursion to parse each single character
+%% contained in the input string.
+%% It's a copy of scanRunID just because I don't have time
+%% to do things properly...(SOG)
+%% parameter:   #1 Input string (and then single char).
+%%
+\def\@scanRunIDForTCrit#1{
+
+        \ifx#1\@endchar
+                \let\next=\relax
+        \else
+                %\typeout{checking character {#1}}
+
+                \def\given{#1}
+                \StrongValidation{\given}{\@RunCodeList}
+                {run ID}{ in either TimeCritical or UnsuitableTimes macro (first parameter)}
+
+                % Append the run code to the list of the runs having at least one target
+                \ismember\given\of\@TCritRunsHavingTargets
+                \if@ismember
+                \else
+                        \def\@runentry{\\ {#1}}
+                        \concatenate{\@TCritRunsHavingTargets}={\@TCritRunsHavingTargets}&{\@runentry}
+                \fi
+
+                \advance\strCount by1
+                \let\next=\@scanRunIDForTCrit
+        \fi
+
+        % Tail recursion
+        \next
+}
+
+\def\@TCritURunsHavingTargets{}
+
+%% Macro: @scanRunIDForTCrit
+%%
+%% Tricky, it uses tail recursion to parse each single character
+%% contained in the input string.
+%% It's a copy of scanRunID just because I don't have time
+%% to do things properly...(SOG)
+%% parameter:   #1 Input string (and then single char).
+%%
+\def\@scanRunIDForTCritU#1{
+
+        \ifx#1\@endchar
+                \let\next=\relax
+        \else
+                %\typeout{checking character {#1}}
+
+                \def\given{#1}
+                \StrongValidation{\given}{\@RunCodeList}
+                {run ID}{ in UnsuitableTimes !!! macro (first parameter)}
+
+                % Append the run code to the list of the runs having at least one target
+                \ismember\given\of\@TCritURunsHavingTargets
+                \if@ismember
+                \else
+                        \def\@runentry{\\ {#1}}
+                        \concatenate{\@TCritURunsHavingTargets}={\@TCritURunsHavingTargets}&{\@runentry}
+                \fi
+
+                \advance\strCount by1
+                \let\next=\@scanRunIDForTCritU
+        \fi
+
+        % Tail recursion
+        \next
+}
+
+
+%% Macro: @checkTargetRun
+%%
+%% Used to invoke @scanchar.
+%%
+%% parameter:   #1 Input string (ex: ``ABCDE'').
+%%
+\def\@checkTargetRun#1{
+        \strCount=0
+        \@scanRunID#1\@endchar
+}
+
+%% Macro: @checkTargetRunForIns
+%%
+%% Used to invoke @scanchar. It's a copy of checkTargetRun,
+%% just because I don't have time to do things properly
+%%
+%% parameter:   #1 Input string (ex: ``ABCDE'').
+%%
+\def\@checkTargetRunForIns#1{
+        \strCount=0
+        \@scanRunIDForIns#1\@endchar
+}
+
+
+%% Macro: @checkTargetRunForIns
+%%
+%% Used to invoke @scanchar. It's a copy of checkTargetRun,
+%% just because I don't have time to do things properly
+%%
+%% parameter:   #1 Input string (ex: ``ABCDE'').
+%%
+\def\@checkTargetRunForTCrit#1{
+        \strCount=0
+        \@scanRunIDForTCrit#1\@endchar
+}
+
+\def\@checkTargetRunForTCritU#1{
+        \strCount=0
+        \@scanRunIDForTCritU#1\@endchar
+}
+
+
+
+%% Target list variable
+%%
+\expandafter\def\csname TargetList0\endcsname{}
+
+\newcount\@targetsCounter                % Size of that list...
+\@targetsCounter=0                       % ...initially empty
+
+\newcount\@targetsCounterOverflow        % Size of that list...
+\@targetsCounterOverflow=0          
+
+\newcount\@targetsOverflowPage                % Temporary counter..
+\@targetsOverflowPage=0                % Temporary counter...
+
+
+
+%% Macro: Target
+%%
+%% Add a target to the target list after validating its fields.
+%%
+%% parameters:  #1 observing run code
+%%              #2 target name
+%%              #3 target right ascension (alpha)
+%%              #4 target declination (delta)
+%%              #5 time on target
+%%              #6 target magnitude (optional)
+%%              #7 target diameter (optional)
+%%              #8 target additional information (optional)
+%%              #9 reference star (optional)
+%%
+%% @author amchavan, 15-Feb-2002: added reference star
+%%
+\def\Target#1#2#3#4#5#6#7#8#9{
+
+        \def\tRunIDs{#1}
+
+        \def\@targetsMaxNum{700}                % A-Z
+        \def\@targetsOverflowNum{35}
+
+
+
+        % Run checks only if it is not test mode (title not empty)
+        \ifx\@emptyValue\@title
+        \else
+
+        \@checkTargetRun{#1}
+
+        \def\tName{#2}
+        \def\tRa{#3}
+        \def\tDec{#4}
+        \def\tOnTarget{#5}
+        \def\tMag{#6}
+        \def\tDiam{#7}
+        \def\tInfo{#8}
+
+        % Run reference weak validation
+        \WeakValidation{\tRunIDs}
+        {observing run code}{Target (first parameter)}
+
+        % Name weak validation
+        \WeakValidation{\tName}
+        {target name}{Target (second parameter)}
+
+        % Ra weak validation
+        \WeakValidation{\tRa}
+        {target right ascension}{Target (third parameter)}
+
+        % Dec weak validation
+        \WeakValidation{\tDec}
+        {target declination}{Target (fourth parameter)}
+
+        % Epoch weak validation
+        \WeakValidation{\tOnTarget}
+        {time on target}{Target (fifth parameter)}
+
+        % No validations for optional fields
+
+        \def\tableEntry{
+          \ninerm{#1} & \ninerm{#2} & \ninerm{#3} & 
+          \ninerm{#4} & \ninerm{#5} & \ninerm{#6} & 
+          \ninerm{#7} & \egtrm{#8}  & \egtrm{#9} \\}
+
+
+
+        \advance\@targetsCounter by 1 % keep count of rows
+
+    %% Truncate if there are more than \@runMaxNum runs...
+    %%------------------------------------------------------------
+
+    \ifnum\the\@targetsCounter>\@targetsMaxNum
+      \WarningMsg{Target number exceeds the maximum number \@targetsMaxNum 
+        (included alternatives). Internally truncated in Box 3}
+    \else
+
+
+
+
+        %% we need to see whether we append
+        %% the run to the regular list or to the overflow list
+        %%------------------------------------------------------------
+        \ifnum\the\@targetsCounter>\@targetsOverflowNum      % did we overflow?
+
+          %% YES, we did overflow.
+
+          \advance\@targetsCounterOverflow by 1    % keep overflow count
+
+          %% If this is the *first* overflow run, add a remark to
+          %% both normal and overflow table
+          \ifnum\the\@targetsCounterOverflow=1 
+            \ifnum\the\@targetsOverflowPage=0
+              \xappend{TargetList0}{%
+                \multicolumn{9}{l}{
+                  \it{Following targets moved to the end of the document ... }} \\}
+              \advance\@targetsOverflowPage by 1
+              \@namedef{TargetList\the\@targetsOverflowPage}{}
+
+        \if@keyprg
+              \xappend{TargetList1}{%
+                & \multicolumn{4}{l}{
+                  \it{...continued from box 12. }} \\}
+
+        \else
+              \xappend{TargetList1}{%
+                & \multicolumn{4}{l}{
+                  \it{...continued from box 11. }} \\}
+        \fi
+
+
+            \else
+              \xappend{TargetList\the\@targetsOverflowPage}{%
+                \multicolumn{9}{l}{
+                  \it{Following targets moved to the next page... }} \\}
+              \advance\@targetsOverflowPage by 1
+              \@namedef{TargetList\the\@targetsOverflowPage}{}
+              \xappend{TargetList\the\@targetsOverflowPage}{% 
+                & \multicolumn{4}{l}{
+                  \it{...continued from previous page. }} \\}
+            \fi            
+          \fi % end of ``if first overflow...''
+
+          \ifnum\the\@targetsCounterOverflow=50
+          \@targetsCounterOverflow=0
+          \fi
+
+        \fi %% End overflow check
+
+        %% Add this run to overflow list
+        \xappend{TargetList\the\@targetsOverflowPage}{\tableEntry}
+
+        %% This is not a large programme: just add this run 
+        %% to the normal list
+        %%------------------------------------------------------------
+        %\concatenate{\ObservingRunList}={\ObservingRunList}&{\runentry}
+
+
+    \fi % end of ``if truncation...''
+
+
+
+        % Append to the target list             
+        %\concatenate{\TargetList}={\TargetList}&{\tableEntry}
+        \fi
+}
+
+%% Target notes handling
+%%
+\def\@targetsNotes{}
+\long\def\TargetNotes#1{\gdef\@targetsNotes{#1}}
+
+
+%% VLTI Target notes handling
+%%
+\def\@vltitargetsNotes{}
+\long\def\VLTITargetNotes#1{\gdef\@vltitargetsNotes{#1}}
+
+%% TOO notes handling
+%%
+\def\@TOONotes{}
+\long\def\TOONotes#1{\gdef\@tooRunsNotes{#1}}
+
+%% Macro: checkRunsAndTargets
+%%
+%% Check that all the runs defined in the run box have at least one target. 
+%% For each run defined in the \@RunCodeList list verify that a corresponding 
+%% code is defined also in the \@runsHavingTargets list.
+%%
+\def\@checkRunsAndTargets{
+
+        % Counters
+        \newcount\runCount
+        \newcount\tmprunCount
+        \newcount\runLen
+        \runCount=1
+
+        \cardinality\@RunCodeList\to\runLen
+        \advance\runLen by1
+
+        \def\@runlength{\the\runLen}
+        \def\@runerrorList{}
+
+        % LOOP:
+        % For each run defined in the \@RunCodeList list verify that a
+        % corresponding  code is defined also in the \@runsHavingTargets 
+        % list.
+        %
+        % BUG FIXED: extra emtpy lines REMOVED in the LOOP code
+        % otherwise it fails on some systems (different latex 
+        % installations).
+        \loop\ifnum\runCount<\@runlength
+                % A temporary counter is necessary because its value
+                % is modified when used in the ``select'' macro
+                \tmprunCount=\the\runCount
+                \select\tmprunCount\of\@RunCodeList\to\@tmpRunCode
+                % Check @tmpRunCode if is member of the list of runs 
+                % having targets
+                \ismember\@tmpRunCode\of\@runsHavingTargets
+                \if@ismember
+                \else
+s                       % Not a member: i.e. the run doesn't have targets
+                        \@mg {ERROR - Run {\@tmpRunCode} has no targets.
+                          Please define at least one target for the observing
+                          run {\@tmpRunCode}.}
+                        \def\@runerrorList{yes}
+                \fi
+                \advance\runCount by1
+        \repeat
+
+        % In case of errors exit...
+        \ifx\@emptyValue\@runerrorList
+        \else
+                \@stm
+        \fi
+
+}
+
+
+%% Macro: MakeTargetsInternal
+%%
+%% Generate box 11 for large programmes or box 12 for normal
+%% programmes, containing the target list and the target notes.
+%%
+%% @author amchavan, 15-Feb-2002: redefined to accommodate the
+%%                                reference star (#9)
+%% @author amchavan, 10-Feb-2004: redefined to accommodate ToT (#5)
+%%
+\def\MakeTargetsInternal#1#2#3{
+
+  \@checkRunsAndTargets
+
+  \def\@targetsboxTitle{List of targets proposed in this programme}
+
+  \def\tableHead{\tensf{Run} & 
+    \tensf{Target/Field} & 
+    \tensf{$\alpha$(J2000)} & 
+    \tensf{$\delta$(J2000)} & 
+    \tensf{ToT} & 
+    \tensf{Mag.} & 
+    \tensf{Diam.} & 
+    \tensf{Additional info} & 
+    \tensf{Reference star}\\}
+
+  \def\@targetsboxText{
+    \vbox{
+      \hbox{
+        \begin{tabular*}{\@tabInsideBoxLength}[tl]
+          { p{13mm} % Runs
+            p{28mm} % Target/Field
+            p{20mm} % Alpha
+            p{20mm} % Delta
+            r       % Time on target
+            @{\hspace{2mm}}     % some horizontal space
+            p{10mm} % Mag.
+            p{12mm} % Diam.
+            p{20mm} % Additional info
+            p{40mm} % Reference star
+            }
+          \tableHead
+          %% Don't delete the ``\\" at the end of the following line
+          \multicolumn{9}{l}{\rule{\@tabInsideBoxLength}{.3mm}} \\
+          #1
+        \end{tabular*}
+        }
+
+      \ifx \@emptyValue\@targetsNotes
+      \else
+      \vspace{10mm}
+      \parbox[t]{\@tabInsideBoxLength}{
+        \elvsf{Target Notes:}
+        \tenrm\@targetsNotes
+        }
+      \fi
+      }
+    }
+
+  \@makeGenericBox{#3}{\@targetsboxTitle}{\normalsize\@targetsboxText}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%CoI New Box
+%%%%%%%%%%%%%%%%%%%%
+
+
+\expandafter\def\csname coinewList0\endcsname{}
+\newcount\@coisnewCounter                % Size of that list...
+\@coisnewCounter=0                       % ...initially empty
+\newcount\@coisnewCounterOverflow        % Size of that list...
+\@coisnewCounterOverflow=0          
+\newcount\@coisnewOverflowPage                % Temporary counter..
+\@coisnewOverflowPage=0                % Temporary counter...
+\def\CoI#1#2#3{
+        \def\tcoinit{#1}
+        \def\@coisnewMaxNum{700}                
+        \if@keyprg
+	        \def\@coisnewOverflowNum{6}
+
+        \else
+	        \def\@coisnewOverflowNum{4}
+        \fi
+
+%        \def\@coisnewOverflowNum{4}
+        \def\tName{#2}
+        \def\tinst{#3}
+
+        \WeakValidation{\tcoinit}{CoI initials}{CoIs (first parameter)}
+        \WeakValidation{\tName}{CoI surname}{CoIs (second parameter)}
+        \WeakValidation{\tinst}{CoI institute and country}{CoIs (third parameter)}
+
+        \def\tableEntry{\ninerm{#1} & \ninerm{#2} & \ninerm{#3} \\}
+        \advance\@coisnewCounter by 1 % keep count of rows
+
+    %% Truncate if there are more than \@runMaxNum runs...
+    \ifnum\the\@coisnewCounter>\@coisnewMaxNum
+      \WarningMsg{Number of CoIs exceeds the maximum number \@coisnewMaxNum . 
+                  Internally truncated in Box 3}
+    \else
+
+        \ifnum\the\@coisnewCounter>\@coisnewOverflowNum      % did we overflow?
+          \advance\@coisnewCounterOverflow by 1    % keep overflow count
+          %% If this is the *first* overflow run, add a remark to both normal and overflow table
+          \ifnum\the\@coisnewCounterOverflow=1 
+            \ifnum\the\@coisnewOverflowPage=0
+              \xappend{coinewList0}{%
+                \multicolumn{3}{l}{
+                  \it{Following CoIs moved to the end of the document ... }} \\}
+              \advance\@coisnewOverflowPage by 1
+              \@namedef{coinewList\the\@coisnewOverflowPage}{}
+              \xappend{coinewList1}{%
+                & \multicolumn{1}{l}{
+                  \it{...continued from box 6a. }} \\}
+            \else
+              \xappend{coinewList\the\@coisnewOverflowPage}{%
+                \multicolumn{3}{l}{
+                  \it{Following CoIs moved to the next page... }} \\}
+              \advance\@coisnewOverflowPage by 1
+              \@namedef{coinewList\the\@coisnewOverflowPage}{}
+              \xappend{coinewList\the\@coisnewOverflowPage}{% 
+                & \multicolumn{1}{l}{
+                  \it{...continued from previous page. }} \\}
+            \fi            
+          \fi % end of ``if first overflow...''
+
+          \ifnum\the\@coisnewCounterOverflow=50
+          \@coisnewCounterOverflow=0
+          \fi
+
+        \fi %% End overflow check
+        %% Add this run to overflow list
+        \xappend{coinewList\the\@coisnewOverflowPage}{\tableEntry}
+
+    \fi % end of ``if truncation...''
+}
+
+
+%% Macro: MakeTargetsInternal
+%% Generate box 11 for large programmes or box 12 for normal
+%% programmes, containing the target list and the target notes.
+%%
+\def\MakecoisnewInternal#1#2#3{
+   \def\@coisnewboxTitle{Co-investigators:}
+  \def\tableHead{\tensf{Initials} &   \tensf{Surname} &    \tensf{Institute}\\}
+
+  \def\@coisnewboxText{
+    \vbox{\hbox{\begin{tabular*}{\@tabInsideBoxLength}[tl]
+          { p{13mm} % CoI
+            p{40mm} % Surname
+            p{110mm} % Institute
+            }
+%          \tableHead
+%          \multicolumn{3}{l}{\rule{\@tabInsideBoxLength}{.3mm}} \\
+          #1
+        \end{tabular*}
+         } } }
+  \@makeGenericBox{#3}{\@coisnewboxTitle}{\normalsize\@coisnewboxText}
+ }
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%      Scheduling Information Box
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\HasTimingConstraints{
+     \gdef\@HasTimingConstraints{This proposal involves time-critical
+       observations, or observations to be performed at specific time intervals.} 
+     \global\@timingconstraintstrue
+
+
+}      
+
+
+
+%% List of allowed symbols in the split algebra field 
+\def\@splitSymbolList{}
+\def\@newsymbols{\\{,}\\{w}\\{s}}
+\concatenate{\@splitSymbolList}={\@TimeSymbolList}&{\@newsymbols}
+
+%% Macro: @scanSplitSyntax
+%%
+%% Tricky, it uses tail recursion to parse each single character
+%% contained in the input string.
+%%
+%% parameter:   #1 Input string (and then single char).
+%%
+\def\@scanSplitSyntax#1{
+
+        \ifx#1\@endchar 
+                \let\next=\relax
+        \else
+                % \typeout{@scanSplitSyntax checking character {#1}}
+
+                \def\given{#1}
+                \StrongValidation{\given}{\@splitSymbolList}
+                        {split syntax symbol}{Split (second parameter)}
+
+                \advance\strCount by1 
+                \let\next=\@scanSplitSyntax             
+        \fi
+
+        % Tail recursion
+        \next
+}
+
+%% Split list
+%%
+\def\@splitList{}
+
+%% Macro: RunSplitting
+%%
+%% Define subruns using the ``scheduling algebra'' and display within
+%% a table.
+%%
+%% parameters:  #1 run code
+%%              #2 subruns splitting
+%%
+\def\RunSplitting#1#2{
+
+        \def\@rcode{#1}
+
+        % Run checks only if it is not test mode (title not empty)
+        \ifx\@emptyValue\@title
+        \else
+
+            \ifx\@rcode\@emptyValue
+            \else
+
+                \StrongValidation{\@rcode}{\@RunCodeList}
+                        {run ID}{Split (first parameter)}
+
+                \def\@splitting{#2}
+
+                \WeakValidation{\@splitting}
+                        {splitting}{Split (second parameter)}
+
+                % OK, not empty. Check single characters
+                \strCount=0
+                \@scanSplitSyntax#2\@endchar
+
+                \def\@tabEntry{{#1} & {#2} \\}
+
+                % Append to the preferred time list             
+                \concatenate{\@splitList}={\@splitList}&{\@tabEntry}            
+            \fi
+        \fi
+}
+
+%% Macro: @scanDate
+%%
+%% Tricky, it uses tail recursion to parse each single character
+%% contained in the input string.
+%%
+%% parameter:   #1 Input string (and then single char).
+%%
+\def\@scanDate#1{
+
+        \ifx#1\@endchar 
+                \let\next=\relax
+        \else
+                % \typeout{ checking character {#1}}
+
+                \def\given{#1}
+                \ifx\given\@dateSeparator
+                        \advance\sepCount by1 
+                \else
+                        \ifnum\sepCount=0 \NumericValidation#1{day}{} \concatenate{\@dateday}={\@dateday}&{#1} \fi              
+                        \ifnum\sepCount=1 \concatenate{\@datemonth}={\@datemonth}&{#1} \fi
+                        \ifnum\sepCount=2 \NumericValidation#1{year}{} \concatenate{\@dateyear}={\@dateyear}&{#1} \fi           
+                \fi
+
+                \advance\strCount by1 
+                \let\next=\@scanDate            
+        \fi
+
+        % Tail recursion
+        \next
+}
+
+%% Macro: @CheckDate
+%%
+%% Validate date entries in the format dd-mm-yy (e.g. 10-may-98).
+%%
+%% parameters:  #1 date
+%%              #2 run code
+%%              #3 invoking macro name
+%%
+\def\@CheckDate#1#2#3{
+
+        \def\@dateday{}
+        \def\@datemonth{}
+        \def\@dateyear{}
+
+        \def\@dateSeparator{-}
+        \sepCount=0
+        \strCount=0
+
+        \@scanDate#1\@endchar
+
+        % \typeout{Run: #2 \ day: \@dateday \  month: \@datemonth \ year: \@dateyear}
+
+        \WeakValidation{\@dateday}{day}{#3 for run #2}
+        \StrongValidation{\@datemonth}{\@allMonthList}
+                {month for run #2}{#3}
+        \WeakValidation{\@dateyear}{year}{#3 for run #2}
+}
+
+%% Preferred time list
+%%
+\def\@prefTimeList{}
+
+%% Macro: TimeCritical
+%%
+%% Prepare entries for the TimeCritical table
+%%
+%% parameters:  #1 run code
+%%              #2 start date
+%%              #3 end date
+%%              #4 reason.
+%%
+\def\@pageTimeCritical{}
+
+\def\TimeCritical#1#2#3#4{
+        % Run checks only if it is not test mode (title not empty)
+        \ifx\@emptyValue\@title
+        \else
+            \def\rcode{#1}
+            \ifx\@rcode\@emptyValue
+            \else
+                \gdef\@pageTimeCritical{yes}
+                 \WeakValidation{\rcode}
+                 {observing run code}{TimeCritical (1st parameter)}
+% Now replaced  \StrongValidation{\@rcode}{\@RunCodeList}{run ID}{TimeCritical (first parameter)}
+                \@checkTargetRunForTCrit{#1}
+                \def\@rstart{#2}
+                \def\@rend{#3}
+                \@CheckDate{#2}{#1}{TimeCritical (third parameter)}
+                \@CheckDate{#3}{#1}{TimeCritical (second parameter)}
+                \def\@tabEntry{{#1} & {#2} & {#3} & {#4} \\}
+                % Append to the preferred time list             
+                \concatenate{\@prefTimeList}={\@prefTimeList}&{\@tabEntry}
+                
+            \fi
+        \fi
+}
+
+%% Unsuitable time list
+%%
+\def\@unsuitTimeList{}
+
+%% Macro: UnsuitableTimes
+%%
+%% Prepare entries for the UnsuitableTimes table
+%%
+%% parameters:  #1 run code
+%%              #2 start date
+%%              #3 end date
+%%              #4 reason.
+%%
+\def\UnsuitableTimes#1#2#3#4{
+
+%       \def\@rcode{#1}
+
+        % Run checks only if it is not test mode (title not empty)
+        \ifx\@emptyValue\@title
+        \else
+
+           \def\rcode{#1}
+
+           \ifx\@rcode\@emptyValue
+%           Only run further checks on the run code value if the field is uncommented 
+           \else
+               \WeakValidation{\rcode}
+               {observing run code}{UnsuitableTimes (1st parameter)}
+
+                \def\rcode{#1}
+
+                \@checkTargetRunForTCritU{#1}
+
+                \def\@rstart{#2}
+                \def\@rend{#3}
+
+                \@CheckDate{#2}{#1}{UnsuitableTimes (third parameter)}
+                \@CheckDate{#3}{#1}{UnsuitableTimes (second parameter)}
+
+                \def\@tabEntry{\ \ {#1} & {#2} & {#3} & {#4} \\}
+
+                % Append to the preferred time list             
+                \concatenate{\@unsuitTimeList}={\@unsuitTimeList}&{\@tabEntry}          
+            \fi
+        \fi
+}
+
+%% Link type keywords
+%%
+\def\@linkTypes{\\{after}\\{simultaneous}}
+\def\@linkAfter{after}
+
+%% Observing run link list
+%%
+\def\@linkList{}
+
+%% Macro: Link
+%%
+%% Prepare entries for the Link table
+%%
+%% parameters:  #1 first run code
+%%              #2 type (can be follows or same-time)
+%%              #3 second run code
+%%              #4 delay (n. of days)
+%%
+\def\Link#1#2#3#4{
+
+        \def\@rcodeA{#1}
+        \def\@rcodeB{#3}
+        \def\@lType{#2}
+        \def\@lDel{#4}
+
+        % Run checks only if it is not test mode (title not empty)
+        \ifx\@emptyValue\@title
+        \else
+
+            \ifx\@rcodeA\@emptyValue
+            \else
+                \StrongValidation{\@rcodeA}{\@RunCodeList}
+                        {first run ID}{Link (first parameter)}
+                \StrongValidation{\@rcodeB}{\@RunCodeList}
+                        {second run ID}{Link (third parameter)}
+                \StrongValidation{\@lType}{\@linkTypes}
+                        {link type}{Link (second parameter)}
+
+                % C.Boarotto 27-Jan-99 weak validation if the link
+                % type is after
+                %\ifx\@lType\@linkAfter
+                %        \WeakValidation{\@lDel}{delay}{Link (fourth parameter)}
+                %\fi
+
+                \def\@tabEntry{\ \ {#1} & {#2} & {#3} & {#4} \\}
+
+                % Append to the preferred time list             
+                \concatenate{\@linkList}={\@linkList}&{\@tabEntry}
+            \fi 
+        \fi     
+}
+
+%% Observing run link list
+%%
+\def\@specialReqList{}
+
+%% Macro: SpecialRequirements
+%%
+%% Prepare entries for the SpecialRequirements table
+%%
+%% parameters:  #1 run code
+%%              #2 special requirements text
+%%
+\def\SpecialRequirements#1#2{
+
+        \def\@rcode{#1}
+        \def\@rtext{#2}
+
+        % Run checks only if it is not test mode (title not empty)
+        %\ifx\@emptyValue\@title
+        %\else
+
+            %\ifx\@rcode\@emptyValue
+            %\else
+
+
+                \StrongValidation{\@rcode}{\@RunCodeList}
+                        {run ID}{SpecialRequirements (first parameter)}
+                \WeakValidation{\@rtext}
+                        {special requirements text}
+                        {SpecialRequirements (second parameter)}
+
+                \def\@tabEntry{\ \ {#1} & {#2} \\}
+
+                % Append to the special requirements list               
+                \concatenate{\@specialReqList}={\@specialReqList}&{\@tabEntry}
+            %\fi
+        %\fi
+}
+
+%% Moving targets scheduling requirements list
+%%
+\def\@movingTargetList{}
+
+%% Macro: MovingTargets
+%%
+%% Prepare entries for the MovingTargets table
+%%
+%% parameters:  #1 run code
+%%              #2 moving targets requirements text
+%%
+\def\MovingTargets#1#2{
+
+        \def\@rcode{#1}
+        \def\@rtext{#2}
+
+        % Run checks only if it is not test mode (title not empty)
+        \ifx\@emptyValue\@title
+        \else
+
+            \ifx\@rcode\@emptyValue
+            \else
+
+                \StrongValidation{\@rcode}{\@RunCodeList}
+                        {run ID}{MovingTargets (first parameter)}
+                \WeakValidation{\@rtext}
+                        {upper limit of proper motions of moving target}
+                        {MovingTargets (second parameter)}
+
+                \def\@tabEntry{\ \ {#1} & {#2} \\}
+
+                % Append to the moving target list              
+                \concatenate{\@movingTargetList}={\@movingTargetList}&{\@tabEntry}              
+            \fi
+        \fi
+}
+
+%% Macro: @schedReqTables
+%%
+%% Display the scheduling requirements tables:
+%% 1) preferred times table
+%% 2) unsuitable times table
+%% 3) link table
+%% 4) special requirements table
+%%
+\def\@schedReqTables{
+        \def\@splitTab{}        
+        \def\@unsuitTab{}
+        \def\@linkTab{}
+        \def\@specialTab{}
+        \def\@motionTab{}
+        \ifx\@emptyValue\@splitList
+        \else
+                \def\@splitHeader{\bf{Run} & 
+                       \bf{splitting} \\}
+                \def\@splitTab{
+                       \sevenrm{ \begin{tabular*}{80mm}[tl]
+                                {p{10mm}p{70mm}}
+                                \multicolumn{2}{l}{\bf{1. Run Splitting}}\\
+                                \multicolumn{2}{l}{\rule{80mm}{.1mm}} \\
+                                \@splitHeader
+                                \multicolumn{2}{l}{\rule{80mm}{.1mm}} \\
+                                \@splitList
+                                \end{tabular*}}}
+        \fi
+        \ifx\@emptyValue\@unsuitTimeList
+        \else
+                \def\@unsuitHeader{\bf{Run} &\bf{from} & 
+                       \bf{to} &\bf{reason} \\}
+                \def\@unsuitTab{
+                       \sevenrm{\begin{tabular*}{80mm}[tl]
+                                {p{10mm}p{20mm}p{20mm}p{110mm}}
+                                \multicolumn{4}{l}{\bf{3. Unsuitable period(s)
+                                        of time}}\\
+                                \multicolumn{4}{l}{\rule{160mm}{.1mm}} \\
+                                \@unsuitHeader
+                                \multicolumn{4}{l}{\rule{160mm}{.1mm}} \\
+                                \@unsuitTimeList
+                                \end{tabular*}}}
+        \fi
+        \ifx\@emptyValue\@linkList
+        \else
+                \def\@linkHeader{\bf{Run 1} & { } & 
+                       \bf{Run 2} & \sevenrm\bf{delay} \\}
+                \def\@linkTab{
+                       \sevenrm{\begin{tabular*}{80mm}[tl]
+                                {p{15mm}p{30mm}p{15mm}p{20mm}}
+                                \multicolumn{4}{l}{\bf{2. Link for coordinated 
+                                        observation}}\\
+                                \multicolumn{4}{l}{\rule{80mm}{.1mm}} \\
+                                \@linkHeader
+                                \multicolumn{4}{l}{\rule{80mm}{.1mm}} \\
+                                \@linkList
+                                \end{tabular*}}}
+        \fi
+
+        \vbox{
+                \vspace{5mm}
+                \hbox{\@splitTab \@h \@linkTab \@h}
+                \vspace{5mm}
+                \hbox{\@unsuitTab \@h }
+                \vfill
+        }
+}
+
+
+
+%% Macro: @schedReqTables timecritical
+%%
+%% Display the scheduling requirements tables:
+%% 1) preferred times table
+%%
+\def\@schedTimeCritTables{
+        \def\@criticalTab{}
+        \ifx\@emptyValue\@prefTimeList
+        \else
+                \def\@criticalHeader{\bf{Run} &\bf{from} & 
+                       \bf{to} &\bf{reason} \\}
+                \def\@criticalTab{
+                       \sevenrm{ \begin{tabular*}{80mm}[tl]
+                                {p{10mm}p{20mm}p{20mm}p{110mm}}
+                                \multicolumn{4}{l}{\bf{4. Specific date(s) for time critical observations:}}\\
+                                \multicolumn{4}{l}{\rule{160mm}{.1mm}} \\
+                                \@criticalHeader
+                                \multicolumn{4}{l}{\rule{160mm}{.1mm}} \\
+                                \@prefTimeList
+                                \end{tabular*}}}
+        \fi
+        \vbox{\vspace{5mm}
+                \hbox{\@criticalTab \@h }
+                \vspace{5mm}
+                \vfill}}
+
+%% SEST scheduling requirements handling.
+%%
+\def\@sestlst{}
+\def\@sestperiod{}
+\def\SESTLST#1{\def\@sestlst{#1}}
+\def\SESTperiod#1{\def\@sestperiod{#1}}
+
+%% Macro: @SestInfo
+%%
+%% If SEST is defined, display SEST scheduling requirements.
+%%
+\def\@SestInfo{
+        \if@DefSEST
+                \vbox{
+                        \vspace{5mm}
+                        \hbox{
+                                \sevenrm\bf\hbox to 17mm{7. SEST:\@h}
+                                \hbox{\vbox{
+                                        \sevenrm\bf{(i) \ preferred LST interval:} 
+                                        \parbox[t]{105mm}{\sevenrm\@sestlst}
+                                }\@h}\@h
+                        }
+                        \hbox{
+                                \elvsf\hbox to 17mm{ }
+                                \hbox{\vbox{
+                                        \sevenrm\bf{(ii) observability period of the target:} 
+                                        \parbox[t]{90mm}{\sevenrm\@sestperiod}
+                                }\@h}\@h
+                        }
+                }
+        \fi
+}
+
+%%
+%% RequestedDataRemark
+%%
+\def\@RequestedDataRemark{}
+\long\def\RequestedDataRemark#1{\gdef\@RequestedDataRemark{#1}}
+%% Macro: requestedDataRemark
+%%
+%% Generate box 13a for explaining why new data is required.
+%% 
+\def\MakeRequestedData{
+        \def\@requestedDataBoxTitle{
+          ESO Archive - Are the data requested by this proposal in the ESO Archive \linebreak
+          (http://archive.eso.org)? If so, explain the need for new data. }
+        \def\tableHead{}
+        \def\@reqBoxLen{50}
+	\if@keyprg
+		\@insertGenericBox{\@reqBoxLen}{\@requestedDataBoxTitle}{\normalsize\@RequestedDataRemark}{12a}
+	\else
+		\@insertGenericBox{\@reqBoxLen}{\@requestedDataBoxTitle}{\normalsize\@RequestedDataRemark}{9a}
+	\fi
+}
+
+%% Macro: requestedDuplicateDataRemark
+%%
+%% Generate box 13a for explaining why new data is required.
+%%
+%%
+\def\@RequestedDuplicateRemark{}
+\long\def\RequestedDuplicateRemark#1{\gdef\@RequestedDuplicateRemark{#1}}
+
+\def\MakeRequestedDuplicate{
+        \def\@requestedDuplicateTitle{GTO/Public Survey Duplications:     }
+        \def\tableHead{}
+        \def\@reqBoxLen{50}
+	\if@keyprg
+	\@insertGenericBox{\@reqBoxLen}{\@requestedDuplicateTitle}{\normalsize\@RequestedDuplicateRemark}{12b} 
+	\else
+        \@insertGenericBox{\@reqBoxLen}{\@requestedDuplicateTitle}{\vspace{-0.4cm}\normalsize\@RequestedDuplicateRemark}{9b}
+	\fi
+
+}
+
+
+%% requestedDataRemarkLarge
+%%
+\def\@RequestedDataRemarkLarge{}
+\long\def\RequestedDataRemarkLarge#1{\gdef\@RequestedDataRemarkLarge{#1}}
+
+%% Macro: requestedDataRemark
+%%
+%% Generate box 12b for explaining why new data is required.
+%% 
+%%
+\def\MakeRequestedDataLarge{
+
+
+        \def\@requestedDataBoxTitle{
+          ESO Archive - Are the data requested by
+          this proposal in the ESO Archive \linebreak
+          (http://archive.eso.org)? If yes,
+          explain why the need for new data.
+        }
+
+        %% 170/6=34mm
+        \def\tableHead{}
+
+        \def\@reqBoxLen{50}
+        	\@insertGenericBox{\@reqBoxLen}{\@requestedDataBoxTitle}{\normalsize\@RequestedDataRemark}{11b}
+}
+
+
+%% Macro: MakeSchedulingReq
+%%
+%% Build up the scheduling requirements box, n. 12 for large
+%% programmes or n. 13 for normal ones.
+%% 
+\def\MakeSchedulingReq{
+        \def\@schedboxTitle{Scheduling requirements}
+        \def\boxtext{
+                \@HasTimingConstraints
+                \@schedReqTables
+                \vfill
+        }
+	\if@keyprg
+                \def\@boxLen{170}
+	\else
+        	\def\@boxLen{270}
+	\fi
+        \def\@schedboxText{\boxtext\@h}
+        % Create the frame box to house the scheduling requirements
+        % Note that the box is smaller in case of Normal Programme
+        \@makeGenericBox{\@boxLen}{\@schedboxTitle}{\@schedboxText}
+}
+
+\def\MakeTimeCritReq{
+        \def\@schedboxTitle{Scheduling requirements contd...}
+        \def\boxtext{
+%	       \@HasTimingConstraints
+                \@schedTimeCritTables
+                \vfill
+        }
+	\if@keyprg
+                \def\@boxLen{270}
+	\else
+        	\def\@boxLen{270}
+	\fi
+        \def\@schedboxText{\boxtext\@h}
+        % Create the frame box to house the scheduling requirements
+        % Note that the box is smaller in case of Normal Programme
+       \@bNewBoxfalse
+       \@makeGenericBox{\@boxLen}{\@schedboxTitle}{\@schedboxText}
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%      Instrument Configuration Box
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% List to be displayed in the instrument configuration box.
+%% 
+\def\InstrumentConfigList{}
+\def\InstrumentConfigListB{}
+
+%% Total number of elements in the instrument configuration lists
+%%
+\newcount\@instConfCounter
+\@instConfCounter=0
+\def\@instConfCounterMax{55}
+
+%% List of ``configured'' instruments, to be compared with the list of
+%% ``used'' instruments in order to check that all the instruments defined 
+%% have been properly configured.
+%% 
+\def\@InsConfiguredList{}
+
+%% Macro: INSconfig
+%%
+%% Generate the entries for the instrument setup table
+%%
+%% parameters:  #1 Instrument code (e.g. EMMI)
+%%              #2 Instrument parameter name (e.g. Spectroscopy)
+%%              #3 Instrument parameter value (e.g. Grisms #1 and #2)
+%%
+\def\INSconfig#1#2#3#4{
+
+    % Run checks only if it is not test mode (title not empty)
+    \ifx\@emptyValue\@title
+    \else
+        \def\runCode{#1}
+        \def\pIns{#2}
+        \def\pPar{#3}
+        \def\pVal{#4}
+        % Check values
+        \StrongValidation{\pIns}{\usedInstrumentList}{instrument code 
+                (doesn't match the instrument list in Box 3)}
+                {INSconfig (second parameter)}
+
+        %\StrongValidation{\runCode}{\runCodeList}{run code 
+        %        (doesn't match the runs list)}
+        %        {INSconfig (fourth parameter)}
+
+        % Run reference weak validation
+        \WeakValidation{\runCode}
+        {observing run code}{INSconfig (first parameter)}
+
+         \@checkTargetRunForIns{#1}             
+
+        % \WeakValidation{\pPar}{parameter}{INSconfig (second parameter)}
+        % \WeakValidation{\pVal}{value}{INSconfig (third parameter)}
+
+        % Get the telescope for the instrument
+        \ismember\runCode\of\@RunCodeList
+
+        \if@ismember
+
+
+              % Find the period 
+                \tmpCntSix=\listposition
+                \select\tmpCntSix\of\usedPeriodList\to\tmpPeriod
+
+
+        \fi
+
+        % Get the telescope for the instrument
+        \ismember\pIns\of\usedInstrumentList
+
+        \if@ismember
+              % Find the telescope 
+              \tmpCntSix=\listposition
+              \select\tmpCntSix\of\usedTelescopeList\to\tmpTel
+              % Find the period 
+              %  \tmpCntSix=\listposition
+              %  \select\tmpCntSix\of\usedPeriodList\to\tmpPeriod
+
+              % Substituted \\ with \cr otherwise it can't expand it
+              \def\itemEntry{{\tmpPeriod} & {#2} & {#1} & {#3} & {#4} \cr }
+              \def\@ins{\\ {#2}}
+
+              % It is necessary to expand the entry before concatenating
+              \edef\expandedEntry{\itemEntry}
+              \advance\@instConfCounter by 1
+              \ifnum\the\@instConfCounter>\@instConfCounterMax
+                \concatenate{\InstrumentConfigListB}={\InstrumentConfigListB}&{\expandedEntry}
+              \else
+                \concatenate{\InstrumentConfigList}={\InstrumentConfigList}&{\expandedEntry}
+              \fi
+
+              % Append the instrument to the list of ``configured'' instruments
+              \concatenate{\@InsConfiguredList}={\@InsConfiguredList}&{\@ins}
+        \fi
+    \fi
+}
+
+%% Macro: CheckInsConfig
+%%
+%% Check that all the instruments defined have been properly
+%% configured.
+%% 
+\def\CheckInsConfig{
+
+    % Run checks only if it is not test mode (title not empty)
+    \ifx\@emptyValue\@title
+    \else
+
+        % Counters
+        \newcount\insCount
+        \newcount\tmpCount
+        \newcount\insLen
+        \insCount=1
+
+        \cardinality\usedInstrumentList\to\insLen
+        \advance\insLen by1
+
+        \def\@inslength{\the\insLen}
+        \def\@errorList{}
+
+        % LOOP:
+        % Foreach instrument defined in box 3 (belonging to
+        % \usedInstrumentList) check if it is contained in
+        % \@InsConfiguredList too.
+        %
+        % BUG FIXED: extra emtpy lines REMOVED in the LOOP code
+        % otherwise it fails on some systems (different latex 
+        % installations).
+        % C.Boarotto 09-Mar-99
+        %
+        \loop\ifnum\insCount<\@inslength
+                % A temporary counter is necessary because its value
+                % is modified when used in the ``select'' macro
+                \tmpCount=\the\insCount
+                \select\tmpCount\of\usedInstrumentList\to\@tmpIns
+                % Check @tmpIns if is member of the configured instruments
+                \ismember\@tmpIns\of\@InsConfiguredList
+                \if@ismember
+                \else
+                        % It isn't member: i.e. the instrument has
+                        % been defined in box 3 but its setup has not
+                        % been defined.
+                        \@mg {ERROR - Instrument {\@tmpIns} defined in box 3 not configured. 
+                                Please uncomment the specific INSconfig macro for {\@tmpIns}.}
+                        \def\@errorList{yes}
+                \fi
+                \advance\insCount by1
+        \repeat
+        % In case of errors exit...
+        \ifx\@emptyValue\@errorList
+        \else
+                \@stm
+        \fi
+    \fi
+}
+
+%% Macro: MakeInstrumentConfBox
+%%
+%% Display the table containing the instrument set up
+%%
+%% M Lombardi, 10-Feb-2004: added
+%%
+\def\MakeInstrumentConfBox{
+
+        \CheckInsConfig
+
+        \def\@instrumentconfboxTitle{Instrument configuration}
+
+        \def\tableHead{\elvsf{Period} & \elvsf{Instrument} & \elvsf{Run ID}
+                      &  \elvsf{Parameter} & \elvsf{Value or list} \\}
+
+        \def\@boxLen{270}
+
+        \def\@instrumentconfboxText{
+                %% 170/4=42.5mm
+                \begin{tabular*}{\@tabInsideBoxLength}[tl]
+                {p{25mm}p{25mm}p{20mm}p{50mm}p{50mm}}
+                \tableHead
+                \\
+                \normalsize\InstrumentConfigList
+                \end{tabular*} }
+
+        \@makeGenericBox{\@boxLen}{\@instrumentconfboxTitle}
+                {\normalsize\@instrumentconfboxText}
+}
+
+
+%% Macro: MakeInstrumentConfBox
+%%
+%% Display the table containing the overflow lines for the instrument set up
+%%
+%% M Lombardi, 10-Feb-2004: added
+%%
+\def\MakeInstrumentConfBoxB{
+
+        \CheckInsConfig
+        \if@keyprg
+           \def\@instrumentconfboxTitle{Instrument configuration (...continued from box 14)}
+        \else
+           \def\@instrumentconfboxTitle{Instrument configuration (...continued from box 13)}
+        \fi
+
+        \def\tableHead{\elvsf{Period} & \elvsf{Instrument} & \elvsf{Run ID}
+                      &  \elvsf{Parameter} & \elvsf{Value or list} \\}
+
+        \def\@boxLen{260}
+
+        \def\@instrumentconfboxText{
+                %% 170/4=42.5mm
+                \begin{tabular*}{\@tabInsideBoxLength}[tl]
+                {p{25mm}p{25mm}p{20mm}p{50mm}p{50mm}}
+                \tableHead
+                \\
+                \normalsize\InstrumentConfigListB
+                \end{tabular*}
+        }
+
+        \@bNewBoxfalse
+        \xdef\@boxno{14a}
+        \@makeGenericBox{\@boxLen}{\@instrumentconfboxTitle}
+                {\normalsize\@instrumentconfboxText}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%      Adonis Information Box
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Adonis info variable and macro
+\def\@adonisInfo{}
+\def\AdonisInfo#1{\gdef\@adonisInfo{#1}}
+
+%% Macro: MakeAdonisBox
+%%
+%% Create the adonis description box
+%%
+\def\MakeAdonisBox{
+
+        \def\@adonisboxTitle{Adonis information}
+
+        \WeakValidation{\@adonisInfo}
+                {ADONIS information mandatory when requesting ADONIS}
+                {AdonisInfo empty}
+
+        \@makeGenericBox{\@pagetwolength}{\@adonisboxTitle}
+                {\normalsize\@adonisInfo}       
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%      Interferometry Information Box
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Interferometry info variable and macro
+\def\@interferometryInfo{}
+\def\@interferometryCalInfo{}
+
+%\def\InterferometryInfo#1{\gdef\@interferometryInfo{#1}}
+%% Macro: MakeInterferometryBox
+%%
+%% Create the interferometry description box
+%%
+\def\MakeInterferometryBox{
+        \def\@interferometryboxTitle{Interferometry information}
+        \WeakValidation{\@interferometryInfo}
+                {Interferometry information, mandatory when requesting interferometry}
+                {VLTITarget }
+        \MakeVLTITargets
+}
+
+
+%% Target list variable
+%%
+%%\def\vltiTargetList{}
+\def\vltiTargetList{}
+\def\@vltitargetsMaxNum{700}                % A-Z
+\def\@vltitargetsOverflowNum{35}
+
+\expandafter\def\csname vltiTargetList0\endcsname{}
+
+\newcount\@vltitargetsCounter                % Size of that list...
+\@vltitargetsCounter=0                       % ...initially empty
+
+\newcount\@vltitargetsCounterOverflow        % Size of that list...
+\@vltitargetsCounterOverflow=0          
+
+\newcount\@vltitargetsOverflowPage                % Temporary counter..
+\@vltitargetsOverflowPage=0                % Temporary counter...
+
+
+%% Macro: VLTITarget
+%%
+%% Add a target to the target list after validating its fields.
+%%
+%% parameters:  #1 target name
+%%              #2 V magnitude
+%%              #3 lambda/deltalambda
+%%              #4 magnitude
+%%              #5 lambda obs
+%%              #6 size
+%%              #7 Baseline
+%%              #8 Visibility
+%%              #9 Magnitude, c
+%%
+%% @author fsogni, 14-07-2002: 
+\global\def\VLTITarget#1#2#3#4#5#6#7#8#9{%
+\gdef\@interferometryInfo{#1}%
+\def\tRunid{#1}%
+\def\tName{#2}%
+\def\tVmag{#3}%
+%\def\tDeltaLambda{#4}%
+\def\tMag{#4}%
+\def\tDeltaObs{#5}%
+\def\tSize{#6}%
+\def\tBaseline{#7}%
+\def\tVisibility{#8}%
+\def\tMagc{#9}%
+\VLTITargetExtended}
+
+
+\global\def\VLTITargetExtended#1{%
+\def\tTot{#1}%
+
+         \WeakValidation{\tTot}
+        {VLTI time on target}{VLTITarget (tenth parameter)}
+
+
+        \edef\targetTableEntry{
+        \noexpand\ninerm{\tRunid} & \noexpand\ninerm{\tName} & 
+        \noexpand\ninerm{\tVmag}  & 
+        \noexpand\ninerm{\tMag} & \noexpand\ninerm{\tDeltaObs} & 
+        \noexpand\ninerm{\tSize} & \noexpand\ninerm{\tBaseline} & 
+        \noexpand\egtrm{\tVisibility}  & \noexpand\egtrm{\tMagc} & 
+        \noexpand\egtrm{\tTot} \noexpand\\ \noexpand\hline}
+
+        %% Start here the overflow management.
+        
+        
+
+    \advance\@vltitargetsCounter by 1 % keep count of rows
+
+    %% Truncate if there are more than \@runMaxNum runs...
+    %%------------------------------------------------------------
+
+    \ifnum\the\@vltitargetsCounter>\@vltitargetsMaxNum
+      \WarningMsg{Target number exceeds the maximum number \@vltitargetsMaxNum 
+        (included alternatives). Internally truncated in Box 3}
+    \else
+
+
+        %% we need to see whether we append
+        %% the run to the regular list or to the overflow list
+        %%------------------------------------------------------------
+        \ifnum\the\@vltitargetsCounter>\@vltitargetsOverflowNum      % did we overflow?
+
+          %% YES, we did overflow.
+
+          \advance\@vltitargetsCounterOverflow by 1    % keep overflow count
+
+          %% If this is the *first* overflow run, add a remark to
+          %% both normal and overflow table
+          \ifnum\the\@vltitargetsCounterOverflow=1 
+            \ifnum\the\@vltitargetsOverflowPage=0
+              \xappend{vltiTargetList0}{%
+                \multicolumn{9}{l}{
+          %% This is the part related to the first page. The messages are the same
+          %% as for the following pages, but in case we decide to move this part at
+          %% the end of the document, better keep the separation in the code.
+                  \it{The remaining VLTI targets have been moved to the last page ... }} \\}
+              \advance\@vltitargetsOverflowPage by 1
+              \@namedef{vltiTargetList\the\@vltitargetsOverflowPage}{}
+        \if@keyprg
+              \xappend{vltiTargetList1}{%
+                & \multicolumn{4}{l}{
+                  \it{...continued from box 15. }} \\}
+        \else
+              \xappend{vltiTargetList1}{%
+                & \multicolumn{4}{l}{
+                  \it{...continued from box 14. }} \\} 
+        \fi
+            \else
+              \xappend{vltiTargetList\the\@vltitargetsOverflowPage}{%
+                \multicolumn{9}{l}{
+                  \it{Following VLTI targets moved to the next page... }} \\}
+              \advance\@vltitargetsOverflowPage by 1
+              \@namedef{vltiTargetList\the\@vltitargetsOverflowPage}{}
+              \xappend{vltiTargetList\the\@vltitargetsOverflowPage}{% 
+                & \multicolumn{4}{l}{
+                  \it{...continued from previous page. }} \\}
+            \fi            
+          \fi % end of ``if first overflow...''
+
+          \ifnum\the\@vltitargetsCounterOverflow=50
+          \@vltitargetsCounterOverflow=0
+          \fi
+
+        \fi %% End overflow check
+
+        %% Add this run to overflow list
+        \xappend{vltiTargetList\the\@vltitargetsOverflowPage}{\targetTableEntry}
+
+        %% This is not a large programme: just add this run 
+        %% to the normal list
+        %%------------------------------------------------------------
+        %\concatenate{\ObservingRunList}={\ObservingRunList}&{\runentry}
+
+
+        \fi % end of ``if truncation...''
+
+        %Set the interferometry flag to true
+        \def\@flag{TRUE}
+        \SetInterferometry{\@flag}
+
+        % Append to the target list             
+        %\concatenate{\vltiTargetList}={\vltiTargetList}&{\targetTableEntry}
+}
+
+
+
+
+
+\def\MakeVLTITargets{
+  \MakeVLTITargetsInternal{\@nameuse{vltiTargetList0}}{12.}{250}%
+}
+
+%% Macro: MakeOverflowTargetsBox
+%%
+%% Create the overflow targets box (box XXX).
+%% Modified by GMA and GHU 2009-08-18
+%% Modified by GH 2012-08-20
+\def\MakeOverflowVLTITargets#1{
+ \def\@vltitargetsNotes{}%
+ \@bNewBoxfalse
+ \if@keyprg
+    \xdef\@boxno{15a}
+ \else
+    \xdef\@boxno{14a}
+  \MakeVLTITargetsInternal{\@nameuse{vltiTargetList#1}}{12.}{250}%
+}
+
+
+
+
+
+
+%% Macro: MakeVLTITargets
+%%
+%% Generate box 15 for normal programs in case a MIDI observation
+%% was requested
+%%
+%% @author fsogni, 14-Jul-2002:
+%
+\def\MakeVLTITargetsInternal#1#2#3{
+
+  \def\targetsboxTitle{List of interferometry targets proposed in this programme}
+
+  \def\tableHead{\tensf{Run} &
+    \tensf{Name} & 
+    \tensf{Vmag} & 
+    \tensf{mag($\lambda$)} & 
+    \tensf{$\lambda\_$obs} & 
+    \tensf{size($\lambda$)} & 
+    \tensf{Baseline} & 
+    \tensf{Vis.} & 
+    \tensf{mag$\_$c} &
+    \tensf{Tot}\\}
+
+  \def\targetsboxText{
+    \vbox{
+      \hbox{
+        \begin{tabular*}{165mm}[tl]
+          { p{10mm} % Run Id
+            p{25mm} % Name
+            p{13mm} % Vmag
+            p{13mm} % lambda_obs
+            p{13mm} % mag(lambda)
+            p{13mm} % size(lambda)
+            p{30mm} % Basel.
+            p{20mm} % Vis.
+            p{20mm} % mag_c
+            p{13mm} % Tot
+            }
+
+          \tableHead
+          %% Don't delete the ``\\" at the end of the following line
+          %\multicolumn{9}{l}{\rule{\@tabInsideBoxLength}{.3mm}} \\
+          \multicolumn{10}{l}{} \\ \hline
+           %\vltiTargetList
+           %\vltiCalibratorList
+          #1
+         \end{tabular*}
+        }
+
+        \vspace{10mm}
+        \parbox[t]{\@tabInsideBoxLength}{\elvsf{ }
+        %\normalsize See corresponding value in line above. 
+        }
+
+
+
+      \ifx \@emptyValue\@vltitargetsNotes
+      \else
+      \vspace{-3mm}
+      \parbox[t]{\@tabInsideBoxLength}{
+        \elvsf{VLTI Target Notes:}
+        \tenrm\@vltitargetsNotes
+        }
+      \fi
+
+
+
+      }
+    }
+%  \targetsboxTitle \\
+%  \normalsize
+%  \targetsboxText
+
+
+ % \@makeGenericBox{#3}{\@targetsboxTitle}{\normalsize\@targetsboxText}
+
+    \@makeGenericBox{\@pagetwolength}{\targetsboxTitle}{\normalsize\targetsboxText}
+  }
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%      Target of Opportunity Box
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Interferometry info variable and macro
+\def\@tooInfo{}
+
+%% Macro: MakeTOOBox
+%%
+%% Create the interferometry description box
+%%
+\def\MakeTOOBox{
+
+        \def\@tooboxTitle{Target of Opportunity information}
+
+        \if@progtoo
+	           \WeakValidation{\@tooInfo}
+                {TOO information, mandatory when requesting TOO observations} {TOORun }
+
+        \else
+          \WarningMsg{If there are any TOO Runs in this programme please fill in the corresponding TOORun macro}
+	\fi
+
+        \MakeTOORuns
+}
+
+
+%% Target list variable
+%%
+%%\def\vltiTargetList{}
+\def\tooRunList{}
+\def\@tooRunMaxNum{300}                % A-Z
+\def\@tooRunOverflowNum{35}
+
+\expandafter\def\csname tooRunList0\endcsname{}
+
+\newcount\@tooRunCounter                % Size of that list...
+\@tooRunCounter=0                       % ...initially empty
+
+\newcount\@tooRunCounterOverflow        % Size of that list...
+\@tooRunCounterOverflow=0          
+
+\newcount\@tooRunOverflowPage                % Temporary counter..
+\@tooRunOverflowPage=0                % Temporary counter...
+
+\def\@tooNatureList{\\{RRM}\\{ToO-hard}\\{ToO-soft}\\{normal}}
+
+%% Macro: TOORun
+%%
+%% Add a run to the Too run list after validating its fields.
+%%
+%% parameters:  #1 run
+%%              #2 nature (RRM, ToO, or normal)
+%%              #3 number of targets per run
+%%              #4 number of triggers per target
+\global\def\TOORun#1#2#3#4{%
+  \gdef\@tooInfo{#1}%
+  \def\tRunID{#1}%
+  \def\tNature{#2}%
+  \def\tNrTargets{#3}%
+  \def\tNrTriggers{#4}%
+  \StrongValidation{\tRunID}{\@RunCodeList}{run ID}{TOORun (first
+    parameter)}%
+  \StrongValidation{\tNature}{\@tooNatureList}{run type}{TOORun (second
+    parameter)}%
+  \edef\targetTableEntry{%
+    \noexpand\ninerm{\tRunID} & 
+    \noexpand\ninerm{\tNature} & 
+    \noexpand\ninerm{\tNrTargets} & 
+    \noexpand\ninerm{\tNrTriggers} 
+    \noexpand\\ \noexpand\hline}%
+  
+  %% Start here the overflow management.
+  
+  \advance\@tooRunCounter by 1 % keep count of rows
+  
+  %% Truncate if there are more than \@runMaxNum runs...
+  %% ------------------------------------------------------------
+  
+  \ifnum\the\@tooRunCounter>\@tooRunMaxNum
+  \WarningMsg{TOO run number exceeds the maximum number \@tooRunMaxNum 
+    (included alternatives). Internally truncated}
+  \else
+  %% we need to see whether we append
+  %% the run to the regular list or to the overflow list
+  %% ------------------------------------------------------------
+  \ifnum\the\@tooRunCounter>\@tooRunOverflowNum      % did we overflow?
+  %% YES, we did overflow.
+  \advance\@tooRunCounterOverflow by 1    % keep overflow count
+  
+  %% If this is the *first* overflow run, add a remark to
+  %% both normal and overflow table
+  \ifnum\the\@tooRunCounterOverflow=1 
+  \ifnum\the\@tooRunOverflowPage=0
+  \xappend{tooRunList0}{%
+    \multicolumn{4}{l}{
+      %% This is the part related to the first page. The messages are the same
+      %% as for the following pages, but in case we decide to move this part at
+      %% the end of the document, better keep the separation in the code.
+      \it{Following ToO runs moved to the next page ... }} \\}
+  \advance\@tooRunOverflowPage by 1
+  \@namedef{tooRunList\the\@tooRunOverflowPage}{}
+  \xappend{tooRunList1}{%
+    & \multicolumn{4}{l}{
+      \it{...continued from previous page. }} \\}
+  \else
+  \xappend{tooRunList\the\@tooRunOverflowPage}{%
+    \multicolumn{4}{l}{
+      \it{Following ToO runs moved to the next page... }} \\}
+  \advance\@tooRunOverflowPage by 1
+  \@namedef{tooRunList\the\@tooRunOverflowPage}{}
+  \xappend{tooRunList\the\@tooRunOverflowPage}{% 
+    & \multicolumn{4}{l}{
+      \it{...continued from previous page. }} \\}
+  \fi            
+  \fi % end of ``if first overflow...''
+  
+  \ifnum\the\@tooRunCounterOverflow=50
+  \@vltitargetsCounterOverflow=0
+  \fi
+  
+  \fi %% End overflow check
+  
+  %% Add this run to overflow list
+  \xappend{tooRunList\the\@tooRunOverflowPage}{\targetTableEntry}
+  
+  \fi % end of ``if truncation...''
+  
+  % Set the interferometry flag to true
+  \def\@flag{TRUE}
+  \SetTOO{\@flag}
+}
+
+
+\def\MakeTOORuns{
+  \MakeTOORunsInternal{\@nameuse{tooRunList0}}{12.}{250}%
+}
+
+%% Macro: MakeOverflowTargetsBox
+%%
+%% Create the overflow targets box (box XXX).
+%%
+%% 12.02.2005 M. Lombardi
+\def\MakeOverflowTOORuns#1{
+  \def\@tooRunsNotes{}%
+  \MakeTOORunsInternal{\@nameuse{tooRunList#1}}{12.}{250}%
+}
+
+
+%% Macro: MakeVLTITargets
+%%
+%% Generate box 15 for normal programs in case a MIDI observation
+%% was requested
+%%
+%% @author fsogni, 14-Jul-2002:
+%
+\def\MakeTOORunsInternal#1#2#3{
+
+  \def\targetsboxTitle{List of ToO runs proposed in this programme}
+
+  \def\tableHead{%
+    \tensf{Run} &
+    \tensf{Nature} & 
+    \tensf{Targets per run} & 
+    \tensf{Triggers per target}\\}
+
+  \def\targetsboxText{
+    \vbox{
+      \hbox{
+        \begin{tabular*}{165mm}[tl]
+          { p{10mm} % Run Id
+            p{40mm} % Nature
+            p{40mm} % Targets per run
+            p{40mm} % Triggers per target
+            }
+
+          \tableHead
+          %% Don't delete the ``\\" at the end of the following line
+          \multicolumn{4}{l}{} \\ \hline
+          % \vltiTargetList
+          % \vltiCalibratorList
+          #1
+        \end{tabular*}
+      }
+      
+      \vspace{10mm}
+      \parbox[t]{\@tabInsideBoxLength}{\elvsf{ }
+        % \normalsize See corresponding value in line above. 
+      }
+      
+      \ifx \@emptyValue\@tooRunsNotes
+      \else
+      \vspace{10mm}
+      \parbox[t]{\@tabInsideBoxLength}{
+        \elvsf{ToO Notes:}
+        \tenrm\@tooRunsNotes
+      }
+      \fi
+    }
+  }
+  \@makeGenericBox{\@pagetwolength}{\targetsboxTitle}{\normalsize\targetsboxText}
+}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%      Visitor Instrument Box
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Macro: MakePageVisitorInstrument (OBSOLETE)
+%%
+%% Set an internal flag to print the visitor instrument page
+%%
+\def\MakePageVisitorInstrument{\gdef\@pageVisitorInstrument{yes}}
+
+%% Visitor instrument description variables and setup macros.
+%%
+\def\@desc{}
+\def\@comm{}
+\def\@wv{}
+\def\@wfocus{}
+\def\@interf{}
+\def\@focal{}
+\def\@acqu{}
+\def\@softw{}
+\def\@suppl{}
+\def\Desc#1{\gdef\@desc{#1}}
+\def\Comm#1{\gdef\@comm{#1}}
+\def\WV#1{\gdef\@wv{#1}}
+\def\Wfocus#1{\gdef\@wfocus{#1}}
+\def\Interf#1{\gdef\@interf{#1}}
+\def\Focal#1{\gdef\@focal{#1}}
+\def\Acqu#1{\gdef\@acqu{#1}}
+\def\Softw#1{\gdef\@softw{#1}}
+\def\Suppl#1{\gdef\@suppl{#1}}
+
+%% Macro: MakeVisitorInstrumentBox
+%%
+%% Visitor instrument description page
+%%
+\def\MakeVisitorInstrumentBox{
+
+        % Fonts, to be changed only once (if necessary)
+        \def\@visfonts{\ninerm}
+
+        % Single paragraph length
+        \def\parlen{29mm}
+
+        \def\@visitorboxTitle{Visitor instrument}
+
+        \def\@visitorboxText{
+                \@visfonts{Description of the instrument and of its operation: \ }
+                \normalsize\@desc
+                \vfill
+                \@visfonts{On which telescope(s) has your 
+                        instrument been commissioned and/or 
+                        used (scientific publications): \ }
+                \normalsize\@comm
+                \vfill
+
+                \@visfonts{Total weight and value of equipment to be shipped: \ }
+                \normalsize\@wv
+                \vfill
+
+                \@visfonts{Weight at the focus (including ancillary equipment): \ }
+                \normalsize\@wfocus
+                \vfill
+
+                \@visfonts{Compatibility of attachment interface with 
+                        required telescope focus: \ }
+                \normalsize\@interf
+                \vfill
+
+                \@visfonts{Back focal distance value: \ }
+                \normalsize\@focal
+                \vfill
+                
+                \@visfonts{Acquisition, focusing, and guiding procedure: \ }
+                \normalsize\@acqu
+                \vfill
+
+                \@visfonts{Compatibility with ESO software standards 
+                        (data handling): \ }
+                \normalsize\@softw
+                \vfill
+
+                \@visfonts{Estimate of supplies and services expected 
+                        from ESO (in person days): \ }
+                \normalsize\@suppl
+                \smallskip
+        }
+
+        \@makeGenericBox{\@pagetwolength}
+                {\@visitorboxTitle \@h}{\@visitorboxText \@h}
+}
+

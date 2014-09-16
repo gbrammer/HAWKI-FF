@@ -1,0 +1,1005 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%.IDENTIFICATION $Id: templatelarge.tex.src,v 1.29 2008/01/25 10:47:12 fsogni Exp $
+%.LANGUAGE       TeX, LaTeX
+%.ENVIRONMENT    ESOFORM
+%.PURPOSE        Template application form for ESO Observing time.
+%.AUTHOR         The Esoform Package is maintained by the Observing
+%                Programmes Office (OPO) while the background software
+%                is provided by the User Support System (USS) Department.
+%
+%-----------------------------------------------------------------------
+%
+%
+%                   ESO LA SILLA PARANAL OBSERVATORY
+%                   --------------------------------
+%                   LARGE PROGRAMME PHASE 1 TEMPLATE
+%                   --------------------------------
+%
+%
+%
+%          PLEASE CHECK THE ESOFORM USERS' MANUAL FOR DETAILED 
+%              INFORMATION AND DESCRIPTIONS OF THE MACROS. 
+%     (see the file usersmanual.tex provided in the ESOFORM package) 
+%
+%
+%        ====>>>> TO BE SUBMITTED THROUGH WEB UPLOAD  <<<<====
+%               (see the Call for Proposals for details)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%                      I M P O R T A N T    N O T E
+%                      ----------------------------
+%
+% By submitting this proposal, the Principal Investigator takes full
+% responsibility for the content of the proposal, in particular with
+% regard to the names of CoI's and the agreement to act in accordance
+% with the ESO policy and regulations, should observing time be
+% granted.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+%
+%    - LaTeX *is* sensitive towards upper and lower case letters.
+%    - Everything after a `%' character is taken as comments.
+%    - DO NOT CHANGE ANY OF THE MACRO NAMES (words beginning with `\')
+%    - DO NOT INSERT ANY TEXT OUTSIDE THE PROVIDED MACROS
+%
+
+%
+%    - All parameters are checked at the verification or submission.
+%    - Some parameters are also checked during the pdfLaTeX
+%      compilation.  If this is not the case, this is indicated by the
+%      phrase
+%      "This parameter is NOT checked at the pdfLaTeX compilation."
+%
+
+\documentclass{esoformlarge}
+
+% The list of LaTeX definitions of commonly used astronomical symbols
+% is already included in the style file common2e.sty (see Table 1 in
+% the Users' Manual).  If you have your own macros or definitions,
+% please insert them here, between the \documentclass{esoformlarge}
+% and the \begin{document} commands.
+%
+%     PLEASE USE NEITHER YOUR OWN MACROS NOR ANY TEX/LATEX MACROS  
+%       IN THE \Title, \Abstract, \PI, \CoI, and \Target MACROS.
+%
+% WARNING: IT IS THE RESPONSIBILITY OF THE APPLICANTS TO STAY WITHIN THE
+% CURRENT BOX LIMITS AND ELIMINATE POTENTIAL OVERFILL/OVERWRITE PROBLEMS 
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% CONTENTS OF THE FIRST PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%---- BOX 1 ------------------------------------------------------------
+%
+% You should use this template for period 95A applications ONLY.
+%
+% DO NOT EDIT THE MACRO BELOW. 
+
+\Cycle{95A}
+
+% Type below, within the curly braces {}, the title of your observing
+% programme (up to two lines).
+% This parameter is NOT checked at the pdfLaTeX compilation.
+%
+% DO NOT USE ANY TEX/LATEX MACROS IN THE TITLE
+
+\Title{This Is The Proposal Title This Is The Proposal Title}  
+
+% Type below the numeric code corresponding to the subcategory of your
+% programme.
+
+\SubCategoryCode{X0}   
+
+
+%This is the only type valid with this template. Do NOT change it.
+\ProgrammeType{LARGE}
+
+%---- BOX 2 ------------------------------------------------------------
+%
+% Type below a concise abstract of your proposal (up to 13 lines).
+% This parameter is NOT checked at the pdfLaTeX compilation.
+%
+% DO NOT USE ANY TEX/LATEX MACROS IN THE ABSTRACT
+
+\Abstract{This is a concise abstract of the proposal which may have up
+  to 13 lines.}
+
+%---- BOX 3 ------------------------------------------------------------
+%
+% Description of the observing run(s) necessary for the completion of
+% your programme.  The macro takes ten parameters: run ID, period,
+% instrument, time requested, month preference, moon requirement,
+% seeing requirement, transparency requirement, observing mode and 
+% run type.
+%
+% 1. RUN ID
+% Valid values: A, B, ..., Z
+%
+% 2. PERIOD
+% For Paranal and APEX instruments four periods are allowed,
+% hence the valid range is from 95 to 98.
+% La Silla large proposals can request up to Period 97.
+% This parameter is NOT checked at the pdfLaTeX compilation.
+%
+% 3. INSTRUMENT
+% Valid values: FLAMES FORS2 HARPS HAWKI KMOS LABOCA MUSE NACO SHFI SINFONI SPHERE Special3.6 SpecialNTT UVES VIMOS
+%
+% 4. TIME REQUESTED
+% In hours for Service Mode, in nights for Visitor Mode.
+% In either case the time can be rounded up to  1 decimal place.    
+% This parameter is NOT checked at the pdfLaTeX compilation.
+% 
+% 5. MONTH PREFERENCE
+% Valid values: apr, may, jun,
+% jul, aug, sep, oct,
+% nov, dec, jan, feb,
+% mar, any
+%
+% 6. MOON REQUIREMENT
+% Valid values: d, g, n
+%
+% 7. SEEING REQUIREMENT
+% Valid values: 0.4, 0.6, 0.8, 1.0, 1.2, 1.4, n
+%
+% 8. TRANSPARENCY REQUIREMENT
+% Valid values: CLR, PHO, THN
+%
+% 9. OBSERVING MODE
+% Valid values: v, s
+% 
+% 10. RUN TYPE 
+% Please leave blank for all Large Programme proposals.
+
+\ObservingRun{A}{95}{FORS2}{40h}{may}{n}{0.8}{PHO}{s}{}
+\ObservingRun{A/alt}{95}{FORS2}{8n=3x2+4H2}{may}{n}{0.8}{PHO}{v}{}
+\ObservingRun{B}{95}{FORS2}{6n=6x1}{jun}{n}{0.6}{CLR}{v}{}
+\ObservingRun{C}{95}{HARPS}{8n}{aug}{n}{0.8}{THN}{v}{}
+\ObservingRun{D}{95}{FORS2}{1.5n}{sep}{n}{0.8}{THN}{v}{}
+
+% Proprietary time requested.
+% Valid values: % 0, 1, 2, 6, 12
+
+\ProprietaryTime{12}
+
+
+%---- BOX 4 ------------------------------------------------------------
+% Please provide the ESO User Portal username for the Principal 
+% Investigator (PI) in the \PI field.
+%
+% For the Co-I's (CoI) please fill in the following details:
+% First and middle initials, family name, the institute code
+% corresponding to their affiliation.
+% The corresponding affiliation should be entered for EACH
+% Co-I separately in order to ensure the correct details of 
+% all Co-I's are stored in the ESO database.
+% You can find all institute codes listed according to country
+% on the following webpage: 
+% http://www.eso.org/sci/observing/phase1/countryselect.html
+%
+% DO NOT USE ANY TEX/LATEX MACROS HERE
+%
+
+\PI{JSMITH999} 
+% Replace with PI's ESO User Portal username.
+
+\CoI{L.}{Ma\c con}{1098}
+\CoI{R.}{Men\'endez}{1098}
+\CoI{S.}{Bailer-Brown}{1098}
+\CoI{K.L.}{Giorgi}{1098}
+\CoI{S.}{Lichtman}{1258}
+
+% Please note:
+% Due to the way in which the proposal receiver system parses
+% the CoI macro, the number of pairs of curly brackets '{}'
+% in this macro MUST be strictly equal to 3, i.e., the
+% number of parameters of the macro. Accordingly, curly
+% brackets should not be used within the parameters (e.g.,
+% to protect LaTeX signs).
+%
+% For instance:
+% \CoI{L.}{Ma\c con}{1098}
+% \CoI{R.}{Men\'endez}{1098}
+%
+% are valid, while
+%
+% \CoI{L.}{Ma{\c}con}{1098}
+% \CoI{R.}{Men{\'}endez}{1098}
+%
+% are not. Unfortunately the receiver does not give an
+% explicit error message when such invalid forms are
+% used in the CoI macro, but the processing of the proposal
+% keeps hanging indefinitely.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% THE THREE PAGES OF THE SCIENTIFIC DESCRIPTION %%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%---- BOX 5 ------------------------------------------------------------
+%
+%               THIS DESCRIPTION IS RESTRICTED TO THREE PAGES 
+%
+%   THE RELATIVE LENGTHS OF EACH OF THESE FIVE SECTIONS ARE VARIABLE,
+%                BUT THEIR SUM IS RESTRICTED TO THREE PAGES
+%
+% All macros in this box are NOT checked at the pdfLaTeX compilation.
+
+\ScientificRationale{Scientific rationale: scientific background of
+  the project, pertinent references; previous work plus justification
+  for present proposal.}
+
+\ImmediateObjective{Immediate objective of the proposal: state what is
+  actually going to be observed and what shall be extracted from the
+  observations, so that the feasibility becomes clear.}
+
+\TelescopeJustification{Justification for the use of the selected
+  telescope (e.g., VLT, NTT, etc...)  with respect to other available
+  alternatives.}
+
+\ModeJustification{Justification for the observing mode requested
+  (visitor or service).}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% THE TWO PAGES OF THE FIGURES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Up to TWO pages of figures can be added to your proposal.  If you
+% use color figures, make sure that they are still readable if printed
+% in black and white.  Figures must be in PDF or JPEG format.
+% Each figure has a size limit of 1MB.
+
+
+\MakePicture{galaxy.pdf}{angle=90,width=10cm}
+\MakeCaption{Fig.~1: A caption for your figure can be inserted here.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% THE PAGE OF BOXES 6, 7, AND 8 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%---- BOX 6 ------------------------------------------------------------
+%
+% Indicate below the experience of the applicants with telescopes,
+% instrumentation, data reduction and delivery of data products to the 
+% ESO Archive.
+% This macro is NOT checked at the pdfLaTeX compilation.
+
+\Experience{Indicate here the experience of the applicants with telescopes, instrumentation, data reduction and their track record for submission of data products to the ESO Archive from previous large programmes. The PI should describe the data quality assessment process and the data reduction for the production of science data products.}
+
+%---- BOX 7 ------------------------------------------------------------
+%
+% Indicate below the strategy for data reduction and analysis with
+% description of the available resources to the observing team, such
+% as: computing capabilities, research assistants, etc...
+% In addition a delivery plan for data products should be described here.
+% This macro is NOT checked at the pdfLaTeX compilation.
+
+\Resources{Indicate here the strategy for data reduction and analysis including a description of the available resources to the team. PIs should provide the list of science data products planned to be published, through Phase 3, in the ESO archive and their legacy value. PIs must provide a timeline for the delivery plan, which should include at least one data release within the duration of the LP and must be finalised within two years of the completion of data acquisition. }
+
+%---- BOX 8 ------------------------------------------------------------
+%
+% Take advantage of this box to provide any special remark (up to ten
+% lines).  
+% This macro is NOT checked at the pdfLaTeX compilation.
+
+\SpecialRemarks{Take advantage of this box to provide any special
+  remark (up to ten lines).}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% THE PAGE OF BOXES 9 AND 10 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%---- BOX 9 ------------------------------------------------------------
+%
+% Provide below a careful justification of the requested lunar phase
+% and of the requested number of nights or hours.  
+% All macros in this box are NOT checked at the pdfLaTeX compilation.
+
+\WhyLunarPhase{Provide here a careful justification of the requested
+  lunar phase.}  
+
+\WhyNights{Provide here a careful justification of the requested
+  number of nights or hours.  ESO Exposure Time Calculators exist for
+  all Paranal and La Silla instruments and are available at
+  the following web address: http://www.eso.org/observing/etc .
+  Links to exposure time calculators for APEX instrumentation
+  can be found in Section 7 of the Call for Proposals.}
+
+% Please specify the type of calibrations needed.
+% Valid values: standard, special
+% In case of special calibration the second parameter specifies them
+
+\Calibrations{special}{Adopt a special calibration}
+%\Calibrations{standard}{}
+
+
+%---- BOX 10 -----------------------------------------------------------
+% 
+% Use of the ESO facilities during the last 2 years (4 observing
+% periods) and description of the status of the obtained data.
+% This macro is NOT checked at the pdfLaTeX compilation.
+
+\LastObservationRemark{Report on the use of the ESO facilities during
+  the last 2 years (4 observing periods). Describe the status of the
+  data obtained and the scientific output generated.}
+
+%---- BOX 11 -----------------------------------------------------------
+%
+% Applicant's publications related to the subject of this proposal
+% during the past two years.  Use the simplified abbreviations for
+% references as in A&A.  Separate each reference with the following
+% usual LaTex command: \smallskip\\
+%   
+%   Name1 A., Name2 B., 2001, ApJ, 518, 567: Title of article1
+%   \smallskip\\
+%   Name3 A., Name4 B., 2002, A\&A, 388, 17: Title of article2
+%   \smallskip\\
+%   Name5 A. et al., 2002, AJ, 118, 1567: Title of article3
+%
+% This macro is NOT checked at the pdfLaTeX compilation.
+
+\Publications{
+  Name1 A., Name2 B., 2001, ApJ, 518, 567: Title of article1
+  \smallskip\\
+  Name3 A., Name4 B., 2002, A\&A, 388, 17: Title of article2
+  \smallskip\\
+  Name5 A. et al., 2002, AJ, 118, 1567: Title of article3
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% THE PAGE OF THE TARGET/FIELD LIST %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%---- BOX 12 -----------------------------------------------------------
+%
+% Complete list of targets/fields requested.  The macro takes nine 
+% parameters: run ID, target field/name, RA, Dec, time on target, magnitude, diameter,
+% additional information, reference star.
+%
+% 1. RUN ID
+% Valid values: run IDs specified in BOX 3
+% 
+% 2. Target field/Name
+%
+% 3. RA (J2000)
+% Format: hh mm ss.f, or hh mm.f, or hh.f
+% Use 00 00 00 for unknown coordinates
+% This parameter is NOT checked at the pdfLaTeX compilation.
+% 
+% 4. Dec (J2000)
+% Format: dd mm ss, or dd mm.f, or dd.f
+% Use 00 00 00 for unknown coordinates
+% This parameter is NOT checked at the pdfLaTeX compilation.
+%
+% 5. TIME ON TARGET
+% Format: hours (overheads and calibration included)
+% This parameter is NOT checked at the pdfLaTeX compilation.
+%
+% 6. MAGNITUDE
+% This parameter is NOT checked at the pdfLaTeX compilation.
+%
+% 7. ANGULAR DIAMETER
+% This parameter is NOT checked at the pdfLaTeX compilation.
+%
+% 8. ADDITIONAL INFORMATION
+% Any relevant additional information may be inserted here.
+% For APEX runs, the requested PWV and the acceptable LST range
+%     MUST be specified here for each target. 
+% This parameter is NOT checked at the pdfLaTeX compilation.
+%
+% 9. REFERENCE STAR ID
+% See Users' Manual.
+% This parameter is NOT checked at the pdfLaTeX compilation.
+%
+% Long lists of targets will continue on the last page of the
+% proposal.
+%
+%
+%                       ** VERY IMPORTANT ** 
+% The scheduling of your programme will take into account ALL targets
+%
+% DO NOT USE ANY TEX/LATEX MACROS FOR THE TARGETS
+
+\Target{ABD}{NGC 104}{00 24 06}{-72 04 58}{3.0}{5}{30 min}{47 Tuc}{}
+\Target{A}{NGC 253}{00 47 33.1}{-25 17 17.8}{10.0}{8}{}{Seyfert gal.}{}
+\Target{BC}{NGC 1851}{05 14 06.3}{-40 02 50}{8.0}{8.8}{}{glob. cluster}{}
+\Target{B}{NGC 1316}{03 22 41.5}{-37 12 33}{15.0}{9.7}{10 min}{Fornax  A}{}
+\Target{B}{NGC 1365}{03 33 36}{-36 08 27}{15.0}{10}{}{Seyfert gal.}{}
+\Target{C}{M 42}{05 35.3}{-05 23.5}{2.0}{4}{1 deg}{}{}
+\Target{C}{Rosette}{06 33.7}{+04 59.9}{3.0}{}{1 deg}{NGC 2237}{}
+\Target{D}{NGC 2997}{09 45 38}{-31 11 25}{10.0}{}{}{Sc galaxy}{S133231219553}
+
+
+%                      *****************
+%                      ** PWV limits **
+% For all APEX instruments users must specify the PWV upper
+% limits for each target. For example:
+%\Target{}{Alpha Ori}{06 45 08.9}{-16 42 58}{1}{-1.4}{6 mas}{PWV=1.0mm, Sirius}{}
+%\Target{}{HD 104237}{12 00 05.6}{-78 11 33}{1}{}{}{PWV<0.7mm;LST=9h00-15h00}{}
+%                      *****************
+
+% Use TargetNotes to include any comments that apply to several or all
+% of your targets.
+% This macro is NOT checked at the pdfLaTeX compilation.
+
+\TargetNotes{A note about the targets and/or strategy of selecting the targets during the run. For APEX runs please remember to specify the PWV limits for each target under Additional info in the table above.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%---- BOX 12a -- ESO Archive ------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Are the data requested in this proposal on the ESO Archive
+% (http://archive.eso.org)? If yes, explain the need for new data.
+% This macro is NOT checked at the pdfLaTeX compilation.
+
+\RequestedDataRemark{Are the data requested in this proposal in the
+  ESO Archive (http://archive.eso.org)? If yes, explain the need for
+  new data.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%---- BOX 12b -- ESO GTO/Public Survey Programme Duplications--------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% If any of the targets/regions in ongoing GTO Programmes and/or 
+% Public Surveys are being duplicated here, please explain why.
+
+\RequestedDuplicateRemark{
+  Specify whether there is any duplication of targets/regions covered
+  by ongoing GTO and/or Public Survey programmes. If so, please
+  explain the need for the new data here. Details on the protected
+  target/fields in these ongoing programmes can be found at:
+
+  GTO programmes: http://www.eso.org/sci/observing/teles-alloc/gto.html
+
+  Public surveys:
+  http://www.eso.org/sci/observing/PublicSurveys/sciencePublicSurveys.html
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% THE PAGE OF SCHEDULING REQUIR. AND INSTRUMENT CONFIGURATIONS %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%---- BOX 13 -----------------------------------------------------------
+%
+% 1. RUN SPLITTING, FOR A GIVEN ESO TELESCOPE (Visitor Mode only)
+%
+
+% This line should remain uncommented if the proposal involves 
+% time-critical observations, or observations to be performed at specific 
+% time intervals. Please leave these brackets blank. Details of time 
+% constraints can be entered in Special Remarks and using the 
+% other flags in Box 13.
+%
+\HasTimingConstraints{}
+
+
+% 1st argument: run ID
+% Valid values: run IDs specified in BOX 3
+%
+% 2nd argument: run splitting requested for sub-runs
+% This parameter is NOT checked at the pdfLaTeX compilation.
+
+\RunSplitting{B}{2,10s,2,20w,2}
+\RunSplitting{C}{2,10s,2,20w,2,15s,4H2}
+
+% 2. SPECIFIC DATE(S) FOR TIME-CRITICAL OBSERVATIONS
+% Please note: The dates must correspond to the LOCAL CHILEAN observing dates.
+%
+% 1st argument: run ID
+% Valid values: run IDs specified in BOX 3
+%
+% 2nd argument: Chilean start date for the critical period
+% Format: dd-mmm-yyyy
+% This parameter is NOT checked at the pdfLaTeX compilation.
+%
+% 3rd argument: Chilean end date for the critical period
+% Format: dd-mmm-yyyy
+% This parameter is NOT checked at the pdfLaTeX compilation.
+%
+% 4th argument: Reason for the time-critical dates specified.
+% 
+
+\TimeCritical{A}{12-may-15}{14-may-15}{Insert reason for time-critical observations.}
+\TimeCritical{D}{12-may-15}{14-may-15}{Insert reason for time-critical observations.}
+
+
+% 3. UNSUITABLE PERIOD(S) OF TIME
+%
+% 1st argument: run ID
+% Valid values: run IDs specified in BOX 3
+%
+% 2nd argument: Chilean start date for the unsuitable time
+% Format: dd-mmm-yyyy
+% This parameter is NOT checked at the pdfLaTeX compilation.
+%
+% 3rd argument: Chilean end date for the unsuitable time
+% Format: dd-mmm-yyyy
+% This parameter is NOT checked at the pdfLaTeX compilation.
+
+\UnsuitableTimes{A}{15-jul-15}{18-jul-15}{Insert explanation of unsuitable time here.}
+\UnsuitableTimes{B}{15-jul-15}{18-jul-15}{Insert explanation of unsuitable time here.}
+\UnsuitableTimes{C}{20-jul-15}{23-jul-15}{Insert explanation of unsuitable time here.}
+
+% 4. LINK FOR COORDINATED OBSERVATIONS BETWEEN DIFFERENT RUNS.
+%
+% 1st argument: run ID
+% Valid values: run IDs specified in BOX 3
+%
+% 2nd argument: relationship
+% Valid value: after, simultaneous
+%
+% 3rd argument: run ID
+% Valid values: run IDs specified in BOX 3
+
+\Link{B}{after}{A}{10}
+\Link{C}{after}{B}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%---- BOX 14 -----------------------------------------------------------
+%
+% INSTRUMENT CONFIGURATIONS:
+%
+% Uncomment only the lines related to instrument configuration(s)
+% needed for the acquisition of your planned observations.
+%
+% 1st argument: run ID
+% Valid values: run IDs specified in BOX 3
+%
+% 2nd argument: instrument
+% This parameter is NOT checked at the pdfLaTeX compilation.
+%
+% 3rd argument: mode
+% This parameter is NOT checked at the pdfLaTeX compilation.
+%
+% 4th argument: additional information
+% This parameter is NOT checked at the pdfLaTeX compilation.
+%
+% All parameters are mandatory and cannot be empty. Do NOT specify
+% Instrument Configurations for alternative runs.
+
+% Examples (to be commented or deleted)
+
+\INSconfig{A}{FORS2}{Detector}{E2V} 
+\INSconfig{A}{FORS2}{IMG}{ESO filters: provide list HERE}
+\INSconfig{B}{FORS2}{Detector}{MIT} 
+\INSconfig{B}{FORS2}{IMG}{ESO filters: provide list HERE}
+\INSconfig{C}{HARPS}{spectro-polarimetry}{linear}
+\INSconfig{D}{FORS2}{Detector}{MIT} 
+\INSconfig{D}{FORS2}{IMG}{ESO filters: provide list HERE}
+%
+% Real list of instrument configurations
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Paranal
+%
+%-----------------------------------------------------------------------
+%---- NAOS/CONICA at the VLT-UT1 (ANTU)  -------------------------------
+%-----------------------------------------------------------------------
+%
+%\INSconfig{}{NACO}{PRE-IMG}{provide list of filters HERE}
+%
+% Specify the NGS name, distance from target and magnitude  
+%(Vmag preferred, otherwise Rmag) in the target list,
+% and uncomment the following line
+%\INSconfig{}{NACO}{NGS}{-}
+%
+%\INSconfig{}{NACO}{Special Cal}{Select if you have special calibrations}
+%\INSconfig{}{NACO}{Pupil Track}{Select if you need pupil tracking mode}
+%\INSconfig{}{NACO}{Cube}{Select if you need cube mode}
+%
+%\INSconfig{}{NACO}{SAM VIS-WFS}{Provide list of masks and filters HERE}
+%\INSconfig{}{NACO}{SAM IR-WFS}{Provide list of masks and filters HERE}
+%\INSconfig{}{NACO}{SAMPol VIS-WFS}{Provide list of masks and filters HERE}
+%\INSconfig{}{NACO}{SAMPol IR-WFS}{Provide list of masks and filters HERE}
+%
+%\INSconfig{}{NACO}{IMG 54 mas/px IR-WFS}{provide list of filters HERE}
+%\INSconfig{}{NACO}{IMG 27 mas/px IR-WFS}{provide list of filters HERE}
+%\INSconfig{}{NACO}{IMG 13 mas/px IR-WFS}{provide list of filters HERE}
+%\INSconfig{}{NACO}{IMG 54 mas/px VIS-WFS}{provide list of filters HERE}
+%\INSconfig{}{NACO}{IMG 27 mas/px VIS-WFS}{provide list of filters HERE}
+%\INSconfig{}{NACO}{IMG 13 mas/px VIS-WFS}{provide list of filters HERE}
+%
+%\INSconfig{}{NACO}{CORONA AGPM VIS-WFS}{provide list of filters (L',NB-3.74,NB-4.05) HERE}
+%\INSconfig{}{NACO}{CORONA AGPM IR-WFS}{provide list of filters (L',NB-3.74,NB-4.05) HERE}
+%
+%\INSconfig{}{NACO}{POL 54 mas/px IR-WFS}{provide list of filters HERE}
+%\INSconfig{}{NACO}{POL 27 mas/px IR-WFS}{provide list of filters HERE}
+%\INSconfig{}{NACO}{POL 13 mas/px IR-WFS}{provide list of filters HERE}
+%\INSconfig{}{NACO}{POL 54 mas/px VIS-WFS}{provide list of filters HERE}
+%\INSconfig{}{NACO}{POL 27 mas/px VIS-WFS}{provide list of filters HERE}
+%\INSconfig{}{NACO}{POL 13 mas/px VIS-WFS}{provide list of filters HERE}
+%
+%\INSconfig{}{NACO}{APP 54 mas/px IR-WFS}{select Lp and/or NB-4.05}
+%\INSconfig{}{NACO}{APP 27 mas/px IR-WFS}{select Lp and/or NB-4.05}
+%\INSconfig{}{NACO}{APP 54 mas/px VIS-WFS}{select Lp and/or NB-4.05}
+%\INSconfig{}{NACO}{APP 27 mas/px VIS-WFS}{select Lp and/or NB-4.05}
+%
+%\INSconfig{}{NACO}{SPEC IR-WFS}{provide the list of spectroscopic modes HERE}
+%\INSconfig{}{NACO}{SPEC VIS-WFS}{provide the list of spectroscopic modes HERE}
+% % 
+%
+
+%
+%-----------------------------------------------------------------------
+%---- FORS2 at the VLT-UT1 (ANTU) --------------------------------------
+%-----------------------------------------------------------------------
+%If you require the E2V (Blue) detector uncomment the following line
+%\INSconfig{}{FORS2}{Detector}{E2V}
+%
+%If you require the MIT (RED) detector uncomment the following line
+%\INSconfig{}{FORS2}{Detector}{MIT}
+%
+% If you require the High-Resolution  collimator uncomment the following line
+%\INSconfig{}{FORS2}{collimator}{HR}
+%
+% Uncomment the line(s) corresponding to the imaging mode(s) you require and
+% provide the list of filters needed  for your observations:
+%
+%\INSconfig{}{FORS2}{PRE-IMG}{ESO filters: provide list HERE}
+%\INSconfig{}{FORS2}{IMG}{ESO filters: provide list HERE}
+%\INSconfig{}{FORS2}{IMG}{User's own filters (to be described in text)}
+%\INSconfig{}{FORS2}{IPOL}{ESO filters: provide list HERE}
+%\INSconfig{}{FORS2}{IPOL}{User's own filters (to be described in text)}
+%\INSconfig{}{FORS2}{HIT-MS}{Provide list of grisms HERE}
+%
+%
+% Uncomment the line(s) corresponding to the spectroscopic mode(s) you require and
+% provide the list of grism+filter combination needed  for your observations:
+%
+%\INSconfig{}{FORS2}{LSS}{Provide list of grism+filter combinations HERE}
+%\INSconfig{}{FORS2}{MOS}{Provide list of grism+filter combinations HERE}
+%\INSconfig{}{FORS2}{PMOS}{Provide list of grism+filter combinations HERE}
+%\INSconfig{}{FORS2}{MXU}{Provide list of grism+filter combinations HERE}
+%\INSconfig{}{FORS2}{HITI}{ESO filters: provide list HERE}
+%\INSconfig{}{FORS2}{HIT-OS}{Provide list of grisms HERE}
+%
+% Uncomment the following line for Rapid Response Mode observations
+%
+%\INSconfig{}{FORS2}{RRM}{yes}
+%
+%-----------------------------------------------------------------------
+%---- KMOS at the VLT-UT1 (ANTU) ---------------------------------------
+%-----------------------------------------------------------------------
+%
+%\INSconfig{}{KMOS}{IFU}{provide list of settings (IZ, YJ, H, K, HK) here} 
+%
+%-----------------------------------------------------------------------
+%---- FLAMES at the VLT-UT2 (KUEYEN) -----------------------------------
+%-----------------------------------------------------------------------
+%\INSconfig{}{FLAMES}{UVES}{Specify the UVES setup below}
+%\INSconfig{}{FLAMES}{GIRAFFE-MEDUSA}{Specify the GIRAFFE setup below}
+%\INSconfig{}{FLAMES}{GIRAFFE-IFU}{Specify the GIRAFFE setup below}
+%\INSconfig{}{FLAMES}{GIRAFFE-ARGUS}{Specify the GIRAFFE setup below}
+%\INSconfig{}{FLAMES}{Combined: UVES + GIRAFFE-MEDUSA}{Specify the UVES and
+%GIRAFFE setups below}
+%\INSconfig{}{FLAMES}{Combined: UVES + GIRAFFE-IFU}{Specify the UVES and
+%GIRAFFE setups below}
+%\INSconfig{}{FLAMES}{Combined: UVES + GIRAFFE-ARGUS}{Specify the UVES and
+%GIRAFFe setups below}
+%
+%
+% If you have selected UVES, either standalone or in combined mode,
+% please specify the UVES standard setup(s) to be used
+%\INSconfig{}{FLAMES}{UVES}{standard setup Red 520}
+%\INSconfig{}{FLAMES}{UVES}{standard setup Red 580}
+%\INSconfig{}{FLAMES}{UVES}{standard setup Red 580 + simultaneous calibration}
+%\INSconfig{}{FLAMES}{UVES}{standard setup Red 860}
+%
+%\INSconfig{}{FLAMES}{GIRAFFE}{fast readout mode 625kHz VM only}
+%
+% If you have selected GIRAFFE, either standalone or in combined mode
+% please specify the GIRAFFE standard setups(s) to be used
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR01 379.0}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR02 395.8}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR03 412.4}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR04 429.7}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR05 447.1 A}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR05 447.1 B}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR06 465.6}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR07 484.5 A}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR07 484.5 B}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR08 504.8}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR09 525.8 A}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR09 525.8 B}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR10 548.8}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR11 572.8}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR12 599.3}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR13 627.3}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR14 651.5 A}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR14 651.5 B}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR15 665.0}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR15 679.7}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR16 710.5}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR17 737.0 A}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR17 737.0 B}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR18 769.1}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR19 805.3 A}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR19 805.3 B}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR20 836.6 A}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR20 836.6 B}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR21 875.7}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR22 920.5 A}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup HR22 920.5 B}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup LR01 385.7}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup LR02 427.2}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup LR03 479.7}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup LR04 543.1}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup LR05 614.2}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup LR06 682.2}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup LR07 773.4}
+%\INSconfig{}{FLAMES}{GIRAFFE}{standard setup LR08 881.7}
+%
+%\INSconfig{}{FLAMES}{GIRAFFE}{fast readout mode 625kHz VM only}
+%
+%-----------------------------------------------------------------------
+%---- UVES at the VLT-UT2 (KUEYEN) -------------------------------------
+%-----------------------------------------------------------------------
+%
+%\INSconfig{}{UVES}{BLUE}{Standard setting: 346}
+%\INSconfig{}{UVES}{BLUE}{Standard setting: 437}
+%\INSconfig{}{UVES}{BLUE}{Non-std setting: provide central wavelength  HERE}
+%
+%\INSconfig{}{UVES}{RED}{Standard setting: 520}
+%\INSconfig{}{UVES}{RED}{Standard setting: 580}
+%\INSconfig{}{UVES}{RED}{Standard setting: 600}
+%\INSconfig{}{UVES}{RED}{Iodine cell standard setting: 600}
+%\INSconfig{}{UVES}{RED}{Standard setting: 860}
+%\INSconfig{}{UVES}{RED}{Non-std setting: provide central wavelength HERE}
+%
+%\INSconfig{}{UVES}{DIC-1}{Standard setting: 346+580}
+%\INSconfig{}{UVES}{DIC-1}{Standard setting: 390+564}
+%\INSconfig{}{UVES}{DIC-1}{Standard setting: 346+564}
+%\INSconfig{}{UVES}{DIC-1}{Standard setting: 390+580}
+%\INSconfig{}{UVES}{DIC-1}{Non-std setting: provide central wavelength HERE}
+%
+%\INSconfig{}{UVES}{DIC-2}{Standard setting: 437+860}
+%\INSconfig{}{UVES}{DIC-2}{Standard setting: 346+860}
+%\INSconfig{}{UVES}{DIC-2}{Standard setting: 390+860}
+%
+%\INSconfig{}{UVES}{DIC-2}{Standard setting: 437+760}
+%\INSconfig{}{UVES}{DIC-2}{Standard setting: 346+760}
+%\INSconfig{}{UVES}{DIC-2}{Standard setting: 390+760}
+%\INSconfig{}{UVES}{DIC-2}{Non-std setting: provide central wavelength HERE}
+%
+%\INSconfig{}{UVES}{Field Derotation}{yes}
+%\INSconfig{}{UVES}{Image slicer-1}{yes}
+%\INSconfig{}{UVES}{Image slicer-2}{yes}
+%\INSconfig{}{UVES}{Image slicer-3}{yes}
+%\INSconfig{}{UVES}{Iodine cell}{yes}
+%\INSconfig{}{UVES}{Longslit Filters}{Provide list of filters HERE}
+%
+%\INSconfig{}{UVES}{RRM}{yes}
+%
+%
+%-----------------------------------------------------------------------
+%---- SPHERE at the VLT-UT3 (MELIPAL) -----------------------------------
+%-----------------------------------------------------------------------
+%
+%
+% Pupil or field tracking?
+% Mode choices: IRDIS-CI, IRDIS-DBI, IRDIFS, IRDIFS-EXT, ZIMPOL-I
+%               (Not relevant for ZIMPOL-P1 or ZIMPOL-P2)
+%--------------------
+% IRDIFS: 
+% Coronagraph combination choices:
+%   IRDIFS:     None, N-ALC-YJH-S, N-ALC-YJH-L, N-CLC-SW-L, N-4Q-YJH
+%   IRDIFS-EXT: None, N-ALC-YJH-S, N-ALC-YJH-L, N-ALC-Ks
+% Filter choices for IRDIS in IRDIFS mode
+%   IRDIFS:     DB-H23, DB-ND23, DB-H34
+%   IRDIFS-EXT: DB-K12
+%---------------------
+% IRDIS imaging (alone):
+% Coronagraph combination choices for IRDIS imaging modes (see UM for details)
+%   IRDIS-CI:  None, N-ALC-Y, N-ALC-YJ-S, N-ALC-YJ-L, N-ALC-YJH-S, 
+%                    N-ALC-YJH-L, N-ALC-Ks, N-4Q-YJH, N-4Q-Ks
+%   IRDIS-DBI: None, N-ALC-Y, N-ALC-YJ-S, N-ALC-YJ-L, N-ALC-YJH-S, 
+%                    N-ALC-YJH-L, N-ALC-Ks, N-4Q-YJH, N-4Q-Ks
+% Filter choices:
+%   IRDIS-CI:  BB-Y, BB-J, BB-H, BB-Ks, NB-Hel, NB-CntJ, NB-CntH,
+%              NB-CntK1, NB-BrG, NB-CntK2, NB-PaB, NB-FeII, NB-H2, NB-CO
+%   IRDIS-DBI: DB-Y23, DB-J23, DB-H23, DB-NDH23,  DB-H34, DB-K12 
+%---------------------
+% IRDIS spectroscopy:
+% Coronagraphic slit/grism combinations for IRDIS-LSS:
+%   IRDIS-LSS: N-S-LR-WL, N-S-MR-WL
+%---------------------
+% ZIMPOL imaging: 
+% Coronagraph choices:
+%   ZIMPOL-I: None, V-CLC-M-WF, V-CLC-M-NF, V-CLC-L-WF, V-CLC-XL-WF
+% Filter choices:
+%   ZIMPOL-I: RI, R-PRIM, I-PRIM, V, V-S, V-L, N-R, 730-NB, N-I, I-L,
+%             KI,  TiO-717, CH4-727, Cnt748, Cnt820, HeI, OI-630,
+%             CntHa, B-Ha, N-Ha, Ha-NB
+%--------------------
+% ZIMPOL polarimetry:
+% Coronagraph choices:
+%    ZIMPOL-P1: None, V-CLC-S-WF, V-CLC-M-WF, V-CLC-L-WF, V-CLC-XL-WF, V-CLC-MT-WF
+%    ZIMPOL-P2: None, V-CLC-S-WF, V-CLC-M-WF, V-CLC-L-WF, V-CLC-XL-WF, V-CLC-MT-WF
+% Filter choices:
+%    ZIMPOL-P1: RI, R-PRIM, I-PRIM, V, N-R, N-I, KI, TiO-717, 
+%               CH4-727, Cnt748, Cnt820, CntHa, N-Ha, B-Ha     
+%    ZIMPOL-P2: RI, R-PRIM, I-PRIM, V, N-R, N-I, KI, TiO-717, 
+%               CH4-727, Cnt748, Cnt820, CntHa, N-Ha, B-Ha 
+% Readout mode choice for ZIMPOL
+%    ZIMPOL-P1: FastPol, SlowPol
+%    ZIMPOL-P2: FastPol, SlowPol
+%-------------------
+%
+% One entry per mode. Repeat the entry for each mode.
+%
+%\INSconfig{}{SPHERE}{Pupil}{mode}
+%\INSconfig{}{SPHERE}{Field}{mode}
+%
+% One entry per combination. Repeat the entry for each combination.
+%
+%\INSconfig{}{SPHERE}{IRDIFS}{Coronagraph/filter combination for IRDIFS}
+%\INSconfig{}{SPHERE}{IRDIFS-EXT}{Coronagraph/filter combination for IRDIFS-EXT}
+%
+%\INSconfig{}{SPHERE}{IRDIS-CI}{Coronagraph/filter combination for IRDIS-CI}
+%\INSconfig{}{SPHERE}{IRDIS-DBI}{Coronagraph/filter combination for IRDIS-DBI}
+%
+%\INSconfig{}{SPHERE}{IRDIS-LSS}{Coronagraphic slit/grism combination for IRDIS-LSS}
+%
+%\INSconfig{}{SPHERE}{ZIMPOL-I}{Coronagraph/filter combination for ZIMPOL-I}
+%
+%\INSconfig{}{SPHERE}{ZIMPOL-P1}{Coronagraph/filter/readout mode for ZIMPOL-P1}
+%\INSconfig{}{SPHERE}{ZIMPOL-P2}{Coronagraph/filter/readout mode for ZIMPOL-P2}
+
+
+%-----------------------------------------------------------------------
+%---- VIMOS at the VLT-UT3 (MELIPAL) -----------------------------------
+%-----------------------------------------------------------------------
+%
+%\INSconfig{}{VIMOS}{PRE-IMG}{ESO filters: enter the list of filters}
+%\INSconfig{}{VIMOS}{IMG}{ESO filters: enter the list of filters}
+%\INSconfig{}{VIMOS}{IFU 0.67"/fibre}{LR-Red}
+%\INSconfig{}{VIMOS}{IFU 0.67"/fibre}{LR-Blue}
+%\INSconfig{}{VIMOS}{IFU 0.67"/fibre}{MR}
+%\INSconfig{}{VIMOS}{IFU 0.67"/fibre}{HR-Red}
+%\INSconfig{}{VIMOS}{IFU 0.67"/fibre}{HR-Orange}
+%\INSconfig{}{VIMOS}{IFU 0.67"/fibre}{HR-Blue}
+%
+%\INSconfig{}{VIMOS}{IFU 0.33"/fibre}{LR-Red}
+%\INSconfig{}{VIMOS}{IFU 0.33"/fibre}{LR-Blue}
+%\INSconfig{}{VIMOS}{IFU 0.33"/fibre}{MR}
+%\INSconfig{}{VIMOS}{IFU 0.33"/fibre}{HR-Red}
+%\INSconfig{}{VIMOS}{IFU 0.33"/fibre}{HR-Orange}
+%\INSconfig{}{VIMOS}{IFU 0.33"/fibre}{HR-Blue}
+%
+%\INSconfig{}{VIMOS}{MOS-grisms}{LR-Red}
+%\INSconfig{}{VIMOS}{MOS-grisms}{LR-Blue}
+%\INSconfig{}{VIMOS}{MOS-grisms}{MR}
+%\INSconfig{}{VIMOS}{MOS-grisms}{HR-Red}
+%\INSconfig{}{VIMOS}{MOS-grisms}{HR-Orange}
+%\INSconfig{}{VIMOS}{MOS-grisms}{HR-Blue}
+%
+%\INSconfig{}{VIMOS}{MOS-slits-targets}{0.6" < slit width < 1.4", targets:stellar}
+%\INSconfig{}{VIMOS}{MOS-slits-targets}{0.6" < slit width < 1.4", targets:extended}
+%\INSconfig{}{VIMOS}{MOS-slits-targets}{slit width > 1.4", targets:stellar}
+%\INSconfig{}{VIMOS}{MOS-slits-targets}{slit width > 1.4", targets:extended}
+%\INSconfig{}{VIMOS}{MOS-masks}{Enter here number of mask sets (1 set = 4 quadrants)}
+%
+%
+%%-----------------------------------------------------------------------
+%---- HAWKI at the VLT-UT4 (YEPUN) -----------------------------------
+%-----------------------------------------------------------------------
+%
+%\INSconfig{}{HAWKI}{PRE-IMG}{provide list of filters (Y,J,H,Ks,CH4,BrG,H2,NB1190,NB1060,NB2090) HERE}
+%\INSconfig{}{HAWKI}{IMG}{provide list of filters (Y,J,H,Ks,CH4,BrG,H2,NB1190,NB1060,NB2090) HERE}
+%\INSconfig{}{HAWKI}{BURST}{Provide list of filters  (Y,J,H,Ks,CH4,BrG,H2,NB1190,NB1060,NB2090) HERE}
+%\INSconfig{}{HAWKI}{FASTJITT}{Provide list of filters  (Y,J,H,Ks,CH4,BrG,H2,NB1190,NB1060,NB2090) HERE}
+%\INSconfig{}{HAWKI}{RRM}{yes}
+%
+%-----------------------------------------------------------------------
+%---- SINFONI at the VLT-UT4 (YEPUN) -----------------------------------
+%-----------------------------------------------------------------------
+%
+
+%\INSconfig{}{SINFONI}{PRE-IMG}{provide list of setting(s) (J,H,K,H+K)}
+%
+%\INSconfig{}{SINFONI}{IFS 250mas/pix no-AO}{provide list of setting(s) (J,H,K,H+K) HERE}
+%\INSconfig{}{SINFONI}{IFS 100mas/pix no-AO}{provide list of setting(s) (J,H,K,H+K) HERE}
+%
+% If you plan to use a NGS, please specify the NGS name and magnitude (Rmag preferred,
+% otherwise Vmag) in target list.
+%\INSconfig{}{SINFONI}{IFS 250mas/pix NGS}{provide list of setting(s) (J,H,K,H+K) HERE}
+%\INSconfig{}{SINFONI}{IFS 100mas/pix NGS}{provide list of setting(s) (J,H,K,H+K) HERE}
+%\INSconfig{}{SINFONI}{IFS 25mas/pix NGS}{provide list of setting(s) (J,H,K,H+K) HERE}
+%
+% If you plan to use the LGS, please specify the TTS name and magnitude (Rmag preferred,
+% otherwise Vmag) in target list.
+%\INSconfig{}{SINFONI}{IFS 250mas/pix LGS}{provide list of setting(s) (J,H,K,H+K) HERE}
+%\INSconfig{}{SINFONI}{IFS 100mas/pix LGS}{provide list of setting(s) (J,H,K,H+K) HERE}
+%\INSconfig{}{SINFONI}{IFS 25mas/pix LGS}{provide list of setting(s) (J,H,K,H+K) HERE}
+%
+% If you plan to use the LGS without a TTS (seeing enhancer mode) then
+% please leave the TTS name blank in the target list.
+%\INSconfig{}{SINFONI}{IFS 250mas/pix LGS-noTTS}{provide list of setting(s) (J,H,K,H+K) HERE}
+%\INSconfig{}{SINFONI}{IFS 100mas/pix LGS-noTTS}{provide list of setting(s) (J,H,K,H+K) HERE}
+%\INSconfig{}{SINFONI}{IFS 25mas/pix LGS-noTTS}{provide list of setting(s) (J,H,K,H+K) HERE}
+%
+% Select if you have special calibrations
+%\INSconfig{}{SINFONI}{Special Cal}{-}
+%
+% Select if you need pupil tracking mode
+%\INSconfig{}{SINFONI}{Pupil Track}{-}
+%
+% Select for RRM
+%\INSconfig{}{SINFONI}{RRM}{yes}
+%
+%-----------------------------------------------------------------------
+%---- MUSE at the VLT-UT4 (YEPUN) -----------------------------------
+%-----------------------------------------------------------------------
+%
+%\INSconfig{}{MUSE}{WFM-NOAO-N}{-}
+%\INSconfig{}{MUSE}{WFM-NOAO-E}{-}
+%
+% Uncomment the following line for Rapid Response Mode observations
+%\INSconfig{}{MUSE}{RRM}{yes}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% La Silla
+%
+%-----------------------------------------------------------------------
+%---- HARPS at the 3.6 -------------------------------------------------
+%-----------------------------------------------------------------------
+%
+%\INSconfig{}{HARPS}{spectro-Thosimult}{HARPS}
+%\INSconfig{}{HARPS}{WAVE}{HARPS}
+%\INSconfig{}{HARPS}{spectro-ObjA(B)}{HARPS}
+%\INSconfig{}{HARPS}{spectro-ObjA(B)}{EGGS}
+%\INSconfig{}{HARPS}{spectro-polarimetry}{linear}
+%\INSconfig{}{HARPS}{spectro-polarimetry}{circular}
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Chajnantor
+%-----------------------------------------------------------------------
+%---- SHFI at APEX ----------------------------------------------
+%-----------------------------------------------------------------------
+%
+%\INSconfig{}{SHFI}{APEX-1}{Please enter Central Frequency 211 to 275 GHz}
+%\INSconfig{}{SHFI}{APEX-2}{Please enter Central Frequency 275 to 370 GHz}
+%\INSconfig{}{SHFI}{APEX-3}{Please enter Central Frequency 385 to 500 GHz} 
+%\INSconfig{}{SHFI}{APEX-T2}{Please enter Central Frequency 1.25 to 1.39 THz}
+%
+%-----------------------------------------------------------------------
+%---- LABOCA at APEX ----------------------------------------------
+%-----------------------------------------------------------------------
+%
+%\INSconfig{}{LABOCA}{IMG}{-}
+%\INSconfig{}{LABOCA}{PHOT}{-}
+%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% VISITOR SPECIAL INSTRUMENT PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% The following commands are only needed when bringing a Visitor
+% Special Instrument, in which case it is MANDATORY to uncomment them
+% and provide all the required information.
+%
+%\Desc{}   %Description of the instrument and its operation
+%\Comm{}   %On which telescope(s) has instrument been commissioned/used
+%\WV{}     %Total weight and value of equipment to be shipped
+%\Wfocus{} %Weight at the focus (including ancillary equipment)
+%\Interf{} %Compatibility of attachment interface with required focus
+%\Focal{}  %Back focal distance value
+%\Acqu{}   %Acquisition, focusing, and guiding procedure
+%\Softw{}  %Compatibility with ESO software standards (data handling)
+%\Suppl{}  %Estimate of services expected from ESO (in person days)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% THE END %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\MakeProposal
+\end{document}
+
+

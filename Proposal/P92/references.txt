@@ -1,0 +1,9 @@
+\textbf{[1]} Larson, D., et~al. 2011, ApJS, 192, 16 
+$\bullet$ \textbf{[2]} White, S. D. M., \& Rees, M. J. 1978, MNRAS, 183, 341 
+$\bullet$ \textbf{[3]} Lundgren, B., et~al. 2013, ApJ submitted 
+$\bullet$ \textbf{[4]} Muzzin, A., et~al., 2013a, ApJ submitted, arXiv/1303.4410
+$\bullet$ \textbf{[5]} Brammer, G. et~al., 2009, ApJL
+$\bullet$ \textbf{[6]} Brammer, G. et~al., 2011, ApJ
+$\bullet$ \textbf{[7]} Marchesini, D. et~al., 2010, ApJ
+$\bullet$ \textbf{[8]} Brammer, G. et~al., 2007, ApJL
+$\bullet$ \textbf{[9]} Bouwens, R. et~al., 2013, ApJL

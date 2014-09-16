@@ -1,0 +1,1952 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%.IDENTIFICATION $Id: usersmanual.tex.src,v 1.25 2007/09/04 14:53:32 fsogni Exp $
+%.LANGUAGE       TeX, LaTeX
+%.ENVIRONMENT    ESOFORM
+%.PURPOSE        ESOFORM User manual
+%.AUTHOR         This file has been updated by the Observing Programmes Office (OPO)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{article}
+\topmargin=-1cm
+\textheight=23.7cm
+\textwidth=17cm
+\oddsidemargin=-0.5cm
+\itemsep=-5pt
+
+\usepackage{color}
+\definecolor{webgreen}{rgb}{0,.5,0}
+\definecolor{webbrown}{rgb}{.6,0,0}
+\definecolor{webyellow}{rgb}{0.98,0.92,0.73}
+\definecolor{webgray}{rgb}{.753,.753,.753}
+\definecolor{webred}{rgb}{.85,0,0}
+\definecolor{webblue}{rgb}{0,0,.8}
+
+\usepackage[pdftex, bookmarksnumbered=true, breaklinks=true, 
+  colorlinks=true, pdfstartview=FitV, linkcolor=webred, citecolor=webred,
+  urlcolor=webblue]{hyperref}
+
+% Astro definitions
+\def\ang{\AA} 
+\def\degpoint{\mbox{$^\circ\mskip-7.0mu.\,$}}
+\def\halpha{\mbox{H$\alpha$}}
+\def\hbeta{\mbox{H$\beta$}}
+\def\hgamma{\mbox{H$\gamma$}}
+\def\kms{\,km~s$^{-1}$}      % note leading thinspace
+\def\lya{\mbox{Ly$\alpha$}}
+\def\lyb{\mbox{Ly$\beta$}}
+\def\minpoint{\mbox{$'\mskip-4.7mu.\mskip0.8mu$}}
+\def\mv{\mbox{$m_{_V}$}}
+\def\Mv{\mbox{$M_{_V}$}}
+\def\peryr{\mbox{$\>\rm yr^{-1}$}}
+\def\secpoint{\mbox{$''\mskip-7.6mu.\,$}}
+\def\sqdeg{\mbox{${\rm deg}^2$}}
+\def\squig{\sim\!\!}
+\def\subsun{\mbox{$_{\normalsize\odot}$}}
+\def\deg{\hbox{$^\circ$}}
+\def\sun{\hbox{$\odot$}}
+\def\earth{\hbox{$\oplus$}}
+\def\lesssim{\mathrel{\hbox{\rlap{\hbox{\lower4pt\hbox{$\sim$}}}\hbox{$<$}}}}
+\def\gtrsim{\mathrel{\hbox{\rlap{\hbox{\lower4pt\hbox{$\sim$}}}\hbox{$>$}}}}
+\def\la{\mathrel{\hbox{\rlap{\hbox{\lower4pt\hbox{$\sim$}}}\hbox{$<$}}}}
+\def\ga{\mathrel{\hbox{\rlap{\hbox{\lower4pt\hbox{$\sim$}}}\hbox{$>$}}}}
+\def\sq{\hbox{\rlap{$\sqcap$}$\sqcup$}}
+\def\arcmin{\hbox{$^\prime$}}
+\def\arcsec{\hbox{$^{\prime\prime}$}}
+\def\fd{\hbox{$.\!\!^{\rm d}$}}
+\def\fh{\hbox{$.\!\!^{\rm h}$}}
+\def\fm{\hbox{$.\!\!^{\rm m}$}}
+\def\fs{\hbox{$.\!\!^{\rm s}$}}
+\def\fdg{\hbox{$.\!\!^\circ$}}
+\def\farcm{\hbox{$.\mkern-4mu^\prime$}}
+\def\farcs{\hbox{$.\!\!^{\prime\prime}$}}
+\def\fp{\hbox{$.\!\!^{\scriptscriptstyle\rm p}$}}
+\def\micron{\hbox{$\mu$m}}
+\def\case#1#2{\hbox{$\frac{#1}{#2}$}}
+\def\slantfrac#1#2{\hbox{$\,^#1\!/_#2$}}
+\def\onehalf{\slantfrac{1}{2}}
+\def\onethird{\slantfrac{1}{3}}
+\def\twothirds{\slantfrac{2}{3}}
+\def\onequarter{\slantfrac{1}{4}}
+\def\threequarters{\slantfrac{3}{4}}
+\def\ubvr{\hbox{$U\!BV\!R$}}            % UBVR system
+\def\ub{\hbox{$U\!-\!B$}}               % U-B
+\def\bv{\hbox{$B\!-\!V$}}               % B-V
+\def\vr{\hbox{$V\!-\!R$}}               % V-R
+\def\ur{\hbox{$U\!-\!R$}}               % U-R
+\def\jhk{\hbox{$J\!H\!K$}}              % JHK system
+\def\jh{\hbox{$J\!-\!H$}}               % J-H
+\def\hk{\hbox{$H\!-\!K$}}               % H-K
+\def\jk{\hbox{$J\!-\!K$}}               % J-K
+\def\nodata{\multicolumn{1}{c}{$\cdots$}}
+\makeatletter
+\def\ion#1#2{#1$\;${\small\rm\@Roman{#2}}\relax}
+\makeatother
+
+\begin{document}
+
+\centerline{{\Large{\bf ESOFORM PDF\LaTeX\ MACROS}}}
+\bigskip
+\centerline{{\Large{\bf USER MANUAL FOR PHASE~1 PROPOSALS }}}
+\bigskip
+\centerline{{\bf European Southern Observatory }}
+\vspace{3cm}
+
+\def\period{95}
+
+\section*{CONTENTS} 
+
+\begin{enumerate}  
+\item Introduction 
+\item New features for Period 95
+\item How to fill a Normal Programme template 
+\item How to fill a Large  Programme template 
+\item Submission of the application 
+\end{enumerate} 
+
+\vspace{3.0truecm}
+
+\centerline{\large ESO DEADLINE FOR PROPOSAL SUBMISSION }
+\medskip
+\centerline{The ESO deadline for Period 95 proposal submission is:}
+\medskip
+\centerline{\huge \bf 01 October 2014, 12:00 CEST}
+
+\vfill
+
+\noindent This User Manual and the whole ESOFORM Package is
+maintained by the Observing Programmes Office (OPO),
+while the background software
+is provided by the User Support System (USS) Department.
+
+\break
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{INTRODUCTION}
+
+The ESOFORM package has been designed to enable a fully
+electronic preparation and submission of applications for observing
+time on all telescopes located at the European Southern Observatory's
+La Silla Paranal observatory.
+
+{\bf Getting help.} Should you need assistance from ESO to prepare
+your proposal, please send emails to the address
+\href{mailto:esoform@eso.org}{\tt esoform@eso.org} for questions
+related to the ESOFORM package as well as for more general questions
+about Observatory policy, etc...
+You should receive automatic acknowledgment from the system within 
+4 hours. If you do not receive any acknowledgment of your query, 
+please email 
+\href{mailto:opo@eso.org}{\tt opo@eso.org} directly.
+
+For instrument specific questions,
+please email \href{mailto:usd-help@eso.org}{\tt usd-help@eso.org}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{How to Obtain the {\bf New ESOFORM} Proposal Package}
+
+The ESOFORM Proposal Package may be obtained by logging into the ESO
+User Portal at the following address:
+
+\begin{center}
+  \href{http://www.eso.org/UserPortal}{\bf
+    \underline{http://www.eso.org/UserPortal}}. 
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Description of the Content of the ESOFORM Proposal
+  Package}
+
+\noindent The ESOFORM package consists of:
+\begin{itemize}  
+\item two \LaTeX\ class files ({\tt esoform.cls} and {\tt
+    esoformlarge.cls}) that, together with the style files ({\tt
+    common2e.sty}
+ and {\tt config.sty}), define
+  all the macros required to generate the application forms for
+  Normal and Large Programmes, respectively;
+\item two template proposals ({\tt  template.tex} for Normal
+  Programme applications, and  {\tt templatelarge.tex}  for  Large  Programme 
+    applications), which the  users   may  edit directly in  order  to 
+    create a new proposal;
+\item this Users' Manual ({\tt usersmanual.tex}), which contains all the 
+    information  required to fill the templates, as well as
+    instructions on the electronic submission of proposals (via the
+    Web-based WASP interface in the ESO User Portal);
+
+\item a short README file.
+\end{itemize} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{General Features}
+
+The present manual describes the use of the ESOFORM templates,
+which are composed of macros that are defined in the ESOFORM class and
+style files. The macros allow the 
+computer controlled typesetting of applications for observing time at
+ESO.  If you are already familiar with \TeX\ or \LaTeX, you will
+probably have no difficulty using the macros provided.  You should
+follow the instructions given below and keep in mind that all your
+input must conform to the standard \LaTeX\ rules.
+
+The ESOFORM package has been prepared with the following
+version of pdf\LaTeX: pdf\TeX, Version 3.141592 (Web2C 7.5.5).  If you
+encounter any serious pdf\TeX\ or pdf\LaTeX\ problem, please send an
+email to the address \href{mailto:esoformeso.org}{\tt esoform@eso.org},
+describing the problem and indicating which version of pdf\LaTeX\ you
+are using.  For ease of use, we have adopted (and already included in
+the class files {\tt esoform.cls},  and {\tt esoformlarge.cls}) 
+a number of \LaTeX\ definitions of commonly used
+astronomical symbols (see list in Table~\ref{tab:symbols}).
+
+\begin{table}[t]
+\caption{Astronomical \LaTeX\ Symbols}
+\label{tab:symbols}
+\medskip
+\begin{tabular*}{\hsize}{@{\extracolsep{0pt}}r@{\extracolsep{20pt}}l@{\extracolsep{\fill}}r@{\extracolsep{20pt}}ll@{\extracolsep{0pt}}}
+\hline
+\hline
+& & & &\\
+\verb"\ang"      & \ang      & \verb"90\deg"        & 90\deg        & \\
+\verb"\halpha"   & \halpha   & \verb"16\sqdeg"      & 16\sqdeg      & \\
+\verb"\hbeta"    & \hbeta    & \verb"28\arcmin"     & 28\arcmin     & \\
+\verb"\hgamma"   & \hgamma   & \verb"11\arcsec"     & 11\arcsec     & \\
+\verb"\lya"      & \lya      & \verb"5\fd4"         & 5\fd4         & \\
+\verb"\lyb"      & \lyb      & \verb"8\fh2"         & 8\fh2         & \\
+\verb"\mv"       & \mv       & \verb"2\fm56"        & 2\fm56        & \\
+\verb"\Mv"       & \Mv       & \verb"10\fs08"       & 10\fs08       & \\
+\verb"\ubvr"     & \ubvr     & \verb"23\fdg12"      & 23\fdg12      & \\
+\verb"\ub"       & \ub       & \verb"3\farcm6"      & 3\farcm6      & \\
+\verb"\bv"       & \bv       & \verb"0\farcs27"     & 0\farcs27     & \\
+\verb"\vr"       & \vr       & \verb"0\fp4"         & 0\fp4         & \\
+\verb"\ur"       & \ur       & \verb"\onehalf"      & \onehalf      & \\
+\verb"\jhk"      & \jhk      & \verb"\onethird"     & \onethird     & \\
+\verb"\jh"       & \jh       & \verb"\twothirds"    & \twothirds    & \\
+\verb"\hk"       & \hk       & \verb"\onequarter"   & \onequarter   & \\
+\verb"\jk"       & \jk       & \verb"\threequarters"& \threequarters& \\
+\verb"\ion{C}{4}"& \ion{C}{4}& \verb"\slantfrac{{22}}{7}" & \slantfrac{{22}}{7} & (braces unless one character) \\
+\verb"3.6\micron"& 3.6\micron& \verb"$\squig$" & $\squig$ & (math mode only) \\
+\verb"25\kms"    & 25\kms    & \verb"$\lesssim$" & $\lesssim$ & (math mode only) \\
+\verb"\peryr"    & \peryr    & \verb"$\gtrsim$"  & $\gtrsim$ & (math mode only) \\
+\verb"M\subsun"  & M\subsun  & \verb"$\la$"      & $\la$ & (math mode only) \\
+\verb"\sun"      & \sun      & \verb"$\ga$"      & $\ga$ & (math mode only) \\
+\verb"\earth"    & \earth    & \verb"\nodata"  & \nodata & (tables only) \\
+\verb"\sq"       & \sq       & \verb"" & & \\[4pt]
+\hline
+\end{tabular*}
+\end{table}
+
+For every observing period, the layout of the instruments will be
+updated according to the anticipated availability of instruments at
+the La Silla Paranal Observatory. The ESO Call for Proposals for the 
+corresponding period has all the latest information on instrument availability
+and any significant changes in performance. {\it Please note that {\bf only}
+  proposals prepared using the {\bf latest} version of
+  ESOFORM will be valid and accepted by ESO.}
+
+\begin{itemize}
+
+\item{\bf ESO proposal submission deadline: }
+Please note that the ESO deadline will be strictly enforced: users should plan accordingly.
+It is the PI's responsibility to resolve any problems related to LaTeX, figure uploads or configuration problems and verify the LaTeX proposal form well before the deadline as ESO cannot provide support beyond 11:00 CET on the day of the deadline.
+The online receiver will switch off at 12:00 CET and no submissions or amendments to submitted proposals can be accepted after this time.
+\end{itemize}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{IMPORTANT REMINDERS AND NEW FEATURES FOR PERIOD 95}
+\label{sec:new}
+
+\begin{itemize}
+
+\item{\bf Normal and Large Programme forms:}
+The Large Programme template ({\tt templatelarge.tex}) must be used to
+prepare Large Programme proposals. The total amount of time requested in a programme determines which proposal template should be used.
+Any programme requesting a total amount of time of 100 hours or more
+must use the Large Programme template.
+The Normal Programme template form {\bf must} be used for all other programmes,
+including the Normal, GTO, ToO, Monitoring and Calibration proposal types.
+
+
+\item{\bf Large Programme Data Products: }
+A key requirement of Large Programmes is the delivery of data products into the ESO Archive. Starting from Period 95, PIs of Large Programmes are required to provide all data products within a reasonable timeframe. Further details are available in the Large Programmes Section of the Call for Proposals document.
+A detailed delivery plan along with the relevant experience of proposing teams
+should be outlined in Sections 6 and 7 of the Large Programme proposal template
+(also see Section~\ref{sec:large}).
+
+\item{\bf Monitoring programme proposals:}  
+Proposers can apply for Monitoring Programmes to monitor targets over several periods.  
+Monitoring Programme proposals should be prepared using the normal template form \verb|template.tex|. 
+The Monitoring Programme type should be specified in this form as follows: \verb|\ProgrammeType{MONITORING}|, also see Table~\ref{tab:insmonitoring}.
+More details on the definition of Monitoring Programmes and instruments available for this type of programme are given in Section~4.2 of the Call for Proposals.
+
+\item{\bf Definition of Service Mode and Visitor Mode runs: }
+%Remove in P95
+An observing programme, as described in a single proposal, may consist of one or more runs.
+Multiple runs should only be requested for observations with different instruments, for different
+observing modes (e.g., service mode, visitor mode or pre-imaging runs).
+Proposers should split Visitor Mode observations at different epochs (e.g., due to different target RAs) into
+separate runs. Conversely, Service Mode runs should not be split
+according to time-critical windows, or used to group targets according to their Right Ascensions.
+
+
+\item{\bf Observing conditions:} The definitions of the observing conditions for Phase 1 and Phase 2
+can be found on the  \href{http://www.eso.org/sci/observing/phase2/ObsConditions.html}{\bf \underline{Observing Conditions}} webpage.
+%Remove in Period 95
+Please note in particular the change of the minimum moon distance for grey conditions since Period 92.
+
+
+\item{\bf Scheduling requirements in visitor mode: }
+Any time constraints related to scheduling visitor mode runs should be flagged
+using the \verb|\HasTimingConstraints| macro.
+Any time constraints specified using the \verb|\TimeCritical| macro 
+will be subject to a strict verification  at proposal submission. Please take
+particular care to ensure
+that the start and end dates of suitable observation windows comply
+with the applicable time specification convention, and that the
+amount of requested time (in the \verb|\ObservingRun| macro) fits
+within the length of the slots indicated in the
+\verb|\TimeCritical| macro.  \\
+Several time intervals might be acceptable for each run 
+(e.g., transits of extrasolar planets
+across their host star); if this is the case the \verb|\TimeCritical| macro should be 
+repeated as many   times as there are adequate alternative observation dates.
+Further details and examples of the
+correct usage are shown in Section~\ref{sec:timecrit}. 
+
+\item \textbf{Precipitable water vapour (PWV):} Users of
+%add VISIR & CRIRES here when they are available again
+APEX instruments in Service Mode must specify an upper limit for PWV
+  as an observing constraint during their Phase 1 and Phase 2
+  preparation. Examples of the correct usage are shown in the ESOFORM package 
+  template files.
+
+ \item{\bf VLTI-ATs:} The baselines offered in Period 95 are listed on the
+\href{http://www.eso.org/sci/facilities/paranal/telescopes/vlti/configuration/index.html}
+{\bf\underline{VLTI baseline}} page.
+
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{HOW TO FILL A NORMAL PROGRAMME TEMPLATE}
+\label{sec:normal}
+
+As mentioned in the Introduction, you should fill in 
+the template file ({\tt template.tex}) with your favourite editor. 
+Instructions for Large Programmes
+({\tt templatelarge.tex}) are given in Sect.~\ref{sec:large}. 
+The easiest way to write a proposal is to modify the
+template file {\tt template.tex} by following the examples therein and the
+detailed instructions given in the present manual. Input in the
+template is allowed {\bf only within the arguments of the provided
+  ESOFORM macros}. The presence of text {\bf outside} the macro
+arguments will lead to {\bf rejection} of the proposal by the
+automatic proposal reception system (see Sect.~\ref{sec:submission}). 
+
+Please note that {\bf it is the responsibility of the 
+  applicants to stay 
+  within the current box limits} and to eliminate potential
+  overfill/overwrite problems. A careful visual check of the
+  generated pdf file is mandatory.
+
+
+\subsection{The Cycle, the Title, the Subcategory Code, the GTO,
+  ToO, RRM, and XMM Flags: {\bf BOX~1}}
+
+The first macros to check in the {\tt template.tex} files are as follows:
+\begin{itemize}
+\item \verb|\Cycle| contains the Period ID for this Call for
+  Proposals, and should NOT be modified by the users.
+\item \verb|\Title| must contain the title of the application (up to
+  two lines).
+\item \verb|\SubCategoryCode| must contain only one subcategory code,
+  corresponding to the keyword (see Table~\ref{tab:categories}) best
+  summarizing the aim of your proposal. 
+  For example, a study of
+  high-redshift clusters of galaxies will have the code A5. 
+  Please note: CALIBRATION proposals MUST have a \verb|SubCategoryCode| of L0.
+\item \verb|\ProgrammeType| should be {\tt NORMAL} for Normal Programmes, 
+ {\tt CALIBRATION} for Calibration, {\tt GTO} for Guaranteed Time Observation 
+ (GTO), {\tt MONITORING} for Monitoring Programmes, or {\tt TOO} for Target of 
+ Opportunity (ToO) programmes.  
+ {\tt LARGE} types are also defined for Large Programmes, but they can only be 
+ used within the corresponding specific template, {\tt templatelarge.tex} 
+ (see Sect.~\ref{sec:large}).\\
+  A CALIBRATION proposal MUST have a SubCategoryCode of L0.\\
+  Note that a GTO proposal should ask only for GTO time; it is
+  compulsory to fill another, non-GTO proposal if you need more non-GTO
+  time, even if it is for exactly the same project. If you submit a
+  TOO proposal, your proposal must include a completed ToO page
+  (see Sect.~\ref{sec:toopage}). If you submit a GTO proposal, you
+  must additionally uncomment and fill in the macro
+  \verb|\GTOcontract|, which is described below.
+\item \verb|\GTOcontract| {\em must\/} be uncommented if the proposal
+  type is GTO. This macro takes one mandatory argument: 
+  the keyword corresponding to the contract or agreement
+  governing the allocation of Guaranteed Time under which the present
+  proposal is submitted. The applicable keyword for each contract or
+  agreement has been communicated by ESO to the coordinator of the
+  respective GTO Team or to the designated contact person. Every
+  single GTO proposal is allowed to request time within the framework
+  of only one GTO contract or agreement. If your project involves
+  Guaranteed Time corresponding to several different agreements, you
+  must submit separate proposals for the time to be charged to each
+  agreement. 
+\item \verb|\ObservationInRRM| must be uncommented if your proposal is
+  a Target of Opportunity proposal applying for Rapid Response Mode
+  (RRM) observations.
+\end{itemize}
+
+\ifodd\period
+ \begin{itemize}
+  \item \verb|\ObservationWithXMM| must be uncommented if your proposal
+   is applying for time under the VLT-XMM agreement (see the Call for
+   Proposals for details on this agreement).  Note that in this case
+   users can apply for both Periods 95 and 96.
+ \end{itemize}
+\else
+ \begin{itemize}
+ \item \verb|\ObservationWithXMM| should be left commented, as for
+   Period 95 it is not possible to apply for time under the
+   VLT-XMM agreement.
+ \end{itemize}
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table}[p]
+\caption{ESO OPC categories and subcategories}
+\label{tab:categories}
+\medskip
+{\small\sf
+\begin{center}
+\begin{tabular}{llcl} 
+\hline\hline
+& & & \\
+Panels & Categories & Code & Subcategories \\
+& & & \\
+\hline 
+& & & \\[-6pt]
+{\bf A}& Cosmology & A1 & Surveys of AGNs and high-z galaxies; \\
+       &           & A2 & Identification studies of extragalactic surveys; \\
+       &           & A3 & Large scale structure and evolution; \\
+       &           & A4 & Distance scale; \\  
+       &           & A5 & Groups and clusters of galaxies; \\  
+       &           & A6 & Gravitational lensing; \\  
+       &           & A7 & Intervening absorption line systems; \\  
+       &           & A8 & High-redshift galaxies (star formation and ISM). \\[4pt]
+%& & & \\
+\hline
+& & & \\[-6pt]
+{\bf B}& Galaxies  & B1 & Morphology and galactic structure; \\  
+       & and       & B2 & Unresolved and resolved stellar populations; \\  
+       & galactic nuclei & B3 & Chemical evolution; \\  
+       &           & B4 & Galaxy dynamics; \\  
+       &           & B5 & Peculiar/interacting galaxies; \\   
+       &           & B6 & Non-thermal processes in galactic nuclei (incl. \\
+       &           &    &  QSRs, QSOs, blazars, Seyfert galaxies, BALs, \\ 
+       &           &    &  radio galaxies, and LINERS); \\  
+       &           & B7 & Thermal processes in galactic nuclei and starburst\\
+       &           &    &  galaxies (incl. ultraluminous \\  
+       &           &    &  IR galaxies, outflows, emission lines, and \\
+       &           &    &  spectral energy distributions); \\  
+       &           & B8 & Central supermassive objects; \\
+       &           & B9 & AGN host galaxies. \\[4pt]
+%& & & \\
+\hline
+& & & \\[-6pt]
+{\bf C}& ISM, & C1 & Gas and dust, giant molecular clouds, cool and hot gas,\\
+       & star formation &   &  diffuse and translucent clouds; \\ 
+       & and            &C2& Chemical processes in the interstellar medium; \\
+       & planetary systems &C3& Star forming regions, globules, protostars, \\
+       &      &    &  HII regions; \\
+       &      & C4 & Pre-main-sequence stars (massive PMS stars, \\
+       &      &    &  Herbig Ae/Be stars and T Tauri stars); \\  
+       &      & C5 & Outflows, stellar jets, HH objects; \\
+       &      & C6 & Main-sequence stars with circumstellar matter, \\
+       &      &    &  early evolution;   \\
+       &      & C7 & Young binaries, brown dwarfs, exosolar planet searches;\\ 
+       &      & C8 & Solar system (planets, comets, small bodies). \\[4pt]  
+%& & & \\
+\hline
+& & & \\[-6pt]
+{\bf D}& Stellar   & D1 & Main-sequence stars; \\
+       & evolution & D2 & Post-main-sequence stars, giants, supergiants, \\
+       &           &    &  AGB stars, post-AGB stars; \\
+       &           & D3 & Pulsating stars and stellar activity; \\
+       &           & D4 & Mass loss and winds; \\
+       &           & D5 & Supernovae, pulsars; \\
+       &           & D6 & Planetary nebulae, nova remnants and \\
+       &           &    &  supernova remnants; \\
+       &           & D7 & Pre-white dwarfs and white dwarfs, neutron stars; \\ 
+       &           & D8 & Evolved binaries, black-hole candidates, novae, \\ 
+       &           &    &  X-ray binaries, CVs; \\
+       &           & D9 & Gamma-ray and X-ray bursters; \\
+       &           & D10& OB associations, open and globular clusters, \\
+       &           &    &  extragalactic star clusters; \\
+       &           & D11& Individual stars in external galaxies, resolved stellar populations;\\
+       &           & D12& Distance scale -- stars.\\[4pt]
+%& & & \\
+\hline
+%& & & \\
+\end{tabular}
+\end{center}
+}
+\end{table}
+
+Your first sequence will then have the following general format:
+\begin{verbatim}
+        \Cycle{95A}
+        \Title{AGN host galaxies}
+        \SubCategoryCode{B9}
+        \ProgrammeType{GTO}
+        \GTOcontract{<your-contract-keyword>)
+\end{verbatim}
+\noindent which means that you would like to study some AGN host
+galaxies, with subcategory code B9, and this would be Guaranteed Time
+Observations within the framework of the contract or agreement
+referred to by keyword \verb|<your-contract-keyword>|.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{The Abstract/Total Time Requested:  {\bf BOX 2}}
+
+The ESOFORM includes a string called the
+``Total Time Requested'' in Box 2. 
+This field remains blank when compiling locally; this 
+is normal and proposers should not be concerned about it.
+The total time requested is only computed in the version of the proposal 
+that is reviewed by the OPC. 
+
+This macro (\verb|\Abstract|) contains the  abstract of the  proposal,
+i.e., a brief summary, in up to nine lines, of your scientific aim.
+\begin{verbatim}
+          \Abstract{ .
+                     .
+                     .
+                     The text of your summary which will usually be 
+                     several lines long. Line breaking will  
+                     automatically be taken care of by LaTeX.
+                     .
+                     .
+                     .              }  <-- Do not forget the
+                                           closing brace !
+\end{verbatim}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Information about the Different Runs: {\bf BOX 3}}
+\label{sec:obsrun}
+
+The next macro (\verb|\ObservingRun|) allows the description of the
+different parameters characterising your observing run(s) and is
+necessary for the scheduling and completion of your programme (see
+examples below). This macro takes ten arguments.
+These must be specified between the ten pairs of curly braces \verb|{}|, 
+which are related to the parameters described below.
+
+\medskip
+
+{\bf 1. RUN ID.} Your programme may involve several observing
+runs, e.g. for complementary use of different telescopes or
+different instruments. Each observing run (up to 26) required by a
+proposal should be identified by a different letter, following the
+sequence A, B, C, \dots, Z as needed.  Provide, in the first pair of
+curly braces, the run identification(s).  For example,
+\begin{verbatim}
+    \ObservingRun{A}{}{}{}{}{}{}{}{}{}
+    \ObservingRun{B}{}{}{}{}{}{}{}{}{}
+\end{verbatim}
+A Normal Programme may have up to 26 runs. Since the space for the
+run description in Box 3 is limited to 10 lines, a new box containing
+the observing runs beyond this limit will be created at the end of the
+proposal form if needed. 
+
+\medskip
+
+{\bf 2. PERIOD KEYWORD.} Provide the period number in the second pair
+of curly braces.  For normal proposals this must always be 95,
+while for  Monitoring programmes this can span up to 4 periods.
+
+\ifodd\period
+ Uncomment for odd periods
+ However, if users are applying under the VLT-XMM agreement,
+ a period of 96 is also valid.
+\fi
+
+\medskip
+
+{\bf 3. INSTRUMENT.} Provide the keyword of the instrument required
+for each observing run. The complete list of keywords of all
+instruments offered in Period 95 for Normal Programmes is
+given in Table~\ref{tab:insnormal}. 
+
+\begin{table}[h]
+\caption{Keywords of Available Instruments for Normal Programmes}
+\label{tab:insnormal}
+\medskip
+\begin{center}
+\begin{tabular}{@{\extracolsep{0pt}}l@{\extracolsep{40pt}}l@{\extracolsep{0pt}}}
+\hline
+\hline \\[-6pt]
+Telescope&Instrument keywords\\[4pt]
+\hline \\[-6pt]
+UT1  &NACO$^1$, FORS2, KMOS\\
+UT2  &FLAMES, XSHOOTER, UVES\\
+UT3  &SPHERE$^2$, VIMOS, VISIR$^3$\\
+UT4  &HAWKI, MUSE, SINFONI\\
+VISTA&VIRCAM\\
+VST  &OMEGACAM$^4$\\
+APEX &CHAMPP$^5$, FLASH$^5$, ARTEMIS, LABOCA, SHFI, SUPERCAM, SpecialAPEX\\
+NTT$^6$  &SOFI, EFOSC2, SOFOSC$^7$, SpecialNTT\\
+3.6$^6$  &HARPS, Special3.6\\
+\hline
+\end{tabular}
+\end{center}
+$^1$ NACO availability is subject to  successful re-commissioning in September 2014;\\
+$^2$ SPHERE availability is subject to successful commissioning during Period~94;\\
+$^3$ VISIR availability is subject to successful re-commissioning in November 2014;\\
+$^4$ OMEGACAM Normal Programmes are restricted to poor weather conditions in Period \period.\\
+$^5$ CHAMPP and FLASH are APEX PI instruments, in order to propose the use of these instruments the instrument PI must be contacted at least two weeks prior to submitting the proposal (see the Call for Proposals);\\
+$^6$Only Visitor Mode observations are allowed on telescopes at La Silla.\\
+$^7$ SOFOSC is the instrument configuration to be specified for combined EFOSC-2/SOFI runs (Section~\ref{sec:sofiefosc}).\\
+\end{table}
+
+
+\begin{table}[h]
+\caption{Keywords of Available Instruments for Monitoring  Programmes}
+\label{tab:insmonitoring}
+\medskip
+\begin{center}
+\begin{tabular}{@{\extracolsep{0pt}}l@{\extracolsep{40pt}}l@{\extracolsep{0pt}}}
+\hline
+\hline \\[-6pt]
+Telescope&Instrument keywords\\[4pt]
+\hline \\[-6pt]
+UT1       &NACO$^1$, FORS2, KMOS          \\
+UT2       &FLAMES, UVES         \\
+UT3       &SPHERE$^2$, VIMOS$^3$\\
+UT4$^4$   &HAWK-I, SINFONI$^{5}$, MUSE\\
+APEX$^6$  &LABOCA, SHFI         \\
+\hline
+\end{tabular}
+\end{center}
+$^1$ NACO availability is subject to  successful re-commissioning in September 2014;\\
+$^2$ SPHERE availability is subject to successful commissioning during Period~94;\\
+$^3$ VIMOS Monitoring Programmes are subject to the
+restrictions outlined in Section 1.1 of the Call for Proposals; \\
+$^4$ Monitoring programmes for UT4 instruments must be compatible with
+constraints imposed by the AOF installation activities described in
+Section 1.3 of the Call for Proposals (taking into account that the schedule
+described is provisional). \\
+$^5$ Monitoring programmes using SINFONI must be compatible with the AOF installation activities described above
+as well as the likely changes to SINFONI in Period~96 as described in Section 1.3 of the Call for Proposals;\\
+$^6$ APEX observations for approved MPs can only be carried out in  the ESO time-slots. \\
+\end{table}
+
+
+Provide, in the third pair of curly braces, the instrument(s) required
+for each observing run.  
+
+For example, 
+\begin{verbatim}
+    \ObservingRun{A}{95}{FORS2}{}{}{}{}{}{}{}
+\end{verbatim}
+
+For visitors bringing their own Visitor Instrument, please use
+the corresponding ``Special'' keyword, e.g., ``Special3.6'' for 
+an instrument to be mounted on the 3.6, and ``SpecialNTT'' for the NTT.
+It is then compulsory to fill in the Visitor Instrument information
+page (see Sect.~\ref{sec:visins}).
+
+
+\medskip
+
+{\bf 4.  REQUESTED TIME.}  In order to allow for the automated
+scheduling of proposals, you must specify the amount of time 
+that you are requesting (hours in Service Mode and nights in Visitor
+Mode). 
+
+\smallskip
+
+{\bf For Service Mode (SM)}, at this stage only provide the total
+number of hours requested, followed by the letter \verb|h| for hours.
+This should include also the time related to any special calibrations
+required in addition to the standard calibrations provided by ESO.
+Any more detailed information about possible particular scheduling
+features will be provided during the preparation of the Phase~2
+Service Mode proposal.
+
+\smallskip
+
+{\bf For Visitor Mode (VM) proposals}, the runs are scheduled
+according to the information supplied in the Phase~1 proposal
+form.  Consequently, you are required to provide detailed information 
+about any particular scheduling requirements for the successful 
+completion of your programme in this form.  You
+should code the requested time (in nights), starting with the total
+time requested, followed by the letter \verb|n| for nights, according
+to the examples below.
+If runs are to be split they should be specified using the following
+convention:
+
+%\begin{center}
+\begin{tabular}{ll}
+& \\
+4n          & for 4 consecutive nights, \\
+4n=4x1      & for 4 times 1 night, with intervals in between,\\
+6n=3x2      & for 3 times 2 consecutive nights, \\
+7n=3x2+1 \,\,\,\, & for 3 times 2 consecutive nights followed by 1 night. \\
+\end{tabular}
+%\end{center}
+
+\bigskip
+
+If the programme needs run durations of a half-night, you can code the
+requested time (in nights and half-nights), starting with the total
+time requested, following the few examples below (with {\bf H1} =
+first half of the night, and {\bf H2} = second half of the night):
+
+%\begin{center}
+\begin{tabular}{ll}
+& \\
+2n=4H1     & for 4 consecutive first halves of a night, \\
+2n=4x1H2   & for 4 times the second half of a night, with intervals in between,\\   
+3n=3x2H1  & for 3 times 2 consecutive first halves of a night, \\   
+8n=3x2+4H2& for 3 times 2 consecutive nights followed by 4 consecutive second halves of a night, \\
+8n=3x2+4x1H1& for 3 times 2 consecutive nights followed by 4 non-consecutive first halves of a night. \\
+\end{tabular}
+%\end{center} 
+
+\bigskip
+
+There is flexibility in this macro so that sub-runs
+can be specified for fractions of a night  (not just half-nights).
+Where a decimal value precedes the H, H1 or H2 values, they specify the
+fraction of the night that is required for each observation. Only
+one decimal place is allowed.
+For example:
+
+\begin{tabular}{ll}
+& \\
+0.6n=2x0.6H1     & for 2 consecutive 0.3n runs -- starting in the first half of the night, \\
+1.8n=3x1.2H2    & for  3 consecutive 0.6n runs -- starting at the end of the first half of the night, \\
+2.5n=2H1+2x1.6H2 & for 2 consecutive first halves of a night followed by 2 x 0.8n runs.\\
+\end{tabular}
+
+Please note that designations such as 2.0n=2x2.0H1 are invalid. 2.0H1 implies a run that is one whole night and will therefore be rejected by the proposal receiver.
+In this case the user should specify 2n=2x1.
+Similarly any values greater than or equal to 2.0 preceding
+H, H1 or H2 will be rejected.
+
+\bigskip
+
+Provide the total amount of time
+that is required for the observing run in the fourth pair of curly braces, with details about
+possible sub-runs.  For example,
+
+\begin{verbatim}
+    \ObservingRun{A}{95}{FORS2}{8n=3x2+4H2}{}{}{}{}{}{}
+\end{verbatim}
+{\bf For all non-consecutive schedules, the details of the time
+  intervals between the different sub-runs must be provided in Box
+  12} (see Sect.~\ref{sec:schedreq}). \\
+
+
+\medskip
+
+{\bf 5. MONTH PREFERENCE.} Provide the first three letters of the
+month (e.g.\ jun) that is your first preference for
+scheduling (valid months are the ones included in the current period,
+namely apr, may, jun, jul,
+aug, sep).
+%; all months are however valid for VLT-XMM proposals).  
+For Service Mode runs ``any'' should be entered here with any specific 
+requirements detailed in Box 12. 
+For example,
+\begin{verbatim}
+    \ObservingRun{A}{95}{FORS2}{8n=3x2+4H2}{jun}{}{}{}{}{}
+\end{verbatim}
+Please note that this month preference should be consistent with the time
+constraints specified in Box 12 (Sect.~\ref{sec:schedreq}).
+
+\medskip
+
+{\bf 6. MOON REQUIREMENT.} Provide the required phase of the moon, by
+using only one of the following three characters (see the Call for
+Proposals for the exact definition), namely:
+\begin{itemize}
+\item {\tt d} for ``dark time''
+\item {\tt g} for ``grey time''
+\item {\tt n} for ``no restriction''
+\end{itemize}
+For example,
+\begin{verbatim}
+    \ObservingRun{A}{95}{FORS2}{8n=3x2+4H2}{jun}{d}{}{}{}{}
+\end{verbatim}
+
+\medskip
+
+{\bf 7. SEEING REQUIREMENT.} Provide the required maximum acceptable
+seeing value (FWHM in arcseconds) at the wavelength of observation
+(see the Call for Proposals for the exact definition).  Your
+requirement must be one of the following values:
+
+\smallskip
+
+0.4, 0.6, 0.8, 1.0, 1.2, 1.4, n
+
+\smallskip
+
+For example,
+\begin{verbatim}
+    \ObservingRun{A}{95}{FORS2}{8n=3x2+4H2}{jun}{d}{0.8}{}{}{}
+\end{verbatim}
+
+\medskip
+
+{\bf 8. TRANSPARENCY REQUIREMENT.} Provide the transparency
+condition of the atmosphere required during your observations (see the
+Call for Proposals for the exact definition). Your requirement must
+be one of the following values:
+
+\smallskip
+
+\begin{tabular}{ll}
+  CLR & for clear sky, although with some rare clouds \\
+  PHO & for photometric, a perfect night \\
+  THN & for thin cirrus, inducing absorption up to 0.2 mag \\
+\end{tabular}
+
+\smallskip
+
+For example, 
+\begin{verbatim}
+    \ObservingRun{A}{95}{FORS2}{8n=3x2+4H2}{jun}{d}{0.8}{PHO}{}{}
+\end{verbatim}
+
+\medskip
+
+{\bf 9.  OBSERVING MODE.} Provide the requested observing mode:
+\verb|v| = Visitor Mode and \verb|s| = Service Mode. For example,
+\begin{verbatim}
+    \ObservingRun{A}{95}{FORS2}{8n=3x2+4H2}{jun}{d}{0.8}{PHO}{v}{}
+\end{verbatim}
+
+{\bf 10.  RUN TYPE.}
+This should only be filled in if the programme is a TOO or GTO 
+and the run is a TOO Run.  The RUN TYPE field must be left blank 
+for all Normal and Calibration Programme proposals.
+
+For programme types that allow TOO Runs (TOO, GTO and DDT), this feature
+should be used only for ToO runs.
+Briefly, ToO Runs are defined to be runs for which the target cannot be known more than
+one week before the observation must be carried out.
+If you want to specify one of your runs 
+as being a ToO run, then please enter ``TOO'' in the tenth (and final) brackets.
+
+\begin{verbatim}
+    \ObservingRun{A}{95}{FORS2}{1h}{jun}{d}{0.8}{PHO}{s}{TOO}
+\end{verbatim}
+
+More details corresponding to this ToO run must be specified in the
+\verb|\TOORun| macro (Sect.~\ref{sec:toopage}).
+This field should be left blank for all other (non-TOO) runs.
+
+
+
+\subsubsection*{Alternative runs}
+For each requested run, you may specify one or several
+``alternative runs'' for possible execution of the proposed
+observations with another instrument (in general mounted on another
+telescope). To this effect, add another line in Box~3, with in the
+first pair of curly braces, the letter identifying your primary run,
+followed by ``\verb|/alt|''. For example,
+\begin{verbatim}
+    \ObservingRun{A}{95}{FORS2}{20h}{jun}{d}{0.8}{CLR}{s}{}
+    \ObservingRun{A/alt}{95}{VIMOS}{6n}{jun}{d}{0.8}{CLR}{v}{}
+\end{verbatim}
+indicates that the observations of run A could be obtained
+through allocation either of 20 hours in Service Mode with FORS2
+(primary choice) or of 6 nights in Visitor Mode with VIMOS (secondary
+choice). You may specify several alternative runs for each primary run
+(e.g., in the example above, an EFOSC2 run might be a suitable alternative).
+
+\subsubsection*{Multiple runs}
+If more than one run is needed for execution of
+the programme, then fill as many lines as needed.  For example,
+\begin{verbatim} 
+    \ObservingRun{A}{95}{FORS2}{40h}{jun}{d}{0.8}{PHO}{s}{}
+    \ObservingRun{A/alt}{95}{VIMOS}{4n=2x4H1}{jun}{d}{0.8}{PHO}{v}{}
+    \ObservingRun{B}{95}{NACO}{3n=3x1}{jul}{n}{0.6}{CLR}{v}{}
+    \ObservingRun{C}{95}{FORS2}{2n=2x1}{jul}{n}{0.6}{CLR}{v}{}
+\end{verbatim}
+
+APEX users should note that all observations for a given APEX
+instrument must be included in a {\bf single run} for each period. The proposal
+receiver 
+will reject any proposal with more than one run per period per APEX instrument. 
+
+\subsubsection*{Programmes using both EFOSC-2 and SOFI at La Silla}
+\label{sec:sofiefosc}
+
+As described in the Call for Proposals,
+proposals involving observations with both EFOSC-2 and SOFI,
+for which the amount of time with either instrument is less than
+3 nights can be carried out at La Silla.
+Note that the runs should be contiguous and the requested time
+summed over both the EFOSC-2 and SOFI runs is $\ge$ 3 nights.
+These types of programmes should be specified
+by using the pseudo-instrument SOFOSC in the Instrument field and
+the total amount of time over the EFOSC-2 and SOFI runs.
+
+
+For instance, if you require 3 nights on EFOSC-2 and 2 nights on SOFI, the
+combined run would be specified as follows using the \verb|\ObservingRun|
+ macro:
+\begin{verbatim}
+    \ObservingRun{A}{95}{SOFOSC}{5n}{jun}{d}{0.8}{PHO}{v}
+\end{verbatim}
+
+and in the justification for the requested amount of time
+(Box 8, macro \verb|\WhyNights|), you should indicate the actual
+lengths of each of the two runs. 
+SOFOSC runs (i.e. combined EFOSC-2 and SOFI runs)  with a
+total duration of less than 3 nights are not accepted.
+
+Please specify the instrument configuration for the longest run
+in the macro \verb|\INSconfig|. For example, if the longest run
+is with the EFOSC-2 instrument:
+\begin{verbatim}
+   \INSconfig{A}{SOFOSC}{Spectro-long-slit}{Grism\#2:510-1100}
+\end{verbatim}
+
+\subsubsection*{Proprietary time} 
+The default data proprietary time is 12 months.  Nevertheless, you can
+ask to reduce it for 
+your data by using the macro \verb|\ProprietaryTime{|{\it
+    time\/}\verb|}|.  The {\it time\/} is expressed in months, and
+only the following values can be entered:  0, 1, 2, 6, 12.  For
+example, 
+\begin{verbatim}
+    \ProprietaryTime{6}
+\end{verbatim}
+
+Please note that this macro does not produce any printable output at
+compilation, but the information that it contains will be duly stored
+in ESO's database when the proposal is submitted.
+
+\subsection{Past, Present, and Future of this Programme:  {\bf BOX 4}}
+
+In order to allow for the evaluation of the proposal within the
+broader context of the project of which it is part, taking into
+account the observations already obtained in the past and the data
+still to be acquired in the future, indicate in Box~4:
+\begin{itemize}
+\item \verb|\AwardedNights|: the amount of time (in nights or hours)
+  allocated to this project in previous periods, together with the
+  programme number (e.g., 093.B-1234), and the telescope
+  on which this time was allocated;
+\item \verb|\FutureNights|: the amount of time (in nights or hours)
+  still necessary, in the future, after this proposal, to complete the
+  programme, if any, and the corresponding telescope(s). 
+\end{itemize}
+
+For example,
+\begin{verbatim}
+    \AwardedNights{UT1}{4n in 093.B-1234}
+    \FutureNights{UT3}{20h}
+\end{verbatim} 
+
+\subsection{Special Remarks:  {\bf BOX 5}}
+
+Take advantage of this box to provide any special remark (up to three
+lines).  For example,
+\begin{verbatim}
+  \SpecialRemarks{This programme is a resubmission, in updated form, of
+    proposal 093.B-1234, which had been granted 2n in VM
+    with UT2+UVES and was entirely clouded out.}
+\end{verbatim}
+
+\subsection{Name and Affiliations of PI and CoI(s): {\bf BOX 6}}
+
+The macro \verb|\PI| must be used to identify the Principal
+Investigator (PI) of the proposals. Its parameters are simply the 
+ESO User Portal username of the PI. Do not fill in the PI's full
+name as the receiver will convert the ESO User Portal username
+to the PI's full name on submission.
+Usage of this macro is illustrated in the following example, please note that the username is case-sensitive:
+\begin{verbatim}
+    \PI{JSMITH99}
+\end{verbatim}
+
+You should use the macro \verb|\CoI| to specify also, for
+all the Co-Investigators (CoIs) of this proposal, their initial(s),
+last name, and institute code. Institutes and their codes are listed 
+according to country at the following webpage:\\
+\href{http://www.eso.org/sci/observing/phase1/countryselect.html}
+{\bf\underline{http://www.eso.org/sci/observing/phase1/countryselect.html}}.\\
+You should have one instance of the macro \verb|\CoI| for each CoI of the
+proposal. Even if several CoIs share the same institute
+please use a separate macro for each CoI. The number of CoI macros you can 
+use is in principle unlimited. However, please note that 
+even if all CoIs do not appear in the printed version of the form,
+the entire  CoI list is stored in the ESO database, where it
+can be accessed when required.
+
+Please note: Due to the way in which the proposal receiver system parses
+the CoI macro, the number of pairs of curly brackets, \verb|{}|,
+in this macro must be strictly equal to 3, i.e., the
+number of parameters of the macro. Accordingly, curly
+brackets should not be used within the parameters (e.g.,
+to protect LaTeX signs).
+
+\noindent
+For instance:
+\begin{verbatim}
+   \CoI{L.}{Ma\c con}{1150}
+   \CoI{R.}{Men\'endez}{1098}
+\end{verbatim}
+
+\noindent
+are valid, while
+
+\begin{verbatim}
+   \CoI{L.}{Ma{\c}con}{1150}
+   \CoI{R.}{Men{\'}endez}{1098}
+\end{verbatim}
+
+\noindent
+are not. Unfortunately the receiver does not give an
+explicit error message when such invalid forms are
+used in the CoI macro, but the processing of the proposal
+keeps hanging indefinitely.
+
+\vspace{0.5cm}
+An example of a CoI list follows:
+\begin{verbatim}
+   \CoI{H.}{Cerny}{1150}
+   \CoI{S.}{Bailer-Brown}{1088}
+   \CoI{K.L.}{Giorgi}{1164}
+   \CoI{S.}{Lichtman}{2047}
+   \CoI{L.}{Men\'endez}{1150}
+\end{verbatim}
+
+When the proposal is submitted each institute code will be converted to the
+corresponding country and institute by the online receiver.
+
+
+\subsection{Description of the Proposed Programme: {\bf BOX 7}}
+
+The next two pages contain the description of the proposed programme,
+including all text, references and figures.
+This is restricted to TWO pages *including* figures. The
+text sections are composed of two required components, which are 
+activated by two macros.
+
+A -- Scientific rationale: this section should describe the scientific
+background of the project, with pertinent references; any previous
+work in the field plus the justification for the present proposal
+should be included.  The content of this section should be placed
+between the curly braces of the macro \verb|\ScientificRationale{}|. 
+
+B -- Immediate objective of the proposal: this section should state what
+is actually going to be observed and what will be extracted from the
+observations, so that the feasibility becomes clear.  The content of
+this section should be placed between the curly braces of the
+macro \verb|\ImmediateObjective{}|.
+%VLT-XMM: If this is an odd period uncomment the following.
+%If this is a VLT-XMM proposal, the immediate objectives to be met with the XMM observations should also be described here.
+
+The references should preferably use the simplified abbreviations used 
+in {\em Astronomy \& Astrophysics\/}.
+
+\medskip
+
+\noindent{\bf THE RELATIVE LENGTHS OF EACH OF THESE 
+SECTIONS ARE VARIABLE. ALL TEXT AND FIGURES MUST FIT WITHIN A TOTAL
+OF TWO PAGES. } Any text not fitting within the allocated page can be
+added to the next page (with the figures). 
+It is the responsibility of the proposers to check that their
+programme description does not exceed the maximum acceptable
+length. To this effect, proposers should carry out a careful visual
+inspection of a print-out of their proposal prior to submitting
+it. Also, when the proposal is compiled with pdf\LaTeX, the length of
+the text is checked, and a warning message is issued if it is greater
+than 2 pages. While this warning may easily be overlooked in the
+real-time terminal window from which pdf\LaTeX\ is run because of the
+continued scrolling resulting from other output, it is recorded in the
+pdf\LaTeX\ logfile. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Figures: {\bf BOX 7 (cont'd)}}
+
+Up to ONE page of figures and text can be added in addition to the 
+page detailing the Scientific Justification and the Immediate Objective.
+There is a size limit of 1MB for each figure to be uploaded.
+This material can be included using the 
+macros \verb|\MakePicture{}{}| and \verb|\MakeCaption{}|. Any
+additional text from the sections in the previous page (e.g.,
+Immediate Objective) can also be included using the 
+\verb|\MakeCaption{}|.
+
+{\bf NOTE THAT POSTSCRIPT PICTURES ARE NOT ACCEPTED.} Since the
+proposals are compiled using the pdf\LaTeX\ package, only JPEG and PDF
+file formats are accepted.  Attachments in other formats should be
+converted into one of the accepted formats using appropriate tools
+(such as ps2pdf, convert, or gimp).  In order to reduce the size of
+the attachments, {\bf we strongly suggest the use of the PDF format for
+  simple plots and graphs, and JPEG for large figures (such as
+  astronomical images).} 
+
+The figure macro \verb|\MakePicture{}{}| has two arguments: the name
+of the file of the picture, and a list of optional keywords specifying
+formatting parameters of the image (as defined in the {\tt graphicx}
+package). For example:
+\begin{verbatim}
+    \MakePicture{MyPic1.pdf}{width=15cm,height=8.0cm,angle=90}
+    \MakePicture{MyPic2.jpg}{width=12cm}
+\end{verbatim}
+The filename should have a {\tt .jpg} or {\tt .jpeg} extension for
+JPEG files, and a {\tt .pdf} extension for PDF files; other extensions
+are not accepted. If there is no extension in the filename the receiver
+will hang and submission will not be possible.
+
+The  caption macro \verb|\MakeCaption{}| takes one single  argument,
+which should contain any \LaTeX\ caption. For example:
+\begin{verbatim}
+    \MakeCaption{Insert caption using LaTeX.}
+\end{verbatim}
+
+These attachments will be printed on up to one page
+immediately following the scientific description. You must check the
+pdf output generated by pdf\LaTeX\ before submitting your proposal to
+make sure that the attachments are properly included. In particular,
+{\bf colour figures should still be readable if printed in  
+black and white}. Also,
+it is {\bf your responsibility} to check that your attachments 
+{\bf fit within the allocated 1 page}. Please note that
+when the proposal is compiled with pdf\LaTeX, the space required by
+the attachments is checked, and a warning message is issued if it 
+exceeds 1 page. While this warning may easily be overlooked in the
+real-time terminal window from which \LaTeX is run because of the
+continued scrolling resulting from other output, it is recorded in the
+logfile generated by LaTeX. You are strongly encouraged to check
+this log file.
+
+\subsection{Justification of Requested Time: {\bf BOX 8}}
+
+In this box, you should provide a careful justification of the
+requested lunar phase and of the requested amount of time. 
+To this effect, you should use the ESO Exposure
+Time Calculators whenever possible; these exist for all Paranal and La Silla
+instruments and are available at
+\href{http://www.eso.org/observing/etc}{\bf
+  \underline{http://www.eso.org/observing/etc}}. 
+
+Links to exposure time calculators for APEX instrumentation
+  can be found in Section 7 of the Call for Proposals.
+
+For each telescope and instrument to be used, please specify the
+version of the ESO Exposure Time Calculator that you have
+used. Do {\bf not} include any correction for unexpected
+meteorological conditions. The text should be typed as arguments of
+the following two macros:
+\begin{verbatim}
+    \WhyLunarPhase{}
+    \WhyNights{}
+\end{verbatim} 
+
+
+\subsection{Telescope Justification: {\bf BOX 8a}}
+This section should provide a justification for the use of the selected telescope(s) (e.g., VLT, NTT, etc...) with respect to other available alternatives. The content of this section should be placed between the curly
+braces of the macro \verb|\TelescopeJustification{}|.
+
+
+\subsection{Observing Mode Justification: {\bf BOX 8b}}
+This section should provide a justification for the observing mode requested (Visitor or Service). The
+content of this section should be placed between the curly braces of the macro \verb|\ModeJustification{}|.
+
+\subsection{Calibration Request: {\bf BOX 8c}}
+
+For Service Mode runs, the calibrations foreseen in the instrument
+calibration plans are 
+absorbed by the Observatory; they do not need to be included in the
+amount of requested time. In Visitor Mode, up to
+30\,min per night is devoted to the acquisition of these calibrations
+by the Observatory staff. If, in order to achieve the scientific goals
+of your projects, calibrations not foreseen in the respective
+calibration plan are required, you must include the additional amount
+of time that is needed to obtain them in the total amount of time that
+you are requesting. 
+
+The macro \verb|\Calibrations| must be used to specify the calibration
+requirements of your proposal. It takes two arguments. The first one
+should be set to \verb|standard| if the calibrations contemplated in
+the calibration plan are sufficient. In this case, no input is
+required for the second argument:
+\begin{verbatim}
+    \Calibrations{standard}{}
+\end{verbatim} 
+If, on the other hand, you need
+additional calibrations, the first argument must be set to
+\verb|special|, and a brief description of non-standard calibrations
+that you need must be given as second argument. For example,
+\begin{verbatim}
+    \Calibrations{special}{Adopt a special calibration}
+\end{verbatim} 
+Note that non-standard
+daytime calibrations must be specified here, but contrary to
+additional nighttime calibrations, the corresponding time need not 
+be included in the total amount of requested time. 
+
+
+\subsection{Last Use of ESO Facilities: {\bf BOX 9}}
+The macro \verb|\LastObservationRemark| must be used to 
+provide a brief report on the use of the ESO facilities during the
+last 2 years. You should specify the programme identification
+numbers, and describe the status of the data obtained, and the 
+scientific output generated.
+
+\subsection{ESO Archive: {\bf BOX 9a}}
+You should use the \verb|\RequestedDataRemark| macro to indicate if
+the data requested in the proposal are in the ESO Archive
+(\href{http://archive.eso.org}{\bf
+  \underline{http://archive.eso.org}}), and if so, to explain the
+need for new data.
+
+\subsection{Duplication of GTO/Public Surveys: {\bf BOX 9b}}
+
+Specify whether there is any duplication of targets/regions covered by ongoing GTO and/or Public Survey
+programmes. 
+If so, please explain the need for the new data here. Details on the protected target/fields in these
+ongoing programmes can be found at the following webpages for GTO programmes and Public surveys: \\
+\href{http://www.eso.org/sci/observing/teles-alloc/gto.html}
+{\bf  \underline{http://www.eso.org/sci/observing/teles-alloc/gto.html}}\\
+\href{http://www.eso.org/sci/observing/PublicSurveys/sciencePublicSurveys.html}
+{\bf \underline{http://www.eso.org/sci/observing/PublicSurveys/sciencePublicSurveys.html}}.
+
+\subsection{Applicant's  Publications: {\bf BOX 10}}
+
+The macro \verb|\Publications{}| should be used to 
+provide a list of your publications related to the
+subject of the current proposal and published during the past two
+years. The A\&A simplified abbreviations for references should be
+used. The individual references should be separated with a small
+amount of vertical space, to be created with the standard \LaTeX\
+command \verb|\smallskip\\|. For example:
+\begin{verbatim}
+   \Publications{
+   Name1 A., Name2 B., 2001, ApJ, 518, 567: Title of article1
+   \smallskip\\
+   Name3 A., Name4 B., 2002, A\&A, 388, 17: Title of article2
+   \smallskip\\
+   Name5 A. et al., 2002, AJ, 118, 1567: Title of article3
+   }
+\end{verbatim}
+
+\subsection{List of Targets: {\bf BOX 11}}
+  
+Provide the complete list of targets to be observed in this programme,
+by using the macro \verb|\Target| 
+with the following nine parameters: run identifier (you may use the same
+target/field in more than one run), target field/name, Right Ascension
+(hh mm ss.f, or hh mm.f, or hh.f) and Declination (dd mm ss, or dd
+mm.f, or dd.f) for the 
+J2000 equinox, requested time on target (in hours
+with overheads and calibration included), magnitude, angular diameter,
+additional information (see below), and reference star identifier
+(see below)
+for each target field.  Please use the format \{00~00~00\}
+in case of unknown coordinates. There can be as many occurrences of
+the macro \verb|\Target| as required to accommodate all targets of all
+runs of the programme. Long lists of targets will continue
+on the last page(s) of the proposal form.
+
+{\bf Please note} that the scheduling of your programme will take
+{\bf all targets} given in this list into account. {\bf Only include
+ the targets requested for Period 95}.
+%(except for VLT-XMM proposals).
+Make sure your targets
+are significantly observable during this period.  Inclusion of targets
+with insufficient visibility during the current period may result in
+rejection of your programme by the automatic scheduler.
+
+The additional information field (8th argument of the \verb|\Target|
+macro) may in general be used to provide any relevant piece of
+information about the target that does not pertain to any other
+argument of the macro (e.g. the period of a variable star). However,
+for APEX targets, usage of this field is {\bf mandatory} to indicate the
+requested Precipitable Water Vapour (PWV) and the acceptable range of
+Local Sidereal Time (LST) for the considered observation. The format
+should be similar to the one shown in the following example:
+\begin{verbatim}
+\Target{A}{HD 104237}{12 00 05.6}{-78 11 33}{1}{}{}{PWV<0.7mm;LST=9h00-15h00}{}
+\end{verbatim}
+
+A reference source identifier must be provided for all natural guide stars
+(NGS), in the case of NGS observations with NACO, SINFONI and CRIRES,
+and all tip-tilt stars (TTS), in the case of all laser guide star (LGS)
+observations with NACO 
+and SINFONI. For observations with the noAO modes of SINFONI and
+CRIRES, you do
+not need to provide this information.  {\bf The reference source
+  designation has to be the exact identifier of the selected star
+  either 
+  from the Guide Star Catalog 2 (GSC2) or the 2MASS point source
+  catalogue.} Note that GSC2 stars identifiers should NOT be preceded
+by GSC2, 
+but must start with either N or S. In case the reference source is not
+included in either catalogue, for instance because it is a supernova or
+a solar system object, ``alt'' should be entered as reference source
+identifier, and additional information can be provided in the
+\verb|\TargetNotes| macro.
+Rules for reference star designation can be found for GSC2 at:\\
+  \href{http://vizier.u-strasbg.fr/viz-bin/VizieR-n?-source=METAnot&catid=1271&notid=1&-out=text}{\bf
+    \underline{http://vizier.u-strasbg.fr/viz-bin/VizieR-n?-source=METAnot\&catid=1271\&notid=1\&-out=text}}. 
+
+\smallskip
+
+Examples of valid and invalid GSC2 identifiers are given below:
+
+\begin{center}
+\begin{tabular}{ll}
+%\multicolumn{2}{c}{} \\
+%\hline
+    N01230121           & good\\
+    S33333331           & good\\
+  n01230121             & bad\\
+ N012301201             & bad\\
+    S01230141           & bad\\
+    S3333333000001      & bad\\
+    S01201201234567     & bad\\
+%\hline
+\end{tabular}
+\end{center}
+
+
+%\vspace{1cm}
+
+For 2MASS, the rules for reference star designation are available at:\\
+  \href{http://www.ipac.caltech.edu/2mass/releases/allsky/doc/sec2_2a.html}{\bf
+    \underline{http://www.ipac.caltech.edu/2mass/releases/allsky/doc/sec2\_2a.html}}. 
+
+\smallskip
+
+Here are some examples of correct and incorrect identifiers:
+
+\begin{center}
+\begin{tabular}{ll}
+%\multicolumn{2}{c}{} \\
+%\hline
+ 2MASS J01234567+7801020      & good\\
+ 2MASS J00000000+7801020L     & good\\
+ 2MASS J01234567+9000000      & good\\
+ 2MASS J01234567+9000000W     & good\\
+ 2MASX J01234567+7801020      & bad\\
+ 2MASS J97234567+7801020      & bad\\
+%\hline
+\end{tabular}
+\end{center}
+
+Thus the following examples illustrate the correct usage of the
+\verb|\Target| macro when a reference star must be specified:
+\begin{verbatim}
+    \Target{B}{NGC 105}{22 55 00}{-47 50 30}{9.0}{}{}{}{S33333331}
+    \Target{C}{NGC 106}{00 24 43}{-05 09 00}{2.0}{}{}{}{2MASS J01234567+7801020}
+\end{verbatim}
+
+The macro \verb|\TargetsNotes{}| should be used to include any
+comments that apply to several or all targets (or to specify reference
+stars that are not found in the GSC2 or 2MASS catalogues).
+\begin{verbatim}
+   \TargetsNotes{The planned grid of pointings around the targets 
+                listed above will be defined during the first 
+                observing night.}
+\end{verbatim}
+
+\subsection{Scheduling Requirements: {\bf BOX 12}}
+\label{sec:schedreq}
+If your proposal involves any of the following:
+\begin{itemize}
+\item observations to be executed on specific dates (e.g., for
+  simultaneity with observations at other facilities);
+\item observations to be executed at pre-defined time intervals (e.g.,
+  at different epochs so as to achieve phase coverage of a periodically
+  variable target);
+\item Visitor Mode runs split into non-consecutive nights (for which
+  the fourth argument specifying the number of nights in Box~3 of the
+  proposal form includes a formula);
+\item Visitor Mode runs mutually linked, which need to be scheduled in
+  a given sequence and at specified time intervals,
+\end{itemize}
+you {\bf must} uncomment the macro \verb|\HasTimingConstraints|.
+Please leave the brackets in \verb|\HasTimingConstraints| blank.  Details of time
+ constraints can be entered in Special Remarks and using the
+ other flags in Box 12.
+
+Please note that the macro \verb|\HasTimingConstraints| should 
+be {\bf commented out} in the following cases:
+\begin{itemize}
+\item for scheduling constraints resulting only from the genuine
+  visibility window of the target sources (defined by their location
+  in the sky) or from the phases of the Moon; 
+\item for time series of observations acquired during a single night
+  or over several consecutive nights of a contiguous Visitor Mode run; 
+\item for Target of Opportunity observations.
+\end{itemize} 
+
+In order to allow for the automated scheduling of all
+Visitor and Service Mode observing runs, you must provide all
+information related to the details of the way your programme should be
+scheduled.  If you have any doubts about how to specify your particular
+requirements please email OPO at \href{mailto:opo@eso.org}{\tt opo@eso.org}
+well in advance of the proposal submission deadline.
+
+\medskip
+
+{\bf 1. RUN SPLITTING.} For Visitor Mode runs: if the fourth argument
+you have provided in 
+Box~3 indicates a simple number of consecutive nights or half-nights,
+e.g.:
+\begin{verbatim}
+    \ObservingRun{A}{95}{FORS2}{4}{may}{d}{0.8}{CLR}{v}{}
+\end{verbatim}
+you do not have to do anything.  If the fourth argument in Box~3
+indicates a more complicated requirement, with some non-consecutive
+nights, e.g.: 
+\begin{verbatim}
+    \ObservingRun{A}{95}{FORS2}{8n=3x2+4H2}{may}{d}{0.8}{CLR}{v}{}
+\end{verbatim}
+you must provide some additional information.  The fourth argument above,
+namely, \verb|8n=3x2+4H2|, means that you request a total of 8 nights,
+made of three sub-runs of 2 consecutive nights each, followed later by
+a sub-run of 4 consecutive second halves of a night.
+
+You should use the macro \verb|\RunSplitting{}{}|, and put
+the run identifier in the first argument.  The second argument should indicate
+the way the run should be split into different sub-runs.  If the
+interval between two sub-runs has to be exactly a given number of
+days, say 20, then this is a {\bf strong} constraint and this number
+of days should be followed by the letter \verb|s|.  If the interval
+between two sub-runs has some tolerance on the number of days, say
+20$\pm$5, then this is a {\bf weak} constraint and this number of days
+should be followed by the letter \verb|w|.  Consequently, if
+\verb|8n=3x2+4H2| means that you want three sub-runs of 2 consecutive
+nights each, the first and the second separated by 10 nights exactly,
+the second and the third separated by more or less 20 nights, followed
+exactly 15 days later by one sub-run of 4 consecutive second halves of
+a night, then the second argument of the macro
+\verb|\RunSplitting{}{}| should contain the following expression:
+\verb|2,10s,2,20w,2,15s,4H2|. Hence the following entry should appear
+in your proposal file:
+\begin{verbatim}
+    \RunSplitting{A}{2,10s,2,20w,2,15s,4H2}
+\end{verbatim}
+
+Note that it is necessary to specify explicitly the time intervals
+among all non consecutive sub-runs.
+
+The macro \verb|\RunSplitting| is meaningless for Service Mode runs,
+for which constraints of the considered type should be fully specified
+at Phase~2 (but the macro \verb|\HasTimingConstraints| should be
+uncommented for such runs, so that they are duly flagged). {\bf
+  However please note that in Service Mode, 
+  monitoring programmes are executed on a best effort 
+  basis only.} In particular, a monitoring sequence can be interrupted
+by unsuitable weather conditions or by runs scheduled in Visitor Mode.
+
+\medskip
+
+{\bf 2.  LINK FOR COORDINATED OBSERVATIONS.} If you have requested
+three different runs in Box 3, e.g.:
+\begin{verbatim}
+    \ObservingRun{A}{95}{FORS2}{2n}{may}{d}{0.8}{CLR}{v}{}
+    \ObservingRun{B}{95}{FORS2}{3n}{may}{d}{0.8}{PHO}{v}{}
+    \ObservingRun{C}{95}{UVES}{20h}{may}{d}{0.8}{CLR}{v}{}
+\end{verbatim}
+and would like some of them to be simultaneous and some later than
+others, independently of the exact period of scheduling, then use
+\verb|simultaneous, after| and the macro \verb|\Link{}{}{}{}| in the
+following way:
+\begin{verbatim}
+    \Link{B}{after}{A}{10}
+    \Link{B}{after}{A}{}
+    \Link{B}{simultaneous}{C}{}
+\end{verbatim}
+
+\medskip
+
+{\bf 3. UNSUITABLE PERIOD(S) OF TIME.}  If you have requested two
+nights in Box 3 and would like them to be scheduled to avoid some
+unsuitable periods of time, for some reason, then use the macro
+\verb|\UnsuitableTimes{}{}{}{}| in the following way:
+\begin{verbatim}
+    \UnsuitableTimes{A}{15-jul-15}{18-jul-15}{International Conference}
+    \UnsuitableTimes{B}{15-jul-15}{18-jul-15}{International Conference}
+    \UnsuitableTimes{C}{15-jul-15}{18-jul-15}{International Conference}
+    \UnsuitableTimes{C}{1-jul-15}{3-jul-15}{Committee Meeting}
+\end{verbatim}
+
+Dates correspond to 12:00 noon Local Time at
+the Observatory location (i.e., in Chile).
+In other words the first date refers to the start of the first night
+of the unsuitable period; the second date refers to the end of the last night.
+As with the \verb|TimeCritical| macro, only one run can be specified in each
+\verb|UnsuitableTimes macro|. 
+Further explanation can also be entered in  \verb|\SpecialRemarks{}| (Box 5).
+
+\subsection{Scheduling Requirements contd.. : {\bf BOX 12}}
+\label{sec:timecrit}
+
+{\bf 4. SPECIFIC DATE(S) FOR TIME CRITICAL  OBSERVATIONS.} If you have
+requested 2 nights in Box 3, e.g.:
+\begin{verbatim}
+    \ObservingRun{A}{95}{FORS2}{2n}{may}{d}{0.8}{CLR}{v}{} 
+\end{verbatim}
+and if for some reason (e.g., specific phase of a variable object
+or parallel observations with already scheduled HST observations,
+etc.)  you need these two nights scheduled between some specific
+dates, then use the macro \verb|\TimeCritical{}{}{}{}| in the
+following way:
+\begin{verbatim}
+    \TimeCritical{A}{12-may-15}{14-may-15}{parallel observation with HST}
+    \TimeCritical{A}{20-may-15}{25-may-15}{co-ordinated with XMM}     
+    \TimeCritical{B}{20-may-15}{25-may-15}{co-ordinated with XMM}
+    \TimeCritical{C}{20-may-15}{25-may-15}{co-ordinated with XMM}
+\end{verbatim}
+
+Please note the following points:
+\begin{itemize}
+\item As of P87, the constraints set by this macro are checked against the
+time specified by the \verb|\ObservingRun| in more detail.
+Some examples of correct and incorrect uses of this pair of macros are shown below.
+\item The indicated dates correspond to 12:00 noon LOCAL Time at
+the Observatory location (i.e., in Chile). In other words, the first
+date refers to the start of the first night of the acceptable
+interval, and the second to the end of the last night. Please 
+convert event times from Universal Time to Local Time.
+\item Only one run can be specified in each \verb|TimeCritical| field. 
+However, as an observing run can have multiple Time critical dates, users
+can specify multiple separate \verb|\TimeCritical| macros for a single observing run (as shown above
+for Observing Run A).
+\item ESO can still access the information for this macro (and all other macros in Box 12) so
+do not worry if the constraints overfill the available space.
+\end{itemize}
+
+{\bf Examples of correct usages of the \verb|\TimeCritical| macro: }\\
+If the user requires an observing run to be split into three observations, each to taken in the 
+second half of the night over a specific 8-day period, this could be specified using the following macros:
+\begin{verbatim}
+    \ObservingRun{A}{87}{VIMOS}{1.5n=3H2}{jun}{n}{0.6}{CLR}{v}{}
+    \RunSplitting{A}{0.5,4w,0.5,4w,0.5}
+    \TimeCritical{A}{12-apr-15}{20-apr-15}{reason here}
+\end{verbatim}
+
+Conversely if the ObservingRun was specified as above but the TimeCritical macro was configured as follows
+it would be rejected as the configuration 1.5n=3H2 implies there must be a minimum time separation of
+three nights.
+\begin{verbatim}
+    \TimeCritical{A}{12-apr-15}{14-apr-15}{reason here}
+\end{verbatim}
+
+
+
+
+
+
+
+
+\subsection{Instrument configuration: {\bf BOX 13}}
+
+The two template proposals ({\tt template.tex} for normal
+applications, 
+and {\tt templatelarge.tex} for Large Programme applications) contain
+the full list of configurations for all available instruments at all
+available ESO telescopes (Paranal, La Silla and Chajnantor).  In order
+to provide 
+general information about the setup of the ESO instrument(s) you plan
+to use, please uncomment only the lines related to the instrument
+modes and configurations needed for the acquisition of your desired
+observations.  For some lines related, e.g., to special filters or
+central wavelength, please add the required information where
+appropriate (between the already existing curly
+braces).
+
+Note that you {\bf must} put the run ID within the first pair of curly
+braces of the relevant lines. {\bf Do not} specify any instrument
+configuration for alternative runs or visitor instruments (see Box 3). 
+Note
+that all parameters are {\bf mandatory} for the \verb|\INSconfig|
+macro (do not use empty fields).
+
+\subsection{Interferometry page}
+\label{sec:vlti}
+
+For VLTI runs, a separate run must be specified for each requested baseline configuration.
+If your proposal includes VLTI runs, you MUST uncomment and fill in the arguments of the 
+macro \verb|\VLTITarget| with run ID, target name, visual
+magnitude, magnitude at wavelength of observation, wavelength of
+observation (in microns), size at wavelength of observation (in mas),
+baseline (see the following website for available configurations:
+\href{http://www.eso.org/paranal/insnews/vlti_overview.html}{\bf
+  \underline{http://www.eso.org/paranal/insnews/vlti\_overview.html}}), 
+visibility for the specified
+configuration (at preferred hour angle or at hour angle 0), correlated
+magnitude, and time on target (ToT) in hours. For example,
+\begin{verbatim}
+\VLTITarget{E}{NGC 106}{-0.7}{-3.5}{10.6}{40}{UT2-UT3-47m}{0.84}{-2.5}{6}
+\VLTITarget{F}{NGC 107}{-0.7}{-3.5}{2.1}{40}{UT1-UT2-UT3}{0.84/1.0/0.1}{1./0.5/2.}{6}
+\VLTITarget{G}{NGC 108}{-0.7}{1.5}{2.1}{40}{E0-G0-H0-I1}{0.90/0.80/0.70}{1.6/1.7/1.9}{6}
+\end{verbatim}
+
+
+For UT observations, please specify one of the available
+3-telescope AMBER baselines or 2-telescope MIDI baselines.
+
+Please specify one of the 3 available AT quadruplets listed in the
+template proposal files. At Phase 2, the time can then be split
+among the AMBER triplets and MIDI baselines of the chosen quadruplet.
+
+For AT observation baselines, please use one typical baseline of the
+quadruplet that you have specified in order to compute
+representative visibility and correlated magnitude values.
+
+For AMBER observations using UT baselines, you should specify the three visibilities
+corresponding to the various baselines as three values separated by a
+slash (/); up to two of the three values can be replaced by a star
+($*$).  Similarly, the correlated magnitudes for the various baselines are also
+specified as three values separated by slash.
+
+You can use the macro \verb|\VLTITargetNotes| to insert comments about
+some or all of your VLTI targets. You should take advantage of this
+macro to indicate suitable alternative baselines for your
+observations.
+
+\subsection{ToO page}
+\label{sec:toopage}
+
+
+If your programme has Target of Opportunity runs (ToO) runs, 
+you should specify these in the  \verb|\ObservingRun| macro 
+using ``TOO'' in the corresponding field. 
+The ToO information must be filled in for the run
+using the corresponding  
+\verb|\TOORun| macro.  The arguments in this macro 
+are, in order: the run identifier,
+the nature of the observation, the number of 
+targets per run, and the number of triggers per targets. There must be
+one occurrence of the macro \verb|\TOORun| for each of the ToO runs specified
+in Run Type field in  the \verb|\ObservingRun| macro (Box~3).
+ The second argument (nature of the observation) may be one
+of the following keywords:
+\begin{itemize}
+\item RRM, for observations to be triggered via the automated Rapid
+  Response Mode system;
+\item ToO-hard, for observations to be triggered manually that need to
+  be carried out within 48 hours of receipt of the trigger by the
+  Observatory (and in most cases, as soon as possible), or that
+  involve a strict time constraint (i.e., that must be executed during
+  a specific night);
+\item ToO-soft, for manually triggered observations for which the
+  Observatory can receive notification more than 48 hours before
+  execution, and which can be scheduled for execution with a
+  flexibility of at least $\pm1$\,day.
+\end{itemize}
+Only one keyword can be specified for each run. If observations
+pertaining to different categories are needed,
+several runs must be defined. The number of triggers must be indicated
+for RRM, ToO-hard and ToO-soft observations only.
+An occurrence of the macro \verb|\TOORun|
+looks like the following example:
+\begin{verbatim}
+\TOORun{A}{ToO-hard}{2}{3}
+\end{verbatim}
+
+You have the opportunity to add some notes to the ToO page by using
+the macro \verb|\TOONotes|.
+As a rule, ToO proposals should involve at least one trigger
+of one of either the RRM or ToO-hard or ToO-soft types.
+
+\subsection{The Visitor Instrument Page}
+\label{sec:visins}
+
+The following commands are only needed for proposals involving a Visitor
+Instrument, in which case they are also {\bf mandatory}.  You should
+uncomment them and provide the required information between the
+different pairs of curly braces. Please do not enter anything in Box 13 
+(i.e. \verb|\INSconfig|) for Visitor Instrument runs.
+
+If applying for the VLTI visitor instrument, SpecialVLTI, please remember to uncomment
+and fill in the \verb|\VLTITarget| macro and this Visitor Instrument page.
+
+\begin{verbatim}
+    %\Desc{}   % Description of the instrument and its operation
+    %\Comm{}   % On which telescope(s) has instrument been commissioned/used
+    %\WV{}     % Total weight and value of equipment to be shipped
+    %\Wfocus{} % Weight at the focus (including ancillary equipment)
+    %\Interf{} % Compatibility of attachment interface with required focus
+    %\Focal{}  % Back focal distance value
+    %\Acqu{}   % Acquisition, focusing, and guiding procedure
+    %\Softw{}  % Compatibility with ESO software standards (data handling)
+    %\Suppl    % Estimate of services expected from ESO (in person days)
+\end{verbatim}
+
+
+\section{HOW TO FILL A LARGE PROGRAMME TEMPLATE}
+\label{sec:large}
+
+The ESOFORM package includes a specific template ({\tt
+  templatelarge.tex}) that must be used to generate a Large Programme
+proposal. This template is only slightly different from the
+template for Normal Programmes. Hereafter is the list of the
+differences between the two templates. Any feature not appearing in
+this list is {\bf identical} in both templates though the box number
+may differ.
+
+\begin{table}[t]
+\caption{Keywords of Available Instruments (Large Programmes)}
+\label{tab:inslarge}
+\medskip
+\begin{center}
+\begin{tabular}{@{\extracolsep{0pt}}l@{\extracolsep{40pt}}l@{\extracolsep{0pt}}}
+\hline
+\hline \\[-6pt]
+Telescope & Instrument keywords     \\[4pt]
+\hline                              \\[-6pt]
+UT1       & NACO$^1$, FORS2, KMOS    \\
+UT2       & FLAMES, UVES            \\
+UT3       & SPHERE$^2$, VIMOS$^3$\\
+UT4$^4$   & HAWK-I, SINFONI$^5$, MUSE   \\
+APEX      & LABOCA, SHFI            \\
+NTT       & SOFI, EFOSC2, SpecialNTT\\
+3.6       & HARPS, Special3.6       \\
+\hline
+\end{tabular}
+\end{center}
+$^1$ NACO availability is subject to  successful re-commissioning in September 2014;\\
+$^2$ SPHERE availability is subject to successful commissioning during Period~94;\\
+$^3$ VIMOS LPs must comply with the RA restrictions outlined in the Call for Proposals;\\
+$^4$ Large Programmes for UT4 instruments must be compatible with
+constraints imposed by the AOF installation activities described in
+Sections 1.1 and 1.3 of Call for Proposals (taking into account that the schedule
+described is provisional);\\
+$^5$ Large programmes using SINFONI must be compatible with the AOF installation activities described above
+as well as the likely changes to SINFONI in Period~96 as described in Section 1.2 of the Call for Proposals.
+
+\end{table}
+
+\begin{itemize}
+\item Box 2: the abstract for Large Programme proposals can be
+  slightly longer (up to 13 lines) than for Normal Programme proposals
+  (up to 9 lines).  
+\item Box 3: proposers must specify {\bf all the runs across all the
+    Periods} covered by the Large Programme.
+For Paranal instruments this means a maximum of 4 periods, while for La Silla instruments
+up to Period 97 is allowed (see the Call for Proposals for more information). 
+  A Large Programme can have up to 26 runs. Since the space for the runs
+  description in Box 3 is limited to 12 lines, a new box containing
+  the observing runs beyond this limit will be created at the end of
+  the proposal form if needed.
+\item Box 3: the list of keywords of all instruments offered in Period
+  95 for Large Programmes is given in
+  Table~\ref{tab:inslarge}.
+\item Box 5: while two pages (including figures) are allowed for the scientific
+  description of Normal Programmes, the
+  description of Large Programmes may take up to three pages followed by
+  two additional pages for figures.
+
+  The scientific description is comprised of the following four subsections:
+  \verb|\ScientificRationale{}|,
+  \verb|\ImmediateObjective{}|, \verb|\TelescopeJustification{}|, and\\
+  \verb|\ModeJustification{}|.  
+  The \verb|\TelescopeJustification{}| and \verb|\ModeJustification{}|
+  macros are the same as those in Boxes 8b and 8c in the Normal Programme
+  template.
+  
+  As noted above there are also there are two additional pages for
+  attachments (e.g., figures, etc). 
+\item Boxes 6 and 7: specific to the Large Programme proposals, these
+  two boxes should contain the required information describing the
+  experience of the applicants with telescopes, instrumentation, 
+  data reduction  and delivery of data products to the ESO Archive 
+  (\verb|\Experience{}|). The strategy for data reduction, analysis 
+  and a delivery plan for data products into the ESO Archive should 
+  be presented along with a brief description of the resources available
+  to the observing team, such as: computing facilities and research
+  assistants (\verb|\Resources{}|).
+\item Box 8: Additional remarks or comments can be provided using
+  the macro \verb|\SpecialRemarks{}|.
+\end{itemize} 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{SUBMISSION OF THE APPLICATION}
+\label{sec:submission}
+
+Proposals must be prepared as pdf\LaTeX\ source files, making use of
+the {\bf latest ESOFORM} package, corresponding to the ESO Period
+for which they are submitted.  Proposals received in
+any other format, or with modified ESOFORM macros, will be
+automatically rejected by the automated proposal handling system.
+
+When the \LaTeX\ source file of your application is complete, {\bf
+  please process it with pdf\LaTeX} so as to identify any
+possible \LaTeX\ format errors. In particular, we {\bf strongly}
+recommend that you
+\begin{itemize} 
+\item review the log file generated by \LaTeX\ so as to
+  check for the presence of warning messages issued by the ESOFORM
+  macros. Such messages report, among others, instances in which a text
+  field is too long, so that your input is truncated in the pdf file
+  that is generated, and part of the information that you
+  submit will not be communicated to the OPC;
+\item carefully inspect a printed copy of the output to make sure that
+  all parts of the application are completed, and that their
+  formatting is appropriate.
+\end{itemize} 
+
+{\bf Please note} that while several checks are
+performed by the ESOFORM package when running pdf\LaTeX, successful 
+compilation  {\bf does not guarantee} that a proposal is
+fully compliant. Indeed, many key  checks 
+can only be performed by the proposal reception system after the proposal
+has been uploaded within the ESO User Portal.
+
+{\bf You should verify that your proposal complies with ESO
+requirements using a ``skeleton'' version of  your proposal that
+only contains the technical details of your  programme. This should be done well before the Phase 1 Deadline.}
+ Please upload the ``skeleton'' proposal as if you were submitting it and follow the instructions online.
+If the proposal passes all the technical checks you will get the message:
+``Your proposal is verified and passed all the checks (but not submitted yet)!
+''. You can then either log out of the User Portal or 
+return to the submission page by selecting the option to 
+``Go back to the beginning''. 
+More details on the full proposal submission procedure are given below.
+
+Proposals are submitted by logging into the ESO User Portal.
+In order to do this, proposers must be registered and have activated
+their User Portal accounts. To submit please go to:
+\begin{center}
+  \href{http://www.eso.org/UserPortal}{\bf \underline{http://www.eso.org/UserPortal}}
+\end{center}
+Once you have logged in, Once you have logged in, you should select the item called ``Download ESOFORM packages'' under the Phase 1 menu items.  In order to submit, select ``Submit a proposal'' from the same menu. You will then be taken to the WASP page (Web Application for Submitting Proposals). 
+On choosing the relevant cycle, you will be asked to upload the \LaTeX\ file of your proposal and should follow the subsequent instructions. \\
+A number
+of checks are executed at the various steps of the submission process;
+please follow the instructions online. If a problem is detected 
+it will be clearly reported by the system: fix it in your proposal and
+resubmit it.
+Once the proposal passes through all the checks, you will be requested to finalise the
+submission by clicking on the corresponding button. {\bf It is
+  essential that you execute this final step}: your proposal will not
+be submitted until this is done, even though you have uploaded all the
+necessary files! \\
+ Upon submission of
+a correctly completed proposal, the ESO proposal validation
+software will return an identifier assigned to the valid proposal. This
+identifier, and the acknowledgment page in which it appears, represent
+the official confirmation that the proposal successfully entered the
+proposal handling system. We recommend that you take note of the
+identifier; you may also want to print the acknowledgment page for
+your records. In addition, an email confirmation
+is sent to the submitter and to the PI of the proposal.
+
+
+Some common problems are described below.
+\begin{itemize}
+\item BibTeX formats are not permitted within the ESOFORM package.
+\item Figures without the corresponding .jpg or .pdf extensions will make the receiver hang.
+\item The proposal reception system checks for {\bf the presence of text outside
+ the argument fields of the ESOFORM macros} in the \LaTeX\ source of
+the proposal, and rejects proposals in which such text is
+found. If there is text outside the macros it appears as text or extra space above 
+the ESO logo on top of the first page.  
+This input {\bf must be commented out or relocated within the relevant macro} before the proposal is
+submitted. 
+
+\end{itemize}
+
+
+
+
+\subsubsection*{Submission Problems} 
+The proposal submission
+acknowledgment page normally appears within seconds of completion of a
+a submission. However, during the last few hours before the Phase 1
+deadline, the system may be slowed down by the high load, and the
+acknowledgment process may take several minutes. Please {\bf be
+  patient}: even though it may look like ``nothing is happening'', the
+system most likely is actually busy processing a queue of
+proposals. Please {\bf do not} abort your submission or make a new
+attempt at submitting the same proposal as this would only increase the
+load on the system and make it slower. 
+
+If you have not succeeded in completing your submission within 1~hour, 
+please contact ESO via email  
+at \href{mailto:esoform@eso.org}{\tt esoform@eso.org}.
+{\bf Do not under any circumstance} attach your application (in any
+format) to this email. {\bf Do not try to resubmit your application}
+before receiving further instructions from ESO. {\bf Do not panic!}
+Once you have uploaded the \LaTeX\ source of your proposal, your
+attempt, and the time at which you initiated it, are recorded in the
+ESO system, so anomalous delays due to the proposal reception
+system will be duly identified. {\bf Be aware} that if you experience
+difficulties due to the proposal reception system, you are most likely 
+not the only user in this situation. As problem reports must be
+handled sequentially it may take some time before you receive
+feedback from ESO.  
+
+As mentioned above, the acknowledgment Web page providing the
+identifier of your proposal is the official confirmation of its
+successful submission. The subsequent email notification is only sent
+to you as a secondary confirmation, and delay in its delivery should
+not represent a concern. However, if you have not received
+it within 24 hours of your submission, please report this anomaly to  
+\href{mailto:esoform@eso.org}{\tt esoform@eso.org}. 
+
+A safe way to avoid submission problems (often related to heavy
+system load  during the last few hours before the deadline) is to submit your
+proposal early.  We strongly encourage you to send in your
+applications and all attachments several days before the deadline.
+  
+\vspace*{1cm} {\bf All proposals and their attachments must reach the
+  ESO servers via the WASP interface BEFORE 12:00 noon (Central
+  European Summer Time) on the date of the deadline. Please note that  
+  ESO cannot provide support beyond 11:00 on that day. 
+  Responsibility for 
+  verifying that ESO has correctly received, processed, and
+  acknowledged your proposal before the proposal submission deadline
+  rests entirely with you.  Revisions, corrections, and/or
+  modifications will not be accepted after the deadline.}
+
+\vspace*{1cm}
+
+\begin{center}
+\framebox{
+\parbox[t]{135mm}{
+  \noindent
+  \begin{center}
+    {IMPORTANT NOTICE}
+  \end{center}
+  Electronic proposal submission does not allow applicants to sign
+  their proposals. Therefore ESO assumes that PI's take full
+  responsibility for the contents of the proposal, in particular in
+  regard to the names of co-investigators and the agreement to act
+  according to the instructions for visiting astronomers, should
+  observing time be granted.}}
+\end{center}
+
+\end{document} 
+
