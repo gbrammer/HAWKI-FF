@@ -202,21 +202,22 @@ order to make this unparalleled dataset immediately available to the community.
 % If the field is left blank a default normal, non-TOO run is assumed.
 % If a TOO run is specified please make sure that you fill in the TOO page.
 
+\ObservingRun{A}{92}{HAWKI}{79h}{any}{n}{0.6}{CLR}{s}{}
+\ObservingRun{B}{92}{HAWKI}{3h}{any}{n}{0.6}{PHO}{s}{}
 
-
-\ObservingRun{A}{95}{FORS2}{4h}{may}{n}{0.8}{PHO}{s}{}
-\ObservingRun{A/alt}{95}{FORS2}{3n=2x1+2H2}{may}{n}{0.8}{PHO}{v}{}
-\ObservingRun{B}{95}{VIMOS}{2n=2x1}{jun}{n}{0.6}{CLR}{v}{}
-\ObservingRun{C}{95}{EFOSC2}{3n}{aug}{n}{0.8}{THN}{v}{}
-\ObservingRun{D}{95}{NACO}{0.4n}{may}{n}{0.8}{THN}{v}{}
-\ObservingRun{E}{95}{VIMOS}{1h}{apr}{n}{1.4}{THN}{s}{}
-\ObservingRun{F}{95}{VIMOS}{1h}{apr}{n}{n}{THN}{s}{}
+%\ObservingRun{A}{95}{FORS2}{4h}{may}{n}{0.8}{PHO}{s}{}
+%\ObservingRun{A/alt}{95}{FORS2}{3n=2x1+2H2}{may}{n}{0.8}{PHO}{v}{}
+%\ObservingRun{B}{95}{VIMOS}{2n=2x1}{jun}{n}{0.6}{CLR}{v}{}
+%\ObservingRun{C}{95}{EFOSC2}{3n}{aug}{n}{0.8}{THN}{v}{}
+%\ObservingRun{D}{95}{NACO}{0.4n}{may}{n}{0.8}{THN}{v}{}
+%\ObservingRun{E}{95}{VIMOS}{1h}{apr}{n}{1.4}{THN}{s}{}
+%\ObservingRun{F}{95}{VIMOS}{1h}{apr}{n}{n}{THN}{s}{}
 
 
 % Proprietary time requested.
 % Valid values: % 0, 1, 2, 6, 12
 
-\ProprietaryTime{12}
+\ProprietaryTime{0}
 
 %---- BOX 4 ------------------------------------------------------------
 %
@@ -225,14 +226,14 @@ order to make this unparalleled dataset immediately available to the community.
 % This macro is optional and can be commented out.
 % It is also NOT checked at the pdfLaTeX compilation.
 
-\AwardedNights{NTT}{4n in 93.B-1234}
+%\AwardedNights{NTT}{4n in 93.B-1234}
 
 % Indicate below the telescope(s) and number of nights/hours still
 % necessary, in the future, to complete this programme, if any.
 % This macro is optional and can be commented out.
 % It is also NOT checked at the pdfLaTeX compilation.
 
-\FutureNights{UT2}{20h}
+%\FutureNights{UT2}{20h}
 
 %---- BOX 5 ------------------------------------------------------------
 %
@@ -243,7 +244,7 @@ order to make this unparalleled dataset immediately available to the community.
 % This macro is optional and can be commented out.
 % It is also NOT checked at the pdfLaTeX compilation.
 
-\SpecialRemarks{This macro is optional and can be commented out. }
+%\SpecialRemarks{This macro is optional and can be commented out. }
   
 %---- BOX 6 ------------------------------------------------------------
 % Please provide the ESO User Portal username for the Principal
@@ -267,14 +268,17 @@ order to make this unparalleled dataset immediately available to the community.
 % DO NOT USE ANY TEX/LATEX MACROS HERE
 %
 
-\PI{JSMITH999} 
+\PI{GBRAMMER} 
 % Replace with PI's ESO User Portal username.
 
-\CoI{L.}{Ma\c con}{1098}
-\CoI{R.}{Men\'endez}{1098}
-\CoI{S.}{Bailer-Brown}{1154}
-\CoI{K.L.}{Giorgi}{1339}
-\CoI{S.}{Lichtman}{1377}
+\CoI{I.}{Labb\'e}{1716}
+\CoI{B.}{Lundgren}{2069}
+\CoI{D.}{Marchesini}{1767}
+\CoI{A.}{Muzzin}{1716}
+\CoI{M.}{Stefanon}{2017}
+\CoI{S.}{Toft}{1227}
+\CoI{A.}{Zirm}{1227}
+
 
 % Please note: 
 % Due to the way in which the proposal receiver system parses
@@ -312,15 +316,85 @@ order to make this unparalleled dataset immediately available to the community.
 %
 % All macros in this box are NOT checked at the pdfLaTeX compilation.
 
-\ScientificRationale{Scientific rationale: scientific background of
-  the project, pertinent references; previous work plus justification
-  for present proposal.}
+\ScientificRationale{
+Galaxy formation is one of the major unsolved 
+problems in astrophysics. We now have exquisite information on the 
+distribution of matter when the universe was only 380,000 years old (redshift 
+$z\sim1100$; [1]), but the key question is how the $\sim$10$^{-6}$ 
+density fluctuations inferred from the cosmic microwave background radiation 
+subsequently evolved into stars, galaxies, and clusters of galaxies that we 
+see today. The standard paradigm of structure formation is that of 
+hierarchical assembly in a universe dominated by cold dark matter (CDM). CDM 
+galaxy formation models postulate that galaxy formation is a two stage 
+process, with DM haloes forming in a dissipationless, gravitational 
+collapse, and galaxies forming inside these structures following the 
+radiative cooling of baryons.  Stars form out of gas that cools 
+within these haloes, and the stellar mass of a present-day massive galaxy was 
+assembled by a combination of star formation and mergers [2].
 
-\ImmediateObjective{Immediate objective of the proposal: state what is
-  actually going to be observed and what shall be extracted from the
-  observations, so that the feasibility becomes clear.
-  In the case of VLT-XMM programmes please also specify the immediate
-  objectives of the XMM observations. } 
+\vskip 0.2cm
+
+\noindent {\bf The HST Frontier Fields:} Through a large investment (560 orbits) of Director's Discretionary (DD) 
+time, the Hubble Space Telescope (\textit{HST}) is about to embark in a new multi-cycle program to further 
+investigate the most distant universe ($z>5$). The HST Frontier Fields (HFF) 
+program will image six deep fields centered on strong lensing galaxy clusters 
+in parallel with six deep blank fields over the next three cycles. The primary 
+science goals of the twelve new frontier fields are to 1) reveal the 
+population of galaxies at $z=5$--$10$ that are 10-50 times fainter 
+intrinsically than any presently known, 2) solidify our understanding of the 
+stellar masses and star formation histories of sub-$L^{\star}$ galaxies, 
+3) provide the first statistically meaningful morphological characterization 
+of star-forming galaxies at $z>5$, and 4) to find $z>8$ galaxies 
+magnified enough by the cluster lensing for spectroscopic follow-up and 
+stretched out enough to study the internal structure. The HFF will image 12 times the area of the HUDF (for total surveyed areas of 
+$\sim$55~arcmin$^{2}$ and $\sim$135~arcmin$^{2}$ by WFC3/IR and ACS, 
+respectively) with the ACS B$_{\rm 435}$, V$_{\rm 606}$, and 
+I$_{\rm 814}$ filters, and the WFC3 Y$_{\rm 105}$, J$_{\rm 125}$, H$_{\rm 140}$, 
+and H$_{\rm 160}$ filters, reaching a 5$\sigma$ total magnitude limit of 
+H$_{\rm 160}$=28.7 AB mag, i.e., $\sim$0.5~mag shallower than HUDF09 [3]. 
+The HFF will also be observed with {\it Spitzer}-IRAC in the 
+3.6$\mu$m and 4.5$\mu$m bands with roughly 1000 hours of additional \textit{Spitzer} DD time. 
+
+%\vskip 0.2cm
+
+\vspace{0.2cm}  \hspace{0.5cm} Whereas the main target of the HFF is to explore the 
+galaxy population in the first billion years of cosmic history, this dataset 
+will be unique for its combination of surveyed area and depth in studies of 
+galaxy evolution across most of the age of the universe, down to, and 
+including, the redshifts of the targeted clusters of galaxies 
+($z\approx$0.3-0.5). Specifically, the large surveyed area of the HFF will allow for the assembly of a large sample of galaxies at 
+$z>1$, while its depth will allow for detailed measurements of their 
+stellar populations and morphologies. The top-left panel of 
+Figure~1 shows the stellar mass vs. redshift of the sources in 
+two of the CLASH fields to be targeted by the HFF and 
+in the HUDF [3], while the middle-left panel shows their redshift 
+distributions. The bottom-left panel of Figure~1 shows the 
+cumulative number counts $N(>z)$ as a function of redshifts at $0<z<5$ in the 
+same fields. As shown by the bottom-left panel, one expects hundreds of 
+galaxies at $1<z<3$ and several dozens at $z>3$ in each of the 
+twelve pointings down to H$_{\rm 160}$=26.  The number of galaxies at $z>1$ will be significantly 
+larger (by a factor $>$2) than inferred from Figure~1, given that 
+the HFF will reach H$_{\rm 160}=$28.7 mag.
+
+}
+
+\ImmediateObjective{
+The observations proposed here will provide deep HAWK-I $K_s$-band imaging to fill the large gap in the wavelength coverage between the \textit{HST} $H_{160}$ and IRAC 3.6\,$\mu\mathrm{m}$ filters of the planned \textit{HST} Frontier Fields survey.  These observations at 2.2$\mu\mathrm{m}$ are critical for enabling galaxy studies over the full 8--9 Gyr of cosmic history sampled by the HFF with an unprecedented combination of depth and area.  The addition of the $K$-band significantly improves the precision of both photometric redshifts and derived properties of galaxies' stellar populations, such as their stellar mass, at $z>2$ and even at $z>4$ (Figures 1 \& 2).  The HFF+HAWK-I survey will provide, for the first time, a statistically large sample of galaxies down to stellar masses
+$\log{(M/M_{\odot})}\sim$8.5(9.5) at $z=1.5$(4.5), i.e., 
+well below the characteristic stellar mass of the stellar mass function, 
+$M^{\star}\approx$10$^{11}$~M$_{\odot}$ (e.g., [3,4]).  At very high redshifts $z>9$, the $K_s$-band photometry will help constrain the Lyman-break redshifts [5] and increasing the wavelength lever arm for measuring the redshift evolution of the rest-frame UV slopes (i.e., dust content and/or metallicity) of the first galaxies [6].
+
+\vspace{0.2cm} \hspace{0.5cm} We will use the combined \textit{HST}+HAWK-I dataset to address the critical question of whether or not quiescent galaxies are in place in significant numbers at $z\gg2$ (Figure~2).  Recent deep near-infrared surveys have pushed the discovery of ``red sequence'' galaxies to $z\sim2$ (e.g., [7,8,4]).  Wide-area surveys have discovered a few such galaxies at $z>3$ but only the most massive galaxies are accessible at the currently-available depths ($K\sim23$; [9,4]).  The deep HST photometry alone will be insufficient to robustly characterize red galaxies at $z>3$ because even the $H$-band lies on the UV side of the Balmer/4000\AA\ break at these redshifts [9, 10]; the $K$-band is required to select galaxies at rest-frame optical wavelengths free from confusion challenges of the redder IRAC bands.
+
+\vspace{0.2cm} \hspace{0.5cm} We are committed to providing a valuable resource to the community to complement the large investment of \textit{VLT} time:  we waive the proprietary period on the HAWK-I observations.  Furthermore, our team has extensive experience processing deep $K$-band observations (including HAWK-I, [5]) and we are committed to a public release of reduced, registered mosaics within 6 months of completing the integration on each of the two survey fields.
+ 
+% \textbf{XXX} photo-zs, stellar populations, sample the red edge of the Balmer break at $z>3.X$ whereas WFC3 is rest-UV
+% 
+% also constraints on reionization era galaxies (Brammer 2013, Bouwens 2013).
+% 
+% \textbf{XXX} Consider forgoing proprietary time to make this a true community dataset.
+
+} 
 
 %
 %---- THE SECOND PAGE OF THE SCIENCE CASE CAN INCLUDE FIGURES ----------
@@ -333,13 +407,26 @@ order to make this unparalleled dataset immediately available to the community.
 % Each figure has a size limit of 1MB.
 % MakePicture and MakeCaption are optional macros and can be commented out.
 
-\MakePicture{galaxy.pdf}{angle=90,width=10cm}
-\MakeCaption{Fig.~1: A caption for your figure can be inserted here.}
+\MakePicture{f2.pdf}{angle=0,width=14cm}
+\MakeCaption{Fig.~1. \textit{left:} Distribution of stellar mass and number as a function of redshift for three fields similar to the HFF clusters targeted here.  There are hundreds of galaxies both in the lensing clusters and at redshifts behind the clusters in each of the HFF fields.  \textit{right:} Scatter in derived rest-frame $(U-V)$ colors for the GOODS-South field.  Photometric redshifts and colors are determined from catalogs with a similar filter set as the HFF program, with and without the $K$ band included.  The scatter and systematic differences in the derived rest-frame colors (red) at $2 < z < 4$ where $H_{160}$ and $K$ sample the Balmer/4000\AA\ break are many factors larger than the expected scatter from the photometric errors alone with deep $H_{160}$ and the proposed $K_s=26.5$ photometry (blue lines).  These random and systematic errors translate into large uncertainties on the age and stellar mass of the galaxies' stellar populations in this key redshift interval.}
 
-\MakeCaption{References can also be included using MakeCaption.
-  For example:
+\MakePicture{ff_hawki.pdf}{angle=0,width=15cm}
+\MakeCaption{Fig.~2. \textit{left:} The HAWK-I field-of-view is perfectly suited to provide \textit{simultaneous} ultra-deep $K_s$-band imaging of both the cluster and parallel areas of the \textit{HST} Frontier Fields. \textit{right:} Example of a candidate ultra-massive quiescent galaxy at $z\sim6$ discovered in the UltraVISTA survey (Stefanon et~al., in prep), shown in black.  Because such a luminous/massive source would not be expected to be found within the smaller HFF survey volume, we simulate \textit{HST}+{HAWK-I}+IRAC photometry of the source at HFF depth after first making the object an order of magnitude fainter.  Ultra-deep HAWK-I photometry is critical for pinpointing the Balmer/4000\AA\ break in such potentially remarkable galaxies at $z\gg2$.}
 
-  References: }
+
+\MakeCaption{
+{\it References:}
+\textbf{[1]} Larson, D., et~al. 2011, ApJS, 192, 16 
+\textbf{[2]} White, S. D. M., \& Rees, M. J. 1978, MNRAS, 183, 341 
+\textbf{[3]} Lundgren, B., et~al. 2013, ApJ submitted 
+\textbf{[4]} Muzzin, A., et~al., 2013a, ApJ submitted, arXiv/1303.4410
+\textbf{[5]} Bouwens, R. et~al., 2013, ApJL, 765, 16
+\textbf{[6]} Bouwens, R. et~al., 2012, ApJ, 754, 83
+\textbf{[7]} Brammer, G. et~al., 2009, ApJL, 706, 173
+\textbf{[8]} Brammer, G. et~al., 2011, ApJ, 739, 24
+\textbf{[9]} Marchesini, D. et~al., 2010, ApJ, 725, 1277
+\textbf{[10]} Brammer, G. \& van Dokkum, P, 2007, ApJL, 718, 73
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% THE PAGE OF TECHNICAL JUSTIFICATIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -351,34 +438,34 @@ order to make this unparalleled dataset immediately available to the community.
 % and of the requested number of nights or hours.  
 % All macros in this box are NOT checked at the pdfLaTeX compilation.
 
-\WhyLunarPhase{Provide here a careful justification of the requested
-  lunar phase.}  
+\WhyLunarPhase{These $K_s$-band observations can be obtained at any lunar phase.}  
 
-\WhyNights{Provide a careful justification of the requested number of 
-  nights or hours for each observing run here. ESO Exposure Time 
-  Calculators exist for all Paranal and La Silla instruments and are 
-  available at the following web address: 
+\WhyNights{
 
-  http://www.eso.org/observing/etc .
+As the figure of merit for achieving the goals of this program, we require detecting a galaxy with 1/10th of the characteristic stellar mass of the stellar mass function at $z\sim3$ ($\sim$$10^{10}\,M_\odot$).  This ensures that such galaxies will be detected in sufficient numbers (i.e., dozens; Figure~1) in the volume probed by the 4 \textit{HST} ACS+WFC3 pointings covered here with HAWK-I.  Scaling the mass completeness limits from the UltraVISTA stellar mass functions of Muzzin et al. (2013), we require a 5$\sigma$ (point source) depth of $K_s=26.5$ (AB).  
 
-  Links to exposure time calculators for APEX instrumentation
-  can be found in Section 7 of the Call for Proposals.
+\hspace{0.5cm} For NDIT$\times$DIT = 4$\times$15 s exposures, the HAWK-I Exposure Time Calculator predicts that the required depth can be reached in 30 hours on-source, per field.  This estimate assumes airmass=1.2 and seeing of $0\farcs6$ in the $V$-band.  While the seeing constraint implies an additional expense in terms of observing efficiency, the resulting seeing of $\sim$$0\farcs45$ in the $K$-band is necessary to match, as well as possible, the high-resolution \textit{HST} imaging ($0\farcs18$ in $H_{160}$) of the crowded HFF cluster fields.  An additional 11 hours per field is required for the acquisition and per-exposure overheads.  Thus we request a total allocation of 41$\times$2=82 hours for the full integrations on both southern \textit{HST} Frontier Fields.  
+
+\hspace{0.5cm} We readily acknowledge that this request represents a significant investment in valuable \textit{VLT} observing time.  However, this is in keeping with even larger time investments with the \textit{Hubble} and \textit{Spitzer} Space Telescopes over the coming years and represents a unique opportunity for the \textit{VLT} to provide a critical and lasting contribution to these forefront survey fields.  We note that the requested allocation will truly probe parameter space previously unexplored from the ground and impossible to obtain from space:  the HAWK-I image proposed here will be almost one magnitude deeper than the final depth of the wider-area UltraVISTA survey ($K_s<25.6$).  Furthermore, taking into account the roughly factor-of-two (0.75 mag) magnification by the massive foreground galaxy clusters, the proposed ultra-deep $K_s$-band integration is equivalent to an allocation of over 300 hours on blank survey fields.  While the cluster magnification comes at a cost of a smaller survey volume, the faint luminosities probed will otherwise only be accessible with future facilities such as the E-ELT and the JWST.
+
+\hspace{0.5cm} Finally, we note that the $\sqrt{t}$ factor for reaching the full requested depth of $K_s=26.5$ implies significant cost over a depth just 0.5 mag brighter.  If scheduling constraints are unable to accommodate our full request, a somewhat shallower depth of $K_s=26.0$ can be obtained in 40\% of the time, or 34 hours divided between the two survey fields.  Most of the science goals mentioned above can still be achieved---the current HAWK-I HUDF coverage reaches $K_s=26.1$ (Bouwens et al. 2013)---with somewhat smaller, more luminous samples and the cost of not taking full legacy advantage of the full HFF \textit{HST} and \textit{Spitzer} depths.
+
 }
 
-\TelescopeJustification{Justification for the use of the selected
-  telescope (e.g., VLT, APEX, etc...)  with respect to other 
-  available alternatives.}
 
-\ModeJustification{Justification for the observing mode requested
-  (visitor or service).}
+\TelescopeJustification{To match the depth and relatively large area of the \textit{HST} Frontier Fields, we require a large telescope aperture and an infrared instrument with a large field of view (7 arcmin).  The field of view of VLT/HAWK-I is perfectly matched to cover both the cluster and parallel areas of the Frontier Fields in a single pointing (Figure 1).  The proposed ultra-deep HAWK-I coverage of the HFF survey builds on ESO's pioneering history of obtaining ultra-deep $K$-band images of the HUDF with ISAAC (Labb\'e et al. 2003) and HAWK-I (Bouwens et al. 2013), now over a significantly larger survey area. }
+
+
+\ModeJustification{The HAWK-I observations proposed here are straightforward imaging acquisitions of large survey fields, and the full integrations can be most efficiently scheduled in Service Mode.}
+
 
 
 % Please specify the type of calibrations needed.
 % In case of special calibration the second parameter is used to enter 
 % specific details.
 % Valid values: standard, special
-\Calibrations{special}{Adopt a special calibration}
-%\Calibrations{standard}{}
+%\Calibrations{special}{Adopt a special calibration}
+\Calibrations{standard}{}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -393,7 +480,17 @@ order to make this unparalleled dataset immediately available to the community.
 %  the last 2 years (4 observing periods). Describe the status of the
 %  data obtained and the scientific output generated.
 
-\LastObservationRemark{This macro is optional and can be commented out.}
+\LastObservationRemark{PI G. Brammer is PI of 4 VLT programs since P87:
+
+087.A-0514, ``Confirming the Existence of Monster Galaxies at $z\sim3$'', 22 h, X-shooter.  Roughly 7 of the allotted 22 hours were executed in Service Mode.  Data analysis is ongoing and should result in a publication in 2013.
+
+288.A-5036, ``Dissecting a star-bursting dwarf galaxy at $z=1.847$ with VLT/X-shooter and a natural magnifying glass'', 1.5 h, X-shooter.  This DDT was observed on the last possible date of target visibility under substandard conditions and the target was not visible in the reduced spectra.
+
+089.B-0543, ``The Star-forming Ancestors of Elliptical Galaxies'', 9 h, SINFONI.  This program was carried over to P90 and was recently completed.  Analysis is ongoing.
+
+090.A-0215, ``Testing the Possible Redshift Variation of the Stellar Initial Mass Function with VLT/X-shooter'', 6 h, X-shooter. No SM observations have yet been obtained.
+}
+
 
 %
 %---- BOX 9a -- ESO Archive ------------------------------------------
@@ -402,9 +499,7 @@ order to make this unparalleled dataset immediately available to the community.
 % (http://archive.eso.org)? If yes, explain the need for new data.
 % This macro is NOT checked at the pdfLaTeX compilation.
 
-\RequestedDataRemark{Are the data requested in this proposal in the
-  ESO Archive (http://archive.eso.org)? If yes, explain the need for
-  new data.}
+\RequestedDataRemark{There is no infrared imaging on either of the proposed fields currently in the ESO archive.}
 
 %
 %---- BOX 9b -- ESO GTO/Public Survey Programme Duplications---------
@@ -414,19 +509,19 @@ order to make this unparalleled dataset immediately available to the community.
 % This macro is optional and can be commented out.
 % It is also NOT checked at the pdfLaTeX compilation.
 
-\RequestedDuplicateRemark{
-  Specify whether there is any duplication of targets/regions covered 
-  by ongoing GTO and/or Public Survey programmes. If so, please 
-  explain the need for the new data here. Details on the protected 
-  target/fields in these ongoing programmes can be found at: 
-
-  GTO programmes: http://www.eso.org/sci/observing/teles-alloc/gto.html
-  
-  Public Survey programmes: 
-  http://www.eso.org/sci/observing/PublicSurveys/sciencePublicSurveys.html
-  
-  This macro is optional and can be commented out.
-}
+% \RequestedDuplicateRemark{
+%   Specify whether there is any duplication of targets/regions covered 
+%   by ongoing GTO and/or Public Survey programmes. If so, please 
+%   explain the need for the new data here. Details on the protected 
+%   target/fields in these ongoing programmes can be found at: 
+% 
+%   GTO programmes: http://www.eso.org/sci/observing/teles-alloc/gto.html
+%   
+%   Public Survey programmes: 
+%   http://www.eso.org/sci/observing/PublicSurveys/sciencePublicSurveys.html
+%   
+%   This macro is optional and can be commented out.
+% }
 
 %
 %---- BOX 10 ------ Applicant(s) publications ---------------------
@@ -445,11 +540,22 @@ order to make this unparalleled dataset immediately available to the community.
 % This macro is NOT checked at the pdfLaTeX compilation.
 
 \Publications{
-  Name1 A., Name2 B., 2001, ApJ, 518, 567: Title of article1
-  \smallskip\\
-  Name3 A., Name4 B., 2002, A\&A, 388, 17: Title of article2
-  \smallskip\\
-  Name5 A. et al., 2002, AJ, 118, 1567: Title of article3
+Bouwens R., et al., 2013, ApJL, in press: ``Photometric Constraints on the Redshift of $z\sim10$ candidate UDFj-39546284 from deeper WFC3/IR+ACS+IRAC observations over the HUDF''
+\smallskip\\
+Brammer, G., et~al., 2011, ApJ, 739, 24: ``The Number Density and Mass Density of Star-forming and Quiescent Galaxies at $0.4 < z < 2.2$''
+\smallskip\\
+Brammer G., et al., 2013, ApJL, in press: ``A Tentative Detection of an Emission Line at 1.6 $\mu$m for the $z\sim12$ Candidate UDFj-39546284''
+\smallskip\\
+Marchesini, D., et~al., 2012, Apj, 748, 126: ``
+The Evolution of the Rest-frame V-band Luminosity Function from $z = 4$: A Constant Faint-end Slope over the Last 12 Gyr of Cosmic History''
+\smallskip\\
+Muzzin, A., et~al., 2013, ApJ, submitted (arXiv/1303.4410): ``The Evolution of the Stellar Mass Functions of Star-Forming and Quiescent Galaxies to $z = 4$ from the COSMOS/UltraVISTA Survey''
+\smallskip\\
+Muzzin, A., et~al., 2013, ApJ, submitted (arXiv/1303.4409): ``A Public Ks-selected Catalog in the COSMOS/UltraVISTA Field: Photometry, Photometric Redshifts and Stellar Population Parameters''
+\smallskip\\
+Stefanon, M., et~al., 2013, ApJ, in-press (arXiv/1301.7063): ``What Are the Progenitors of Compact, Massive, Quiescent Galaxies at $z=2.3$? The Population of Massive Galaxies at $z>3$ from NMBS and CANDELS''
+\smallskip\\
+Whitaker, K., et~al., 2011, ApJ, 735, 86: ``The NEWFIRM Medium-band Survey: Photometric Catalogs, Redshifts, and the Bimodal Color Distribution of Galaxies out to $z\sim3$''
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -508,16 +614,19 @@ order to make this unparalleled dataset immediately available to the community.
 %
 % DO NOT USE ANY TEX/LATEX MACROS FOR THE TARGETS
 
-\Target{ABC}{Cen A}{13 25 27.61}{-43 01 08.8}{8.0}{7.9}{20 min}{NGC 5128}{}
-\Target{A}{NGC 5139}{13 26.8}{-47 29}{5.0}{6.12}{1 deg}{Omega Cen}{}
-\Target{BC}{NGC 6058}{15 12 51.0}{-38 07 33}{15.0}{11.6}{}{plan. neb.}{}
-\Target{B}{M 5}{15 18 33}{+02 04 58}{8.0}{7}{}{glob. cluster}{}
-\Target{C}{M 6}{17 40.1}{-32 13}{10.0}{2.0}{4.3}{Butterfly cl.}{}
-\Target{C}{M 8}{18 03 37}{-24 23.2}{1.0}{3.8}{30 min}{Lagoon neb.}{}
-\Target{C}{NGC 6822}{19 44 57.8}{-14 48 11}{20.0}{18}{}{Barnard's gal.}{}
-\Target{D}{NGC 7793}{23 57 49.9}{-32 35 20}{20.0}{18}{}{Sd gal.}{S322120026}
-\Target{E}{Alpha Ori}{06 45 08.9}{-16 42 58}{1}{-1.4}{6 mas}{Sirius}{}
-\Target{F}{Alpha Ori}{06 45 08.9}{-16 42 58}{1}{-1.4}{6 mas}{Sirius}{}
+\Target{AB}{A2744}{00 14 21}{-30 23 50}{41.0}{26.5}{7 min}{z=0.308 cluster}{}
+\Target{AB}{MACS0416}{04 16 09}{-24 04 29}{41.0}{26.5}{7 min}{z=0.420 cluster}{}
+
+% \Target{ABC}{Cen A}{13 25 27.61}{-43 01 08.8}{8.0}{7.9}{20 min}{NGC 5128}{}
+% \Target{A}{NGC 5139}{13 26.8}{-47 29}{5.0}{6.12}{1 deg}{Omega Cen}{}
+% \Target{BC}{NGC 6058}{15 12 51.0}{-38 07 33}{15.0}{11.6}{}{plan. neb.}{}
+% \Target{B}{M 5}{15 18 33}{+02 04 58}{8.0}{7}{}{glob. cluster}{}
+% \Target{C}{M 6}{17 40.1}{-32 13}{10.0}{2.0}{4.3}{Butterfly cl.}{}
+% \Target{C}{M 8}{18 03 37}{-24 23.2}{1.0}{3.8}{30 min}{Lagoon neb.}{}
+% \Target{C}{NGC 6822}{19 44 57.8}{-14 48 11}{20.0}{18}{}{Barnard's gal.}{}
+% \Target{D}{NGC 7793}{23 57 49.9}{-32 35 20}{20.0}{18}{}{Sd gal.}{S322120026}
+% \Target{E}{Alpha Ori}{06 45 08.9}{-16 42 58}{1}{-1.4}{6 mas}{Sirius}{}
+% \Target{F}{Alpha Ori}{06 45 08.9}{-16 42 58}{1}{-1.4}{6 mas}{Sirius}{}
 
 
 %                      ***************** 
@@ -533,7 +642,7 @@ order to make this unparalleled dataset immediately available to the community.
 % of your targets.
 % This macro is NOT checked at the pdfLaTeX compilation.
 
-\TargetNotes{A note about the targets and/or strategy of selecting the targets during the run. For APEX runs please remember to specify the PWV limits for each target under 'Additional info' in the table above.}
+% \TargetNotes{A note about the targets and/or strategy of selecting the targets during the run. For APEX runs please remember to specify the PWV limits for each target under 'Additional info' in the table above.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% TWO PAGES OF SCHEDULING REQUIREMENTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -549,7 +658,7 @@ order to make this unparalleled dataset immediately available to the community.
 % other flags in Box 13.
 %
 %
-\HasTimingConstraints{}
+% \HasTimingConstraints{}
 
 %
 % The timing constraint macros listed below 
@@ -566,14 +675,14 @@ order to make this unparalleled dataset immediately available to the community.
 % 2nd argument: run splitting requested for sub-runs
 % This parameter is NOT checked at the pdfLaTeX compilation.
 
-\RunSplitting{B}{1,10s,1}
-\RunSplitting{C}{2,10s,2,20w,2,15s,4H2}
+% \RunSplitting{B}{1,10s,1}
+% \RunSplitting{C}{2,10s,2,20w,2,15s,4H2}
 
 
 % 2. LINK FOR COORDINATED OBSERVATIONS BETWEEN DIFFERENT RUNS.
-\Link{B}{after}{A}{10}
-\Link{C}{after}{B}{}
-\Link{E}{simultaneous}{F}{}
+% \Link{B}{after}{A}{10}
+% \Link{C}{after}{B}{}
+% \Link{E}{simultaneous}{F}{}
 
 % 3. UNSUITABLE PERIOD(S) OF TIME
 %
@@ -588,9 +697,9 @@ order to make this unparalleled dataset immediately available to the community.
 % Format: dd-mmm-yyyy
 % This parameter is NOT checked at the pdfLaTeX compilation.
 
-\UnsuitableTimes{A}{15-jul-15}{18-jul-15}{Insert explanation of unsuitable time here.}
-\UnsuitableTimes{B}{15-jul-15}{18-jul-15}{Insert explanation of unsuitable time here.}
-\UnsuitableTimes{C}{20-jul-15}{23-jul-15}{Insert explanation of unsuitable time here.}
+% \UnsuitableTimes{A}{15-jul-15}{18-jul-15}{Insert explanation of unsuitable time here.}
+% \UnsuitableTimes{B}{15-jul-15}{18-jul-15}{Insert explanation of unsuitable time here.}
+% \UnsuitableTimes{C}{20-jul-15}{23-jul-15}{Insert explanation of unsuitable time here.}
 
 
 %
@@ -610,10 +719,10 @@ order to make this unparalleled dataset immediately available to the community.
 % 3rd argument: Chilean end date for the critical period.
 % Format: dd-mmmm-yyyy
 
-\TimeCritical{A}{12-may-15}{14-may-15}{Insert reason for time-critical observations.}
-\TimeCritical{D}{1-may-15}{2-may-15}{Insert reason for time-critical observations.}
-\TimeCritical{D}{17-may-15}{18-may-15}{Insert reason for time-critical observations.}
-\TimeCritical{D}{23-may-15}{24-may-15}{Insert reason for time-critical observations.}
+% \TimeCritical{A}{12-may-15}{14-may-15}{Insert reason for time-critical observations.}
+% \TimeCritical{D}{1-may-15}{2-may-15}{Insert reason for time-critical observations.}
+% \TimeCritical{D}{17-may-15}{18-may-15}{Insert reason for time-critical observations.}
+% \TimeCritical{D}{23-may-15}{24-may-15}{Insert reason for time-critical observations.}
 
 
 
@@ -643,13 +752,16 @@ order to make this unparalleled dataset immediately available to the community.
 
 % Examples (to be commented or deleted)
 
-\INSconfig{A}{FORS2}{Detector}{MIT} 
-\INSconfig{A}{FORS2}{IMG}{ESO filters: provide list HERE}
-\INSconfig{B}{VIMOS}{IFU 0.33"/fibre}{LR-Blue}
-\INSconfig{C}{EFOSC2}{Imaging-filters}{EFOSC2 filters: provide list here}
-\INSconfig{D}{NACO}{IMG 54 mas/px VIS-WFS}{provide list of filters HERE}
-\INSconfig{E}{VIMOS}{IFU 0.33"/fibre}{LR-Blue}
-\INSconfig{F}{VIMOS}{IFU 0.33"/fibre}{LR-Blue}
+\INSconfig{A}{HAWKI}{IMG}{Ks}
+\INSconfig{B}{HAWKI}{IMG}{Ks}
+
+% \INSconfig{A}{FORS2}{Detector}{MIT} 
+% \INSconfig{A}{FORS2}{IMG}{ESO filters: provide list HERE}
+% \INSconfig{B}{VIMOS}{IFU 0.33"/fibre}{LR-Blue}
+% \INSconfig{C}{EFOSC2}{Imaging-filters}{EFOSC2 filters: provide list here}
+% \INSconfig{D}{NACO}{IMG 54 mas/px VIS-WFS}{provide list of filters HERE}
+% \INSconfig{E}{VIMOS}{IFU 0.33"/fibre}{LR-Blue}
+% \INSconfig{F}{VIMOS}{IFU 0.33"/fibre}{LR-Blue}
 %
 % Real list of instrument configurations
 
