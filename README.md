@@ -57,11 +57,11 @@ These files represent the current best reduction with the following changes:
 | A2744 |  M0416 |
 | ----- | ------ |
 | ![A2744 Stars](https://raw.githubusercontent.com/gbrammer/HAWKI-FF/master/Doc/v3.1/A2744_star_selection.png) | ![M0416 Stars](https://raw.githubusercontent.com/gbrammer/HAWKI-FF/master/Doc/v3.1/M0416_star_selection.png) |
-| Star selection in both fields based on SExtractor `FLUX_RADIUS` as a function of `MAG_AUTO`. Stars are clearly offset from galaxies at $Ks < 24.$|
+| Star selection in both fields based on SExtractor `FLUX_RADIUS` as a function of `MAG_AUTO`. Stars are clearly offset from galaxies at Ks < 24.|
 | ![A2744 Number Counts](https://raw.githubusercontent.com/gbrammer/HAWKI-FF/master/Doc/v3.1/A2744_number_counts.png) | ![M0416 Number Counts](https://raw.githubusercontent.com/gbrammer/HAWKI-FF/master/Doc/v3.1/M0416_number_counts.png) |
 | Ks band number counts (`MAG_AUTO`). |
 | ![A2744 CoG](https://raw.githubusercontent.com/gbrammer/HAWKI-FF/master/Doc/v3.1/A2744_apcorr.png) | ![M0416 CoG](https://raw.githubusercontent.com/gbrammer/HAWKI-FF/master/Doc/v3.1/M0416_apcorr.png) |
-| Stellar curves of growth as a function of aperture diameter, in arcsec. The stellar PSFs are well-described by Moffat profiles with `FWHM` &approx; 0.4" and &beta;&approx;2.2.  The relatively low value of &beta; indicates that while the cores of the PSF are fairly concentrated, there is significant flux in the outer wings.|
+| Stellar curves of growth as a function of aperture diameter, in arcsec. The stellar PSFs are well-described by Moffat profiles with `FWHM` &#x2248; 0.4" and &beta;&#x2248;2.2.  The relatively low value of &beta; indicates that while the cores of the PSF are fairly concentrated, there is significant flux in the outer wing.|
 
 ### September 16, 2014
 
