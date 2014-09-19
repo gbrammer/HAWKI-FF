@@ -23,9 +23,9 @@ HAWKI-FF
 
 These files represent the current best reduction with the following changes:
 
-    * Apply relative weighiting of the individual OBs to include 1) exposure time, 2) background level and 3) image quality.  This improves the final seeing FWHM somewhat from 0.4" to 0.375" and with less power in the PSF wings.  (N.B. the IRAF `imexam` FWHMs are somewhat smaller than those measured from the average stellar curves of growth and SExtractor IMAGE_FWHM.)
-    * Create stacks matched to the pixel grids of the 60mas HST mosaics in both the cluster and parallel fields.
-    * Put more descriptive information in the FITS headers:
+* Apply relative weighiting of the individual OBs to include 1) exposure time, 2) background level and 3) image quality.  This improves the final seeing FWHM somewhat from 0.4" to 0.375" and with less power in the PSF wings.  (N.B. the IRAF `imexam` FWHMs are somewhat smaller than those measured from the average stellar curves of growth and SExtractor IMAGE_FWHM.)
+* Create stacks matched to the pixel grids of the 60mas HST mosaics in both the cluster and parallel fields.
+* Put more descriptive information in the FITS headers:
     
     ```
     PROGID  = '092.A-0472(A)'      / ESO Program ID
@@ -57,7 +57,11 @@ These files represent the current best reduction with the following changes:
 | A2744 |  M0416 |
 | ----- | ------ |
 | ![A2744 Stars](https://raw.githubusercontent.com/gbrammer/HAWKI-FF/master/Doc/v3.1/A2744_star_selection.png) | ![M0416 Stars](https://raw.githubusercontent.com/gbrammer/HAWKI-FF/master/Doc/v3.1/M0416_star_selection.png) |
-| Star selection in both fields based on SExtractor `FLUX_RADIUS` as a function of `MAG_AUTO` | 
+| Star selection in both fields based on SExtractor `FLUX_RADIUS` as a function of `MAG_AUTO`. Stars are clearly offset from galaxies at $Ks < 24.$|
+| ![A2744 Number Counts](https://raw.githubusercontent.com/gbrammer/HAWKI-FF/master/Doc/v3.1/A2744_number_counts.png) | ![M0416 Number Counts](https://raw.githubusercontent.com/gbrammer/HAWKI-FF/master/Doc/v3.1/M0416_number_counts.png) |
+| Ks band number counts (`MAG_AUTO`). |
+| ![A2744 CoG](https://raw.githubusercontent.com/gbrammer/HAWKI-FF/master/Doc/v3.1/A2744_apcorr.png) | ![M0416 CoG](https://raw.githubusercontent.com/gbrammer/HAWKI-FF/master/Doc/v3.1/M0416_apcorr.png) |
+| Stellar curves of growth as a function of aperture diameter, in arcsec. The stellar PSFs are well-described by Moffat profiles with `FWHM` &approx; 0.4" and &beta;&approx;2.2.  The relatively low value of &beta; indicates that while the cores of the PSF are fairly concentrated, there is significant flux in the outer wings.|
 
 ### September 16, 2014
 
