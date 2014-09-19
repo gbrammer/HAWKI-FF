@@ -1,7 +1,7 @@
 HAWKI-FF
 ========
 
-(Email brammer@stsci.edu for the password information for the linked images.)
+(Email brammer@stsci.edu for the password for the linked images.)
 
 ### September 19, 2014
 
@@ -17,7 +17,9 @@ HAWKI-FF
 These files represent the current best reduction with the following changes:
 
 * Apply relative weighiting of the individual OBs to include 1) exposure time, 2) background level and 3) image quality.  This improves the final seeing FWHM somewhat from 0.4" to 0.375" and with less power in the PSF wings.  (N.B. the IRAF `imexam` FWHMs are somewhat smaller than those measured from the average stellar curves of growth and SExtractor IMAGE_FWHM.)
+
 * Along with the 100mas/pix stacks of the full field, create stacks matched to the pixel grids of the 60mas HST mosaics in both the cluster and parallel fields.  Note that these aren't simply resampling of the 100mas mosaics but rather recombined with SWarp from the individual OBs onto the desired pixel grid.
+
 * Put more descriptive information in the FITS headers:
     
     ```
