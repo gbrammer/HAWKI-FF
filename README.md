@@ -5,6 +5,10 @@ HAWKI-FF
 
 ### September 19, 2014
 
+|      File            | Date   |  Size |      File            | Date   |  Size |
+| -------------------- | ------ | ----- | -------------------- | ------ | ----- |
+|[A2744_Ks_cluster_v3.1_sci.fits.gz](http://www.stsci.edu/~brammer/HFF/Stack/v3.1/A2744_Ks_cluster_v3.1_sci.fits.gz) | Sep 19 | 95M |[M0416_Ks_cluster_v3.1_sci.fits.gz](http://www.stsci.edu/~brammer/HFF/Stack/v3.1/M0416_Ks_cluster_v3.1_sci.fits.gz) | Sep 19 | 67M |
+
 |      File            | Date   |  Size |
 | -------------------- | ------ | ----- |
 |[A2744_Ks_cluster_v3.1_sci.fits.gz](http://www.stsci.edu/~brammer/HFF/Stack/v3.1/A2744_Ks_cluster_v3.1_sci.fits.gz) | Sep 19 | 95M |
