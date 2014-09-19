@@ -21,6 +21,44 @@ HAWKI-FF
 |[M0416_Ks_v3.1_sci.fits.gz](http://www.stsci.edu/~brammer/HFF/Stack/v3.1/M0416_Ks_v3.1_sci.fits.gz) | Sep 19 | 86M |
 |[M0416_Ks_v3.1_wht.fits.gz](http://www.stsci.edu/~brammer/HFF/Stack/v3.1/M0416_Ks_v3.1_wht.fits.gz) | Sep 19 | 44M |
 
+These files represent the current best reduction with the following changes:
+
+    * Apply relative weighiting of the individual OBs to include 1) exposure time, 2) background level and 3) image quality.  This improves the final seeing FWHM somewhat from 0.4" to 0.375" and with less power in the PSF wings.  (N.B. the IRAF `imexam` FWHMs are somewhat smaller than those measured from the average stellar curves of growth and SExtractor IMAGE_FWHM.)
+    * Create stacks matched to the pixel grids of the 60mas HST mosaics in both the cluster and parallel fields.
+    * Put more descriptive information in the FITS headers:
+    
+    ```
+    PROGID  = '092.A-0472(A)'      / ESO Program ID
+    PROGPI  = 'G. Brammer'         / For questions contact brammer@stsci.edu
+    TELESCOP= 'ESO-VLT-UT4'        / ESO Telescope Name
+    INSTRUME= 'HAWKI   '           / Instrument used
+    CHIPID1 = 'ESO-Hawaii2RG-chip66' / Detector (chip 1)
+    CHIPID2 = 'ESO-Hawaii2RG-chip78' / Detector (chip 2)
+    CHIPID3 = 'ESO-Hawaii2RG-chip79' / Detector (chip 3)
+    CHIPID4 = 'ESO-Hawaii2RG-chip88' / Detector (chip 4)
+    FILTER  = 'Ks      '           / Filter
+    MAGZEROP=                 26.0 / AB Zeropoint, mAB = MAGZEROP - 2.5 log(FLUX)
+    ABVEGA  =                1.826 / AB-Vega conversion
+    PIVOT   =              21524.0 / Filter pivot wavelength
+    UNITS   = 'FLUX    '           / Science image units (DN/s)
+    TARGET  = 'Abell 2744'         / Target Name
+    RA      =             3.530172 / (J2000) pointing Right Ascension
+    DEC     =            -30.39038 / (J2000) pointing Declination
+    POSANG  =                -36.2
+    MJD-OBS =       56616.10902617 / Start of PHOtometric OB
+    DATE-OBS= '2013-11-20'         / Date of PHOtometric OB
+    DATEFRST= '2013-10-24'         / Date of first OB execution
+    DATELAST= '2013-12-24'         / Date of last OB execution
+    DIT     =                   15 / Detector Integration Time
+    NDIT    =                    4 / Number of averaged samples
+    TOTEXP  =    25.52666000000001 / On-sky exposure time (hours)
+    ```
+    
+| A2744 |  M0416 |
+| ----- | ------ |
+| ![A2744 Stars](https://raw.githubusercontent.com/gbrammer/HAWKI-FF/master/Doc/v3.1/A2744_star_selection.png) | ![M0416 Stars](https://raw.githubusercontent.com/gbrammer/HAWKI-FF/master/Doc/v3.1/M0416_star_selection.png) |
+| Star selection in both fields based on SExtractor `FLUX_RADIUS` as a function of `MAG_AUTO` | 
+
 ### September 16, 2014
 
 |      File            | Date   |  Size |
