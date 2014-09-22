@@ -20,7 +20,7 @@ The weight maps are now inverse variance maps measured by-hand from the science 
 
 | A2744 |  M0416 |
 | ----- | ------ |
-| ![A2744 Stars](https://raw.githubusercontent.com/gbrammer/HAWKI-FF/master/Doc/A2744_limiting_mag_v3.2_.png) | ![M0416 Stars](https://raw.githubusercontent.com/gbrammer/HAWKI-FF/master/Doc/M0416_limiting_mag_v3.2_.png) |
+| ![A2744 Stars](https://raw.githubusercontent.com/gbrammer/HAWKI-FF/master/Doc/A2744_limiting_mag_v3.2.png) | ![M0416 Stars](https://raw.githubusercontent.com/gbrammer/HAWKI-FF/master/Doc/M0416_limiting_mag_v3.2.png) |
 
 Limiting magnitudes in D=0.8" apertures including corrections to total using the curves of growth and the noise measured in the inverse variance maps.  The true depth will be somewhat lower for "empty aperture" uncertainties, which are usually somewhat larger than the pixel-to-pixel inverse variance estimate because of correlated pixels.
 
