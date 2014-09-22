@@ -3,6 +3,29 @@ HAWKI-FF
 
 (Email brammer@stsci.edu for the password for the linked images.)
 
+### September 22, 2014
+
+|File            |  Size  |File            |  Size  |
+|--------------- | ------ |--------------- | ------ |
+|[A2744_Ks_cluster_v3.2_sci.fits](http://www.stsci.edu/~brammer/HFF/Stack/v3.2/A2744_Ks_cluster_v3.2_sci.fits.gz) | 95M |	[M0416_Ks_cluster_v3.2_sci.fits](http://www.stsci.edu/~brammer/HFF/Stack/v3.2/M0416_Ks_cluster_v3.2_sci.fits.gz) | 67M |
+|[A2744_Ks_cluster_v3.2_wht.fits](http://www.stsci.edu/~brammer/HFF/Stack/v3.2/A2744_Ks_cluster_v3.2_wht.fits.gz) | 55M |	[M0416_Ks_cluster_v3.2_wht.fits](http://www.stsci.edu/~brammer/HFF/Stack/v3.2/M0416_Ks_cluster_v3.2_wht.fits.gz) | 38M |
+|[A2744_Ks_parallel_v3.2_sci.fits](http://www.stsci.edu/~brammer/HFF/Stack/v3.2/A2744_Ks_parallel_v3.2_sci.fits.gz) | 77M |	[M0416_Ks_parallel_v3.2_sci.fits](http://www.stsci.edu/~brammer/HFF/Stack/v3.2/M0416_Ks_parallel_v3.2_sci.fits.gz) | 81M |
+|[A2744_Ks_parallel_v3.2_wht.fits](http://www.stsci.edu/~brammer/HFF/Stack/v3.2/A2744_Ks_parallel_v3.2_wht.fits.gz) | 44M |	[M0416_Ks_parallel_v3.2_wht.fits](http://www.stsci.edu/~brammer/HFF/Stack/v3.2/M0416_Ks_parallel_v3.2_wht.fits.gz) | 45M |
+|[A2744_Ks_v3.2_sci.fits](http://www.stsci.edu/~brammer/HFF/Stack/v3.2/A2744_Ks_v3.2_sci.fits.gz) | 87M |	[M0416_Ks_v3.2_sci.fits](http://www.stsci.edu/~brammer/HFF/Stack/v3.2/M0416_Ks_v3.2_sci.fits.gz) | 86M |
+|[A2744_Ks_v3.2_wht.fits](http://www.stsci.edu/~brammer/HFF/Stack/v3.2/A2744_Ks_v3.2_wht.fits.gz) | 45M |	[M0416_Ks_v3.2_wht.fits](http://www.stsci.edu/~brammer/HFF/Stack/v3.2/M0416_Ks_v3.2_wht.fits.gz) | 53M |
+
+The weight maps of the version **3.1** cluster/parallel mosaics in the A2744 field had a problem that relates to allowing SWarp to estimate the pixel-to-pixel RMS when creating the mosaic.  The current **v3.2** release contains improvements to the **background subtraction** and **weight map generation** for all of the final mosaics by implementing a modified version of the SWarp/SExtractor background estimation algorithm that includes more aggressive masking of detected objects, and in particular the outer isophotes of bright, extended galaxies.  
+
+The weight maps are now inverse variance maps measured by-hand from the science mosaics and the background subtraction in the cluster cores is significantly improved.
+
+| A2744 |  M0416 |
+| ----- | ------ |
+| ![A2744 Stars](https://raw.githubusercontent.com/gbrammer/HAWKI-FF/master/Doc/A2744_limiting_mag_v3.2_.png) | ![M0416 Stars](https://raw.githubusercontent.com/gbrammer/HAWKI-FF/master/Doc/M0416_limiting_mag_v3.2_.png) |
+
+Limiting magnitudes in D=0.8" apertures including corrections to total using the curves of growth and the noise measured in the inverse variance maps.  The true depth will be somewhat lower for "empty aperture" uncertainties, which are usually somewhat larger than the pixel-to-pixel inverse variance estimate because of correlated pixels.
+
+
+
 ### September 19, 2014
 
 |File            |  Size  |File            |  Size  |
