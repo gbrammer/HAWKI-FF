@@ -92,6 +92,8 @@ Stellar curves of growth as a function of aperture diameter, in arcsec. The stel
 
 ### September 16, 2014
 
+Sept 24 - FITS files stripped from the repository history.
+
 |      File            | Date   |  Size |
 | -------------------- | ------ | ----- |
 | ~~A2744_Ks_v3_sci.fits.gz~~ |  Sep 16 |  86M | 
