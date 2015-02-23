@@ -1,1 +1,811 @@
-\documentclass[iop, numberedappendix]{emulateapj}\usepackage{apjfonts}%\documentclass[12pt,preprint]{aastex}%\topmargin 0.6in%\usepackage{deluxetable}\usepackage{color}\definecolor{citeRGB}{rgb}{0,0.1,0.7}\usepackage[hyperfootnotes=true,naturalnames=true,letterpaper,pdfstartview=FitH,pdfpagemode=UseNone,colorlinks=true,citecolor=citeRGB]{hyperref}%%%% The following code forces Hyperref to only link the year in a citation%%%% Taken from http://tex.stackexchange.com/questions/23227/how-to-hyperlink-only-the-year-part-when-using-natbib-and-hyperref% \usepackage{etoolbox}% % \makeatletter% % % Patch case where name and year have no delimiter% \patchcmd{\NAT@citex}%   {\@citea\NAT@hyper@{\NAT@nmfmt{\NAT@nm}\NAT@date}}%   {\@citea\NAT@nmfmt{\NAT@nm}\NAT@hyper@{\NAT@date}}%   {}% Do nothing if patch works%   {}% Do nothing if patch fails% % % Patch case where name and year have basic delimiter% \patchcmd{\NAT@citex}%   {\@citea\NAT@hyper@{%%      \NAT@nmfmt{\NAT@nm}%%      \hyper@natlinkbreak{\NAT@aysep\NAT@spacechar}{\@citeb\@extra@b@citeb}%%      \NAT@date}}%   {\@citea\NAT@nmfmt{\NAT@nm}%%    \NAT@aysep\NAT@spacechar%%    \NAT@hyper@{\NAT@date}}%   {}% Do nothing if patch works%   {}% Do nothing if patch fails% % % Patch case where name and year are separated by a prenote% \patchcmd{\NAT@citex}%   {\@citea\NAT@hyper@{%%      \NAT@nmfmt{\NAT@nm}%%      \hyper@natlinkbreak{\NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi}%%        {\@citeb\@extra@b@citeb}%%      \NAT@date}}%   {\@citea\NAT@nmfmt{\NAT@nm}%%    \NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi%%    \NAT@hyper@{\NAT@date}}%   {}% Do nothing if patch works%   {}% Do nothing if patch fails% % \makeatother%\gdef\zphot{$z_\mathrm{phot}$}\gdef\HST{\textit{HST}}\gdef\G141{\textit{G141}}\gdef\F140W{\textit{F140W}}\gdef\fluxcgs{\mathrm{erg\ s^{-1}\ cm^{-2}}}\gdef\micront{$\mu$m}\gdef\micronm{\mu\mathrm{m}}\gdef\aXe{\texttt{aXe}}\gdef\flux_radius{\textsc{flux\_radius}}\gdef\epers{\textit{e}$^{-}$ s$^{-1}$}\gdef\logOH{12 + \log \left(\mathrm{O/H}\right)}\gdef\UmV{U-V}\gdef\VmJ{V-J}\gdef\SFRuvir{SFR_\mathrm{UV+IR}}\gdef\peryr{\mathrm{yr}^{-1}}\gdef\kms{km\,s$^{-1}$}\gdef\mum{$\mu\mathrm{m}$}\gdef\24mum{$24\,\mu\mathrm{m}$}\gdef\arcsec{^{\prime\prime}}\gdef\Jy{\mathrm{Jy}}\gdef\uJy{\mu\mathrm{Jy}}\gdef\LIR{L_\mathrm{IR}}\gdef\LUV{L_\mathrm{UV}}\gdef\4ang{4000\,\AA}\gdef\msun{$M_{\odot}$}\gdef\mathmsun{\ M_{\odot}}\gdef\mathgyr{\ \textrm{Gyr}}\gdef\mathmyr{\ \textrm{Myr}}\gdef\pegase{\textsc{P\'{e}gase}}\gdef\eazy{\texttt{Eazy}}\gdef\galfit{\texttt{galfit}}\gdef\emcee{\texttt{emcee}}\gdef\interrest{\texttt{InterRest}}\gdef\fast{\texttt{fast}}\gdef\zCOSMOS{$z$\textsc{COSMOS}}\gdef\zspec{z_\mathrm{spec}}\gdef\zphot{z_\mathrm{phot}}\gdef\zml{z_\mathrm{ML}}\gdef\zprior{z_\mathrm{prior}}\newcommand{\weblink}[1]{\href{#1}{#1}}\gdef\UDFj{UDFj-39546284}\gdef\compareID{UDF-40106456}\gdef\Lya{\mathrm{Ly}\alpha}\gdef\Halpha{\mathrm{H}\alpha}\gdef\Hbeta{\mathrm{H}\beta}\gdef\othree{[\ion{O}{3}]$\lambda$4959+5007}\gdef\epers{electrons~s$^{-1}$}\gdef\xxx{\textbf{xxx}}\gdef\lineflux{$3.5\pm1.3\times10^{-18}\,\fluxcgs$}\shortauthors{Brammer et al.}\shorttitle{$K_s$-band imaging of the Frontier Fields}%\slugcomment{Draft (\today)}\slugcomment{Submitted to ApJSS}%\citestyle{aa}\begin{document}\title{Ultra-deep $K_s$-band Imaging of the \textit{Hubble} Frontier Fields}% \footnotetext[*]{Based on observations made with the NASA/ESA \textit{Hubble% Space Telescope}, programs GO-11640, 12177 and 12328, obtained at the% Space Telescope Science Institute, which is operated by the Association of% Universities for Research in Astronomy, Inc., under NASA contract NAS% 5-26555.}\author{Gabriel B. Brammer\altaffilmark{1},et~al.}% Pieter G.\ van Dokkum\altaffilmark{2},% Garth D.\ Illingworth\altaffilmark{4},% Rychard J.\ Bouwens\altaffilmark{3},% Ivo Labb\'e\altaffilmark{3}, % Marijn Franx\altaffilmark{3},% Ivelina Momcheva\altaffilmark{2},% Pascal A.\ Oesch\altaffilmark{4}}% Rub\'en S\'anchez-Janssen\altaffilmark{1}, % Ivo Labb\'e\altaffilmark{2},% Elisabete da Cunha\altaffilmark{3},% Dawn K.\ Erb\altaffilmark{4},% Marijn Franx\altaffilmark{2},% Mattia Fumagalli\altaffilmark{2},% Britt Lundgren\altaffilmark{5},% Danilo Marchesini\altaffilmark{6},% Ivelina Momcheva\altaffilmark{5},% Erica Nelson\altaffilmark{5},% Shannon Patel\altaffilmark{2},% Ryan Quadri\altaffilmark{7},% Hans-Walter Rix\altaffilmark{3},% Rosalind E.\ Skelton\altaffilmark{5},% Kasper B.\ Schmidt\altaffilmark{3},% Arjen van der Wel\altaffilmark{3},% Pieter G.\ van Dokkum\altaffilmark{5},% David A.\ Wake\altaffilmark{5},% Katherine E.\ Whitaker\altaffilmark{5}}% Rachel Bezanson\altaffilmark{5},% Xiaohui Fan\altaffilmark{6},% Natascha F\"orster Schreiber\altaffilmark{8},% Garth D.\ Illingworth\altaffilmark{9},% Joel Leja\altaffilmark{5},% Dan Magee\altaffilmark{9},% Patrick McCarthy\altaffilmark{11},% Adam Muzzin\altaffilmark{2},% Ryan Quadri\altaffilmark{11},% Charles C.\ Steidel\altaffilmark{12},% Tomer Tal\altaffilmark{5},% Anna Williams\altaffilmark{13}\email{brammer@stsci.edu}\altaffiltext{1}{ESA/AURA, Space Telescope Science Institute, 3700 San Martin Dr., Baltimore, MD 21218, USA}% \altaffiltext{2}% {Department of Astronomy, Yale University, New Haven, CT 06520, USA}% \altaffiltext{3}% {Leiden Observatory, Leiden University, NL-2300 RA Leiden, Netherlands}% \altaffiltext{4}% {UCO/Lick Observatory, University of California, Santa Cruz, CA 95064}% \altaffiltext{3}% {Max Planck Institute for Astronomy (MPIA), K\"onigstuhl 17,% 69117, Heidelberg, Germany}% \altaffiltext{4}% {Department of Physics, University of Wisconsin-Milwaukee, P.O. Box 413,% Milwaukee, WI 53201, USA}% \altaffiltext{5}% {Department of Astronomy, Yale University, New Haven, CT 06520, USA}% \altaffiltext{6}% {Physics and Astronomy Department, Tufts University, Robinson Hall,% Room 257, Medford, MA, 02155, USA}% \altaffiltext{7}% {Carnegie Observatories, 813 Santa Barbara Street, Pasadena, CA 91101, USA}\begin{abstract}We present ultra-deep $K_s$-band imaging of the \textit{Hubble} Frontier Fields clusters Abell 2744, MACS-0416, MACS-0717 and MACS-1149 (\xxx\ include MOSFIRE???), which have recently been observed with large allocations of Directors' Discretionary Time with the \textit{HST} and \textit{Spitzer} telescopes covering $0.4 < \lambda < 4.5$\,\mum.  \textit{VLT}/HAWKI integrations of the first two fields reach 5-$\sigma$ limiting depths of $K_s=26.3$ (AB) and have seeing FWHM$\sim0\farcs4$.  Shorter MOSFIRE integrations of the latter two northern fields reach limiting depths $K_s=$\xxx\ with seeing FWHM=\xxx.  In all cases the $K_s$-band mosaics cover the primary cluster and parallel \textit{HST}/ACS+WFC3 fields, and the total area of the $K_s$-band coverage is \xxx\ arcmin$^2$.  The $K_s$-band at 2.2\,\mum\ crucially fills the gap between the reddest HST filter (1.6\,\mum\,$\sim H$) and the IRAC 3.6\,\mum\ passband.  While reaching the full depths of the space-based imaging is not currently feasible from the ground, the deep $K_s$-band images provide significant constraints on both the redshifts and the stellar-population properties of galaxies extending well below the characteristic stellar mass across most of the age of the universe, down to, and including, the redshifts of the targeted galaxy clusters ($z \lesssim 0.5$).  Reduced, aligned mosaics of the four survey fields are provided accompanying this manuscript.  Time has been awarded for similar HAWKI coverage of the final two Frontier Fields Abell 370 and Abell S1063, with observations expected by the end of 2015.\end{abstract}\keywords{galaxies: evolution --- galaxies: high-redshift --- surveys: xxx}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                                                %%   Introduction%                                                                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\section{Introduction}\label{s:introduction}Selecting in the reddest band possible.  K-band surveys:  ISAAC \citep{labbe:03}, NMBS, UltraVISTA, ...Subaru Super Deep Field (AO) \cite{minowa:05}.HUGS \citep{hugs}.Frontier Fields%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                                                %%   Observations%                                                                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\section{Observations \& Data Reduction}\label{s:observations}Table~\ref{tab:summary} provides a brief summary of the survey fields and observation characteristics.  Additional details on the observing strategy and image reduction procedures are provided below.\xxx\ currently a bit awkward since MOSFIRE reduction done quickly with Ivo's code and HAWK-I done in many additional steps (astrometry and photometry).\subsection{Observation log}\label{s:log}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                                                %%  Summary table%                                                                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\begin{deluxetable*}{lcclrrcc} \tabletypesize{\footnotesize}\tablewidth{0pt} \tablecaption{Field summary \label{tab:summary}} \tablehead{ \colhead{Field} & \colhead{R.A.} & \colhead{Dec.} & \colhead{Instrument} & \colhead{Epoch} & \colhead{$t$} & \colhead{Depth} & \colhead{FWHM}}\startdata Abell 2744 & 00:14:21.2 & -30:23:50 & \textit{VLT}/HAWKI     & 2013 Oct 24--2013 Dec 24 & 29.4 h & 25.8 & $0\farcs40$ \\ MACS-0416  & 04:16:08.9 & -24:04:28 & \textit{VLT}/HAWKI     & 2013 Oct 25--2014 Feb 23 & 25.5 h & 25.9 & $0\farcs38$ \\ MACS-0717  & 07:17:34.0 & +37:44:49 & \textit{Keck}/MOSFIRE  & 2015 Jan 26--27                 & \xxx & 25.0 & $0\farcs43$ \\ MACS-1149  & 11:49:36.3 & +22:23:58 & \textit{Keck}/MOSFIRE  & 2015 Feb 24                    & \xxx & \xxx & \xxx\enddata %\vspace{-0.8cm} \tablecomments{Depth is defined as the 5$\sigma$ limiting magnitude for point sources, measured in $D=0\farcs5$ apertures (\S\ref{s:depth}).} \end{deluxetable*}%\vspace{1cm}$K_s$-band observations of the Abell 2744 and MACS-0416 fields were obtained between 2013 Oct and 2014 Feb with the High Acuity Wide-field K-band Imager \citep[HAWK-I;][]{hawki, hawki2} on the 8.2\,m UT4 telescope at the ESO \textit{Very Large Telescope} (ESO program \mbox{092.A-0472}).  HAWK-I is composed of four chips with 2048$\times$2048 $0\farcs106$ pixels, and the full $7\farcm5\times7\farcm5$ HAWKI field-of-view is perfectly suited to cover both the primary and parallel \textit{HST} ACS optical and WFC3 IR fields simultaneously in a single pointing (see Fig.\ref{fig:layout}).The HAWK-I observations were divided into individual service mode Observation Blocks (OBs); typically one or two OBs of a given field were observed per night as conditions allowed, and occasionally both fields were observed on the same night.  The execution of each OB lasted either 60 or 90 minutes, depending on how many exposures were obtained in the block.  The exposures were roughly one minute each, with multiple coadds of shorter reads making up the exposure ($\mathrm{NDIT}\times\mathrm{DIT} = 4\times15$\,s~=~60\,s for Abell 2744 and 7$\times$8\,s~=~56\,s for MACS-0416\footnote{Longer DITs are preferable to reduce instrument overheads; the shorter DITs on the MACS-0416 field were done do accommodate \textit{VLT} service mode restrictions on bright source saturation, which have been eased since P93.}).  The telescope was offset with random dithers between each exposure to facilitate sky subtraction;  observations taken before 2013 Nov 4 were dithered within a 20$^{\prime\prime}$ box, which was subsequently increased to 40$^{\prime\prime}$ to improve sky subtraction in the cluster cores crowded with bright galaxies and intra-cluster light.  The total on-sky integration times for the Abell 2744 and MACS-0416 fields are 29.4 and 25.5 hours, respectively.Imaging observations of the MACS-0717 and MACS-1149 fields in the $K_s$ filter were obtained on 2015 Jan 26/27 and 2015 Feb 24, respectively, with the Multi-Object Spectrometer For Infra-Red Exploration \citep[MOSFIRE;][]{mosfire} on the 10\,m \textit{Keck I} telescope.  The MOSFIRE detector consists of $2048\times2048$ $0\farcs1798$ pixels; the resulting $6\farcm1\times6\farcm1$ field-of-view is unfortunately slightly too small to cover both \textit{HST} fields simultaneously and therefore requires two pointings to cover the entire deep \textit{HST} Frontier Fields imaging area (Fig.~\ref{fig:layout}).  The 6$\times$7\,s~=~42\,s MOSFIRE exposures were obtained in a $3\times3$ ``Box9'' dither pattern spaced roughly 40$^{\prime\prime}$ between offset positions.  \xxx\ time on cluster, parallel field etc \xxx.\subsection{Image processing}\label{s:processing}The HAWK-I and MOSFIRE observations were reduced with a pipeline that has been developed for previous surveys with the NEWFIRM \citep[NMBS;][]{whitaker:nmbs} and FOURSTAR \citep[zFOURGE;][, Labb\'e in prep]{spitler:12} infrared imaging instruments.  Treating each detector individually, the pipeline is easily modified for the different instrument configurations of the four HAWK-I and single MOSFIRE chips.  The primary task of the pipeline is removing the bright, time-variable sky background from the individual exposures, which is often some $10^4$ times brighter than the distant galaxies of interest in the field.  With such a bright background, we first determine an empirical ``sky flat'' that is a median of all of the \textit{science} exposures in a HAWK-I OB or MOSFIRE group, after rejecting the brightest 12 exposures at each pixel position to remove the contribution of bright objects.  We find these empirical flats to be preferable to external twilight or dome flats given the difficulty of obtaining a truly flat illumination pattern over such large detector fields-of-view.  After dividing by the flat, the background of each exposure is determined in a first pass from the simple median of the four exposures that came both immediately before and after it.  The background-subtracted exposures are combined into a mosaic from which objects are detected.  The final refined background of each exposure is determined in a second ``mask pass'' from a median again from the four exposures before and after it but now aggressively masking all pixels that contain flux from the detected objects.\subsection{Photometric calibration}\label{s:calib}For the HAWK-I observations, a single 90-minute OB was obtained in each of the Abell 2744 and MACS-0416 fields requiring photometric transparency conditions, and these OBs were followed immediately by an observation of a photometric standard star at a similar airmass with single exposures on each of the four chips.  The standard star exposures were processed with empirical flats derived from the science exposures as described above, and the observed fluxes of the standard stars yield absolute photometric zeropoints for each chip.  \xxx\ We determine additional relative zeropoint offsets between the four HAWK-I chips by comparing the photometry of sources in the overlap regions between them.  \xxx\ \textit{Not sure why these chip corrections are needed beyond the standard star, but they are consistent between the two fields and are needed to improve the agreement in relative depths between the chips.} Correction factors were then computed to scale the OBs obtained at varying transparency levels to the calibrated photometric OB; the additional service mode OBs were obtained under generally satisfactory weather conditions and the scale factors typically differ from unity by only a few percent.  The 2-Micron All Sky Survey \citep[2MASS;][]{2mass} provides an additional check on the photometric calibration, though the comparison is limited due to relatively little brightness overlap between the faint end of reliable 2MASS photometry and the bright end where stars are in the linear regime of the detectors on the 8--10\,m telescopes.  For the MOSFIRE observations obtained over just one or two nights, we use the 2MASS overlap directly to determine the absolute photometric calibration.  A comparison of the observed photometry in the four survey fields to the 2MASS catalog magnitudes is shown in Fig.~\ref{fig:2mass}.  The stellar photometry on the deep $K_s$-band mosaics is measured within $1\arcsec$ apertures corrected to infinity with the curves of growth described below.  The error-bars on the points in Fig.~\ref{fig:2mass} come from the 2MASS catalog; the photometric uncertainties are negligible for such bright stars in the deep images ($\mathrm{S/N}>100$). We estimate that the systematic uncertainty of the absolute photometric calibration is $\sigma_\mathrm{sys}\lesssim 0.05$ mag.\subsection{Astrometric alignment}\label{s:astrometry}We refine the relative and absolute astrometry of the $K_s$-band images using the SExtractor \citep{bertin:96} and SCAMP \citep{scamp} software tools. Reference astrometric catalogs are generated from \textit{HST} images when available (chips \#1 and \#4 of both HAWK-I cluster fields) and public \textit{Subaru} Suprime-Cam $r_c$-band images otherwise\footnote{http://archive.stsci.edu/pub/hlsp/clash/macs0416/data/subaru/}.  Next, object catalogs are extracted for each background-subtracted exposure and transformations to the reference frame are computed with SCAMP.  All of the exposures for each HAWK-I chip are processed simultaneously as a SCAMP ``instrument'', ensuring a uniform geometric distortion correction for each chip \citep[see also][for a detailed discussion of the HAWK-I geometric distortion]{libralato:14}.For the MOSFIRE observations, we adopt a more simplified approach and refine the shifts specified by the World Coordinate System header keywords by cross-correlating each exposure in a group with an arbitrarily-defined reference exposure (\xxx\ this is what Ivo's pipeline does internally.  I found a bit better final image quality of the HAWK-I images using the SCAMP approach, and the HAWK-I distortions are non-trivial).  For the absolute astrometry of the MOSFIRE mosaic, we align the $K_s$-band image to the Suprime-Cam image\footnote{http://archive.stsci.edu/pub/hlsp/clash/macs0717/data/subaru/} allowing for a linear shift, rotation and scale using the \texttt{iraf.geomap} tool.\xxx\ Add some sort of diagnostic figure showing the astrometric comparison between Ks and, say, ACS F814W and get a number to quote for astrometric precision%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Exposure Map figure%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\begin{figure*}\plotone{hawkiff_layout.pdf} % Figures/exposure_map.pdf\caption{Layout of the Frontier Fields $K_s$-band mosaics.  The positions of the \textit{HST} cluster and parallel fields are shown in the blue (ACS optical) and red (WFC3 IR) polygons.  The light blue polygons in the MACS-0717 field show additional wide-field ACS imaging coverage from  programs GO-9722 and GO-10420 \citep[PI: Ebeling;][]{ma:11}.  The area covered by deep imaging in the \textit{Spitzer}/IRAC 3.6 and 4.5\,\mum\ channels is shown in orange.  The bottom panels show the mosaic weight maps, where the four HAWK-I chips and two MOSFIRE pointings can be seen.\label{fig:layout}}  \end{figure*}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   2MASS comparison%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\begin{figure}[!ht]\epsscale{1.18}\plotone{2mass_phot.pdf} % Figures/exposure_map.pdf\caption{Comparison of bright-star photometry to the 2MASS public catalog.  The Abell 2744 and MACS 0416 fields at high galactic latitude have few stars for cross calibration, and the photometric calibration is determined from observations of standard stars on nights with photometric transparency conditions.  At relatively low galactic latitude ($b=+21$), the MACS 0717 field has many bright stars, and the photometric calibration in that field is defined from the 2MASS comparison (hence, $\Delta_\mathrm{2mass}\equiv0$, as indicated for that field).  We estimate the overall systematic uncertainty in the photometric calibration to be $\lesssim0.05~\mathrm{mag}$.\label{fig:2mass}}  \end{figure}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Image quality figure%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\begin{figure}[!ht]\epsscale{1.18}\plotone{curve_of_growth.pdf} % Figures/exposure_map.pdf\caption{Curves of growth of stellar profiles in the Frontier Fields $K_s$-band mosaics.  The profiles of stars are well-fit by Moffat profiles with $\mathrm{FWHM}\sim0\farcs4$ and $\beta\sim2$, which have substantially more flux at radii $r>\mathrm{FWHM}$ than Gaussian profiles with the same half-widths (orange curves).  These extended profiles appear to be characteristic of deep $K_s$-band images; the stellar profiles from the HUGS GOODS-South D2 HAWK-I $K_s$ image \citep{hugs} (lower right panel), created by a different team with a different reduction pipeline, are nearly identical to those of the Frontier Fields mosaics presented here. \xxx\ I only show the parallel field region of MACS0717, which has significantly better image quality from the Jan. run.  You can see a few of the broader profiles in the figure; there are many more of these if you include the whole cluster area.  \label{fig:cog}}  \end{figure}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Depth figure%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\begin{figure}[!ht]\epsscale{1.18}\plotone{aper_depth.pdf} % Figures/exposure_map.pdf\caption{\textit{Top panel:} Noise in empty apertures as a function of aperture diameter, normalized to the smallest $D=0\farcs2$ aperture.  The dashed and dotted lines show the expectations for uncorrelated and perfectly-correlated noise within the aperture.  \textit{Bottom panel:} The product of the inverse curves-of-growth (Fig.\ref{fig:cog} and the empty aperture noise gives the point-source sensitivity as a function of aperture size.  The S/N is maximized with an aperture just larger than the FWHM.  For reference, the colored dashed lines in the bottom panel indicate the depth computed assuming uncorrelated noise within the apertures ($\sigma \propto D$) and the per-pixel variance reported in the weight maps.)\label{fig:depth}}  \end{figure}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                                                %%   Mosaic properties%                                                                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\section{$K_s$-band Mosaics}\label{s:mosaic}We generate stacks of each OB using the SWarp tool \citep{swarp}, which takes into account the alignment to the reference catalog.  Final mosaics of each field with $0\farcs100$ pixels are generated from the OB stacks weighting the input images with weeights\[w^{-1} = F^2\cdot\sigma^2 \cdot \mathrm{FWHM}^\alpha, \]where $F$ is the factor to scale the OB to the photometric system ($F\equiv1$ for the OB taken under photometric contidions, $F\gtrsim1$ otherwise), $\sigma^2$ is the variance map of each OB stack determined by SWarp ($\sigma^2$ accounts for both exposure time and sky background variations between OBs), FWHM is the full width at half maximum of stars identified in the field, and the parameter $\alpha$ allows for optimizing the image quality of the final mosaic.  Increasing $\alpha$ puts larger weight on the best image-quality OBs while effectively ignoring data with poorer seeing; we adopt $\alpha=2$ for a compromise between the image quality and effective exposure time of the final mosaic.  Finally, we subtract a cell-based background from the final mosaics using an algorithm based on that used by SExtractor and SWarp but that provides more aggressive masking of flux in the outer isophotes of bright galaxies. The mosaics and inverse-variance maps are shown in Fig.~\ref{fig:layout}, along with the position of the deep Frontier Fields \textit{HST} imaging fields.\xxx Right now I just swarp the MOSFIRE groups together without any weightingThe final image and inverse-variance mosaics are provided as an ESO Phase 3 data product \xxx\ URL, as well as attached as a digital product to this manuscript (\xxx\ I think ApJSS can and wants to do this).  The images are scaled to an AB magnitude zeropoint ZP=26.0.  In the sections below we describe the characteristics of the mosaics in more detail.  \subsection{Image quality}\label{s:fwhm}Fig.~\ref{fig:cog} shows the curves of growth for stars identified by the tight relationship between their brightness and half-light radii \citep[see, e.g., Fig.~13 of][]{skelton:14}.  The image quality of the $K_s$-band mosaics is excellent, with stellar FWHM $0\farcs40$ and $0\farcs38$ in the Abell 2744 and MACS 0416 fields, respectively, thanks, in large part, to the execution of the HAWK-I observations in service mode ensuring optimal and uniform image quality across the many hours of integration on the survey fields.  Despite the compact cores of the stellar PSFs, the curves of growth shown in Fig.~\ref{fig:cog} deviate from Gaussian profiles with significantly higher flux in the outer wings, with a shape more consistent with a Moffat profile \citep{trujillo:01}  with $\beta\sim2$.  Also shown in Fig.~\ref{fig:cog} are stellar curves of growth measured from the HAWK-I UDS and GOODS Survey \citep[HUGS;][]{hugs}, which are nearly identical in both FWHM and profile shape.  We caution that these extended profiles will yield significantly shallower final image depths than would be predicted with Exposure Time Calculators that may assume Gaussian profiles. \xxx\ not clear what HAWK-I ETC assumes, the description just says ``FWHM of the seeing disk'' \xxx.  Nevertheless, the deep $K_s$ mosaics have excellent image quality that is much closer to the resolution of the \textit{HST} IR imaging than the redder \textit{Spitzer} IRAC bands.\xxx\ add description of MOSFIRE clusters.  IQ not uniform across the MACS0717 field.\subsection{Depth}\label{s:depth}The inverse-variance weight maps shown in Fig.~\ref{fig:layout} provide a formal measurement of the pixel-to-pixel variance.  However, for aperture photometry measurements this variance will yield an underestimate of the true photometric uncertainty due to correlated noise of neighboring pixels that results from pixel resampling during the image reduction process.  For uncorrelated noise between pixels in an aperture, the variance within the aperture scales with the number of pixels in the aperture, $N_\mathrm{pix}$.  For perfect correlation within the aperture, however, the variance scales as $N_\mathrm{pix}^2$, and the properties of the $K_s$ mosaics will lie somewhere in between these two extremes.Following \cite{labbe:03} \citep[see also][]{quadri:musyc, whitaker:nmbs, skelton:14}, we characterize the noise properties of the $K_s$ mosaics by measuring the flux within circular apertures placed randomly throughout empty parts of the images.  The top panel of Fig.~\ref{fig:depth} shows the standard deviation of these empty-aperture fluxes, $\sigma_\mathrm{D}$, as a function of aperture diameter, which should be used in place of simple scalings of the inverse-variance maps to represent the true uncertainties within photometric apertures.  The product of the inverse curves of growth shown in Fig.~\ref{fig:cog} (i.e., aperture corrections) and the noise curves in the top panel of Fig.~\ref{fig:depth} defines an optimal photometric aperture size where this product is minimized \citep{whitaker:nmbs}.  For our $K_s$-band mosaics, this optimal aperture has $D\sim0\farcs5$, just larger than the FWHM of point-source profiles.  The $5\,\sigma$ limiting magnitudes (AB) within $0\farcs5$ diameter apertures are 25.8, 25.9, and 25.0 in the Abell 2744, MACS-0416, and MACS-0717 fields, respectively.  We note that the depths of the FF HAWK-I mosaics are nearly identical to those of the two deepest HUGS pointings in the GOODS-South Field (i.e., GOODS-South ``D1'' and ``D2'').  The image depths reported by \cite{hugs} assume ideal noise properties that can be compared to the dashed curves in Fig.~\ref{fig:depth}.  We have analyzed the HUGS GOODS-South ``D2'' image with the same empty-aperture technique as was done for the FF images, and the sensitivities are fully consistent with those reported by \cite{hugs} when accounting for the different definitions.  The HAWK-I images presented here are among the deepest $K_s$-band images ever obtained and will provide a crucial complement to the deep \textit{HST} and \textit{Spitzer} imaging of the Frontier Fields.\xxx\ say something about distant extended sources, perhaps scaling from Arjen's size distributions?\subsection{Number counts}\label{s:number}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Number counts figure%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\begin{figure*}\epsscale{1.18}\plotone{number_counts_all.pdf} % Figures/exposure_map.pdf\caption{Number counts.\label{fig:counts}}  \end{figure*}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                                                %%   Constraints%                                                                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\section{Photometric constraints from the $K_s$ band}\label{s:constraints}\subsection{Photometric redshifts}\label{s:photoz}\subsection{SED modeling}\label{s:sed}Balmer break, UV slope%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                                                %%   Discussion and Summary%                                                                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\section{Discussion and Conclusions}\label{s:discussion}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   End things%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\vspace{-0.3cm} %% emulateapj\acknowledgements\noindent We gratefully acknowledge funding support from the STScI Director's Discretionary Research Fund.  \xxx\ acknowledge NASA/Keck time + Mauna Kea \xxx. This research made use of Astropy, a community-developed core Python package for Astronomy \citep{astropy}, and open-source Python modules Numpy, Scipy, and Matplotlib. % \noindent We gratefully acknowledge funding support from the Marie Curie Actions of the European Commission (FP7-COFUND) and STScI% grant GO-12177.{\it Facilities:} \facility{VLT:Yepun (HAWKI)}, \facility{Keck:I (MOSFIRE)} % \facility{Hubble Space Telescope (WFC3)}\bibliographystyle{apj_url}\bibliography{ms}\end{document}=======\documentclass[iop, numberedappendix]{emulateapj}\usepackage{apjfonts}%\documentclass[12pt,preprint]{aastex}%\topmargin 0.6in%\usepackage{deluxetable}\usepackage{color}\definecolor{citeRGB}{rgb}{0,0.1,0.7}\usepackage[hyperfootnotes=true,naturalnames=true,letterpaper,pdfstartview=FitH,pdfpagemode=UseNone,colorlinks=true,citecolor=citeRGB]{hyperref}%%%% The following code forces Hyperref to only link the year in a citation%%%% Taken from http://tex.stackexchange.com/questions/23227/how-to-hyperlink-only-the-year-part-when-using-natbib-and-hyperref% \usepackage{etoolbox}% % \makeatletter% % % Patch case where name and year have no delimiter% \patchcmd{\NAT@citex}%   {\@citea\NAT@hyper@{\NAT@nmfmt{\NAT@nm}\NAT@date}}%   {\@citea\NAT@nmfmt{\NAT@nm}\NAT@hyper@{\NAT@date}}%   {}% Do nothing if patch works%   {}% Do nothing if patch fails% % % Patch case where name and year have basic delimiter% \patchcmd{\NAT@citex}%   {\@citea\NAT@hyper@{%%      \NAT@nmfmt{\NAT@nm}%%      \hyper@natlinkbreak{\NAT@aysep\NAT@spacechar}{\@citeb\@extra@b@citeb}%%      \NAT@date}}%   {\@citea\NAT@nmfmt{\NAT@nm}%%    \NAT@aysep\NAT@spacechar%%    \NAT@hyper@{\NAT@date}}%   {}% Do nothing if patch works%   {}% Do nothing if patch fails% % % Patch case where name and year are separated by a prenote% \patchcmd{\NAT@citex}%   {\@citea\NAT@hyper@{%%      \NAT@nmfmt{\NAT@nm}%%      \hyper@natlinkbreak{\NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi}%%        {\@citeb\@extra@b@citeb}%%      \NAT@date}}%   {\@citea\NAT@nmfmt{\NAT@nm}%%    \NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi%%    \NAT@hyper@{\NAT@date}}%   {}% Do nothing if patch works%   {}% Do nothing if patch fails% % \makeatother%\gdef\zphot{$z_\mathrm{phot}$}\gdef\HST{\textit{HST}}\gdef\G141{\textit{G141}}\gdef\F140W{\textit{F140W}}\gdef\fluxcgs{\mathrm{erg\ s^{-1}\ cm^{-2}}}\gdef\micront{$\mu$m}\gdef\micronm{\mu\mathrm{m}}\gdef\aXe{\texttt{aXe}}\gdef\flux_radius{\textsc{flux\_radius}}\gdef\epers{\textit{e}$^{-}$ s$^{-1}$}\gdef\logOH{12 + \log \left(\mathrm{O/H}\right)}\gdef\UmV{U-V}\gdef\VmJ{V-J}\gdef\SFRuvir{SFR_\mathrm{UV+IR}}\gdef\peryr{\mathrm{yr}^{-1}}\gdef\kms{km\,s$^{-1}$}\gdef\mum{$\mu\mathrm{m}$}\gdef\24mum{$24\,\mu\mathrm{m}$}\gdef\arcsec{^{\prime\prime}}\gdef\Jy{\mathrm{Jy}}\gdef\uJy{\mu\mathrm{Jy}}\gdef\LIR{L_\mathrm{IR}}\gdef\LUV{L_\mathrm{UV}}\gdef\4ang{4000\,\AA}\gdef\msun{$M_{\odot}$}\gdef\mathmsun{\ M_{\odot}}\gdef\mathgyr{\ \textrm{Gyr}}\gdef\mathmyr{\ \textrm{Myr}}\gdef\pegase{\textsc{P\'{e}gase}}\gdef\eazy{\texttt{Eazy}}\gdef\galfit{\texttt{galfit}}\gdef\emcee{\texttt{emcee}}\gdef\interrest{\texttt{InterRest}}\gdef\fast{\texttt{fast}}\gdef\zCOSMOS{$z$\textsc{COSMOS}}\gdef\zspec{z_\mathrm{spec}}\gdef\zphot{z_\mathrm{phot}}\gdef\zml{z_\mathrm{ML}}\gdef\zprior{z_\mathrm{prior}}\newcommand{\weblink}[1]{\href{#1}{#1}}\gdef\UDFj{UDFj-39546284}\gdef\compareID{UDF-40106456}\gdef\Lya{\mathrm{Ly}\alpha}\gdef\Halpha{\mathrm{H}\alpha}\gdef\Hbeta{\mathrm{H}\beta}\gdef\othree{[\ion{O}{3}]$\lambda$4959+5007}\gdef\epers{electrons~s$^{-1}$}\gdef\xxx{\textbf{xxx}}\gdef\lineflux{$3.5\pm1.3\times10^{-18}\,\fluxcgs$}\shortauthors{Brammer et al.}\shorttitle{$K_s$-band imaging of the Frontier Fields}%\slugcomment{Draft (\today)}\slugcomment{Submitted to ApJSS}%\citestyle{aa}\begin{document}\title{Ultra-deep $K_s$-band Imaging of the \textit{Hubble} Frontier Fields}% \footnotetext[*]{Based on observations made with the NASA/ESA \textit{Hubble% Space Telescope}, programs GO-11640, 12177 and 12328, obtained at the% Space Telescope Science Institute, which is operated by the Association of% Universities for Research in Astronomy, Inc., under NASA contract NAS% 5-26555.}\author{Gabriel B. Brammer\altaffilmark{1},et~al.}% Pieter G.\ van Dokkum\altaffilmark{2},% Garth D.\ Illingworth\altaffilmark{4},% Rychard J.\ Bouwens\altaffilmark{3},% Ivo Labb\'e\altaffilmark{3}, % Marijn Franx\altaffilmark{3},% Ivelina Momcheva\altaffilmark{2},% Pascal A.\ Oesch\altaffilmark{4}}% Rub\'en S\'anchez-Janssen\altaffilmark{1}, % Ivo Labb\'e\altaffilmark{2},% Elisabete da Cunha\altaffilmark{3},% Dawn K.\ Erb\altaffilmark{4},% Marijn Franx\altaffilmark{2},% Mattia Fumagalli\altaffilmark{2},% Britt Lundgren\altaffilmark{5},% Danilo Marchesini\altaffilmark{6},% Ivelina Momcheva\altaffilmark{5},% Erica Nelson\altaffilmark{5},% Shannon Patel\altaffilmark{2},% Ryan Quadri\altaffilmark{7},% Hans-Walter Rix\altaffilmark{3},% Rosalind E.\ Skelton\altaffilmark{5},% Kasper B.\ Schmidt\altaffilmark{3},% Arjen van der Wel\altaffilmark{3},% Pieter G.\ van Dokkum\altaffilmark{5},% David A.\ Wake\altaffilmark{5},% Katherine E.\ Whitaker\altaffilmark{5}}% Rachel Bezanson\altaffilmark{5},% Xiaohui Fan\altaffilmark{6},% Natascha F\"orster Schreiber\altaffilmark{8},% Garth D.\ Illingworth\altaffilmark{9},% Joel Leja\altaffilmark{5},% Dan Magee\altaffilmark{9},% Patrick McCarthy\altaffilmark{11},% Adam Muzzin\altaffilmark{2},% Ryan Quadri\altaffilmark{11},% Charles C.\ Steidel\altaffilmark{12},% Tomer Tal\altaffilmark{5},% Anna Williams\altaffilmark{13}\email{brammer@stsci.edu}\altaffiltext{1}{ESA/AURA, Space Telescope Science Institute, 3700 San Martin Dr., Baltimore, MD 21218, USA}% \altaffiltext{2}% {Department of Astronomy, Yale University, New Haven, CT 06520, USA}% \altaffiltext{3}% {Leiden Observatory, Leiden University, NL-2300 RA Leiden, Netherlands}% \altaffiltext{4}% {UCO/Lick Observatory, University of California, Santa Cruz, CA 95064}% \altaffiltext{3}% {Max Planck Institute for Astronomy (MPIA), K\"onigstuhl 17,% 69117, Heidelberg, Germany}% \altaffiltext{4}% {Department of Physics, University of Wisconsin-Milwaukee, P.O. Box 413,% Milwaukee, WI 53201, USA}% \altaffiltext{5}% {Department of Astronomy, Yale University, New Haven, CT 06520, USA}% \altaffiltext{6}% {Physics and Astronomy Department, Tufts University, Robinson Hall,% Room 257, Medford, MA, 02155, USA}% \altaffiltext{7}% {Carnegie Observatories, 813 Santa Barbara Street, Pasadena, CA 91101, USA}\begin{abstract}We present ultra-deep $K_s$-band imaging of the \textit{Hubble} Frontier Fields clusters Abell 2744, MACS-0416, MACS-0717 and MACS-1149 (\xxx\ include MOSFIRE???), which have recently been observed with large allocations of Directors' Discretionary Time with the \textit{HST} and \textit{Spitzer} telescopes covering $0.4 < \lambda < 4.5$\,\mum.  \textit{VLT}/HAWKI integrations of the first two fields reach 5-$\sigma$ limiting depths of $K_s=26.3$ (AB) and have seeing FWHM$\sim0\farcs4$.  Shorter MOSFIRE integrations of the latter two northern fields reach limiting depths $K_s=$\xxx\ with seeing FWHM=\xxx.  In all cases the $K_s$-band mosaics cover the primary cluster and parallel \textit{HST}/ACS+WFC3 fields, and the total area of the $K_s$-band coverage is \xxx\ arcmin$^2$.  The $K_s$-band at 2.2\,\mum\ crucially fills the gap between the reddest HST filter (1.6\,\mum\,$\sim H$) and the IRAC 3.6\,\mum\ passband.  While reaching the full depths of the space-based imaging is not currently feasible from the ground, the deep $K_s$-band images provide significant constraints on both the redshifts and the stellar-population properties of galaxies extending well below the characteristic stellar mass across most of the age of the universe, down to, and including, the redshifts of the targeted galaxy clusters ($z \lesssim 0.5$).  Reduced, aligned mosaics of the four survey fields are provided accompanying this manuscript.  Time has been awarded for similar HAWKI coverage of the final two Frontier Fields Abell 370 and Abell S1063, with observations expected by the end of 2015.\end{abstract}\keywords{galaxies: evolution --- galaxies: high-redshift --- surveys: xxx}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                                                %%   Introduction%                                                                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\section{Introduction}\label{s:introduction}Selecting in the reddest band possible.  K-band surveys:  ISAAC, NMBS, UltraVISTA, ...HUGSFrontier Fields%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                                                %%   Observations%                                                                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\section{Observations \& Data Reduction}\label{s:observations}Table~\ref{tab:summary} provides a brief summary of the survey fields and observation characteristics.  Additional details on the observing strategy and image reduction procedures are provided below.\xxx\ currently a bit awkward since MOSFIRE reduction done quickly with Ivo's code and HAWK-I done in many additional steps (astrometry and photometry).\subsection{Observation log}\label{s:log}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                                                %%  Summary table%                                                                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\begin{deluxetable*}{lrcclrrcc} \tabletypesize{\footnotesize}\tablewidth{0pt} \tablecaption{Field summary \label{tab:summary}} \tablehead{ \colhead{Field} & \colhead{$z$} & \colhead{R.A.} & \colhead{Dec.} & \colhead{Instrument} & \colhead{Epoch} & \colhead{$t$} & \colhead{Depth} & \colhead{FWHM}}\startdata Abell 2744 & 0.308 & 00:14:21.2 & -30:23:50 & \textit{VLT}/HAWKI     & 2013 Oct 24--2013 Dec 24 & 29.4 h & 25.8 & $0\farcs40$ \\ MACS-0416  & 0.396 & 04:16:08.9 & -24:04:28 & \textit{VLT}/HAWKI     & 2013 Oct 25--2014 Feb 23 & 25.5 h & 25.9 & $0\farcs38$ \\ MACS-0717  & 0.545 & 07:17:34.0 & +37:44:49 & \textit{Keck}/MOSFIRE  & 2015 Jan 26--27                 & \xxx & 25.0 & $0\farcs43$ \\ MACS-1149  & 0.543 & 11:49:36.3 & +22:23:58 & \textit{Keck}/MOSFIRE  & 2015 Feb 24                    & \xxx & \xxx & \xxx\enddata %\vspace{-0.8cm} \tablecomments{Depth is defined as the 5$\sigma$ limiting magnitude for point sources, measured in $D=0\farcs5$ apertures (\S\ref{s:depth}).} \end{deluxetable*}%\vspace{1cm}$K_s$-band observations of the Abell 2744 and MACS-0416 fields were obtained between 2013 Oct and 2014 Feb with the High Acuity Wide-field K-band Imager \citep[HAWK-I;][]{hawki, hawki2} on the 8.2\,m UT4 telescope at the ESO \textit{Very Large Telescope} (ESO program \mbox{092.A-0472}).  HAWK-I is composed of four chips with 2048$\times$2048 $0\farcs106$ pixels, and the full $7\farcm5\times7\farcm5$ HAWKI field-of-view is perfectly suited to cover both the primary and parallel \textit{HST} ACS optical and WFC3 IR fields simultaneously in a single pointing (see Fig.\ref{fig:layout}).The HAWK-I observations were divided into individual service mode Observation Blocks (OBs); typically one or two OBs of a given field were observed per night as conditions allowed, and occasionally both fields were observed on the same night.  The execution of each OB lasted either 60 or 90 minutes, depending on how many exposures were obtained in the block.  The exposures were roughly one minute each, with multiple coadds of shorter reads making up the exposure ($\mathrm{NDIT}\times\mathrm{DIT} = 4\times15$\,s~=~60\,s for Abell 2744 and 7$\times$8\,s~=~56\,s for MACS-0416\footnote{Longer DITs are preferable to reduce instrument overheads; the shorter DITs on the MACS-0416 field were done do accommodate \textit{VLT} service mode restrictions on bright source saturation, which have been eased since P93.}).  The telescope was offset with random dithers between each exposure to facilitate sky subtraction;  observations taken before 2013 Nov 4 were dithered within a 20$^{\prime\prime}$ box, which was subsequently increased to 40$^{\prime\prime}$ to improve sky subtraction in the cluster cores crowded with bright galaxies and intra-cluster light.  The total on-sky integration times for the Abell 2744 and MACS-0416 fields are 29.4 and 25.5 hours, respectively.Imaging observations of the MACS-0717 and MACS-1149 fields in the $K_s$ filter were obtained on 2015 Jan 26/27 and 2015 Feb 24, respectively, with the Multi-Object Spectrometer For Infra-Red Exploration \citep[MOSFIRE;][]{mosfire} on the 10\,m \textit{Keck I} telescope.  The MOSFIRE detector consists of $2048\times2048$ $0\farcs1798$ pixels; the resulting $6\farcm1\times6\farcm1$ field-of-view is unfortunately slightly too small to cover both \textit{HST} fields simultaneously and therefore requires two pointings to cover the entire deep \textit{HST} Frontier Fields imaging area (Fig.~\ref{fig:layout}).  The 6$\times$7\,s~=~42\,s MOSFIRE exposures were obtained in a $3\times3$ ``Box9'' dither pattern spaced roughly 40$^{\prime\prime}$ between offset positions.  \xxx\ time on cluster, parallel field etc \xxx.\subsection{Image processing}\label{s:processing}The HAWK-I and MOSFIRE observations were reduced with a pipeline that has been developed for previous surveys with the NEWFIRM \citep[NMBS;][]{whitaker:nmbs} and FOURSTAR \citep[zFOURGE;][, Labb\'e in prep]{spitler:12} infrared imaging instruments.  Treating each detector individually, the pipeline is easily modified for the different instrument configurations of the four HAWK-I and single MOSFIRE chips.  The primary task of the pipeline is removing the bright, time-variable sky background from the individual exposures, which is often some $10^4$ times brighter than the distant galaxies of interest in the field.  With such a bright background, we first determine an empirical ``sky flat'' that is a median of all of the \textit{science} exposures in a HAWK-I OB or MOSFIRE group, after rejecting the brightest 12 exposures at each pixel position to remove the contribution of bright objects.  We find these empirical flats to be preferable to external twilight or dome flats given the difficulty of obtaining a truly flat illumination pattern over such large detector fields-of-view.  After dividing by the flat, the background of each exposure is determined in a first pass from the simple median of the four exposures that came both immediately before and after it.  The background-subtracted exposures are combined into a mosaic from which objects are detected.  The final refined background of each exposure is determined in a second ``mask pass'' from a median again from the four exposures before and after it but now aggressively masking all pixels that contain flux from the detected objects.\subsection{Photometric calibration}\label{s:calib}For the HAWK-I observations, a single 90-minute OB was obtained in each of the Abell 2744 and MACS-0416 fields requiring photometric transparency conditions, and these OBs were followed immediately by an observation of a photometric standard star at a similar airmass with single exposures on each of the four chips.  The standard star exposures were processed with empirical flats derived from the science exposures as described above, and the observed fluxes of the standard stars yield absolute photometric zeropoints for each chip.  \xxx\ We determine additional relative zeropoint offsets between the four HAWK-I chips by comparing the photometry of sources in the overlap regions between them.  \xxx\ \textit{Not sure why these chip corrections are needed beyond the standard star, but they are consistent between the two fields and are needed to improve the agreement in relative depths between the chips.} Correction factors were then computed to scale the OBs obtained at varying transparency levels to the calibrated photometric OB; the additional service mode OBs were obtained under generally satisfactory weather conditions and the scale factors typically differ from unity by only a few percent.  The 2-Micron All Sky Survey \citep[2MASS;][]{2mass} provides an additional check on the photometric calibration, though the comparison is limited due to relatively little brightness overlap between the faint end of reliable 2MASS photometry and the bright end where stars are in the linear regime of the detectors on the 8--10\,m telescopes.  For the MOSFIRE observations obtained over just one or two nights, we use the 2MASS overlap directly to determine the absolute photometric calibration.  A comparison of the observed photometry in the four survey fields to the 2MASS catalog magnitudes is shown in Fig.~\ref{fig:2mass}.  The stellar photometry on the deep $K_s$-band mosaics is measured within $1\arcsec$ apertures corrected to infinity with the curves of growth described below.  The error-bars on the points in Fig.~\ref{fig:2mass} come from the 2MASS catalog; the photometric uncertainties are negligible for such bright stars in the deep images ($\mathrm{S/N}>100$). We estimate that the systematic uncertainty of the absolute photometric calibration is $\sigma_\mathrm{sys}\lesssim 0.05$ mag.\subsection{Astrometric alignment}\label{s:astrometry}We refine the relative and absolute astrometry of the $K_s$-band images using the SExtractor \citep{bertin:96} and SCAMP \citep{scamp} software tools. Reference astrometric catalogs are generated from \textit{HST} images when available (chips \#1 and \#4 of both HAWK-I cluster fields) and public \textit{Subaru} Suprime-Cam $r_c$-band images otherwise\footnote{http://archive.stsci.edu/pub/hlsp/clash/macs0416/data/subaru/}.  Next, object catalogs are extracted for each background-subtracted exposure and transformations to the reference frame are computed with SCAMP.  All of the exposures for each HAWK-I chip are processed simultaneously as a SCAMP ``instrument'', ensuring a uniform geometric distortion correction for each chip \citep[see also][for a detailed discussion of the HAWK-I geometric distortion]{libralato:14}.For the MOSFIRE observations, we adopt a more simplified approach and refine the shifts specified by the World Coordinate System header keywords by cross-correlating each exposure in a group with an arbitrarily-defined reference exposure (\xxx\ this is what Ivo's pipeline does internally.  I found a bit better final image quality of the HAWK-I images using the SCAMP approach, and the HAWK-I distortions are non-trivial).  For the absolute astrometry of the MOSFIRE mosaic, we align the $K_s$-band image to the Suprime-Cam image\footnote{http://archive.stsci.edu/pub/hlsp/clash/macs0717/data/subaru/} allowing for a linear shift, rotation and scale using the \texttt{iraf.geomap} tool.\xxx\ Add some sort of diagnostic figure showing the astrometric comparison between Ks and, say, ACS F814W and get a number to quote for astrometric precision%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Exposure Map figure%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\begin{figure*}\plotone{hawkiff_layout.pdf} % Figures/exposure_map.pdf\caption{Layout of the Frontier Fields $K_s$-band mosaics.  The positions of the \textit{HST} cluster and parallel fields are shown in the blue (ACS optical) and red (WFC3 IR) polygons.  The area covered by the \textit{Spitzer}/IRAC 3.6 and 4.5\,\mum\ channels is shown in orange.  The bottom panels show the exposure maps, where the four HAWK-I chips and two MOSFIRE pointings can be seen.\label{fig:layout}}  \end{figure*}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Exposure Map figure%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   2MASS comparison%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\begin{figure}[!ht]\epsscale{1.18}\plotone{2mass_phot.pdf} % Figures/exposure_map.pdf\caption{Comparison of bright-star photometry to the 2MASS public catalog.  The Abell 2744 and MACS 0416 fields at high galactic latitude have few stars for cross calibration, and the photometric calibration is determined from observations of standard stars on nights with photometric transparency conditions.  At relatively low galactic latitude ($b=+21$), the MACS 0717 field has many bright stars, and the photometric calibration in that field is defined from the 2MASS comparison (hence, $\Delta_\mathrm{2mass}\equiv0$, as indicated for that field).  We estimate the overall systematic uncertainty in the photometric calibration to be $\lesssim0.05~\mathrm{mag}$.\label{fig:2mass}}  \end{figure}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Image quality figure%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\begin{figure}[!ht]\epsscale{1.18}\plotone{curve_of_growth.pdf} % Figures/exposure_map.pdf\caption{Curves of growth of stellar profiles in the Frontier Fields $K_s$-band mosaics.  The profiles of stars are well-fit by Moffat profiles with $\mathrm{FWHM}\sim0\farcs4$ and $\beta\sim2$, which have substantially more flux at radii $r>\mathrm{FWHM}$ than Gaussian profiles with the same half-widths (orange curves).  These extended profiles appear to be characteristic of deep $K_s$-band images; the stellar profiles from the HUGS GOODS-South D2 HAWK-I $K_s$ image \citep{hugs} (lower right panel), created by a different team with a different reduction pipeline, are nearly identical to those of the Frontier Fields mosaics presented here. \xxx\ I only show the parallel field region of MACS0717, which has significantly better image quality from the Jan. run.  You can see a few of the broader profiles in the figure; there are many more of these if you include the whole cluster area.  \label{fig:cog}}  \end{figure}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Depth figure%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\begin{figure}[!ht]\epsscale{1.18}\plotone{aper_depth.pdf} % Figures/exposure_map.pdf\caption{\textit{Top panel:} Noise in empty apertures as a function of aperture diameter, normalized to the smallest $D=0\farcs2$ aperture.  The dashed and dotted lines show the expectations for uncorrelated and perfectly-correlated noise within the aperture.  \textit{Bottom panel:} The product of the inverse curves-of-growth (Fig.\ref{fig:cog} and the empty aperture noise gives the point-source sensitivity as a function of aperture size.  The S/N is maximized with an aperture just larger than the FWHM.  For reference, the colored dashed lines in the bottom panel indicate the depth computed assuming uncorrelated noise within the apertures ($\sigma \propto D$) and the per-pixel variance reported in the weight maps.)\label{fig:depth}}  \end{figure}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                                                %%   Mosaic properties%                                                                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\section{$K_s$-band Mosaics}\label{s:mosaic}We generate stacks of each OB using the SWarp tool \citep{swarp}, which takes into account the alignment to the reference catalog.  Final mosaics of each field with $0\farcs100$ pixels are generated from the OB stacks weighting the input images with weeights\[w^{-1} = F^2\cdot\sigma^2 \cdot \mathrm{FWHM}^\alpha, \]where $F$ is the factor to scale the OB to the photometric system ($F\equiv1$ for the OB taken under photometric contidions, $F\gtrsim1$ otherwise), $\sigma^2$ is the variance map of each OB stack determined by SWarp ($\sigma^2$ accounts for both exposure time and sky background variations between OBs), FWHM is the full width at half maximum of stars identified in the field, and the parameter $\alpha$ allows for optimizing the image quality of the final mosaic.  Increasing $\alpha$ puts larger weight on the best image-quality OBs while effectively ignoring data with poorer seeing; we adopt $\alpha=2$ for a compromise between the image quality and effective exposure time of the final mosaic.  Finally, we subtract a cell-based background from the final mosaics using an algorithm based on that used by SExtractor and SWarp but that provides more aggressive masking of flux in the outer isophotes of bright galaxies. The mosaics and inverse-variance maps are shown in Fig.~\ref{fig:layout}, along with the position of the deep Frontier Fields \textit{HST} imaging fields.\xxx Right now I just swarp the MOSFIRE groups together without any weightingThe final image and inverse-variance mosaics are provided as an ESO Phase 3 data product \xxx\ URL, as well as attached as a digital product to this manuscript (\xxx\ I think ApJSS can and wants to do this).  The images are scaled to an AB magnitude zeropoint ZP=26.0.  In the sections below we describe the characteristics of the mosaics in more detail.  \subsection{Image quality}\label{s:fwhm}Fig.~\ref{fig:cog} shows the curves of growth for stars identified by the tight relationship between their brightness and half-light radii \citep[see, e.g., Fig.~13 of][]{skelton:14}.  The image quality of the $K_s$-band mosaics is excellent, with stellar FWHM $0\farcs40$ and $0\farcs38$ in the Abell 2744 and MACS 0416 fields, respectively, thanks, in large part, to the execution of the HAWK-I observations in service mode ensuring optimal and uniform image quality across the many hours of integration on the survey fields.  Despite the compact cores of the stellar PSFs, the curves of growth shown in Fig.~\ref{fig:cog} deviate from Gaussian profiles with significantly higher flux in the outer wings, with a shape more consistent with a Moffat profile \citep{trujillo:01}  with $\beta\sim2$.  Also shown in Fig.~\ref{fig:cog} are stellar curves of growth measured from the HAWK-I UDS and GOODS Survey \citep[HUGS;][]{hugs}, which are nearly identical in both FWHM and profile shape.  We caution that these extended profiles will yield significantly shallower final image depths than would be predicted with Exposure Time Calculators that may assume Gaussian profiles. \xxx\ not clear what HAWK-I ETC assumes, the description just says ``FWHM of the seeing disk'' \xxx.  Nevertheless, the deep $K_s$ mosaics have excellent image quality that is much closer to the resolution of the \textit{HST} IR imaging than the redder \textit{Spitzer} IRAC bands.\xxx\ add description of MOSFIRE clusters.  IQ not uniform across the MACS0717 field.\subsection{Depth}\label{s:depth}The inverse-variance weight maps shown in Fig.~\ref{fig:layout} provide a formal measurement of the pixel-to-pixel variance.  However, for aperture photometry measurements this variance will yield an underestimate of the true photometric uncertainty due to correlated noise of neighboring pixels that results from pixel resampling during the image reduction process.  For uncorrelated noise between pixels in an aperture, the variance within the aperture scales with the number of pixels in the aperture, $N_\mathrm{pix}$.  For perfect correlation within the aperture, however, the variance scales as $N_\mathrm{pix}^2$, and the properties of the $K_s$ mosaics will lie somewhere in between these two extremes.Following \cite{labbe:03} \citep[see also][]{quadri:musyc, whitaker:nmbs, skelton:14}, we characterize the noise properties of the $K_s$ mosaics by measuring the flux within circular apertures placed randomly throughout empty parts of the images.  The top panel of Fig.~\ref{fig:depth} shows the standard deviation of these empty-aperture fluxes, $\sigma_\mathrm{D}$, as a function of aperture diameter, which should be used in place of simple scalings of the inverse-variance maps to represent the true uncertainties within photometric apertures.  The product of the inverse curves of growth shown in Fig.~\ref{fig:cog} (i.e., aperture corrections) and the noise curves in the top panel of Fig.~\ref{fig:depth} defines an optimal photometric aperture size where this product is minimized \citep{whitaker:nmbs}.  For our $K_s$-band mosaics, this optimal aperture has $D\sim0\farcs5$, just larger than the FWHM of point-source profiles.  The $5\,\sigma$ limiting magnitudes (AB) within $0\farcs5$ diameter apertures are 25.8, 25.9, and 25.0 in the Abell 2744, MACS-0416, and MACS-0717 fields, respectively.  We note that the depths of the FF HAWK-I mosaics are nearly identical to those of the two deepest HUGS pointings in the GOODS-South Field (i.e., GOODS-South ``D1'' and ``D2'').  The image depths reported by \cite{hugs} assume ideal noise properties that can be compared to the dashed curves in Fig.~\ref{fig:depth}.  We have analyzed the HUGS GOODS-South ``D2'' image with the same empty-aperture technique as was done for the FF images, and the sensitivities are fully consistent with those reported by \cite{hugs} when accounting for the different definitions.  Along with the two HUGS deep HAWK-I fields, our images covering the Frontier Fields represent the deepest $K_s$-band images ever obtained and will provide a crucial complement to the deep \textit{HST} and \textit{Spitzer} imaging of the same fields.\xxx\ say something about distant extended sources, perhaps scaling from Arjen's size distributions?\subsection{Number counts}\label{s:number}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                                                %%   Constraints%                                                                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\section{Photometric constraints from the $K_s$ band}\label{s:constraints}\subsection{Photometric redshifts}\label{s:photoz}\subsection{SED modeling}\label{s:sed}Balmer break, UV slope%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                                                %%   Discussion and Summary%                                                                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\section{Discussion and Conclusions}\label{s:discussion}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   End things%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\vspace{-0.3cm} %% emulateapj\acknowledgements\noindent We gratefully acknowledge funding support from the STScI Director's Discretionary Research Fund.  \xxx\ acknowledge NASA/Keck time + Mauna Kea \xxx. This research made use of Astropy, a community-developed core Python package for Astronomy \citep{astropy}, and open-source Python modules Numpy, Scipy, and Matplotlib. % \noindent We gratefully acknowledge funding support from the Marie Curie Actions of the European Commission (FP7-COFUND) and STScI% grant GO-12177.{\it Facilities:} \facility{VLT:Yepun (HAWKI)}, \facility{Keck:I (MOSFIRE)} % \facility{Hubble Space Telescope (WFC3)}\bibliographystyle{apj_url}\bibliography{ms}\end{document}
+\documentclass[iop, numberedappendix]{emulateapj}
+\usepackage{apjfonts}
+%\documentclass[12pt,preprint]{aastex}
+
+%\topmargin 0.6in
+
+%\usepackage{deluxetable}
+\usepackage{color}
+\definecolor{citeRGB}{rgb}{0,0.1,0.7}
+\usepackage[hyperfootnotes=true,naturalnames=true,letterpaper,pdfstartview=FitH,pdfpagemode=UseNone,colorlinks=true,citecolor=citeRGB]{hyperref}
+
+%%%% The following code forces Hyperref to only link the year in a citation
+%%%% Taken from http://tex.stackexchange.com/questions/23227/how-to-hyperlink-only-the-year-part-when-using-natbib-and-hyperref
+% \usepackage{etoolbox}
+% 
+% \makeatletter
+% 
+% % Patch case where name and year have no delimiter
+% \patchcmd{\NAT@citex}
+%   {\@citea\NAT@hyper@{\NAT@nmfmt{\NAT@nm}\NAT@date}}
+%   {\@citea\NAT@nmfmt{\NAT@nm}\NAT@hyper@{\NAT@date}}
+%   {}% Do nothing if patch works
+%   {}% Do nothing if patch fails
+% 
+% % Patch case where name and year have basic delimiter
+% \patchcmd{\NAT@citex}
+%   {\@citea\NAT@hyper@{%
+%      \NAT@nmfmt{\NAT@nm}%
+%      \hyper@natlinkbreak{\NAT@aysep\NAT@spacechar}{\@citeb\@extra@b@citeb}%
+%      \NAT@date}}
+%   {\@citea\NAT@nmfmt{\NAT@nm}%
+%    \NAT@aysep\NAT@spacechar%
+%    \NAT@hyper@{\NAT@date}}
+%   {}% Do nothing if patch works
+%   {}% Do nothing if patch fails
+% 
+% % Patch case where name and year are separated by a prenote
+% \patchcmd{\NAT@citex}
+%   {\@citea\NAT@hyper@{%
+%      \NAT@nmfmt{\NAT@nm}%
+%      \hyper@natlinkbreak{\NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi}%
+%        {\@citeb\@extra@b@citeb}%
+%      \NAT@date}}
+%   {\@citea\NAT@nmfmt{\NAT@nm}%
+%    \NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi%
+%    \NAT@hyper@{\NAT@date}}
+%   {}% Do nothing if patch works
+%   {}% Do nothing if patch fails
+% 
+% \makeatother
+
+%\gdef\zphot{$z_\mathrm{phot}$}
+\gdef\HST{\textit{HST}}
+\gdef\G141{\textit{G141}}
+\gdef\F140W{\textit{F140W}}
+\gdef\fluxcgs{\mathrm{erg\ s^{-1}\ cm^{-2}}}
+\gdef\micront{$\mu$m}
+\gdef\micronm{\mu\mathrm{m}}
+\gdef\aXe{\texttt{aXe}}
+\gdef\flux_radius{\textsc{flux\_radius}}
+\gdef\epers{\textit{e}$^{-}$ s$^{-1}$}
+
+\gdef\logOH{12 + \log \left(\mathrm{O/H}\right)}
+\gdef\UmV{U-V}
+\gdef\VmJ{V-J}
+\gdef\SFRuvir{SFR_\mathrm{UV+IR}}
+\gdef\peryr{\mathrm{yr}^{-1}}
+\gdef\kms{km\,s$^{-1}$}
+\gdef\mum{$\mu\mathrm{m}$}
+\gdef\24mum{$24\,\mu\mathrm{m}$}
+\gdef\arcsec{^{\prime\prime}}
+\gdef\Jy{\mathrm{Jy}}
+\gdef\uJy{\mu\mathrm{Jy}}
+\gdef\LIR{L_\mathrm{IR}}
+\gdef\LUV{L_\mathrm{UV}}
+\gdef\4ang{4000\,\AA}
+\gdef\msun{$M_{\odot}$}
+\gdef\mathmsun{\ M_{\odot}}
+\gdef\mathgyr{\ \textrm{Gyr}}
+\gdef\mathmyr{\ \textrm{Myr}}
+\gdef\pegase{\textsc{P\'{e}gase}}
+\gdef\eazy{\texttt{Eazy}}
+\gdef\galfit{\texttt{galfit}}
+\gdef\emcee{\texttt{emcee}}
+\gdef\interrest{\texttt{InterRest}}
+\gdef\fast{\texttt{fast}}
+\gdef\zCOSMOS{$z$\textsc{COSMOS}}
+\gdef\zspec{z_\mathrm{spec}}
+\gdef\zphot{z_\mathrm{phot}}
+\gdef\zml{z_\mathrm{ML}}
+\gdef\zprior{z_\mathrm{prior}}
+\newcommand{\weblink}[1]{\href{#1}{#1}}
+\gdef\UDFj{UDFj-39546284}
+\gdef\compareID{UDF-40106456}
+\gdef\Lya{\mathrm{Ly}\alpha}
+\gdef\Halpha{\mathrm{H}\alpha}
+\gdef\Hbeta{\mathrm{H}\beta}
+\gdef\othree{[\ion{O}{3}]$\lambda$4959+5007}
+\gdef\epers{electrons~s$^{-1}$}
+\gdef\xxx{\textbf{xxx}}
+
+\gdef\lineflux{$3.5\pm1.3\times10^{-18}\,\fluxcgs$}
+
+\shortauthors{Brammer et al.}
+\shorttitle{$K_s$-band imaging of the Frontier Fields}
+%\slugcomment{Draft (\today)}
+\slugcomment{Submitted to ApJSS}
+
+%\citestyle{aa}
+
+\begin{document}
+
+\title{Ultra-deep $K_s$-band Imaging of the \textit{Hubble} Frontier Fields}
+
+% \footnotetext[*]{Based on observations made with the NASA/ESA \textit{Hubble
+% Space Telescope}, programs GO-11640, 12177 and 12328, obtained at the
+% Space Telescope Science Institute, which is operated by the Association of
+% Universities for Research in Astronomy, Inc., under NASA contract NAS
+% 5-26555.}
+
+\author{Gabriel B. Brammer\altaffilmark{1},
+et~al.}
+% Pieter G.\ van Dokkum\altaffilmark{2},
+% Garth D.\ Illingworth\altaffilmark{4},
+% Rychard J.\ Bouwens\altaffilmark{3},
+% Ivo Labb\'e\altaffilmark{3}, 
+% Marijn Franx\altaffilmark{3},
+% Ivelina Momcheva\altaffilmark{2},
+% Pascal A.\ Oesch\altaffilmark{4}}
+% Rub\'en S\'anchez-Janssen\altaffilmark{1}, 
+% Ivo Labb\'e\altaffilmark{2},
+% Elisabete da Cunha\altaffilmark{3},
+% Dawn K.\ Erb\altaffilmark{4},
+% Marijn Franx\altaffilmark{2},
+% Mattia Fumagalli\altaffilmark{2},
+% Britt Lundgren\altaffilmark{5},
+% Danilo Marchesini\altaffilmark{6},
+% Ivelina Momcheva\altaffilmark{5},
+% Erica Nelson\altaffilmark{5},
+% Shannon Patel\altaffilmark{2},
+% Ryan Quadri\altaffilmark{7},
+% Hans-Walter Rix\altaffilmark{3},
+% Rosalind E.\ Skelton\altaffilmark{5},
+% Kasper B.\ Schmidt\altaffilmark{3},
+% Arjen van der Wel\altaffilmark{3},
+% Pieter G.\ van Dokkum\altaffilmark{5},
+% David A.\ Wake\altaffilmark{5},
+% Katherine E.\ Whitaker\altaffilmark{5}}
+
+% Rachel Bezanson\altaffilmark{5},
+% Xiaohui Fan\altaffilmark{6},
+% Natascha F\"orster Schreiber\altaffilmark{8},
+% Garth D.\ Illingworth\altaffilmark{9},
+% Joel Leja\altaffilmark{5},
+% Dan Magee\altaffilmark{9},
+% Patrick McCarthy\altaffilmark{11},
+% Adam Muzzin\altaffilmark{2},
+% Ryan Quadri\altaffilmark{11},
+% Charles C.\ Steidel\altaffilmark{12},
+% Tomer Tal\altaffilmark{5},
+% Anna Williams\altaffilmark{13}
+
+\email{brammer@stsci.edu}
+
+\altaffiltext{1}{ESA/AURA, Space Telescope Science Institute, 3700 San Martin Dr., Baltimore, MD 21218, USA}
+% \altaffiltext{2}
+% {Department of Astronomy, Yale University, New Haven, CT 06520, USA}
+% \altaffiltext{3}
+% {Leiden Observatory, Leiden University, NL-2300 RA Leiden, Netherlands}
+% \altaffiltext{4}
+% {UCO/Lick Observatory, University of California, Santa Cruz, CA 95064}
+% \altaffiltext{3}
+% {Max Planck Institute for Astronomy (MPIA), K\"onigstuhl 17,
+% 69117, Heidelberg, Germany}
+% \altaffiltext{4}
+% {Department of Physics, University of Wisconsin-Milwaukee, P.O. Box 413,
+% Milwaukee, WI 53201, USA}
+% \altaffiltext{5}
+% {Department of Astronomy, Yale University, New Haven, CT 06520, USA}
+% \altaffiltext{6}
+% {Physics and Astronomy Department, Tufts University, Robinson Hall,
+% Room 257, Medford, MA, 02155, USA}
+% \altaffiltext{7}
+% {Carnegie Observatories, 813 Santa Barbara Street, Pasadena, CA 91101, USA}
+
+\begin{abstract}
+
+We present ultra-deep $K_s$-band imaging of the \textit{Hubble} Frontier Fields clusters Abell 2744, MACS-0416, MACS-0717 and MACS-1149 (\xxx\ include MOSFIRE???), which have recently been observed with large allocations of Directors' Discretionary Time with the \textit{HST} and \textit{Spitzer} telescopes covering $0.4 < \lambda < 4.5$\,\mum.  \textit{VLT}/HAWKI integrations of the first two fields reach 5-$\sigma$ limiting depths of $K_s=26.3$ (AB) and have seeing FWHM$\sim0\farcs4$.  Shorter MOSFIRE integrations of the latter two northern fields reach limiting depths $K_s=$\xxx\ with seeing FWHM=\xxx.  In all cases the $K_s$-band mosaics cover the primary cluster and parallel \textit{HST}/ACS+WFC3 fields, and the total area of the $K_s$-band coverage is \xxx\ arcmin$^2$.  The $K_s$-band at 2.2\,\mum\ crucially fills the gap between the reddest HST filter (1.6\,\mum\,$\sim H$) and the IRAC 3.6\,\mum\ passband.  While reaching the full depths of the space-based imaging is not currently feasible from the ground, the deep $K_s$-band images provide significant constraints on both the redshifts and the stellar-population properties of galaxies extending well below the characteristic stellar mass across most of the age of the universe, down to, and including, the redshifts of the targeted galaxy clusters ($z \lesssim 0.5$).  Reduced, aligned mosaics of the four survey fields are provided accompanying this manuscript.  Time has been awarded for similar HAWKI coverage of the final two Frontier Fields Abell 370 and Abell S1063, with observations expected by the end of 2015.
+
+
+\end{abstract}
+
+\keywords{galaxies: evolution --- galaxies: high-redshift --- surveys: xxx}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                %
+%   Introduction
+%                                                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\label{s:introduction}
+
+Selecting in the reddest band possible.  
+
+K-band surveys:  ISAAC \citep{labbe:03}, NMBS, UltraVISTA, ...
+
+Subaru Super Deep Field (AO) \cite{minowa:05}.
+
+HUGS \citep{hugs}.
+
+Frontier Fields
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                %
+%   Observations
+%                                                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Observations \& Data Reduction}
+\label{s:observations}
+
+Table~\ref{tab:summary} provides a brief summary of the survey fields and observation characteristics.  Additional details on the observing strategy and image reduction procedures are provided below.
+
+\xxx\ currently a bit awkward since MOSFIRE reduction done quickly with Ivo's code and HAWK-I done in many additional steps (astrometry and photometry).
+
+\subsection{Observation log}
+\label{s:log}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                %
+%  Summary table
+%                                                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{deluxetable*}{lcclrrcc} 
+\tabletypesize{\footnotesize}
+\tablewidth{0pt} 
+\tablecaption{Field summary \label{tab:summary}} 
+\tablehead{ 
+\colhead{Field} & \colhead{R.A.} & \colhead{Dec.} & \colhead{Instrument} & \colhead{Epoch} & \colhead{$t$} & \colhead{Depth} & \colhead{FWHM}}
+\startdata 
+Abell 2744 & 00:14:21.2 & -30:23:50 & \textit{VLT}/HAWKI     & 2013 Oct 24--2013 Dec 24 & 29.4 h & 25.8 & $0\farcs40$ \\ 
+MACS-0416  & 04:16:08.9 & -24:04:28 & \textit{VLT}/HAWKI     & 2013 Oct 25--2014 Feb 23 & 25.5 h & 25.9 & $0\farcs38$ \\ 
+MACS-0717  & 07:17:34.0 & +37:44:49 & \textit{Keck}/MOSFIRE  & 2015 Jan 26--27                 & \xxx & 25.0 & $0\farcs43$ \\ 
+MACS-1149  & 11:49:36.3 & +22:23:58 & \textit{Keck}/MOSFIRE  & 2015 Feb 24                    & \xxx & \xxx & \xxx
+\enddata 
+%\vspace{-0.8cm} 
+\tablecomments{Depth is defined as the 5$\sigma$ limiting magnitude for point sources, measured in $D=0\farcs5$ apertures (\S\ref{s:depth}).} 
+\end{deluxetable*}
+%\vspace{1cm}
+
+$K_s$-band observations of the Abell 2744 and MACS-0416 fields were obtained between 2013 Oct and 2014 Feb with the High Acuity Wide-field K-band Imager \citep[HAWK-I;][]{hawki, hawki2} on the 8.2\,m UT4 telescope at the ESO \textit{Very Large Telescope} (ESO program \mbox{092.A-0472}).  HAWK-I is composed of four chips with 2048$\times$2048 $0\farcs106$ pixels, and the full $7\farcm5\times7\farcm5$ HAWKI field-of-view is perfectly suited to cover both the primary and parallel \textit{HST} ACS optical and WFC3 IR fields simultaneously in a single pointing (see Fig.\ref{fig:layout}).
+
+The HAWK-I observations were divided into individual service mode Observation Blocks (OBs); typically one or two OBs of a given field were observed per night as conditions allowed, and occasionally both fields were observed on the same night.  The execution of each OB lasted either 60 or 90 minutes, depending on how many exposures were obtained in the block.  The exposures were roughly one minute each, with multiple coadds of shorter reads making up the exposure ($\mathrm{NDIT}\times\mathrm{DIT} = 4\times15$\,s~=~60\,s for Abell 2744 and 7$\times$8\,s~=~56\,s for MACS-0416\footnote{Longer DITs are preferable to reduce instrument overheads; the shorter DITs on the MACS-0416 field were done do accommodate \textit{VLT} service mode restrictions on bright source saturation, which have been eased since P93.}).  The telescope was offset with random dithers between each exposure to facilitate sky subtraction;  observations taken before 2013 Nov 4 were dithered within a 20$^{\prime\prime}$ box, which was subsequently increased to 40$^{\prime\prime}$ to improve sky subtraction in the cluster cores crowded with bright galaxies and intra-cluster light.  The total on-sky integration times for the Abell 2744 and MACS-0416 fields are 29.4 and 25.5 hours, respectively.
+
+Imaging observations of the MACS-0717 and MACS-1149 fields in the $K_s$ filter were obtained on 2015 Jan 26/27 and 2015 Feb 24, respectively, with the Multi-Object Spectrometer For Infra-Red Exploration \citep[MOSFIRE;][]{mosfire} on the 10\,m \textit{Keck I} telescope.  The MOSFIRE detector consists of $2048\times2048$ $0\farcs1798$ pixels; the resulting $6\farcm1\times6\farcm1$ field-of-view is unfortunately slightly too small to cover both \textit{HST} fields simultaneously and therefore requires two pointings to cover the entire deep \textit{HST} Frontier Fields imaging area (Fig.~\ref{fig:layout}).  The 6$\times$7\,s~=~42\,s MOSFIRE exposures were obtained in a $3\times3$ ``Box9'' dither pattern spaced roughly 40$^{\prime\prime}$ between offset positions.  \xxx\ time on cluster, parallel field etc \xxx.
+
+\subsection{Image processing}
+\label{s:processing}
+
+The HAWK-I and MOSFIRE observations were reduced with a pipeline that has been developed for previous surveys with the NEWFIRM \citep[NMBS;][]{whitaker:nmbs} and FOURSTAR \citep[zFOURGE;][, Labb\'e in prep]{spitler:12} infrared imaging instruments.  Treating each detector individually, the pipeline is easily modified for the different instrument configurations of the four HAWK-I and single MOSFIRE chips.  The primary task of the pipeline is removing the bright, time-variable sky background from the individual exposures, which is often some $10^4$ times brighter than the distant galaxies of interest in the field.  With such a bright background, we first determine an empirical ``sky flat'' that is a median of all of the \textit{science} exposures in a HAWK-I OB or MOSFIRE group, after rejecting the brightest 12 exposures at each pixel position to remove the contribution of bright objects.  We find these empirical flats to be preferable to external twilight or dome flats given the difficulty of obtaining a truly flat illumination pattern over such large detector fields-of-view.  
+
+After dividing by the flat, the background of each exposure is determined in a first pass from the simple median of the four exposures that came both immediately before and after it.  The background-subtracted exposures are combined into a mosaic from which objects are detected.  The final refined background of each exposure is determined in a second ``mask pass'' from a median again from the four exposures before and after it but now aggressively masking all pixels that contain flux from the detected objects.
+
+\subsection{Photometric calibration}
+\label{s:calib}
+
+For the HAWK-I observations, a single 90-minute OB was obtained in each of the Abell 2744 and MACS-0416 fields requiring photometric transparency conditions, and these OBs were followed immediately by an observation of a photometric standard star at a similar airmass with single exposures on each of the four chips.  The standard star exposures were processed with empirical flats derived from the science exposures as described above, and the observed fluxes of the standard stars yield absolute photometric zeropoints for each chip.  \xxx\ We determine additional relative zeropoint offsets between the four HAWK-I chips by comparing the photometry of sources in the overlap regions between them.  \xxx\ \textit{Not sure why these chip corrections are needed beyond the standard star, but they are consistent between the two fields and are needed to improve the agreement in relative depths between the chips.} Correction factors were then computed to scale the OBs obtained at varying transparency levels to the calibrated photometric OB; the additional service mode OBs were obtained under generally satisfactory weather conditions and the scale factors typically differ from unity by only a few percent.  
+
+The 2-Micron All Sky Survey \citep[2MASS;][]{2mass} provides an additional check on the photometric calibration, though the comparison is limited due to relatively little brightness overlap between the faint end of reliable 2MASS photometry and the bright end where stars are in the linear regime of the detectors on the 8--10\,m telescopes.  For the MOSFIRE observations obtained over just one or two nights, we use the 2MASS overlap directly to determine the absolute photometric calibration.  A comparison of the observed photometry in the four survey fields to the 2MASS catalog magnitudes is shown in Fig.~\ref{fig:2mass}.  The stellar photometry on the deep $K_s$-band mosaics is measured within $1\arcsec$ apertures corrected to infinity with the curves of growth described below.  The error-bars on the points in Fig.~\ref{fig:2mass} come from the 2MASS catalog; the photometric uncertainties are negligible for such bright stars in the deep images ($\mathrm{S/N}>100$). We estimate that the systematic uncertainty of the absolute photometric calibration is $\sigma_\mathrm{sys}\lesssim 0.05$ mag.
+
+\subsection{Astrometric alignment}
+\label{s:astrometry}
+
+We refine the relative and absolute astrometry of the $K_s$-band images using the SExtractor \citep{bertin:96} and SCAMP \citep{scamp} software tools. Reference astrometric catalogs are generated from \textit{HST} images when available (chips \#1 and \#4 of both HAWK-I cluster fields) and public \textit{Subaru} Suprime-Cam $r_c$-band images otherwise\footnote{http://archive.stsci.edu/pub/hlsp/clash/macs0416/data/subaru/}.  Next, object catalogs are extracted for each background-subtracted exposure and transformations to the reference frame are computed with SCAMP.  All of the exposures for each HAWK-I chip are processed simultaneously as a SCAMP ``instrument'', ensuring a uniform geometric distortion correction for each chip \citep[see also][for a detailed discussion of the HAWK-I geometric distortion]{libralato:14}.
+
+For the MOSFIRE observations, we adopt a more simplified approach and refine the shifts specified by the World Coordinate System header keywords by cross-correlating each exposure in a group with an arbitrarily-defined reference exposure (\xxx\ this is what Ivo's pipeline does internally.  I found a bit better final image quality of the HAWK-I images using the SCAMP approach, and the HAWK-I distortions are non-trivial).  For the absolute astrometry of the MOSFIRE mosaic, we align the $K_s$-band image to the Suprime-Cam image\footnote{http://archive.stsci.edu/pub/hlsp/clash/macs0717/data/subaru/} allowing for a linear shift, rotation and scale using the \texttt{iraf.geomap} tool.
+
+\xxx\ Add some sort of diagnostic figure showing the astrometric comparison between Ks and, say, ACS F814W and get a number to quote for astrometric precision
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Exposure Map figure
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure*}
+\plotone{hawkiff_layout.pdf} % Figures/exposure_map.pdf
+\caption{Layout of the Frontier Fields $K_s$-band mosaics.  The positions of the \textit{HST} cluster and parallel fields are shown in the blue (ACS optical) and red (WFC3 IR) polygons.  The light blue polygons in the MACS-0717 field show additional wide-field ACS imaging coverage from  programs GO-9722 and GO-10420 \citep[PI: Ebeling;][]{ma:11}.  The area covered by deep imaging in the \textit{Spitzer}/IRAC 3.6 and 4.5\,\mum\ channels is shown in orange.  The bottom panels show the mosaic weight maps, where the four HAWK-I chips and two MOSFIRE pointings can be seen.\label{fig:layout}}  
+\end{figure*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   2MASS comparison
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[!ht]
+\epsscale{1.18}
+\plotone{2mass_phot.pdf} % Figures/exposure_map.pdf
+\caption{Comparison of bright-star photometry to the 2MASS public catalog.  The Abell 2744 and MACS 0416 fields at high galactic latitude have few stars for cross calibration, and the photometric calibration is determined from observations of standard stars on nights with photometric transparency conditions.  At relatively low galactic latitude ($b=+21$), the MACS 0717 field has many bright stars, and the photometric calibration in that field is defined from the 2MASS comparison (hence, $\Delta_\mathrm{2mass}\equiv0$, as indicated for that field).  We estimate the overall systematic uncertainty in the photometric calibration to be $\lesssim0.05~\mathrm{mag}$.\label{fig:2mass}}  
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Image quality figure
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[!ht]
+\epsscale{1.18}
+\plotone{curve_of_growth.pdf} % Figures/exposure_map.pdf
+\caption{Curves of growth of stellar profiles in the Frontier Fields $K_s$-band mosaics.  The profiles of stars are well-fit by Moffat profiles with $\mathrm{FWHM}\sim0\farcs4$ and $\beta\sim2$, which have substantially more flux at radii $r>\mathrm{FWHM}$ than Gaussian profiles with the same half-widths (orange curves).  These extended profiles appear to be characteristic of deep $K_s$-band images; the stellar profiles from the HUGS GOODS-South D2 HAWK-I $K_s$ image \citep{hugs} (lower right panel), created by a different team with a different reduction pipeline, are nearly identical to those of the Frontier Fields mosaics presented here. \xxx\ I only show the parallel field region of MACS0717, which has significantly better image quality from the Jan. run.  You can see a few of the broader profiles in the figure; there are many more of these if you include the whole cluster area.  \label{fig:cog}}  
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Depth figure
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[!ht]
+\epsscale{1.18}
+\plotone{aper_depth.pdf} % Figures/exposure_map.pdf
+\caption{\textit{Top panel:} Noise in empty apertures as a function of aperture diameter, normalized to the smallest $D=0\farcs2$ aperture.  The dashed and dotted lines show the expectations for uncorrelated and perfectly-correlated noise within the aperture.  \textit{Bottom panel:} The product of the inverse curves-of-growth (Fig.\ref{fig:cog} and the empty aperture noise gives the point-source sensitivity as a function of aperture size.  The S/N is maximized with an aperture just larger than the FWHM.  For reference, the colored dashed lines in the bottom panel indicate the depth computed assuming uncorrelated noise within the apertures ($\sigma \propto D$) and the per-pixel variance reported in the weight maps.)
+\label{fig:depth}}  
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                %
+%   Mosaic properties
+%                                                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{$K_s$-band Mosaics}
+\label{s:mosaic}
+
+We generate stacks of each OB using the SWarp tool \citep{swarp}, which takes into account the alignment to the reference catalog.  Final mosaics of each field with $0\farcs100$ pixels are generated from the OB stacks weighting the input images with weeights
+\[
+w^{-1} = F^2\cdot\sigma^2 \cdot \mathrm{FWHM}^\alpha, 
+\]
+where $F$ is the factor to scale the OB to the photometric system ($F\equiv1$ for the OB taken under photometric contidions, $F\gtrsim1$ otherwise), $\sigma^2$ is the variance map of each OB stack determined by SWarp ($\sigma^2$ accounts for both exposure time and sky background variations between OBs), FWHM is the full width at half maximum of stars identified in the field, and the parameter $\alpha$ allows for optimizing the image quality of the final mosaic.  Increasing $\alpha$ puts larger weight on the best image-quality OBs while effectively ignoring data with poorer seeing; we adopt $\alpha=2$ for a compromise between the image quality and effective exposure time of the final mosaic.  Finally, we subtract a cell-based background from the final mosaics using an algorithm based on that used by SExtractor and SWarp but that provides more aggressive masking of flux in the outer isophotes of bright galaxies. The mosaics and inverse-variance maps are shown in Fig.~\ref{fig:layout}, along with the position of the deep Frontier Fields \textit{HST} imaging fields.
+
+\xxx Right now I just swarp the MOSFIRE groups together without any weighting
+
+The final image and inverse-variance mosaics are provided as an ESO Phase 3 data product \xxx\ URL, as well as attached as a digital product to this manuscript (\xxx\ I think ApJSS can and wants to do this).  The images are scaled to an AB magnitude zeropoint ZP=26.0.  In the sections below we describe the characteristics of the mosaics in more detail.  
+
+\subsection{Image quality}
+\label{s:fwhm}
+
+Fig.~\ref{fig:cog} shows the curves of growth for stars identified by the tight relationship between their brightness and half-light radii \citep[see, e.g., Fig.~13 of][]{skelton:14}.  The image quality of the $K_s$-band mosaics is excellent, with stellar FWHM $0\farcs40$ and $0\farcs38$ in the Abell 2744 and MACS 0416 fields, respectively, thanks, in large part, to the execution of the HAWK-I observations in service mode ensuring optimal and uniform image quality across the many hours of integration on the survey fields.  Despite the compact cores of the stellar PSFs, the curves of growth shown in Fig.~\ref{fig:cog} deviate from Gaussian profiles with significantly higher flux in the outer wings, with a shape more consistent with a Moffat profile \citep{trujillo:01}  with $\beta\sim2$.  Also shown in Fig.~\ref{fig:cog} are stellar curves of growth measured from the HAWK-I UDS and GOODS Survey \citep[HUGS;][]{hugs}, which are nearly identical in both FWHM and profile shape.  We caution that these extended profiles will yield significantly shallower final image depths than would be predicted with Exposure Time Calculators that may assume Gaussian profiles. \xxx\ not clear what HAWK-I ETC assumes, the description just says ``FWHM of the seeing disk'' \xxx.  Nevertheless, the deep $K_s$ mosaics have excellent image quality that is much closer to the resolution of the \textit{HST} IR imaging than the redder \textit{Spitzer} IRAC bands.
+
+\xxx\ add description of MOSFIRE clusters.  IQ not uniform across the MACS0717 field.
+
+\subsection{Depth}
+\label{s:depth}
+
+The inverse-variance weight maps shown in Fig.~\ref{fig:layout} provide a formal measurement of the pixel-to-pixel variance.  However, for aperture photometry measurements this variance will yield an underestimate of the true photometric uncertainty due to correlated noise of neighboring pixels that results from pixel resampling during the image reduction process.  For uncorrelated noise between pixels in an aperture, the variance within the aperture scales with the number of pixels in the aperture, $N_\mathrm{pix}$.  For perfect correlation within the aperture, however, the variance scales as $N_\mathrm{pix}^2$, and the properties of the $K_s$ mosaics will lie somewhere in between these two extremes.
+
+Following \cite{labbe:03} \citep[see also][]{quadri:musyc, whitaker:nmbs, skelton:14}, we characterize the noise properties of the $K_s$ mosaics by measuring the flux within circular apertures placed randomly throughout empty parts of the images.  The top panel of Fig.~\ref{fig:depth} shows the standard deviation of these empty-aperture fluxes, $\sigma_\mathrm{D}$, as a function of aperture diameter, which should be used in place of simple scalings of the inverse-variance maps to represent the true uncertainties within photometric apertures.  
+
+The product of the inverse curves of growth shown in Fig.~\ref{fig:cog} (i.e., aperture corrections) and the noise curves in the top panel of Fig.~\ref{fig:depth} defines an optimal photometric aperture size where this product is minimized \citep{whitaker:nmbs}.  For our $K_s$-band mosaics, this optimal aperture has $D\sim0\farcs5$, just larger than the FWHM of point-source profiles.  The $5\,\sigma$ limiting magnitudes (AB) within $0\farcs5$ diameter apertures are 25.8, 25.9, and 25.0 in the Abell 2744, MACS-0416, and MACS-0717 fields, respectively.  We note that the depths of the FF HAWK-I mosaics are nearly identical to those of the two deepest HUGS pointings in the GOODS-South Field (i.e., GOODS-South ``D1'' and ``D2'').  The image depths reported by \cite{hugs} assume ideal noise properties that can be compared to the dashed curves in Fig.~\ref{fig:depth}.  We have analyzed the HUGS GOODS-South ``D2'' image with the same empty-aperture technique as was done for the FF images, and the sensitivities are fully consistent with those reported by \cite{hugs} when accounting for the different definitions.  The HAWK-I images presented here are among the deepest $K_s$-band images ever obtained and will provide a crucial complement to the deep \textit{HST} and \textit{Spitzer} imaging of the Frontier Fields.
+
+\xxx\ say something about distant extended sources, perhaps scaling from Arjen's size distributions?
+
+\subsection{Number counts}
+\label{s:number}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Number counts figure
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure*}
+\epsscale{1.18}
+\plotone{number_counts_all.pdf} % Figures/exposure_map.pdf
+\caption{Number counts.\label{fig:counts}}  
+\end{figure*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                %
+%   Constraints
+%                                                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Photometric constraints from the $K_s$ band}
+\label{s:constraints}
+
+\subsection{Photometric redshifts}
+\label{s:photoz}
+
+\subsection{SED modeling}
+\label{s:sed}
+
+Balmer break, UV slope
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                %
+%   Discussion and Summary
+%                                                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discussion and Conclusions}
+\label{s:discussion}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   End things
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{-0.3cm} %% emulateapj
+\acknowledgements
+
+\noindent We gratefully acknowledge funding support from the STScI Director's Discretionary Research Fund.  \xxx\ acknowledge NASA/Keck time + Mauna Kea \xxx. This research made use of Astropy, a community-developed core Python package for Astronomy \citep{astropy}, and open-source Python modules Numpy, Scipy, and Matplotlib. 
+
+% \noindent We gratefully acknowledge funding support from the Marie Curie Actions of the European Commission (FP7-COFUND) and STScI
+% grant GO-12177.
+
+{\it Facilities:} \facility{VLT:Yepun (HAWKI)}, \facility{Keck:I (MOSFIRE)} % \facility{Hubble Space Telescope (WFC3)}
+
+\bibliographystyle{apj_url}
+\bibliography{ms}
+
+\end{document}
+=======
+\documentclass[iop, numberedappendix]{emulateapj}
+\usepackage{apjfonts}
+%\documentclass[12pt,preprint]{aastex}
+
+%\topmargin 0.6in
+
+%\usepackage{deluxetable}
+\usepackage{color}
+\definecolor{citeRGB}{rgb}{0,0.1,0.7}
+\usepackage[hyperfootnotes=true,naturalnames=true,letterpaper,pdfstartview=FitH,pdfpagemode=UseNone,colorlinks=true,citecolor=citeRGB]{hyperref}
+
+%%%% The following code forces Hyperref to only link the year in a citation
+%%%% Taken from http://tex.stackexchange.com/questions/23227/how-to-hyperlink-only-the-year-part-when-using-natbib-and-hyperref
+% \usepackage{etoolbox}
+% 
+% \makeatletter
+% 
+% % Patch case where name and year have no delimiter
+% \patchcmd{\NAT@citex}
+%   {\@citea\NAT@hyper@{\NAT@nmfmt{\NAT@nm}\NAT@date}}
+%   {\@citea\NAT@nmfmt{\NAT@nm}\NAT@hyper@{\NAT@date}}
+%   {}% Do nothing if patch works
+%   {}% Do nothing if patch fails
+% 
+% % Patch case where name and year have basic delimiter
+% \patchcmd{\NAT@citex}
+%   {\@citea\NAT@hyper@{%
+%      \NAT@nmfmt{\NAT@nm}%
+%      \hyper@natlinkbreak{\NAT@aysep\NAT@spacechar}{\@citeb\@extra@b@citeb}%
+%      \NAT@date}}
+%   {\@citea\NAT@nmfmt{\NAT@nm}%
+%    \NAT@aysep\NAT@spacechar%
+%    \NAT@hyper@{\NAT@date}}
+%   {}% Do nothing if patch works
+%   {}% Do nothing if patch fails
+% 
+% % Patch case where name and year are separated by a prenote
+% \patchcmd{\NAT@citex}
+%   {\@citea\NAT@hyper@{%
+%      \NAT@nmfmt{\NAT@nm}%
+%      \hyper@natlinkbreak{\NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi}%
+%        {\@citeb\@extra@b@citeb}%
+%      \NAT@date}}
+%   {\@citea\NAT@nmfmt{\NAT@nm}%
+%    \NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi%
+%    \NAT@hyper@{\NAT@date}}
+%   {}% Do nothing if patch works
+%   {}% Do nothing if patch fails
+% 
+% \makeatother
+
+%\gdef\zphot{$z_\mathrm{phot}$}
+\gdef\HST{\textit{HST}}
+\gdef\G141{\textit{G141}}
+\gdef\F140W{\textit{F140W}}
+\gdef\fluxcgs{\mathrm{erg\ s^{-1}\ cm^{-2}}}
+\gdef\micront{$\mu$m}
+\gdef\micronm{\mu\mathrm{m}}
+\gdef\aXe{\texttt{aXe}}
+\gdef\flux_radius{\textsc{flux\_radius}}
+\gdef\epers{\textit{e}$^{-}$ s$^{-1}$}
+
+\gdef\logOH{12 + \log \left(\mathrm{O/H}\right)}
+\gdef\UmV{U-V}
+\gdef\VmJ{V-J}
+\gdef\SFRuvir{SFR_\mathrm{UV+IR}}
+\gdef\peryr{\mathrm{yr}^{-1}}
+\gdef\kms{km\,s$^{-1}$}
+\gdef\mum{$\mu\mathrm{m}$}
+\gdef\24mum{$24\,\mu\mathrm{m}$}
+\gdef\arcsec{^{\prime\prime}}
+\gdef\Jy{\mathrm{Jy}}
+\gdef\uJy{\mu\mathrm{Jy}}
+\gdef\LIR{L_\mathrm{IR}}
+\gdef\LUV{L_\mathrm{UV}}
+\gdef\4ang{4000\,\AA}
+\gdef\msun{$M_{\odot}$}
+\gdef\mathmsun{\ M_{\odot}}
+\gdef\mathgyr{\ \textrm{Gyr}}
+\gdef\mathmyr{\ \textrm{Myr}}
+\gdef\pegase{\textsc{P\'{e}gase}}
+\gdef\eazy{\texttt{Eazy}}
+\gdef\galfit{\texttt{galfit}}
+\gdef\emcee{\texttt{emcee}}
+\gdef\interrest{\texttt{InterRest}}
+\gdef\fast{\texttt{fast}}
+\gdef\zCOSMOS{$z$\textsc{COSMOS}}
+\gdef\zspec{z_\mathrm{spec}}
+\gdef\zphot{z_\mathrm{phot}}
+\gdef\zml{z_\mathrm{ML}}
+\gdef\zprior{z_\mathrm{prior}}
+\newcommand{\weblink}[1]{\href{#1}{#1}}
+\gdef\UDFj{UDFj-39546284}
+\gdef\compareID{UDF-40106456}
+\gdef\Lya{\mathrm{Ly}\alpha}
+\gdef\Halpha{\mathrm{H}\alpha}
+\gdef\Hbeta{\mathrm{H}\beta}
+\gdef\othree{[\ion{O}{3}]$\lambda$4959+5007}
+\gdef\epers{electrons~s$^{-1}$}
+\gdef\xxx{\textbf{xxx}}
+
+\gdef\lineflux{$3.5\pm1.3\times10^{-18}\,\fluxcgs$}
+
+\shortauthors{Brammer et al.}
+\shorttitle{$K_s$-band imaging of the Frontier Fields}
+%\slugcomment{Draft (\today)}
+\slugcomment{Submitted to ApJSS}
+
+%\citestyle{aa}
+
+\begin{document}
+
+\title{Ultra-deep $K_s$-band Imaging of the \textit{Hubble} Frontier Fields}
+
+% \footnotetext[*]{Based on observations made with the NASA/ESA \textit{Hubble
+% Space Telescope}, programs GO-11640, 12177 and 12328, obtained at the
+% Space Telescope Science Institute, which is operated by the Association of
+% Universities for Research in Astronomy, Inc., under NASA contract NAS
+% 5-26555.}
+
+\author{Gabriel B. Brammer\altaffilmark{1},
+et~al.}
+% Pieter G.\ van Dokkum\altaffilmark{2},
+% Garth D.\ Illingworth\altaffilmark{4},
+% Rychard J.\ Bouwens\altaffilmark{3},
+% Ivo Labb\'e\altaffilmark{3}, 
+% Marijn Franx\altaffilmark{3},
+% Ivelina Momcheva\altaffilmark{2},
+% Pascal A.\ Oesch\altaffilmark{4}}
+% Rub\'en S\'anchez-Janssen\altaffilmark{1}, 
+% Ivo Labb\'e\altaffilmark{2},
+% Elisabete da Cunha\altaffilmark{3},
+% Dawn K.\ Erb\altaffilmark{4},
+% Marijn Franx\altaffilmark{2},
+% Mattia Fumagalli\altaffilmark{2},
+% Britt Lundgren\altaffilmark{5},
+% Danilo Marchesini\altaffilmark{6},
+% Ivelina Momcheva\altaffilmark{5},
+% Erica Nelson\altaffilmark{5},
+% Shannon Patel\altaffilmark{2},
+% Ryan Quadri\altaffilmark{7},
+% Hans-Walter Rix\altaffilmark{3},
+% Rosalind E.\ Skelton\altaffilmark{5},
+% Kasper B.\ Schmidt\altaffilmark{3},
+% Arjen van der Wel\altaffilmark{3},
+% Pieter G.\ van Dokkum\altaffilmark{5},
+% David A.\ Wake\altaffilmark{5},
+% Katherine E.\ Whitaker\altaffilmark{5}}
+
+% Rachel Bezanson\altaffilmark{5},
+% Xiaohui Fan\altaffilmark{6},
+% Natascha F\"orster Schreiber\altaffilmark{8},
+% Garth D.\ Illingworth\altaffilmark{9},
+% Joel Leja\altaffilmark{5},
+% Dan Magee\altaffilmark{9},
+% Patrick McCarthy\altaffilmark{11},
+% Adam Muzzin\altaffilmark{2},
+% Ryan Quadri\altaffilmark{11},
+% Charles C.\ Steidel\altaffilmark{12},
+% Tomer Tal\altaffilmark{5},
+% Anna Williams\altaffilmark{13}
+
+\email{brammer@stsci.edu}
+
+\altaffiltext{1}{ESA/AURA, Space Telescope Science Institute, 3700 San Martin Dr., Baltimore, MD 21218, USA}
+% \altaffiltext{2}
+% {Department of Astronomy, Yale University, New Haven, CT 06520, USA}
+% \altaffiltext{3}
+% {Leiden Observatory, Leiden University, NL-2300 RA Leiden, Netherlands}
+% \altaffiltext{4}
+% {UCO/Lick Observatory, University of California, Santa Cruz, CA 95064}
+% \altaffiltext{3}
+% {Max Planck Institute for Astronomy (MPIA), K\"onigstuhl 17,
+% 69117, Heidelberg, Germany}
+% \altaffiltext{4}
+% {Department of Physics, University of Wisconsin-Milwaukee, P.O. Box 413,
+% Milwaukee, WI 53201, USA}
+% \altaffiltext{5}
+% {Department of Astronomy, Yale University, New Haven, CT 06520, USA}
+% \altaffiltext{6}
+% {Physics and Astronomy Department, Tufts University, Robinson Hall,
+% Room 257, Medford, MA, 02155, USA}
+% \altaffiltext{7}
+% {Carnegie Observatories, 813 Santa Barbara Street, Pasadena, CA 91101, USA}
+
+\begin{abstract}
+
+We present ultra-deep $K_s$-band imaging of the \textit{Hubble} Frontier Fields clusters Abell 2744, MACS-0416, MACS-0717 and MACS-1149 (\xxx\ include MOSFIRE???), which have recently been observed with large allocations of Directors' Discretionary Time with the \textit{HST} and \textit{Spitzer} telescopes covering $0.4 < \lambda < 4.5$\,\mum.  \textit{VLT}/HAWKI integrations of the first two fields reach 5-$\sigma$ limiting depths of $K_s=26.3$ (AB) and have seeing FWHM$\sim0\farcs4$.  Shorter MOSFIRE integrations of the latter two northern fields reach limiting depths $K_s=$\xxx\ with seeing FWHM=\xxx.  In all cases the $K_s$-band mosaics cover the primary cluster and parallel \textit{HST}/ACS+WFC3 fields, and the total area of the $K_s$-band coverage is \xxx\ arcmin$^2$.  The $K_s$-band at 2.2\,\mum\ crucially fills the gap between the reddest HST filter (1.6\,\mum\,$\sim H$) and the IRAC 3.6\,\mum\ passband.  While reaching the full depths of the space-based imaging is not currently feasible from the ground, the deep $K_s$-band images provide significant constraints on both the redshifts and the stellar-population properties of galaxies extending well below the characteristic stellar mass across most of the age of the universe, down to, and including, the redshifts of the targeted galaxy clusters ($z \lesssim 0.5$).  Reduced, aligned mosaics of the four survey fields are provided accompanying this manuscript.  Time has been awarded for similar HAWKI coverage of the final two Frontier Fields Abell 370 and Abell S1063, with observations expected by the end of 2015.
+
+
+\end{abstract}
+
+\keywords{galaxies: evolution --- galaxies: high-redshift --- surveys: xxx}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                %
+%   Introduction
+%                                                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\label{s:introduction}
+
+Selecting in the reddest band possible.  
+
+K-band surveys:  ISAAC, NMBS, UltraVISTA, ...
+
+HUGS
+
+Frontier Fields
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                %
+%   Observations
+%                                                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Observations \& Data Reduction}
+\label{s:observations}
+
+Table~\ref{tab:summary} provides a brief summary of the survey fields and observation characteristics.  Additional details on the observing strategy and image reduction procedures are provided below.
+
+\xxx\ currently a bit awkward since MOSFIRE reduction done quickly with Ivo's code and HAWK-I done in many additional steps (astrometry and photometry).
+
+\subsection{Observation log}
+\label{s:log}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                %
+%  Summary table
+%                                                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{deluxetable*}{lrcclrrcc} 
+\tabletypesize{\footnotesize}
+\tablewidth{0pt} 
+\tablecaption{Field summary \label{tab:summary}} 
+\tablehead{ 
+\colhead{Field} & \colhead{$z$} & \colhead{R.A.} & \colhead{Dec.} & \colhead{Instrument} & \colhead{Epoch} & \colhead{$t$} & \colhead{Depth} & \colhead{FWHM}}
+\startdata 
+Abell 2744 & 0.308 & 00:14:21.2 & -30:23:50 & \textit{VLT}/HAWKI     & 2013 Oct 24--2013 Dec 24 & 29.4 h & 25.8 & $0\farcs40$ \\ 
+MACS-0416  & 0.396 & 04:16:08.9 & -24:04:28 & \textit{VLT}/HAWKI     & 2013 Oct 25--2014 Feb 23 & 25.5 h & 25.9 & $0\farcs38$ \\ 
+MACS-0717  & 0.545 & 07:17:34.0 & +37:44:49 & \textit{Keck}/MOSFIRE  & 2015 Jan 26--27                 & \xxx & 25.0 & $0\farcs43$ \\ 
+MACS-1149  & 0.543 & 11:49:36.3 & +22:23:58 & \textit{Keck}/MOSFIRE  & 2015 Feb 24                    & \xxx & \xxx & \xxx
+\enddata 
+%\vspace{-0.8cm} 
+\tablecomments{Depth is defined as the 5$\sigma$ limiting magnitude for point sources, measured in $D=0\farcs5$ apertures (\S\ref{s:depth}).} 
+\end{deluxetable*}
+%\vspace{1cm}
+
+$K_s$-band observations of the Abell 2744 and MACS-0416 fields were obtained between 2013 Oct and 2014 Feb with the High Acuity Wide-field K-band Imager \citep[HAWK-I;][]{hawki, hawki2} on the 8.2\,m UT4 telescope at the ESO \textit{Very Large Telescope} (ESO program \mbox{092.A-0472}).  HAWK-I is composed of four chips with 2048$\times$2048 $0\farcs106$ pixels, and the full $7\farcm5\times7\farcm5$ HAWKI field-of-view is perfectly suited to cover both the primary and parallel \textit{HST} ACS optical and WFC3 IR fields simultaneously in a single pointing (see Fig.\ref{fig:layout}).
+
+The HAWK-I observations were divided into individual service mode Observation Blocks (OBs); typically one or two OBs of a given field were observed per night as conditions allowed, and occasionally both fields were observed on the same night.  The execution of each OB lasted either 60 or 90 minutes, depending on how many exposures were obtained in the block.  The exposures were roughly one minute each, with multiple coadds of shorter reads making up the exposure ($\mathrm{NDIT}\times\mathrm{DIT} = 4\times15$\,s~=~60\,s for Abell 2744 and 7$\times$8\,s~=~56\,s for MACS-0416\footnote{Longer DITs are preferable to reduce instrument overheads; the shorter DITs on the MACS-0416 field were done do accommodate \textit{VLT} service mode restrictions on bright source saturation, which have been eased since P93.}).  The telescope was offset with random dithers between each exposure to facilitate sky subtraction;  observations taken before 2013 Nov 4 were dithered within a 20$^{\prime\prime}$ box, which was subsequently increased to 40$^{\prime\prime}$ to improve sky subtraction in the cluster cores crowded with bright galaxies and intra-cluster light.  The total on-sky integration times for the Abell 2744 and MACS-0416 fields are 29.4 and 25.5 hours, respectively.
+
+Imaging observations of the MACS-0717 and MACS-1149 fields in the $K_s$ filter were obtained on 2015 Jan 26/27 and 2015 Feb 24, respectively, with the Multi-Object Spectrometer For Infra-Red Exploration \citep[MOSFIRE;][]{mosfire} on the 10\,m \textit{Keck I} telescope.  The MOSFIRE detector consists of $2048\times2048$ $0\farcs1798$ pixels; the resulting $6\farcm1\times6\farcm1$ field-of-view is unfortunately slightly too small to cover both \textit{HST} fields simultaneously and therefore requires two pointings to cover the entire deep \textit{HST} Frontier Fields imaging area (Fig.~\ref{fig:layout}).  The 6$\times$7\,s~=~42\,s MOSFIRE exposures were obtained in a $3\times3$ ``Box9'' dither pattern spaced roughly 40$^{\prime\prime}$ between offset positions.  \xxx\ time on cluster, parallel field etc \xxx.
+
+\subsection{Image processing}
+\label{s:processing}
+
+The HAWK-I and MOSFIRE observations were reduced with a pipeline that has been developed for previous surveys with the NEWFIRM \citep[NMBS;][]{whitaker:nmbs} and FOURSTAR \citep[zFOURGE;][, Labb\'e in prep]{spitler:12} infrared imaging instruments.  Treating each detector individually, the pipeline is easily modified for the different instrument configurations of the four HAWK-I and single MOSFIRE chips.  The primary task of the pipeline is removing the bright, time-variable sky background from the individual exposures, which is often some $10^4$ times brighter than the distant galaxies of interest in the field.  With such a bright background, we first determine an empirical ``sky flat'' that is a median of all of the \textit{science} exposures in a HAWK-I OB or MOSFIRE group, after rejecting the brightest 12 exposures at each pixel position to remove the contribution of bright objects.  We find these empirical flats to be preferable to external twilight or dome flats given the difficulty of obtaining a truly flat illumination pattern over such large detector fields-of-view.  
+
+After dividing by the flat, the background of each exposure is determined in a first pass from the simple median of the four exposures that came both immediately before and after it.  The background-subtracted exposures are combined into a mosaic from which objects are detected.  The final refined background of each exposure is determined in a second ``mask pass'' from a median again from the four exposures before and after it but now aggressively masking all pixels that contain flux from the detected objects.
+
+\subsection{Photometric calibration}
+\label{s:calib}
+
+For the HAWK-I observations, a single 90-minute OB was obtained in each of the Abell 2744 and MACS-0416 fields requiring photometric transparency conditions, and these OBs were followed immediately by an observation of a photometric standard star at a similar airmass with single exposures on each of the four chips.  The standard star exposures were processed with empirical flats derived from the science exposures as described above, and the observed fluxes of the standard stars yield absolute photometric zeropoints for each chip.  \xxx\ We determine additional relative zeropoint offsets between the four HAWK-I chips by comparing the photometry of sources in the overlap regions between them.  \xxx\ \textit{Not sure why these chip corrections are needed beyond the standard star, but they are consistent between the two fields and are needed to improve the agreement in relative depths between the chips.} Correction factors were then computed to scale the OBs obtained at varying transparency levels to the calibrated photometric OB; the additional service mode OBs were obtained under generally satisfactory weather conditions and the scale factors typically differ from unity by only a few percent.  
+
+The 2-Micron All Sky Survey \citep[2MASS;][]{2mass} provides an additional check on the photometric calibration, though the comparison is limited due to relatively little brightness overlap between the faint end of reliable 2MASS photometry and the bright end where stars are in the linear regime of the detectors on the 8--10\,m telescopes.  For the MOSFIRE observations obtained over just one or two nights, we use the 2MASS overlap directly to determine the absolute photometric calibration.  A comparison of the observed photometry in the four survey fields to the 2MASS catalog magnitudes is shown in Fig.~\ref{fig:2mass}.  The stellar photometry on the deep $K_s$-band mosaics is measured within $1\arcsec$ apertures corrected to infinity with the curves of growth described below.  The error-bars on the points in Fig.~\ref{fig:2mass} come from the 2MASS catalog; the photometric uncertainties are negligible for such bright stars in the deep images ($\mathrm{S/N}>100$). We estimate that the systematic uncertainty of the absolute photometric calibration is $\sigma_\mathrm{sys}\lesssim 0.05$ mag.
+
+\subsection{Astrometric alignment}
+\label{s:astrometry}
+
+We refine the relative and absolute astrometry of the $K_s$-band images using the SExtractor \citep{bertin:96} and SCAMP \citep{scamp} software tools. Reference astrometric catalogs are generated from \textit{HST} images when available (chips \#1 and \#4 of both HAWK-I cluster fields) and public \textit{Subaru} Suprime-Cam $r_c$-band images otherwise\footnote{http://archive.stsci.edu/pub/hlsp/clash/macs0416/data/subaru/}.  Next, object catalogs are extracted for each background-subtracted exposure and transformations to the reference frame are computed with SCAMP.  All of the exposures for each HAWK-I chip are processed simultaneously as a SCAMP ``instrument'', ensuring a uniform geometric distortion correction for each chip \citep[see also][for a detailed discussion of the HAWK-I geometric distortion]{libralato:14}.
+
+For the MOSFIRE observations, we adopt a more simplified approach and refine the shifts specified by the World Coordinate System header keywords by cross-correlating each exposure in a group with an arbitrarily-defined reference exposure (\xxx\ this is what Ivo's pipeline does internally.  I found a bit better final image quality of the HAWK-I images using the SCAMP approach, and the HAWK-I distortions are non-trivial).  For the absolute astrometry of the MOSFIRE mosaic, we align the $K_s$-band image to the Suprime-Cam image\footnote{http://archive.stsci.edu/pub/hlsp/clash/macs0717/data/subaru/} allowing for a linear shift, rotation and scale using the \texttt{iraf.geomap} tool.
+
+\xxx\ Add some sort of diagnostic figure showing the astrometric comparison between Ks and, say, ACS F814W and get a number to quote for astrometric precision
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Exposure Map figure
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure*}
+\plotone{hawkiff_layout.pdf} % Figures/exposure_map.pdf
+\caption{Layout of the Frontier Fields $K_s$-band mosaics.  The positions of the \textit{HST} cluster and parallel fields are shown in the blue (ACS optical) and red (WFC3 IR) polygons.  The area covered by the \textit{Spitzer}/IRAC 3.6 and 4.5\,\mum\ channels is shown in orange.  The bottom panels show the exposure maps, where the four HAWK-I chips and two MOSFIRE pointings can be seen.\label{fig:layout}}  
+\end{figure*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Exposure Map figure
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   2MASS comparison
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[!ht]
+\epsscale{1.18}
+\plotone{2mass_phot.pdf} % Figures/exposure_map.pdf
+\caption{Comparison of bright-star photometry to the 2MASS public catalog.  The Abell 2744 and MACS 0416 fields at high galactic latitude have few stars for cross calibration, and the photometric calibration is determined from observations of standard stars on nights with photometric transparency conditions.  At relatively low galactic latitude ($b=+21$), the MACS 0717 field has many bright stars, and the photometric calibration in that field is defined from the 2MASS comparison (hence, $\Delta_\mathrm{2mass}\equiv0$, as indicated for that field).  We estimate the overall systematic uncertainty in the photometric calibration to be $\lesssim0.05~\mathrm{mag}$.\label{fig:2mass}}  
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Image quality figure
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[!ht]
+\epsscale{1.18}
+\plotone{curve_of_growth.pdf} % Figures/exposure_map.pdf
+\caption{Curves of growth of stellar profiles in the Frontier Fields $K_s$-band mosaics.  The profiles of stars are well-fit by Moffat profiles with $\mathrm{FWHM}\sim0\farcs4$ and $\beta\sim2$, which have substantially more flux at radii $r>\mathrm{FWHM}$ than Gaussian profiles with the same half-widths (orange curves).  These extended profiles appear to be characteristic of deep $K_s$-band images; the stellar profiles from the HUGS GOODS-South D2 HAWK-I $K_s$ image \citep{hugs} (lower right panel), created by a different team with a different reduction pipeline, are nearly identical to those of the Frontier Fields mosaics presented here. \xxx\ I only show the parallel field region of MACS0717, which has significantly better image quality from the Jan. run.  You can see a few of the broader profiles in the figure; there are many more of these if you include the whole cluster area.  \label{fig:cog}}  
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Depth figure
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[!ht]
+\epsscale{1.18}
+\plotone{aper_depth.pdf} % Figures/exposure_map.pdf
+\caption{\textit{Top panel:} Noise in empty apertures as a function of aperture diameter, normalized to the smallest $D=0\farcs2$ aperture.  The dashed and dotted lines show the expectations for uncorrelated and perfectly-correlated noise within the aperture.  \textit{Bottom panel:} The product of the inverse curves-of-growth (Fig.\ref{fig:cog} and the empty aperture noise gives the point-source sensitivity as a function of aperture size.  The S/N is maximized with an aperture just larger than the FWHM.  For reference, the colored dashed lines in the bottom panel indicate the depth computed assuming uncorrelated noise within the apertures ($\sigma \propto D$) and the per-pixel variance reported in the weight maps.)
+\label{fig:depth}}  
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                %
+%   Mosaic properties
+%                                                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{$K_s$-band Mosaics}
+\label{s:mosaic}
+
+We generate stacks of each OB using the SWarp tool \citep{swarp}, which takes into account the alignment to the reference catalog.  Final mosaics of each field with $0\farcs100$ pixels are generated from the OB stacks weighting the input images with weeights
+\[
+w^{-1} = F^2\cdot\sigma^2 \cdot \mathrm{FWHM}^\alpha, 
+\]
+where $F$ is the factor to scale the OB to the photometric system ($F\equiv1$ for the OB taken under photometric contidions, $F\gtrsim1$ otherwise), $\sigma^2$ is the variance map of each OB stack determined by SWarp ($\sigma^2$ accounts for both exposure time and sky background variations between OBs), FWHM is the full width at half maximum of stars identified in the field, and the parameter $\alpha$ allows for optimizing the image quality of the final mosaic.  Increasing $\alpha$ puts larger weight on the best image-quality OBs while effectively ignoring data with poorer seeing; we adopt $\alpha=2$ for a compromise between the image quality and effective exposure time of the final mosaic.  Finally, we subtract a cell-based background from the final mosaics using an algorithm based on that used by SExtractor and SWarp but that provides more aggressive masking of flux in the outer isophotes of bright galaxies. The mosaics and inverse-variance maps are shown in Fig.~\ref{fig:layout}, along with the position of the deep Frontier Fields \textit{HST} imaging fields.
+
+\xxx Right now I just swarp the MOSFIRE groups together without any weighting
+
+The final image and inverse-variance mosaics are provided as an ESO Phase 3 data product \xxx\ URL, as well as attached as a digital product to this manuscript (\xxx\ I think ApJSS can and wants to do this).  The images are scaled to an AB magnitude zeropoint ZP=26.0.  In the sections below we describe the characteristics of the mosaics in more detail.  
+
+\subsection{Image quality}
+\label{s:fwhm}
+
+Fig.~\ref{fig:cog} shows the curves of growth for stars identified by the tight relationship between their brightness and half-light radii \citep[see, e.g., Fig.~13 of][]{skelton:14}.  The image quality of the $K_s$-band mosaics is excellent, with stellar FWHM $0\farcs40$ and $0\farcs38$ in the Abell 2744 and MACS 0416 fields, respectively, thanks, in large part, to the execution of the HAWK-I observations in service mode ensuring optimal and uniform image quality across the many hours of integration on the survey fields.  Despite the compact cores of the stellar PSFs, the curves of growth shown in Fig.~\ref{fig:cog} deviate from Gaussian profiles with significantly higher flux in the outer wings, with a shape more consistent with a Moffat profile \citep{trujillo:01}  with $\beta\sim2$.  Also shown in Fig.~\ref{fig:cog} are stellar curves of growth measured from the HAWK-I UDS and GOODS Survey \citep[HUGS;][]{hugs}, which are nearly identical in both FWHM and profile shape.  We caution that these extended profiles will yield significantly shallower final image depths than would be predicted with Exposure Time Calculators that may assume Gaussian profiles. \xxx\ not clear what HAWK-I ETC assumes, the description just says ``FWHM of the seeing disk'' \xxx.  Nevertheless, the deep $K_s$ mosaics have excellent image quality that is much closer to the resolution of the \textit{HST} IR imaging than the redder \textit{Spitzer} IRAC bands.
+
+\xxx\ add description of MOSFIRE clusters.  IQ not uniform across the MACS0717 field.
+
+\subsection{Depth}
+\label{s:depth}
+
+The inverse-variance weight maps shown in Fig.~\ref{fig:layout} provide a formal measurement of the pixel-to-pixel variance.  However, for aperture photometry measurements this variance will yield an underestimate of the true photometric uncertainty due to correlated noise of neighboring pixels that results from pixel resampling during the image reduction process.  For uncorrelated noise between pixels in an aperture, the variance within the aperture scales with the number of pixels in the aperture, $N_\mathrm{pix}$.  For perfect correlation within the aperture, however, the variance scales as $N_\mathrm{pix}^2$, and the properties of the $K_s$ mosaics will lie somewhere in between these two extremes.
+
+Following \cite{labbe:03} \citep[see also][]{quadri:musyc, whitaker:nmbs, skelton:14}, we characterize the noise properties of the $K_s$ mosaics by measuring the flux within circular apertures placed randomly throughout empty parts of the images.  The top panel of Fig.~\ref{fig:depth} shows the standard deviation of these empty-aperture fluxes, $\sigma_\mathrm{D}$, as a function of aperture diameter, which should be used in place of simple scalings of the inverse-variance maps to represent the true uncertainties within photometric apertures.  
+
+The product of the inverse curves of growth shown in Fig.~\ref{fig:cog} (i.e., aperture corrections) and the noise curves in the top panel of Fig.~\ref{fig:depth} defines an optimal photometric aperture size where this product is minimized \citep{whitaker:nmbs}.  For our $K_s$-band mosaics, this optimal aperture has $D\sim0\farcs5$, just larger than the FWHM of point-source profiles.  The $5\,\sigma$ limiting magnitudes (AB) within $0\farcs5$ diameter apertures are 25.8, 25.9, and 25.0 in the Abell 2744, MACS-0416, and MACS-0717 fields, respectively.  We note that the depths of the FF HAWK-I mosaics are nearly identical to those of the two deepest HUGS pointings in the GOODS-South Field (i.e., GOODS-South ``D1'' and ``D2'').  The image depths reported by \cite{hugs} assume ideal noise properties that can be compared to the dashed curves in Fig.~\ref{fig:depth}.  We have analyzed the HUGS GOODS-South ``D2'' image with the same empty-aperture technique as was done for the FF images, and the sensitivities are fully consistent with those reported by \cite{hugs} when accounting for the different definitions.  Along with the two HUGS deep HAWK-I fields, our images covering the Frontier Fields represent the deepest $K_s$-band images ever obtained and will provide a crucial complement to the deep \textit{HST} and \textit{Spitzer} imaging of the same fields.
+
+\xxx\ say something about distant extended sources, perhaps scaling from Arjen's size distributions?
+
+\subsection{Number counts}
+\label{s:number}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                %
+%   Constraints
+%                                                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Photometric constraints from the $K_s$ band}
+\label{s:constraints}
+
+\subsection{Photometric redshifts}
+\label{s:photoz}
+
+\subsection{SED modeling}
+\label{s:sed}
+
+Balmer break, UV slope
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                %
+%   Discussion and Summary
+%                                                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discussion and Conclusions}
+\label{s:discussion}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   End things
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{-0.3cm} %% emulateapj
+\acknowledgements
+
+\noindent We gratefully acknowledge funding support from the STScI Director's Discretionary Research Fund.  \xxx\ acknowledge NASA/Keck time + Mauna Kea \xxx. This research made use of Astropy, a community-developed core Python package for Astronomy \citep{astropy}, and open-source Python modules Numpy, Scipy, and Matplotlib. 
+
+% \noindent We gratefully acknowledge funding support from the Marie Curie Actions of the European Commission (FP7-COFUND) and STScI
+% grant GO-12177.
+
+{\it Facilities:} \facility{VLT:Yepun (HAWKI)}, \facility{Keck:I (MOSFIRE)} % \facility{Hubble Space Telescope (WFC3)}
+
+\bibliographystyle{apj_url}
+\bibliography{ms}
+
+\end{document}
