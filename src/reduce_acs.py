@@ -8,7 +8,8 @@ def acs():
     
     import threedhst
     import threedhst.prep_flt_astrodrizzle as init
-
+    from threedhst import catIO
+    
     import unicorn
     import unicorn.interlace_acs
     
@@ -46,7 +47,8 @@ def acs():
     files, radec = glob.glob('*0717*F814W*asn.fits'), 'subaru_macs0717.radec'
     files, radec = glob.glob('*0717*F606W*asn.fits'), 'subaru_macs0717.radec'
     files, radec = glob.glob('MACS1149-2403*asn.fits'), 'macs1149_radec.dat'
-
+    refimage='hlsp_XXX'
+    
     files, radec = glob.glob('*asn.fits'), 'clash_radec.dat'
     files, radec = glob.glob('*LENS*asn.fits'), 'clash_radec.dat'
     
@@ -108,5 +110,15 @@ def acs():
         fp.close()
         #
         #drizzlepac.astrodrizzle.AstroDrizzle(flt_list, output='MACS0717-Mosaic-%s' %(filter), clean=True, context=False, preserve=False, skysub=True, skyfile='ACS.skyfile', driz_separate=False, driz_sep_wcs=False, median=False, blot=False, driz_cr=False, driz_combine=True, final_wcs=True, final_rot=0, final_pixfrac=0.8, final_kernel='square', resetbits=0, final_bits=bits, final_wht_type='IVM', final_ra=1.093574923885E+02, final_dec=3.778490152063E+01, final_scale=0.1798, final_outnx=4185, final_outny=4670)
-        drizzlepac.astrodrizzle.AstroDrizzle(flt_list, output='MACS0717-Mosaic-%s' %(filter), clean=True, context=False, preserve=False, skysub=True, skyfile='ACS.skyfile', driz_separate=False, driz_sep_wcs=False, median=False, blot=False, driz_cr=False, driz_combine=True, final_wcs=True, final_rot=0, final_pixfrac=0.8, final_kernel='square', resetbits=0, final_bits=bits, final_wht_type='IVM', final_ra=1.093574923885E+02, final_dec=3.778490152063E+01, final_scale=0.1, final_outnx=7524, final_outny=8397)
-        
+        ### Here, specify the output image size, pixel scale, etc.
+        #drizzlepac.astrodrizzle.AstroDrizzle(flt_list, output='MACS0717-Mosaic-%s' %(filter), clean=True, 
+        #        context=False, preserve=False, skysub=True, skyfile='ACS.skyfile', driz_separate=False, 
+        #        driz_sep_wcs=False, median=False, blot=False, driz_cr=False, driz_combine=True, final_wcs=True, 
+        #        final_rot=0, final_pixfrac=0.8, final_kernel='square', resetbits=0, final_bits=bits, final_wht_type='IVM', 
+        #        final_ra=1.093574923885E+02, final_dec=3.778490152063E+01, final_scale=0.1, final_outnx=7524, final_outny=8397)
+        ### Here, force the output to match the FF mosaic
+        drizzlepac.astrodrizzle.AstroDrizzle(flt_list, output='MACS0717-Mosaic-%s' %(filter), clean=True, 
+                context=False, preserve=False, skysub=True, skyfile='ACS.skyfile', driz_separate=False, 
+                driz_sep_wcs=False, median=False, blot=False, driz_cr=False, driz_combine=True, final_wcs=True, 
+                final_rot=0, final_pixfrac=0.8, final_kernel='square', resetbits=0, final_bits=bits, final_wht_type='IVM',
+                final_wcs=True, final_refimage=refimage)
