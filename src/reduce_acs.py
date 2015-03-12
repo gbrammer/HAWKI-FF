@@ -12,6 +12,8 @@ def acs():
     import unicorn
     import unicorn.interlace_acs
     
+    ### First, in PREP_FLT, run "flt_info.sh"
+    
     ### Make ACS associations
     unicorn.candels.make_asn_files(uniquename=True, translate={'-ROT':''})
     
@@ -43,7 +45,8 @@ def acs():
     files, radec = glob.glob('MACS0416-2403*asn.fits'), 'clash_radec.dat'
     files, radec = glob.glob('*0717*F814W*asn.fits'), 'subaru_macs0717.radec'
     files, radec = glob.glob('*0717*F606W*asn.fits'), 'subaru_macs0717.radec'
-    
+    files, radec = glob.glob('MACS1149-2403*asn.fits'), 'macs1149_radec.dat'
+
     files, radec = glob.glob('*asn.fits'), 'clash_radec.dat'
     files, radec = glob.glob('*LENS*asn.fits'), 'clash_radec.dat'
     
