@@ -1,4 +1,7 @@
 def acs():
+	"""
+	Script to reduce ACS Cluster data
+	"""
     
     import glob
     import os
