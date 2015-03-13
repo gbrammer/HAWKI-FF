@@ -13,6 +13,8 @@ def acs():
     import unicorn
     import unicorn.interlace_acs
     
+    field = 'MACS*1149'
+    
     ### First, in PREP_FLT, run "flt_info.sh"
     
     ### Make ACS associations
@@ -46,7 +48,7 @@ def acs():
     files, radec = glob.glob('MACS0416-2403*asn.fits'), 'clash_radec.dat'
     files, radec = glob.glob('*0717*F814W*asn.fits'), 'subaru_macs0717.radec'
     files, radec = glob.glob('*0717*F606W*asn.fits'), 'subaru_macs0717.radec'
-    files, radec = glob.glob('MACS*1149*asn.fits'), 'macs1149_radec.dat'
+    files, radec = glob.glob(field+'*asn.fits'), 'macs1149_radec.dat'
     refimage='hlsp_XXX'
     
     files, radec = glob.glob('*asn.fits'), 'clash_radec.dat'
@@ -95,7 +97,7 @@ def acs():
     for filter in filters:
         flt_list = []
         #files=glob.glob('MACS0416-2403-??-???-%s_asn.fits' %(filter))
-        files=glob.glob('MACS*1149*%s_asn.fits' %(filter))
+        files=glob.glob(field+'*%s_asn.fits' %(filter))
         for asn_file in files:
             asn = threedhst.utils.ASNFile(asn_file)
             for exp in asn.exposures:
