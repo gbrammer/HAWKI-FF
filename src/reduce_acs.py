@@ -46,7 +46,7 @@ def acs():
     files, radec = glob.glob('MACS0416-2403*asn.fits'), 'clash_radec.dat'
     files, radec = glob.glob('*0717*F814W*asn.fits'), 'subaru_macs0717.radec'
     files, radec = glob.glob('*0717*F606W*asn.fits'), 'subaru_macs0717.radec'
-    files, radec = glob.glob('MACS1149-2403*asn.fits'), 'macs1149_radec.dat'
+    files, radec = glob.glob('MACS*1149*asn.fits'), 'macs1149_radec.dat'
     refimage='hlsp_XXX'
     
     files, radec = glob.glob('*asn.fits'), 'clash_radec.dat'
@@ -92,10 +92,10 @@ def acs():
         drizzlepac.astrodrizzle.AstroDrizzle(flt_list, output='MACS0416-2403-Mosaic-%s' %(filter), clean=True, context=False, preserve=False, skysub=True, skyfile='ACS.skyfile', driz_separate=False, driz_sep_wcs=False, median=False, blot=False, driz_cr=False, driz_combine=True, final_wcs=True, final_scale=0.05, final_rot=0, final_pixfrac=0.8, final_kernel='square', resetbits=0, final_bits=bits, final_wht_type='IVM')
         
     #### MACS0717 mosaic
-    for filter in ['F606W', 'F814W']:
+    for filter in filters:
         flt_list = []
         #files=glob.glob('MACS0416-2403-??-???-%s_asn.fits' %(filter))
-        files=glob.glob('MACS*0717*%s_asn.fits' %(filter))
+        files=glob.glob('MACS*1149*%s_asn.fits' %(filter))
         for asn_file in files:
             asn = threedhst.utils.ASNFile(asn_file)
             for exp in asn.exposures:
@@ -117,8 +117,8 @@ def acs():
         #        final_rot=0, final_pixfrac=0.8, final_kernel='square', resetbits=0, final_bits=bits, final_wht_type='IVM', 
         #        final_ra=1.093574923885E+02, final_dec=3.778490152063E+01, final_scale=0.1, final_outnx=7524, final_outny=8397)
         ### Here, force the output to match the FF mosaic
-        drizzlepac.astrodrizzle.AstroDrizzle(flt_list, output='MACS0717-Mosaic-%s' %(filter), clean=True, 
+        drizzlepac.astrodrizzle.AstroDrizzle(flt_list, output='MACS1149-Mosaic-%s' %(filter), clean=True, 
                 context=False, preserve=False, skysub=True, skyfile='ACS.skyfile', driz_separate=False, 
                 driz_sep_wcs=False, median=False, blot=False, driz_cr=False, driz_combine=True, final_wcs=True, 
                 final_rot=0, final_pixfrac=0.8, final_kernel='square', resetbits=0, final_bits=bits, final_wht_type='IVM',
-                final_wcs=True, final_refimage=refimage)
+                final_refimage=refimage)
