@@ -124,3 +124,29 @@ def acs():
                 driz_sep_wcs=False, median=False, blot=False, driz_cr=False, driz_combine=True, final_wcs=True, 
                 final_rot=0, final_pixfrac=0.8, final_kernel='square', resetbits=0, final_bits=bits, final_wht_type='IVM',
                 final_refimage=refimage)
+
+def mask_satellite_trail(flc='jcdu36e5q_flc.fits', mask_file='jcdu36e5q_mask.reg'):
+    """
+    Use Pyregion to mask satellite trails with a region file. 
+    
+    Note: save the region file in "fk5" sky coordinates
+    """
+    import astropy.io.fits as pyfits
+    import pyregion
+    
+    ### open the FITS image for modifying
+    im = pyfits.open(flc, mode='update')
+    
+    ### Make the mask for both "SCI" extensions 
+    for extension in [1,2]:
+        ### Get the mask *within* the region
+        reg = pyregion.open(mask_file).as_imagecoord(im['SCI', extension].header)
+        mask = reg.get_mask(im['SCI', extension])
+        ### Apply the mask to the DQ extension
+        im['DQ', extension].data |= 4096*mask
+    
+    ### Write the file
+    im.flush()
+    
+
+    
