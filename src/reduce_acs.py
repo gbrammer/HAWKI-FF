@@ -137,9 +137,9 @@ def mask_satellite_trail(flc='jcdu36e5q_flc.fits', mask_file='jcdu36e5q_mask.reg
     ### open the FITS image for modifying
     im = pyfits.open(flc, mode='update')
     
-    ### Make the mask for both "SCI" extensions 
+    ### Make the mask for both "DQ" extensions for both ACS/WFC chips
     for extension in [1,2]:
-        ### Get the mask *within* the region
+        ### Get a mask returning 1 *within* the region and 0 elsewhere
         reg = pyregion.open(mask_file).as_imagecoord(im['SCI', extension].header)
         mask = reg.get_mask(im['SCI', extension])
         ### Apply the mask to the DQ extension
