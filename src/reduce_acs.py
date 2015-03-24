@@ -5,6 +5,8 @@ def acs():
     
     import glob
     import os
+    import drizzlepac
+    import numpy as np
     
     import threedhst
     import threedhst.prep_flt_astrodrizzle as init
@@ -12,6 +14,7 @@ def acs():
     
     import unicorn
     import unicorn.interlace_acs
+    
     
     field = 'MACS*1149'
     
@@ -33,7 +36,7 @@ def acs():
     #### Combine parallels
     for par in [1,2]:
         for filter in ['F775W','F850LP']:
-            files=glob.glob('MACS0416-ACSPAR%d-[AB]*-%s*' %(par, filter))
+            files=glob.glob(field+'*-ACSPAR%d-[AB]*-%s*' %(par, filter))
             list = []
             for file in files:
                 asn = threedhst.utils.ASNFile(file)
@@ -41,7 +44,7 @@ def acs():
                 os.remove(file)
                 
             asn.exposures = list
-            asn.product = 'MACS0416-ACSPAR%d-%s' %(par, filter)
+            asn.product = 'MACS1149-ACSPAR%d-%s' %(par, filter)
             asn.write('%s_asn.fits' %(asn.product))
             
     files, radec = glob.glob('MACS0416-ACSPA*asn.fits'), 'subaru.radec'
@@ -72,8 +75,8 @@ def acs():
     for filter in filters:
         #### Get all FLTs
         flt_list = []
-        #files=glob.glob('MACS0416-2403-??-???-%s_asn.fits' %(filter))
-        files=glob.glob('MACS0416*%s_asn.fits' %(filter))
+        files=glob.glob('MACS1149-2223-??-???-%s_asn.fits' %(filter))
+        #files=glob.glob('MACS*1149*%s_asn.fits' %(filter))
         for asn_file in files:
             asn = threedhst.utils.ASNFile(asn_file)
             for exp in asn.exposures:
@@ -87,11 +90,11 @@ def acs():
         fp.close()
         #
         #### Run AstroDrizzle to flag CRs on both orients
-        #drizzlepac.astrodrizzle.AstroDrizzle(flt_list, output='MACS0416-2403-%s' %(filter), clean=True, context=False, preserve=False, skysub=True, skyfile='ACS.skyfile', driz_separate=True, driz_sep_wcs=True, median=True, blot=True, driz_cr=True, driz_combine=True, final_wcs=True, final_refimage=None, final_scale=0.065, final_pixfrac=0.8, final_rot=0, final_kernel='square', resetbits=0, final_bits=bits, final_wht_type='IVM')
+        drizzlepac.astrodrizzle.AstroDrizzle(flt_list, output='MACS1149-2223-%s_comb' %(filter), clean=True, context=False, preserve=False, skysub=True, skyfile='ACS.skyfile', driz_separate=True, driz_sep_wcs=True, median=True, blot=True, driz_cr=True, driz_combine=True, final_wcs=True, final_refimage=None, final_scale=0.065, final_pixfrac=0.8, final_rot=0, final_kernel='square', resetbits=0, final_bits=bits, final_wht_type='IVM')
         #
         #drizzlepac.astrodrizzle.AstroDrizzle(flt_list, output='MACS0416-2403-30mas-%s' %(filter), clean=True, context=False, preserve=False, skysub=True, skyfile='ACS.skyfile', driz_separate=False, driz_sep_wcs=False, median=False, blot=False, driz_cr=False, driz_combine=True, final_wcs=True, final_refimage='hlsp_clash_hst_acs-30mas_macs0416_f475w_v1_drz.fits', final_pixfrac=0.8, final_kernel='square', resetbits=0, final_bits=bits, final_wht_type='IVM')
         #
-        drizzlepac.astrodrizzle.AstroDrizzle(flt_list, output='MACS0416-2403-Mosaic-%s' %(filter), clean=True, context=False, preserve=False, skysub=True, skyfile='ACS.skyfile', driz_separate=False, driz_sep_wcs=False, median=False, blot=False, driz_cr=False, driz_combine=True, final_wcs=True, final_scale=0.05, final_rot=0, final_pixfrac=0.8, final_kernel='square', resetbits=0, final_bits=bits, final_wht_type='IVM')
+        #drizzlepac.astrodrizzle.AstroDrizzle(flt_list, output='MACS1149-2223-Mosaic-%s' %(filter), clean=True, context=False, preserve=False, skysub=True, skyfile='ACS.skyfile', driz_separate=False, driz_sep_wcs=False, median=False, blot=False, driz_cr=False, driz_combine=True, final_wcs=True, final_scale=0.05, final_rot=0, final_pixfrac=0.8, final_kernel='square', resetbits=0, final_bits=bits, final_wht_type='IVM')
         
     #### MACS0717 mosaic
     for filter in filters:
