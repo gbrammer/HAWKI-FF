@@ -227,20 +227,25 @@ Table~\ref{tab:summary} provides a brief summary of the survey fields and observ
 %  Summary table
 %                                                                %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{deluxetable*}{lcclrrcc} 
+\begin{deluxetable*}{ccccrccc} 
 \tabletypesize{\footnotesize}
 \tablewidth{0pt} 
 \tablecaption{Field summary \label{tab:summary}} 
 \tablehead{ 
-\colhead{Field} & \colhead{R.A.} & \colhead{Dec.} & \colhead{Instrument} & \colhead{Epoch} & \colhead{$t$} & \colhead{Depth} & \colhead{FWHM}}
+\colhead{Field} & \colhead{R.A.} & \colhead{Dec.} & \colhead{Instrument} & \colhead{Epoch} & \colhead{$t$} & \colhead{Depth$^\mathrm{a}$} & \colhead{FWHM}}
 \startdata 
-Abell 2744 & 00:14:21.2 & -30:23:50 & \textit{VLT}/HAWKI     & 2013 Oct 24--2013 Dec 24 & 29.4 h & 25.8 & $0\farcs40$ \\ 
-MACS-0416  & 04:16:08.9 & -24:04:28 & \textit{VLT}/HAWKI     & 2013 Oct 25--2014 Feb 23 & 25.5 h & 25.9 & $0\farcs38$ \\ 
-MACS-0717  & 07:17:34.0 & +37:44:49 & \textit{Keck}/MOSFIRE  & 2015 Jan 26--27                 & \xxx & 25.0 & $0\farcs43$ \\ 
-MACS-1149  & 11:49:36.3 & +22:23:58 & \textit{Keck}/MOSFIRE  & 2015 Feb 24                    & \xxx & \xxx & \xxx
+Abell 2744   & $00:14:21.2$ & $-30:23:50$ & \textit{VLT}/HAWKI     & 2013 Oct 24--2013 Dec 24 & 29.4 h & 25.8 & $0\farcs40$ \\ 
+MACS-0416    & $04:16:08.9$ & $-24:04:28$ & \textit{VLT}/HAWKI     & 2013 Oct 25--2014 Feb 23 & 25.5 h & 25.9 & $0\farcs38$ \\ 
+Abell S1063  & $22:49:01.1$ & $-44:32:13$ & \textit{VLT}/HAWKI     & \xxx & 25.5 h & 25.9 & $0\farcs38$ \\ 
+Abell 370    & $02:40:03.3$ & $-01:36:23$ & \textit{VLT}/HAWKI     & \xxx & 25.5 h & 25.9 & $0\farcs38$ \\ 
+MACS-0717    & $07:17:34.0$ & $+37:44:49$ & \textit{Keck}/MOSFIRE  & 2015 Jan 26--27  & 0/0 h\footnotemark[2] & 25.0/25.0 & $0\farcs43$/$0\farcs00$ \\ 
+MACS-1149    & $11:49:36.3$ & $+22:23:58$ & \textit{Keck}/MOSFIRE  & 2015 Feb 24      & \xxx\footnotemark[2] & \xxx & \xxx \\
+''           & ''           & ''          & \textit{VLT}/HAWKI\footnotemark[3]     & 2013--2014       & \xxx & \xxx & \xxx
 \enddata 
 %\vspace{-0.8cm} 
-\tablecomments{Depth is defined as the 5$\sigma$ limiting magnitude for point sources, measured in $D=0\farcs5$ apertures (\S\ref{s:depth}).} 
+\footnotetext[1]{Depth is defined as the 5$\sigma$ limiting magnitude for point sources, measured in $D=0\farcs6$ apertures (\S\ref{s:depth}).} 
+\footnotetext[2]{The MOSFIRE observations of MACS-0717 and MACS-1149 require two separate pointings of the instrument to cover the cluster/parallel \textit{HST} fields, which have slightly different characteristics as indicated.}
+\footnotetext[3]{Archival observations from ESO program \href{http://archive.eso.org/wdb/wdb/eso/eso_archive_main/query?prog_id=090.A-0458(A)}{090.A-0458(A)}.}
 \end{deluxetable*}
 %\vspace{1cm}
 
@@ -274,11 +279,31 @@ For the MOSFIRE observations, we adopt a more simplified approach and refine the
 \xxx\ Add some sort of diagnostic figure showing the astrometric comparison between Ks and, say, ACS F814W and get a number to quote for astrometric precision
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Drizzle figure
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[!t]
+\epsscale{1.18}
+\plotone{drizzle_cutouts.pdf} % Figures/exposure_map.pdf
+\caption{\xxx
+\label{fig:drizzle_cutout}}  
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   correlated noise figure
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[!t]
+\epsscale{1.18}
+\plotone{correlated_noise_figure.pdf} % Figures/exposure_map.pdf
+\caption{\xxx
+\label{fig:corr_noise}}  
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   Exposure Map figure
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure*}
 \plotone{hawkiff_layout.pdf} % Figures/exposure_map.pdf
-\caption{Layout of the Frontier Fields $K_s$-band mosaics.  The positions of the \textit{HST} cluster and parallel fields are shown in the blue (ACS optical) and red (WFC3 IR) polygons.  The light blue polygons in the MACS-0717 field show additional wide-field ACS imaging coverage from  programs GO-9722 and GO-10420 \citep[PI: Ebeling;][]{ma:11}.  The area covered by deep imaging in the \textit{Spitzer}/IRAC 3.6 and 4.5\,\mum\ channels is shown in orange.  The bottom panels show the mosaic weight maps, where the four HAWK-I chips and two MOSFIRE pointings can be seen.\label{fig:layout}}  
+\caption{Layout of the Frontier Fields $K_s$-band mosaics.  The positions of the \textit{HST} cluster and parallel fields are shown in the blue (ACS optical) and red (WFC3 IR) polygons.  The light blue polygons in the MACS-0717 field show additional wide-field ACS imaging coverage from  programs GO-9722 and GO-10420 \citep[PI: Ebeling;][]{ma:11}.  The area covered by deep imaging in the \textit{Spitzer}/IRAC 3.6 and 4.5\,\mum\ channels is shown in orange.  The HAWK-I field of view is perfectly suited for simultaneous imaging of the cluster+parallel field pairs, which require two separate pointings with MOSFIRE.\label{fig:layout}}  
 \end{figure*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -293,11 +318,11 @@ For the MOSFIRE observations, we adopt a more simplified approach and refine the
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   Image quality figure
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[!ht]
+\begin{figure*}[!ht]
 \epsscale{1.18}
 \plotone{curve_of_growth.pdf} % Figures/exposure_map.pdf
 \caption{Curves of growth of stellar profiles in the Frontier Fields $K_s$-band mosaics.  The profiles of stars are well-fit by Moffat profiles with $\mathrm{FWHM}\sim0\farcs4$ and $\beta\sim2$, which have substantially more flux at radii $r>\mathrm{FWHM}$ than Gaussian profiles with the same half-widths (orange curves).  These extended profiles appear to be characteristic of deep $K_s$-band images; the stellar profiles from the HUGS GOODS-South D2 HAWK-I $K_s$ image \citep{hugs} (lower right panel), created by a different team with a different reduction pipeline, are nearly identical to those of the Frontier Fields mosaics presented here. \xxx\ I only show the parallel field region of MACS0717, which has significantly better image quality from the Jan. run.  You can see a few of the broader profiles in the figure; there are many more of these if you include the whole cluster area.  \label{fig:cog}}  
-\end{figure}
+\end{figure*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   Depth figure
@@ -310,7 +335,7 @@ For the MOSFIRE observations, we adopt a more simplified approach and refine the
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%   Depth figure
+%   Cutout figure
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[!ht]
 \epsscale{1.18}
