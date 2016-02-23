@@ -4,6 +4,8 @@
 
 %\topmargin 0.6in
 
+\usepackage{multirow}
+
 %\usepackage{deluxetable}
 \usepackage{color}
 \definecolor{citeRGB}{rgb}{0,0.1,0.7}
@@ -227,25 +229,31 @@ Table~\ref{tab:summary} provides a brief summary of the survey fields and observ
 %  Summary table
 %                                                                %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{deluxetable*}{ccccrccc} 
+\begin{deluxetable*}{lcccrccccc} 
 \tabletypesize{\footnotesize}
 \tablewidth{0pt} 
 \tablecaption{Field summary \label{tab:summary}} 
 \tablehead{ 
-\colhead{Field} & \colhead{R.A.} & \colhead{Dec.} & \colhead{Instrument} & \colhead{Epoch} & \colhead{$t$} & \colhead{Depth$^\mathrm{a}$} & \colhead{FWHM}}
+\colhead{Field} & \colhead{R.A.} & \colhead{Dec.} & \colhead{Instrument} & \colhead{Epoch} & Field\footnotemark[1] & \colhead{$t$, hours} & \colhead{$t_{0.4}$\footnotemark[2]} & \colhead{Depth\footnotemark[3]} & \colhead{FWHM}}
 \startdata 
-Abell 2744   & $00:14:21.2$ & $-30:23:50$ & \textit{VLT}/HAWKI     & 2013 Oct 24--2013 Dec 24 & 29.4 h & 25.8 & $0\farcs40$ \\ 
-MACS-0416    & $04:16:08.9$ & $-24:04:28$ & \textit{VLT}/HAWKI     & 2013 Oct 25--2014 Feb 23 & 25.5 h & 25.9 & $0\farcs38$ \\ 
-Abell S1063  & $22:49:01.1$ & $-44:32:13$ & \textit{VLT}/HAWKI     & 2015 Jul 8--Sep 22       & \xxx & \xxx & \xxx \\ 
-Abell 370    & $02:40:03.3$ & $-01:36:23$ & \textit{VLT}/HAWKI     & 2015 Jul 26--2016 Jan 28 & \xxx & \xxx & \xxx \\ 
-MACS-0717    & $07:17:34.0$ & $+37:44:49$ & \textit{Keck}/MOSFIRE  & 2015 Jan 26--27, 2016 Jan 21--22  & 0/0 h\footnotemark[2] & 25.0/25.0 & $0\farcs43$/$0\farcs00$ \\ 
-MACS-1149    & $11:49:36.3$ & $+22:23:58$ & \textit{Keck}/MOSFIRE  & 2015 Feb 24, 2016 Jan 21--22      & \xxx\footnotemark[2] & \xxx & \xxx \\
-''           & ''           & ''          & \textit{VLT}/HAWKI\footnotemark[3]     & 2013 Mar 21--2014 Jun 9      & \xxx & \xxx & \xxx
+Abell 2744   & $00:14:21.2$ & $-30:23:50$ & \textit{VLT}/HAWKI     & 2013 Oct 24--2013 Dec 24 & C+P & 29.3 & 20.5 & 26.0 & $0\farcs39$ \\ 
+MACS-0416    & $04:16:08.9$ & $-24:04:28$ & \textit{VLT}/HAWKI     & 2013 Oct 25--2014 Feb 23 & C+P & 25.8 & 21.7 & 26.0 & $0\farcs36$ \\ 
+Abell S1063  & $22:49:01.1$ & $-44:32:13$ & \textit{VLT}/HAWKI     & 2015 Jul 8--Sep 22       & C+P & 27.9 & 21.0 & 26.0 & $0\farcs39$ \\ 
+Abell 370    & $02:40:03.3$ & $-01:36:23$ & \textit{VLT}/HAWKI     & 2015 Jul 26--2016 Jan 28 & C+P & 29.1 & \xxx & 25.9 & $0\farcs36$ \\ 
+\vspace {-0.2cm}\\ 
+\multirow{2}{*}{MACS-0717}    & \multirow{2}{*}{$07:17:34.0$} & \multirow{2}{*}{$+37:44:49$} &  \multirow{2}{*}{\textit{Keck}/MOSFIRE}  &  \multirow{2}{*}{2015 Jan 26--27, 2016 Jan 21--22}  & C & 4.3 & 1.9 & 25.3 & $0\farcs42$ \\ 
+                              &                             &                             &                                          &      & P & 3.8 & 2.2 & 25.5 & $0\farcs49$ \\ 
+\vspace {-0.2cm}\\ 
+\multirow{4}{*}{MACS-1149}    & \multirow{4}{*}{$11:49:36.3$} & \multirow{4}{*}{$+22:23:58$} & \multirow{2}{*}{\textit{Keck}/MOSFIRE}  & \multirow{2}{*}{2015 Feb 24, 2016 Jan 21--22}      & C & 5.5 & 1.9 & 25.2 & $0\farcs53$ \\
+&  &         &      &   & P & 4.8 & 2.2 & 25.1 & $0\farcs54$ \\
+\vspace {-0.3cm}\\ 
+&  &         & \textit{VLT}/HAWKI\footnotemark[4]     & 2013 Mar 21--2014 Jun 9      & C & 5.3 & 3.1 & 25.0 & $0\farcs41$
 \enddata 
 %\vspace{-0.8cm} 
-\footnotetext[1]{Depth is defined as the 5$\sigma$ limiting magnitude for point sources, measured in $D=0\farcs6$ apertures (\S\ref{s:depth}).} 
-\footnotetext[2]{The MOSFIRE observations of MACS-0717 and MACS-1149 require two separate pointings of the instrument to cover the cluster/parallel \textit{HST} fields, which have the different characteristics as indicated, respectively.}
-\footnotetext[3]{Archival observations from ESO program \href{http://archive.eso.org/wdb/wdb/eso/eso_archive_main/query?prog_id=090.A-0458(A)}{090.A-0458} (PI: Infante).}
+\footnotetext[1]{Coverage of \textit{Hubble} survey fields: C=Cluster, P=Parallel.  Most HAWKI pointings cover the two \textit{HST} fields simultaneously (C+P; Fig.~\ref{fig:layout}). The MOSFIRE observations of MACS-0717 and MACS-1149 require two separate pointings of the instrument to cover the cluster and parallel \textit{HST} fields, which have the different characteristics as indicated.}
+\footnotetext[2]{Exposure time equivalent at $0\farcs4$ seeing:  $t_{0.4}=\sum t \cdot (0.4/\mathrm{FWHM})^2$.}
+\footnotetext[3]{Depth is defined as the 5$\sigma$ limiting magnitude for point sources, measured in $D=0\farcs6$ apertures (\S\ref{s:depth}).} 
+\footnotetext[4]{Archival observations from ESO program \href{http://archive.eso.org/wdb/wdb/eso/eso_archive_main/query?prog_id=090.A-0458(A)}{090.A-0458} (PI: Infante).}
 \end{deluxetable*}
 %\vspace{1cm}
 
