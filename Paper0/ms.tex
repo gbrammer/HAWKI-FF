@@ -1,4 +1,5 @@
-\documentclass[iop, numberedappendix]{emulateapj}
+%\documentclass[iop, numberedappendix]{emulateapj}
+\documentclass[preprint2]{aastex6}
 \usepackage{apjfonts}
 %\documentclass[12pt,preprint]{aastex}
 
@@ -8,9 +9,9 @@
 
 %\usepackage{deluxetable}
 %\usepackage{color}
-\usepackage[usenames, dvipsnames]{color}
-\definecolor{citeRGB}{rgb}{0,0.1,0.7}
-\usepackage[hyperfootnotes=true,naturalnames=true,letterpaper,pdfstartview=FitH,pdfpagemode=UseNone,colorlinks=true,citecolor=citeRGB]{hyperref}
+%\usepackage[usenames, dvipsnames]{color}
+%\definecolor{citeRGB}{rgb}{0,0.1,0.7}
+%\usepackage[hyperfootnotes=true,naturalnames=true,letterpaper,pdfstartview=FitH,pdfpagemode=UseNone,colorlinks=true,citecolor=citeRGB]{hyperref}
 
 
 %%%% The following code forces Hyperref to only link the year in a citation
@@ -212,6 +213,40 @@ Detection of galaxies in the $K$-band ($\lambda_{\rm eff} \sim 2.2$~$\mu$m) prov
 
 It is not surprising that, given the aforementioned reasons, all successful extragalactic surveys performed in the last fifteen years to investigate galaxies populations in the early universe invested significant resources to obtain deep NIR imaging data with good image quality, especially in the $K$ band, usually adopted as the detection band. Indeed, our understanding of galaxy formation and evolution in the last couple of decades has impressively proceeded forward mostly driven by NIR progressively deeper, wider, and with better image quality, surveys, such as ...  FIRES, FIREWORKS, NMBS, UltraVISTA, etc... Subaru Super Deep Field (AO) \cite{minowa:05}... HUGS \citep{hugs}.\textcolor{red}{-- we should provide a complete list of NIR surveys here -- }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                %
+%  Summary table
+%                                                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{deluxetable*}{ccccrccccc}
+\tabletypesize{\footnotesize}
+\tablewidth{0pt} 
+\tablecaption{Field summary \label{tab:summary}} 
+\tablehead{ 
+\colhead{Field} & \colhead{R.A.} & \colhead{Dec.} & \colhead{Instrument} & \colhead{Epoch} & \textit{HST}\footnotemark[1] & \colhead{$t$, hours} & {Depth\footnotemark[2]} & \colhead{FWHM}}
+\startdata 
+Abell 2744   & $00:14:21.2$ & $-30:23:50$ & \textit{VLT}/\HAWKI     & 2013 Oct 24--2013 Dec 24 & C+P & 29.3 &  26.0 & $0\farcs39$ \\ 
+MACS-0416    & $04:16:08.9$ & $-24:04:28$ & \textit{VLT}/\HAWKI     & 2013 Oct 25--2014 Feb 23 & C+P & 25.8 &  26.0 & $0\farcs36$ \\ 
+Abell S1063  & $22:49:01.1$ & $-44:32:13$ & \textit{VLT}/\HAWKI     & 2015 Jul 8--Sep 22       & C+P & 27.9 &  26.0 & $0\farcs39$ \\ 
+Abell 370    & $02:40:03.3$ & $-01:36:23$ & \textit{VLT}/\HAWKI     & 2015 Jul 26--2016 Jan 28 & C+P & 28.3 &  26.0 & $0\farcs35$ \\ 
+\vspace {-0.2cm}\\ 
+\multirow{2}{*}{MACS-0717}    & \multirow{2}{*}{$07:17:34.0$} & \multirow{2}{*}{$+37:44:49$} &  \multirow{2}{*}{\textit{Keck}/MOSFIRE}  &  \multirow{2}{*}{2015 Jan 26--27, 2016 Jan 21--22}  & C & 4.3 & 25.3 & $0\farcs42$ \\ 
+                              &                             &                             &                                          &      & P & 3.8 & 25.5 & $0\farcs49$ \\ 
+\vspace {-0.2cm}\\ 
+\multirow{4}{*}{MACS-1149}    & \multirow{4}{*}{$11:49:36.3$} & \multirow{4}{*}{$+22:23:58$} & \multirow{2}{*}{\textit{Keck}/MOSFIRE}  & \multirow{2}{*}{2015 Feb 24, 2016 Jan 21--22}      & C & 5.5 & 25.2 & $0\farcs53$ \\
+&  &         &      &   & P & 4.8 & 25.1 & $0\farcs54$ \\
+\vspace {-0.4cm}\\ 
+&  &         & \textit{VLT}/\HAWKI\footnotemark[3]     & 2013 Mar 21--2014 Jun 9      & C & 5.3 & 25.0 & $0\farcs41$
+\enddata 
+%\vspace{-0.8cm} 
+\footnotetext[1]{Coverage of \textit{Hubble} survey fields: C=Cluster, P=Parallel.  Most \HAWKI\ pointings cover the two \textit{HST} fields simultaneously (C+P; Fig.~\ref{fig:layout}). The MOSFIRE observations of MACS-0717 and MACS-1149 require two separate pointings of the instrument to cover the cluster and parallel \textit{HST} fields, which have the different characteristics as indicated.}
+%\footnotetext[2]{Approximate exposure time equivalent at $0\farcs4$ seeing:  $t_{0.4}=\sum_i t_i \cdot (0.4/\mathrm{FWHM}_i)^2$.}
+\footnotetext[2]{Depth is defined as the 5$\sigma$ limiting magnitude for point sources, measured in $D=0\farcs6$ apertures (\S\ref{s:depth}).} 
+\footnotetext[3]{Archival observations from ESO program \href{http://archive.eso.org/wdb/wdb/eso/eso_archive_main/query?prog_id=090.A-0458(A)}{090.A-0458} (PI: Infante).}
+\end{deluxetable*}
+%\vspace{1cm}
+
+
 The latest effort to further our knowledge of galaxy formation and evolution is represented by the HST Frontier Fields program. \textcolor{red}{-- brief description of HFF, followed by the need for mega-deep K-band data --}
 
 
@@ -228,55 +263,11 @@ Table~\ref{tab:summary} provides a brief summary of the survey fields and observ
 \subsection{Observation log}
 \label{s:log}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                                                                %
-%  Summary table
-%                                                                %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{deluxetable*}{ccccrccccc} 
-\tabletypesize{\footnotesize}
-\tablewidth{0pt} 
-\tablecaption{Field summary \label{tab:summary}} 
-\tablehead{ 
-\colhead{Field} & \colhead{R.A.} & \colhead{Dec.} & \colhead{Instrument} & \colhead{Epoch} & \textit{HST}\footnotemark[1] & \colhead{$t$, hours} & \colhead{Depth\footnotemark[2]} & \colhead{FWHM}}
-\startdata 
-Abell 2744   & $00:14:21.2$ & $-30:23:50$ & \textit{VLT}/\HAWKI     & 2013 Oct 24--2013 Dec 24 & C+P & 29.3 &  26.0 & $0\farcs39$ \\ 
-MACS-0416    & $04:16:08.9$ & $-24:04:28$ & \textit{VLT}/\HAWKI     & 2013 Oct 25--2014 Feb 23 & C+P & 25.8 &  26.0 & $0\farcs36$ \\ 
-Abell S1063  & $22:49:01.1$ & $-44:32:13$ & \textit{VLT}/\HAWKI     & 2015 Jul 8--Sep 22       & C+P & 27.9 &  26.0 & $0\farcs39$ \\ 
-Abell 370    & $02:40:03.3$ & $-01:36:23$ & \textit{VLT}/\HAWKI     & 2015 Jul 26--2016 Jan 28 & C+P & 28.3 &  26.0 & $0\farcs35$ \\ 
-\vspace {-0.2cm}\\ 
-\multirow{2}{*}{MACS-0717}    & \multirow{2}{*}{$07:17:34.0$} & \multirow{2}{*}{$+37:44:49$} &  \multirow{2}{*}{\textit{Keck}/MOSFIRE}  &  \multirow{2}{*}{2015 Jan 26--27, 2016 Jan 21--22}  & C & 4.3 & 25.3 & $0\farcs42$ \\ 
-                              &                             &                             &                                          &      & P & 3.8 & 25.5 & $0\farcs49$ \\ 
-\vspace {-0.2cm}\\ 
-\multirow{4}{*}{MACS-1149}    & \multirow{4}{*}{$11:49:36.3$} & \multirow{4}{*}{$+22:23:58$} & \multirow{2}{*}{\textit{Keck}/MOSFIRE}  & \multirow{2}{*}{2015 Feb 24, 2016 Jan 21--22}      & C & 5.5 & 25.2 & $0\farcs53$ \\
-&  &         &      &   & P & 4.8 & 25.1 & $0\farcs54$ \\
-\vspace {-0.3cm}\\ 
-&  &         & \textit{VLT}/\HAWKI\footnotemark[3]     & 2013 Mar 21--2014 Jun 9      & C & 5.3 & 25.0 & $0\farcs41$
-\enddata 
-%\vspace{-0.8cm} 
-\footnotetext[1]{Coverage of \textit{Hubble} survey fields: C=Cluster, P=Parallel.  Most \HAWKI\ pointings cover the two \textit{HST} fields simultaneously (C+P; Fig.~\ref{fig:layout}). The MOSFIRE observations of MACS-0717 and MACS-1149 require two separate pointings of the instrument to cover the cluster and parallel \textit{HST} fields, which have the different characteristics as indicated.}
-%\footnotetext[2]{Approximate exposure time equivalent at $0\farcs4$ seeing:  $t_{0.4}=\sum_i t_i \cdot (0.4/\mathrm{FWHM}_i)^2$.}
-\footnotetext[2]{Depth is defined as the 5$\sigma$ limiting magnitude for point sources, measured in $D=0\farcs6$ apertures (\S\ref{s:depth}).} 
-\footnotetext[3]{Archival observations from ESO program \href{http://archive.eso.org/wdb/wdb/eso/eso_archive_main/query?prog_id=090.A-0458(A)}{090.A-0458} (PI: Infante).}
-\end{deluxetable*}
-%\vspace{1cm}
-
 $K_s$-band observations of the Abell 2744 and MACS-0416 fields were obtained between 2013 Oct and 2014 Feb with the High Acuity Wide-field K-band Imager \citep[\HAWKI;][]{hawki, hawki2} on the 8.2\,m UT4 telescope at the ESO \textit{Very Large Telescope} (ESO program \mbox{092.A-0472}).  \HAWKI\ $K_s$-badn bservations of the Abell S1063 and Abell 370 fields were obtained between 2015 Jul and 2016 Jan from a subsequent program (095.A-0533).  \HAWKI\ is composed of four chips with 2048$\times$2048 $0\farcs106$ pixels, and the full $7\farcm5\times7\farcm5$ \HAWKI\ field-of-view is perfectly suited to cover both the primary and parallel \textit{HST} ACS optical and WFC3 IR fields simultaneously in a single pointing (see Fig.\ref{fig:layout}).
 
 The \HAWKI\ observations were divided into individual service mode Observation Blocks (OBs); typically one or two OBs of a given field were observed per night as conditions allowed, and occasionally multiple fields were observed on the same night.  The execution of each OB lasted either 60 or 90 minutes, depending on how many exposures were obtained in the block.  The exposures were roughly one minute each, with multiple coadds of shorter reads making up the exposure ($\mathrm{NDIT}\times\mathrm{DIT} = 4\times15$\,s~=~60\,s for Abell 2744, 7$\times$8\,s~=~56\,s for MACS-0416, 8$\times$12\,s~=~96\,s for Abell S1063 and 8$\times$12\,s~=~96\,s for Abell 370\footnote{Longer DITs are preferable to reduce instrument overheads; the shorter DITs on the MACS-0416 field were done do accommodate \textit{VLT} service mode restrictions on bright source saturation, which have been eased since ESO Period 93.}).  The telescope was offset with random dithers between each exposure to facilitate sky subtraction;  observations taken before 2013 Nov 4 were dithered within a 20$^{\prime\prime}$ box, which was subsequently increased to 40$^{\prime\prime}$ to improve sky subtraction in the cluster cores crowded with bright galaxies and intra-cluster light.  The total on-sky integration times for the Abell 2744, MACS-0416, Abell S1063 and Abell 370 fields are 29.4, 25.5, \xxx, and \xxx\ hours, respectively.
 
 Imaging observations of the MACS-0717 and MACS-1149 fields in the $K_s$ filter were obtained on 2015 Jan 26/27 and 2015 Feb 24 (program N097M), respectively, and both fields again on 2016 Jan 21/22 (program N135M), with the Multi-Object Spectrometer For Infra-Red Exploration \citep[MOSFIRE;][]{mosfire} on the 10\,m \mbox{\textit{Keck I}} telescope.  The MOSFIRE detector consists of $2048\times2048$ $0\farcs1798$ pixels; the resulting $6\farcm1\times6\farcm1$ field-of-view is unfortunately slightly too small to cover both \textit{HST} fields simultaneously and therefore requires two pointings to cover the entire deep \textit{HST} Frontier Fields imaging area (Fig.~\ref{fig:layout}).  MOSFIRE exposures were obtained in a $3\times3$ ``Box9'' dither pattern spaced roughly 40$^{\prime\prime}$ between offset positions.  The total integration times on the MOSFIRE survey fields are summarized in Table~\ref{tab:summary}.  The individual detector integration times (DIT) were adjusted on the fly during the observing run to keep the total counts within the linear regime of the detector, while maintaining $\mathrm{NDIT}\times\mathrm{DIT} \sim 40$\,s.
-
-Additional archival \HAWKI\ imaging of the MACS-1149 fields was obtained from the program 090.A-0458.  These data were obtained with one \HAWKI\ chip centered on the $z=9.7$ candidate from \cite{zheng:12}; they largely cover the HFF cluster field but the pointing was not optimized to also include the parallel field whose location was defined later (see Fig.~\ref{fig:layout}).  The MACS-1149 \HAWKI\ observations were obtained in Service Mode at the ESO/\textit{VLT} in \xxx\ separate OBs between 2013 Mar 21 and 2014 Jun 9.  The 20$\times$15\,s~=~300\,s exposures were taken at nine dithered positions with regular offsets separated by \xxx\ arcsec; the on-source exposure time of the final MACS-1149 \HAWKI\ mosaic is \xxx\ hours.
-
-\subsection{Image processing}
-\label{s:processing}
-
-The \HAWKI\ and MOSFIRE observations were reduced with a pipeline that has been developed for previous surveys with the NEWFIRM \citep[NMBS;][]{whitaker:nmbs} and FOURSTAR \citep[zFOURGE;][, Labb\'e in prep]{spitler:12} infrared imaging instruments.  Treating each detector individually, the pipeline is easily modified for the different instrument configurations of the four \HAWKI\ and single MOSFIRE chips.  The primary task of the pipeline is removing the bright, time-variable sky background from the individual exposures, which is often some $10^4$ times brighter than the distant galaxies of interest in the field.  With such a bright background, we first determine an empirical ``sky flat'' that is a median of all of the \textit{science} exposures in a \HAWKI\ OB or MOSFIRE group, after rejecting the brightest 12 exposures at each pixel position to remove the contribution of bright objects.  We find these empirical flats to be preferable to external twilight or dome flats given the difficulty of obtaining a truly flat illumination pattern over such large detector fields-of-view.  
-
-After dividing by the flat, the background of each exposure is determined in a first pass from the simple median of the four exposures that came both immediately before and after it.  The background-subtracted exposures are combined into a mosaic from which objects are detected.  The final refined background of each exposure is determined in a second ``mask pass'' from a median again from the four exposures before and after it but now aggressively masking all pixels that contain flux from the detected objects.
-
-As the archival \HAWKI\ images of the MACS-1149 field were obtained with longer individual exposures and with fewer exposures per sequence, the mask-pass technique described above did not produce satisfactory results.  In this case, for each raw exposure we divide by the sky flat and then subtract a third-order polynomial fit to the background.  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   Exposure Map figure
@@ -286,13 +277,19 @@ As the archival \HAWKI\ images of the MACS-1149 field were obtained with longer 
 \plotone{hawkiff_layout.pdf} % Figures/exposure_map.pdf
 \caption{Layout of the Frontier Fields $K_s$-band mosaics.  The positions of the \textit{HST} cluster and parallel fields are shown in the blue (ACS optical) and red (WFC3 IR) polygons.  The light blue polygons in the MACS-0717 field show additional wide-field ACS imaging coverage from  programs GO-9722 and GO-10420 \citep[PI: Ebeling;][]{ma:11}.  The area covered by deep imaging in the \textit{Spitzer}/IRAC 3.6 and 4.5\,\mum\ channels is shown in orange, with the cluster fields indicated by the dashed lines.  The \HAWKI\ field of view is perfectly suited (Abell 2744, MACS-0416, Abell S1063 and Abell 370) for simultaneous imaging of the cluster+parallel field pairs, which require two separate pointings with MOSFIRE (MACS-0717 and MACS-1149).  The footprint of additional archival \HAWKI\ coverage of the MACS-1149 field is indicated by the gray square in the lower right panel.\label{fig:layout}}  
 \end{figure*}
+%%%%%%%%%%%%%%%%
 
-\subsection{Photometric calibration}
-\label{s:calib}
+Additional archival \HAWKI\ imaging of the MACS-1149 fields was obtained from the program 090.A-0458.  These data were obtained with one \HAWKI\ chip centered on the $z=9.7$ candidate from \cite{zheng:12}; they largely cover the HFF cluster field but the pointing was not optimized to also include the parallel field whose location was defined later (see Fig.~\ref{fig:layout}).  The MACS-1149 \HAWKI\ observations were obtained in Service Mode at the ESO/\textit{VLT} in \xxx\ separate OBs between 2013 Mar 21 and 2014 Jun 9.  The 20$\times$15\,s~=~300\,s exposures were taken at nine dithered positions with regular offsets separated by \xxx\ arcsec; the on-source exposure time of the final MACS-1149 \HAWKI\ mosaic is \xxx\ hours.
 
-For the \HAWKI\ observations, a single 90-minute Service Mode OB was obtained in each of the fields requiring photometric transparency conditions, and these OBs were followed immediately by an observation of a photometric standard star at a similar airmass with single exposures on each of the four chips.  The standard star exposures were processed with empirical sky flats derived from the science exposures as described above, and the observed fluxes of the standard stars yield absolute photometric zeropoints for each chip.  Correction factors were then computed to scale the OBs obtained at varying transparency levels to the calibrated photometric OB; the additional service mode OBs were obtained under generally satisfactory (i.e., ``clear'') weather conditions and the scale factors typically differ from unity by only a few percent.  The photometric calibration of the MOSFIRE observations was determined from standard-star observations taken the same night as the science exposures, again with the standard exposures reduced in the same way as the science exposures.
+\subsection{Image processing}
+\label{s:processing}
 
-The 2-Micron All Sky Survey \citep[2MASS;][]{2mass} provides an additional check on the photometric calibration, though the comparison is limited due to relatively little brightness overlap between the faint end of reliable 2MASS photometry and the bright end where stars are in the linear regime of the detectors on the 8--10\,m telescopes.  A comparison of the observed photometry in the four survey fields to the 2MASS catalog magnitudes is shown in Fig.~\ref{fig:2mass}.  The stellar photometry on the deep $K_s$-band mosaics is measured within $1\arcsec$ apertures corrected to infinity with the curves of growth described below.  The error-bars on the points in Fig.~\ref{fig:2mass} come from the 2MASS catalog; the photometric uncertainties are negligible for such bright stars in the deep images ($\mathrm{S/N}>100$).  The 2MASS comparison suggests a systematic offset of $-0.09$~mag for the Abell S1063 field.  However, the exposure time for that field was similar to those of the additional deep \HAWKI\ fields and the derived depths of \textit{all} deep \HAWKI\ fields are nearly identical (Table~\ref{tab:summary}).  Given the overall agreement with the 2MASS photometry, we estimate that the systematic uncertainty of the absolute photometric calibration is $\sigma_\mathrm{sys}\leq0.05$~mag.  
+
+The \HAWKI\ and MOSFIRE observations were reduced with a pipeline that has been developed for previous surveys with the NEWFIRM \citep[NMBS;][]{whitaker:nmbs} and FOURSTAR \citep[zFOURGE;][, Labb\'e in prep]{spitler:12} infrared imaging instruments.  Treating each detector individually, the pipeline is easily modified for the different instrument configurations of the four \HAWKI\ and single MOSFIRE chips.  The primary task of the pipeline is removing the bright, time-variable sky background from the individual exposures, which is often some $10^4$ times brighter than the distant galaxies of interest in the field.  With such a bright background, we first determine an empirical ``sky flat'' that is a median of all of the \textit{science} exposures in a \HAWKI\ OB or MOSFIRE group, after rejecting the brightest 12 exposures at each pixel position to remove the contribution of bright objects.  We find these empirical flats to be preferable to external twilight or dome flats given the difficulty of obtaining a truly flat illumination pattern over such large detector fields-of-view.  
+
+After dividing by the flat, the background of each exposure is determined in a first pass from the simple median of the four exposures that came both immediately before and after it.  The background-subtracted exposures are combined into a mosaic from which objects are detected.  The final refined background of each exposure is determined in a second ``mask pass'' from a median again from the four exposures before and after it but now aggressively masking all pixels that contain flux from the detected objects.
+
+As the archival \HAWKI\ images of the MACS-1149 field were obtained with longer individual exposures and with fewer exposures per sequence, the mask-pass technique described above did not produce satisfactory results.  In this case, for each raw exposure we divide by the sky flat and then subtract a third-order polynomial fit to the background.  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   2MASS comparison
@@ -302,11 +299,30 @@ The 2-Micron All Sky Survey \citep[2MASS;][]{2mass} provides an additional check
 \plotone{2mass_phot.pdf} % Figures/exposure_map.pdf
 \caption{Comparison of bright-star photometry to the 2MASS public catalog.  The photometric calibration of the $K_s$-band images were determined from standard star observations taken concurrently with the science exposures.  The uncertainties shown are taken from the 2MASS catalog; these stars are measured at very high S/N in the deep $K_s$-band mosaics.  We estimate the overall systematic uncertainty in the photometric calibration to be $\lesssim0.05~\mathrm{mag}$.\label{fig:2mass}}  
 \end{figure}
+%%%%%%%%%%%%%
+
+\subsection{Photometric calibration}
+\label{s:calib}
+
+For the \HAWKI\ observations, a single 90-minute Service Mode OB was obtained in each of the fields requiring photometric transparency conditions, and these OBs were followed immediately by an observation of a photometric standard star at a similar airmass with single exposures on each of the four chips.  The standard star exposures were processed with empirical sky flats derived from the science exposures as described above, and the observed fluxes of the standard stars yield absolute photometric zeropoints for each chip.  Correction factors were then computed to scale the OBs obtained at varying transparency levels to the calibrated photometric OB; the additional service mode OBs were obtained under generally satisfactory (i.e., ``clear'') weather conditions and the scale factors typically differ from unity by only a few percent.  The photometric calibration of the MOSFIRE observations was determined from standard-star observations taken the same night as the science exposures, again with the standard exposures reduced in the same way as the science exposures.
+
+The 2-Micron All Sky Survey \citep[2MASS;][]{2mass} provides an additional check on the photometric calibration, though the comparison is limited due to relatively little brightness overlap between the faint end of reliable 2MASS photometry and the bright end where stars are in the linear regime of the detectors on the 8--10\,m telescopes.  A comparison of the observed photometry in the four survey fields to the 2MASS catalog magnitudes is shown in Fig.~\ref{fig:2mass}.  The stellar photometry on the deep $K_s$-band mosaics is measured within $1\arcsec$ apertures corrected to infinity with the curves of growth described below.  The error-bars on the points in Fig.~\ref{fig:2mass} come from the 2MASS catalog; the photometric uncertainties are negligible for such bright stars in the deep images ($\mathrm{S/N}>100$).  The 2MASS comparison suggests a systematic offset of $-0.09$~mag for the Abell S1063 field.  However, the exposure time for that field was similar to those of the additional deep \HAWKI\ fields and the derived depths of \textit{all} deep \HAWKI\ fields are nearly identical (Table~\ref{tab:summary}).  Given the overall agreement with the 2MASS photometry, we estimate that the systematic uncertainty of the absolute photometric calibration is $\sigma_\mathrm{sys}\leq0.05$~mag.  
 
 \subsection{Astrometric alignment}
 \label{s:astrometry}
 
-In order to simplify measurements from the $K_s$-band images in consort with space-based \textit{HST} and \textit{Spitzer} mosaics, the astrometry of the ground-based mosaics must be refined.  Reference absolute astrometric catalogs were generated from \textit{HST} images when available (i.e., the chips overlapping the cluster and parallel \textit{HST} fields) and public \textit{Subaru} Suprime-Cam $r_c$-band images otherwise\footnote{http://archive.stsci.edu/pub/hlsp/clash/}.  Next, object catalogs are generated with the SEXtractor software \citep{bertin:96} for each individual background-subtracted exposure and transformations to the reference frame (shift, rotation and scale) are computed with with the \texttt{stsci.stimage.xyxymatch} and \texttt{scikit-image.transform}\footnote{\url{http://scikit-image.org}} Python software tools.  For the \HAWKI\ exposures, we fit a third-order polynomial to the geometric distortion model determined by \cite{libralato:14} and specify the polynomial terms as ``Simple Imaging Polynomial'' (SIP) coefficients \citep{fits:sip} in the individual exposure FITS files.  The SIP FITS header generally applicable for \HAWKI\ is provided in Appendix \xxx.  We note that the \HAWKI\ distortion is generally small, reaching $\sim$2 pixels ($0\farcs2$) at the image corners, but that the distortion corrections are necessary, in particular, given the excellent overall image quality of the observations. 
+In order to simplify measurements from the $K_s$-band images in consort with space-based \textit{HST} and \textit{Spitzer} mosaics, the astrometry of the ground-based mosaics must be refined.  Reference absolute astrometric catalogs were generated from \textit{HST} images when available (i.e., the chips overlapping the cluster and parallel \textit{HST} fields) and public \textit{Subaru} Suprime-Cam $r_c$-band images otherwise\footnote{\url{http://archive.stsci.edu/pub/hlsp/clash/}}.  Next, object catalogs are generated with the SEXtractor software \citep{bertin:96} for each individual background-subtracted exposure and transformations to the reference frame (shift, rotation and scale) are computed with with the \texttt{stsci.stimage.xyxymatch} and \texttt{scikit-image.transform}\footnote{\url{http://scikit-image.org}} Python software tools.  For the \HAWKI\ exposures, we fit a third-order polynomial to the geometric distortion model determined by \cite{libralato:14} and specify the polynomial terms as ``Simple Imaging Polynomial'' (SIP) coefficients \citep{fits:sip} in the individual exposure FITS files.  The SIP FITS header generally applicable for \HAWKI\ is provided in Appendix \xxx.  We note that the \HAWKI\ distortion is generally small, reaching $\sim$2 pixels ($0\farcs2$) at the image corners, but that the distortion corrections are necessary, in particular, given the excellent overall image quality of the observations. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Drizzle figure
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[!ht]
+\epsscale{1.18}
+\plotone{ivar_mosaics.pdf} % Figures/exposure_map.pdf
+\caption{Inverse variance maps of the $K_s$-band mosaics.  The orientation of the fields is the same as that shown in Fig.~\ref{fig:layout}.  The four \HAWKI\ chips and two MOSFIRE pointings are clearly visible for the first four and last two fields, respectively.
+\label{fig:ivar_mosaics}}  
+\end{figure}
+%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                                                %
@@ -316,24 +332,16 @@ In order to simplify measurements from the $K_s$-band images in consort with spa
 \section{Drizzled $K_s$-band Mosaics}
 \label{s:mosaic}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%   Drizzle figure
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[!t]
-\epsscale{1.18}
-\plotone{ivar_mosaics.pdf} % Figures/exposure_map.pdf
-\caption{Inverse variance maps of the $K_s$-band mosaics.  The orientation of the fields is the same as that shown in Fig.~\ref{fig:layout}.  The four \HAWKI\ chips and two MOSFIRE pointings are clearly visible for the first four and last two fields, respectively.
-\label{fig:ivar_mosaics}}  
-\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   Image quality figure
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure*}[!ht]
+\begin{figure*}[!t]
 \epsscale{1.18}
 \plotone{curve_of_growth.pdf} % Figures/exposure_map.pdf
 \caption{Curves of growth of stellar profiles in the Frontier Fields $K_s$-band mosaics.  The inverse aperture corrections for point sources in $D=0\farcs6$ apertures are indicated in each panel.  The profiles of stars are well-fit by Moffat profiles with $\mathrm{FWHM}\sim0\farcs4$ in most cases and $\beta\sim2.1$.  These extended Moffat profiles appear to be characteristic of deep $K_s$-band images and they have substantially more flux at large radii ($r>\mathrm{FWHM}/2$) than Gaussian profiles with the same FWHM (orange curves in the left panels).  \label{fig:cog}}  
 \end{figure*}
+%%%%%%%%%%%%%%
 
 A crucial innovation of the image processing of the present analysis compared to previous works is that we combine all of the individual background-subtracted raw images (e.g., \xxx\ 4000 files for 1000 exposures $\times$ 4 detectors for the \mbox{Abell 2744} field) into the final output mosaic with the ``drizzle'' algorithm (\citealp{fruchter:02}, as implemented in the DrizzlePac/AstroDrizzle package; \citealp{drizzlepac}).  The benefits of the drizzle algorithm  preserving robust noise properties of the output mosaics will be discussed in detail below in \S\ref{s:depth}.  Here we simply indicate that the drizzle implementation provides additional benefits in 1) trivial application of relative weights of the input images in creating the final mosaics, 2) providing infrastructure to apply the astrometric alignment and geometric distortion stored in the FITS headers, and 3) allowing the definition of an arbitrary output pixel grid without any additional image resampling.
 
@@ -346,15 +354,6 @@ where $F$ is the factor to scale the exposure to the photometric system ($F\equi
 
 Finally, we subtract a cell-based background from the final mosaics using an algorithm based on that used by SExtractor and SWarp but that provides more aggressive masking of flux in the outer isophotes of bright galaxies. The mosaics are shown in Fig.~\ref{fig:layout}, along with the position of the deep Frontier Fields \textit{HST} imaging fields.  We also compute the robust NMAD scatter \citep{brammer:08} of empty sky pixels within the same cells to empirically calibrate the inverse variance maps that are shown in Fig.~\ref{fig:ivar_mosaics} (see also \S\ref{s:depth}).  The final image and inverse variance mosaics are provided as an ESO Phase 3 data product \xxx\ URL, as well as attached as a digital product to this manuscript (\xxx\ I think ApJSS can and wants to do this).  The released images are all scaled to a common zeropoint of 26.0 (AB mag), which gives pixel values of order unity faint galaxies near the detection threshold.  In the sections below we describe the characteristics of the mosaics in more detail.  
 
-
-\subsection{Image quality}
-\label{s:fwhm}
-
-
-Fig.~\ref{fig:cog} shows the curves of growth for stars identified by the tight relationship between their brightness and half-light radii \citep[see, e.g., Fig.~13 of][]{skelton:14}.  The image quality of the $K_s$-band mosaics is excellent with stellar FWHM$\lesssim0\farcs4$ for the deep \HAWKI\ fields, thanks in large part to the execution of the \HAWKI\ observations in service mode ensuring optimal and uniform image quality across the many hours of integration on the survey fields.  The classical scheduling of the MOSFIRE observations does not allow such control over the seeing conditions.  The result is that the image quality of the MACS-0717 and MACS-1149 fields is somewhat degraded in comparison, at $0\farcs42$--$0\farcs54$, and the image quality differs measurably between the two MOSFIRE pointings in the MACS-0717 field.  Despite the compact cores of the stellar PSFs, the curves of growth shown in Fig.~\ref{fig:cog} deviate from Gaussian profiles with significantly higher flux in the outer wings, with a shape more consistent with a Moffat profile \citep{trujillo:01}  with $\beta\sim2$.  We caution that these extended profiles will yield significantly shallower final image depths than would be predicted with Exposure Time Calculators that may assume Gaussian profiles.  Nevertheless, the deep $K_s$ mosaics have excellent image quality that is much closer to the resolution of the \textit{HST} IR imaging and the typical apparent size of distant galaxies \citep[median $r_e\sim0\farcs1$--$0\farcs2$ at $z>4$;][]{shibuya:15} than the redder \textit{Spitzer} IRAC bands (cf. FWHM$\sim$$1\farcs7$--$2^{\prime\prime}$).
-
-\subsection{Noise properties \& Depth}
-\label{s:depth}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   Drizzle figure
@@ -376,16 +375,28 @@ Fig.~\ref{fig:cog} shows the curves of growth for stars identified by the tight 
 \label{fig:corr_noise}}  
 \end{figure}
 
+
+\subsection{Image quality}
+\label{s:fwhm}
+
+
+
+Fig.~\ref{fig:cog} shows the curves of growth for stars identified by the tight relationship between their brightness and half-light radii \citep[see, e.g., Fig.~13 of][]{skelton:14}.  The image quality of the $K_s$-band mosaics is excellent with stellar FWHM$\lesssim0\farcs4$ for the deep \HAWKI\ fields, thanks in large part to the execution of the \HAWKI\ observations in service mode ensuring optimal and uniform image quality across the many hours of integration on the survey fields.  The classical scheduling of the MOSFIRE observations does not allow such control over the seeing conditions.  The result is that the image quality of the MACS-0717 and MACS-1149 fields is somewhat degraded in comparison, at $0\farcs42$--$0\farcs54$, and the image quality differs measurably between the two MOSFIRE pointings in the MACS-0717 field.  Despite the compact cores of the stellar PSFs, the curves of growth shown in Fig.~\ref{fig:cog} deviate from Gaussian profiles with significantly higher flux in the outer wings, with a shape more consistent with a Moffat profile \citep{trujillo:01}  with $\beta\sim2$.  We caution that these extended profiles will yield significantly shallower final image depths than would be predicted with Exposure Time Calculators that may assume Gaussian profiles.  Nevertheless, the deep $K_s$ mosaics have excellent image quality that is much closer to the resolution of the \textit{HST} IR imaging and the typical apparent size of distant galaxies \citep[median $r_e\sim0\farcs1$--$0\farcs2$ at $z>4$;][]{shibuya:15} than the redder \textit{Spitzer} IRAC bands (cf. FWHM$\sim$$1\farcs7$--$2^{\prime\prime}$).
+
+\subsection{Noise properties \& Depth}
+\label{s:depth}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   Depth figure
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[!ht]
+\begin{figure}[!t]
 \epsscale{1.18}
 \plotone{aper_depth.pdf} % Figures/exposure_map.pdf
 \caption{\textit{Top panel:} The product of the inverse curves-of-growth (Fig.~\ref{fig:cog}) and the predicted variance within a photometric aperture (Eq.\ref{eq:aper_var}) gives the point-source sensitivity as a function of aperture size.  The S/N is maximized with an aperture somewhat larger than the FWHM; depths evaluated at $D=0\farcs6$ near the maxima are indicated.)
 \label{fig:depth}}  
 \end{figure}
 %%%%%%
+
 
 Along with practical benefits mentioned above, the most dramatic benefit of using the drizzle algorithm comes from the fact that the raw detector pixels are only resampled once in the process of generating the output mosaic.  Furthermore, with a large number of dithered raw images we can use drizzle to shrink the raw input pixels by a factor of ten before dropping them into the output grid,\footnote{The pixels are shrunk by adopting pixfrac=0.1 as defined by \cite{fruchter:02}.} and the result is dramatically reduced correlations between neighboring pixels, particularly for output pixel sizes that are somewhat smaller than the native \HAWKI\ or MOSFIRE detector pixels.
 
@@ -406,19 +417,24 @@ The product of Eq.~\ref{eq:aper_var} and the inverse of the curves of growth sho
 
 We conclude here with a brief comment on the ``HUGS'' ultra-deep \HAWKI\ images of the CANDELS GOODS-S and UDS survey fields.  \cite{hugs} report a final depth of 26.5 AB for point sources within $D=0\farcs4$ apertures for their deepest field, ``GOODS-D1'', which has an exposure time of 31.5 hours similar to the deep \HAWKI\ fields summarized in Table~\ref{tab:summary}.  \cite{hugs} assume ideal noise properties that likely suffer some residual correlation between adjacent pixels such as that indicated by the red curves in Fig.~\ref{fig:corr_noise}, where we found that the drizzled rms was some 40\% higher than that measured in the presence of the pixel correlations for $0\farcs1$ pixel mosaics.  This effect ($\sim$0.4 mag) along with the relative exposure time difference ($\sim$0.1 mag) can account for much of the difference between the reported depths of the deepest HUGS pointings and the \textit{Hubble} Frontier Fields \HAWKI\ images described here.  The comparison must be made because any additional half magnitude increase depth is exponentially more expensive to obtain!
 
-\subsection{Source detection \& completeness}
-\label{s:completeness}
-
-We complete source detection completeness curves as a function of source brightness following the techniques described by \cite{whitaker:nmbs} and \cite{muzzin:13}.  Briefly, we insert artificial sources in blank regions of the portions of the images covering the \textit{HST} ``parallel'' fields and compute the fraction of sources recovered with SExtractor as a function of the source magnitude.  The resulting completeness curves are shown in Fig.~\ref{fig:completeness}.   As in the sensitivity analysis above, we find that the detection completeness curves are nearly identical for the deep \HAWKI\ fields, with 50\% (90\%) source completeness at $K_s\sim25.9$ (25.7) AB.  The completeness thresholds for the shallower northern MACS-1149 and MACS-0717 fields are $\sim$0.75 mag brighter.
-
-We perform this completeness analysis to provide a general characterization of the $K_s$-band image mosaics and to provide a point of comparison for earlier surveys, such as UltraVISTA \citep{muzzin:13}.  However, in the case of the Frontier Fields cluster and parallel fields with much deeper photometry available from \textit{HST} (c.f. 28.7 AB in $H_{160}$), the $K_s$ band images can be more effectively exploited for most applications by detecting objects in the deeper \textit{HST} images and performing forced $K_s$-band photometry at the positions of the \textit{HST} sources.  The generation of these catalogs is beyond the scope of the present work and will be by Shipley et al. (in prep).
-
-\begin{figure}[!ht]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Completeness figure
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[!t]
 \epsscale{1.18}
 \plotone{completeness.pdf} % Figures/exposure_map.pdf
 \caption{$K_s$-band detection completeness in the six Frontier Fields survey fields. The four deep \HAWKI\ fields are remarkably uniform, with 50\% detection completeness at $K_s=25.9$--26.0 AB.  The shallower northern MACS-1149 and MACS-0717 fields are 50\% complete at $K_s=24.9$ and 25.3, respectively.  Only MACS-1149 differs appreciably in the area around the \textit{HST} cluster area, with the curve as shown;  the completeness curves in the cluster areas of the other fields differ from the curves shown by $\lesssim0.1$ mag and are omitted for clarity. \xxx{Danilo please check}.
 \label{fig:completeness}}  
 \end{figure}
+
+\subsection{Source detection \& completeness}
+\label{s:completeness}
+
+
+We complete source detection completeness curves as a function of source brightness following the techniques described by \cite{whitaker:nmbs} and \cite{muzzin:13}.  Briefly, we insert artificial sources in blank regions of the portions of the images covering the \textit{HST} ``parallel'' fields and compute the fraction of sources recovered with SExtractor as a function of the source magnitude.  The resulting completeness curves are shown in Fig.~\ref{fig:completeness}.   As in the sensitivity analysis above, we find that the detection completeness curves are nearly identical for the deep \HAWKI\ fields, with 50\% (90\%) source completeness at $K_s\sim25.9$ (25.7) AB.  The completeness thresholds for the shallower northern MACS-1149 and MACS-0717 fields are $\sim$0.75 mag brighter.
+
+We perform this completeness analysis to provide a general characterization of the $K_s$-band image mosaics and to provide a point of comparison for earlier surveys, such as UltraVISTA \citep{muzzin:13}.  However, in the case of the Frontier Fields cluster and parallel fields with much deeper photometry available from \textit{HST} (c.f. 28.7 AB in $H_{160}$), the $K_s$ band images can be more effectively exploited for most applications by detecting objects in the deeper \textit{HST} images and performing forced $K_s$-band photometry at the positions of the \textit{HST} sources.  The generation of these catalogs is beyond the scope of the present work and will be by Shipley et al. (in prep).
+
 
 
 \subsection{Number counts}
@@ -496,6 +512,7 @@ Balmer break, UV slope
 {\it Facilities:} \facility{VLT:Yepun (HAWKI)}, \facility{Keck:I (MOSFIRE)} % \facility{Hubble Space Telescope (WFC3)}
 
 \bibliographystyle{apj_url}
+%\bibliographystyle{aasjournal}
 \bibliography{ms}
 
 \end{document}
