@@ -104,6 +104,7 @@
 \gdef\epers{electrons~s$^{-1}$}
 %\gdef\xxx{\textbf{xxx}}
 \newcommand\xxx{{\textcolor{red}{\bf xxx}}}
+\newcommand\XXX[1]{{\textcolor{red}{xxx #1}}}
 
 \gdef\HAWKI{\mbox{HAWK-I}}
 
@@ -433,14 +434,7 @@ We conclude here with a brief comment on the ``HUGS'' ultra-deep \HAWKI\ images 
 
 We complete source detection completeness curves as a function of source brightness following the techniques described by \cite{whitaker:nmbs} and \cite{muzzin:13}.  Briefly, we insert artificial sources in blank regions of the portions of the images covering the \textit{HST} ``parallel'' fields and compute the fraction of sources recovered with SExtractor as a function of the source magnitude.  The resulting completeness curves are shown in Fig.~\ref{fig:completeness}.   As in the sensitivity analysis above, we find that the detection completeness curves are nearly identical for the deep \HAWKI\ fields, with 50\% (90\%) source completeness at $K_s\sim25.9$ (25.7) AB.  The completeness thresholds for the shallower northern MACS-1149 and MACS-0717 fields are $\sim$0.75 mag brighter.
 
-We perform this completeness analysis to provide a general characterization of the $K_s$-band image mosaics and to provide a point of comparison for earlier surveys, such as UltraVISTA \citep{muzzin:13}.  However, in the case of the Frontier Fields cluster and parallel fields with much deeper photometry available from \textit{HST} (c.f. 28.7 AB in $H_{160}$), the $K_s$ band images can be more effectively exploited for most applications by detecting objects in the deeper \textit{HST} images and performing forced $K_s$-band photometry at the positions of the \textit{HST} sources.  The generation of these catalogs is beyond the scope of the present work and will be by Shipley et al. (in prep).
-
-
-
-\subsection{Number counts}
-\label{s:number}
-
-
+We perform this completeness analysis to provide a general characterization of the $K_s$-band image mosaics and to provide a point of comparison for earlier surveys, such as UltraVISTA \citep{muzzin:13}.  However, in the case of the Frontier Fields cluster and parallel fields with much deeper photometry available from \textit{HST} (c.f. 28.7 AB in $H_{160}$), the $K_s$ band images can be more effectively exploited for most applications by detecting objects in the deeper \textit{HST} images and performing forced $K_s$-band photometry at the positions of the \textit{HST} sources.  The generation of such catalogs is beyond the scope of the present work and will be by Shipley et al. (in prep).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   Cutout figure
@@ -452,8 +446,9 @@ We perform this completeness analysis to provide a general characterization of t
 \label{fig:cutout}}  
 \end{figure}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  Number counts figure
+%  U-V
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure*}
 \epsscale{1.18}
@@ -461,31 +456,17 @@ We perform this completeness analysis to provide a general characterization of t
 \caption{\textit{Left:} Difference in the derived rest-frame $U-V$ colors as a function of photometric redshift for galaxies in the MACS-0416 parallel field, before and after including $K_s$ photometry along with the \textit{HST} and \textit{Spitzer} measurements.  The scatter in the derived $U-V$ colors at $z>2.5$ is large ($\sim$0.2 mag) where the Balmer/4000~\AA\ break is in the gap between \textit{HST} $H_{160}$ and the \textit{Spitzer} IRAC 3.6~\mum\ bands, which is well then constrained by including $K_s$.  This large scatter translates directly into large scatter on other quantities of interest, such as the stellar mass to light ratio and the age of the stellar populations.  The center and right panels show a dramatic example of a galaxy with a strong break between the \textit{HST} and IRAC bands.  The addition of the $K_s$ band pinpoints the location of the break and shrinks the photometric redshift uncertainties by a factor of two and suggesting $z_\mathrm{phot} > 3$ (right panel). \label{fig:delta_UV}}  
 \end{figure*}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  Number counts figure
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure*}
-\epsscale{1.18}
-\plotone{number_counts_all.pdf} % Figures/exposure_map.pdf
-\caption{$K_s$-band number counts in the Frontier Fields. \label{fig:counts}}  
-\end{figure*}
+
+% \subsection{Number counts}
+% \label{s:number}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                                                %
 %   Constraints
 %                                                                %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Photometric constraints from the $K_s$ band}
-\label{s:constraints}
-
-\subsection{Photometric redshifts}
-\label{s:photoz}
-
-\subsection{SED modeling}
-\label{s:sed}
-
-Balmer break, UV slope
-
+% \section{Photometric constraints from the $K_s$ band}
+% \label{s:constraints}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                                                %
@@ -494,6 +475,39 @@ Balmer break, UV slope
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion and Conclusions}
 \label{s:discussion}
+
+ 
+We have presented the observations and reduction for a collection of extremely deep $K_s$-band images covering the lensing clusters observed as part of the \textit{Hubble} and \textit{Spitzer} Frontier Fields program (Lotz et al., in prep; Capak et al., in prep).  Service mode scheduling of $>$25~hour \HAWKI\ integrations on the southern hemisphere clusters visible from the ESO/\textit{VLT} result in remarkably uniform, high-quality mosaics across the separate survey fields, with superb image quality ($0\farcs4$~FWHM) and photometric depths reaching AB=26.0 mag (5$\sigma$).  The $K_s$ band mosaics fill the gap in the infrared wavelength coverage between the WFC3/IR and IRAC instruments at depths commensurate with the deep space-based imaging and with image quality that suffers significantly less from source crowding and blending than the redder IRAC bands.  
+
+A comparison of the $K_s$-band and space-based Frontier Fields imaging is shown in Fig.~\ref{fig:cutout}, showing just a small cutout of the MACS-0416 ``parallel'' field.  The deep optical and near-infrared \textit{Hubble} imaging provides spectacular multiwavelength spatially-resolved information on physical scales of just $\sim$1~kpc (Fig.~\ref{fig:cutout}a).  However, there are many red galaxies in the indicated areas, predominantly at redshifts $z\gtrsim2$.  At $z>3$ even the reddest WFC3/IR filter, $H_{160}$ (Fig.~\ref{fig:cutout}b), only probes rest-frame ultraviolet wavelengths $<4000$~\AA\ and is therefore most sensitive to young, UV-bright star-forming galaxies.  Sampling of more evolved stellar populations at $z>3$ with redder colors requires deep imaging at longer wavelengths.  This can be obtained with imaging in the \textit{Spitzer} IRAC bands \citep[e.g.,][]{marchesini:10, stefanon:13}, though at the cost of low spatial resolution ($\sim1\farcs6$, Fig.~\ref{fig:cutout}d).  This resolution is insufficient for spatially resolving the distant galaxies and is prone to blending of faint sources, particularly in the crowded Frontier Fields clusters where the surface density of both foreground cluster galaxies and faint background galaxies is high at the depths of interest.  The deep \HAWKI\ imaging described here (Fig.~\ref{fig:cutout}c) is able to bridge this gap, clearly detecting and resolving all but the faintest blue galaxies seen in the deep \textit{Hubble} images.  
+
+Here we explore the quantitative constraints provided by the deep $K_s$ band imaging in terms of the photometric redshifts and derived intrinsic properties of galaxies in the survey field.  We construct preliminary PSF-matched photometric catalogs of the \textit{HST} imaging and deblended photometry from the IRAC bands following the methodology described by \XXX{ref, Labb\'e}.  We combine then combine the space-based catalogs with aperture photometry matched directly from $K_s$-detected catalogs derived from the completeness simulations described above\footnote{Full robust \textit{HST}+$K$+IRAC catalogs will be presented by Shipley et al., in prep.}.  We then compute photometric redshifts with EAZY \citep{brammer:08} for the catalogs with and without the $K_s$-band photometry included.  The left panel of Fig.~\ref{fig:delta_UV} shows the difference in the rest-frame $U-V$ color derived from the photometric redshift fit, which probes the strength of the Balmer/4000~\AA\ break and is a proxy for the age and mass-to-light ratio of the underlying stellar population.  
+
+The scatter in the $U-V$ colors with and without including the $K_s$-band information is low at $z<2$ where fit is constrained predominantly by the deep \textit{HST} photometry.  At $z>2$, however, as the rest-frame $V$ band is redshifted beyond the red $H_{160}$ filter, the scatter increases dramatically, reaching $\sigma>0.1$~mag at $z\sim3$.  This is much larger than the photometric uncertainties in the adjacent space-based photometric bands would suggest, as all of these galaxies at $H\lesssim26$ are detected in the deep WFC3 and IRAC images at $\gg10$$\sigma$.  Therefore, the large scatter is likely dominated by systematic differences in the photometric redshifts and therefore also in the derived intrinsic properties of galaxies in the survey.  
+
+The right two panels of Fig.~\ref{fig:delta_UV} show a single galaxy that illustrates how these systematic effects are not trivial and will likely result in biases in the interpretation of the galaxy population properties derived from the \textit{HST} and IRAC observations alone.  The spectral energy distribution (SED) shown is steadily rising through the reddest WFC3/IR bands, and then shows a sharp break with bright detections in the IRAC bands.  The $K_s$-band measurement at 2.1~$\mu$m reduces the range of allowed photometric redshifts by a factor of two by pinpointing a strong Balmer break at $z\sim3.4$.  Even though the \textit{measured} $H_{160}-K_s$ color is redder than that inferred from the \textit{HST} + IRAC photometry alone, the final rest-frame $U-V$ color is actually \textit{bluer} as a result of the higher preferred redshift.  Evolved galaxies at $z>3$ such as the one shown are an intriguing population deserving of detailed study in their own right, and the combined Frontier Fields \textit{Hubble}+$K_s$+IRAC dataset is ideally suited for this purpose.
+
+\XXX{blah blah, few more sentences wrapping up.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Number counts figure
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{figure*}
+% \epsscale{1.18}
+% \plotone{number_counts_all.pdf} % Figures/exposure_map.pdf
+% \caption{$K_s$-band number counts in the Frontier Fields. \label{fig:counts}}  
+% \end{figure*}
+
+
+% \subsection{Photometric redshifts}
+% \label{s:photoz}
+% 
+% \subsection{SED modeling}
+% \label{s:sed}
+
+%Balmer break, UV slope
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -514,5 +528,12 @@ Balmer break, UV slope
 \bibliographystyle{apj_url}
 %\bibliographystyle{aasjournal}
 \bibliography{ms}
+
+\appendix
+
+\section{SIP keywords for \HAWKI\ geometric distortion}
+
+\section{Description of provided data products}
+
 
 \end{document}
