@@ -220,11 +220,11 @@ It is not surprising that, given the aforementioned reasons, all successful extr
 %                                                                %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{deluxetable*}{ccccrccccc}
-\tabletypesize{\footnotesize}
+%\tabletypesize{\footnotesize}
 \tablewidth{0pt} 
 \tablecaption{Field summary \label{tab:summary}} 
 \tablehead{ 
-\colhead{Field} & \colhead{R.A.} & \colhead{Dec.} & \colhead{Instrument} & \colhead{Epoch} & \textit{HST}\footnotemark[1] & \colhead{$t$, hours} & {Depth\footnotemark[2]} & \colhead{FWHM}}
+\colhead{Field} & \colhead{R.A.} & \colhead{Dec.} & \colhead{Instrument} & \colhead{Epoch} & \textit{HST}\tablenotemark{a} & \colhead{$t$, hours} & {Depth\tablenotemark{b}} & \colhead{FWHM}}
 \startdata 
 Abell 2744   & $00:14:21.2$ & $-30:23:50$ & \textit{VLT}/\HAWKI     & 2013 Oct 24--2013 Dec 24 & C+P & 29.3 &  26.0 & $0\farcs39$ \\ 
 MACS-0416    & $04:16:08.9$ & $-24:04:28$ & \textit{VLT}/\HAWKI     & 2013 Oct 25--2014 Feb 23 & C+P & 25.8 &  26.0 & $0\farcs36$ \\ 
@@ -237,13 +237,13 @@ Abell 370    & $02:40:03.3$ & $-01:36:23$ & \textit{VLT}/\HAWKI     & 2015 Jul 2
 \multirow{4}{*}{MACS-1149}    & \multirow{4}{*}{$11:49:36.3$} & \multirow{4}{*}{$+22:23:58$} & \multirow{2}{*}{\textit{Keck}/MOSFIRE}  & \multirow{2}{*}{2015 Feb 24, 2016 Jan 21--22}      & C & 5.5 & 25.2 & $0\farcs53$ \\
 &  &         &      &   & P & 4.8 & 25.1 & $0\farcs54$ \\
 \vspace {-0.4cm}\\ 
-&  &         & \textit{VLT}/\HAWKI\footnotemark[3]     & 2013 Mar 21--2014 Jun 9      & C & 5.3 & 25.0 & $0\farcs41$
+&  &         & \textit{VLT}/\HAWKI\tablenotemark{c}     & 2013 Mar 21--2014 Jun 9      & C & 5.3 & 25.0 & $0\farcs41$
 \enddata 
 %\vspace{-0.8cm} 
-\footnotetext[1]{Coverage of \textit{Hubble} survey fields: C=Cluster, P=Parallel.  Most \HAWKI\ pointings cover the two \textit{HST} fields simultaneously (C+P; Fig.~\ref{fig:layout}). The MOSFIRE observations of MACS-0717 and MACS-1149 require two separate pointings of the instrument to cover the cluster and parallel \textit{HST} fields, which have the different characteristics as indicated.}
+\tablenotetext{a}{Coverage of \textit{Hubble} survey fields: C=Cluster, P=Parallel.  Most \HAWKI\ pointings cover the two \textit{HST} fields simultaneously (C+P; Fig.~\ref{fig:layout}). The MOSFIRE observations of MACS-0717 and MACS-1149 require two separate pointings of the instrument to cover the cluster and parallel \textit{HST} fields, which have the different characteristics as indicated.}
 %\footnotetext[2]{Approximate exposure time equivalent at $0\farcs4$ seeing:  $t_{0.4}=\sum_i t_i \cdot (0.4/\mathrm{FWHM}_i)^2$.}
-\footnotetext[2]{Depth is defined as the 5$\sigma$ limiting magnitude for point sources, measured in $D=0\farcs6$ apertures (\S\ref{s:depth}).} 
-\footnotetext[3]{Archival observations from ESO program \href{http://archive.eso.org/wdb/wdb/eso/eso_archive_main/query?prog_id=090.A-0458(A)}{090.A-0458} (PI: Infante).}
+\tablenotetext{b}{Depth is defined as the 5$\sigma$ limiting magnitude for point sources, measured in $D=0\farcs6$ apertures (\S\ref{s:depth}).} 
+\tablenotetext{c}{Archival observations from ESO program \href{http://archive.eso.org/wdb/wdb/eso/eso_archive_main/query?prog_id=090.A-0458(A)}{090.A-0458} (PI: Infante).}
 \end{deluxetable*}
 %\vspace{1cm}
 
@@ -532,6 +532,51 @@ The right two panels of Fig.~\ref{fig:delta_UV} show a single galaxy that illust
 \appendix
 
 \section{SIP keywords for \HAWKI\ geometric distortion}
+
+The \HAWKI\ instrument has small but non-negligible geometric distortion, resulting in astrometric shifts of order 2 pixels at the corners of the detector relative to the center.  \cite{libralato:14} provide a precise determination of this distortion based on observations of star clusters.  They present a full pixel map for the distortions in $x$ and $y$ across each of the detectors.  To use this distortion model with the \textsc{drizzle} software, we fit the pixel offsets from \cite{libralato:14} with a third-order two-dimensional polynomial.  The polynomial coefficients and additional header keywords needed to create a SIP FITS distortion model \citep{fits:sip} for the four \HAWKI\ detectors are provided in Table~\ref{tab:sip}.  We adopt the \cite{libralato:14} definition of the \HAWKI\ chips, with the chip numbers set by the order they are found in the multi-extension FITS files.  That is, ``Chip \#1'' is the first image extension of the raw FITS files provided by the ESO archive, with \textsc{extname}$=$CHIP1.INT1.  The \textsc{extname} values for chips 2,3,4 are CHIP2.INT1, CHIP4.INT1, CHIP3.INT1, note the switched names of the last two chips.
+
+\begin{deluxetable}{lrrrr}
+\tabletypesize{\footnotesize}
+\tablewidth{0pt} 
+\tablecaption{\HAWKI\ SIP Header Keywords \label{tab:sip}} 
+\tablehead{ \colhead{Keyword} & \colhead{Chip \#1\tablenotemark{a}} & \colhead{Chip \#2} & \colhead{Chip \#3} & \colhead{Chip \#4} }
+\startdata 
+% EXTNAME & CHIP1.INT1 & CHIP2.INT1 & CHIP4.INT1 & CHIP3.INT1 \\
+% DET CHIP ID & ESO-Hawaii2RG-chip66 & ESO-Hawaii2RG-chip78 & ESO-Hawaii2RG-chip88 & ESO-Hawaii2RG-chip79 \\
+% \hline
+A\_ORDER & \multicolumn{4}{c}{3} \\
+B\_ORDER & \multicolumn{4}{c}{3} \\
+CTYPE1 & \multicolumn{4}{c}{RA{-}{-}{-}TAN-SIP} \\
+CTYPE2 & \multicolumn{4}{c}{DEC{-}{-}TAN-SIP} \\
+CRPIX1 & \multicolumn{4}{c}{1024\tablenotemark{b}} \\
+CRPIX2 & \multicolumn{4}{c}{1024\tablenotemark{b}} \\
+A\_0\_0 &   $ 1.751\mathrm{e}-02 $ &  $  8.098\mathrm{e}-03$ &  $  9.104\mathrm{e}-04 $ &  $  9.096\mathrm{e}-03 $ \\
+B\_0\_0 &   $-2.649\mathrm{e}-02 $ &  $ -9.338\mathrm{e}-03$ &  $  4.709\mathrm{e}-03 $ &  $  1.043\mathrm{e}-02 $ \\
+A\_1\_0 &   $-3.924\mathrm{e}-04 $ &  $ -4.964\mathrm{e}-05$ &  $ -1.035\mathrm{e}-04 $ &  $ -6.559\mathrm{e}-05 $ \\
+B\_1\_0 &   $-9.546\mathrm{e}-04 $ &  $  9.804\mathrm{e}-04$ &  $  1.228\mathrm{e}-03 $ &  $ -7.145\mathrm{e}-04 $ \\
+A\_2\_0 &   $ 8.676\mathrm{e}-07 $ &  $ -7.943\mathrm{e}-07$ &  $  8.461\mathrm{e}-07 $ &  $ -8.579\mathrm{e}-07 $ \\
+B\_2\_0 &   $ 2.026\mathrm{e}-07 $ &  $  2.347\mathrm{e}-07$ &  $ -1.896\mathrm{e}-07 $ &  $ -2.628\mathrm{e}-07 $ \\
+A\_3\_0 &   $-2.059\mathrm{e}-10 $ &  $ -3.724\mathrm{e}-10$ &  $ -2.350\mathrm{e}-10 $ &  $ -3.941\mathrm{e}-10 $ \\
+B\_3\_0 &   $-6.040\mathrm{e}-11 $ &  $  4.753\mathrm{e}-11$ &  $  1.045\mathrm{e}-12 $ &  $ -1.550\mathrm{e}-11 $ \\
+A\_0\_1 &   $-4.413\mathrm{e}-05 $ &  $  6.173\mathrm{e}-05$ &  $  1.025\mathrm{e}-04 $ &  $ -5.038\mathrm{e}-05 $ \\
+B\_0\_1 &   $-4.422\mathrm{e}-04 $ &  $ -5.841\mathrm{e}-04$ &  $ -1.974\mathrm{e}-04 $ &  $ -4.552\mathrm{e}-04 $ \\
+A\_0\_2 &   $ 2.978\mathrm{e}-07 $ &  $ -3.050\mathrm{e}-07$ &  $  3.071\mathrm{e}-07 $ &  $ -2.771\mathrm{e}-07 $ \\
+B\_0\_2 &   $ 7.265\mathrm{e}-07 $ &  $  7.453\mathrm{e}-07$ &  $ -6.841\mathrm{e}-07 $ &  $ -7.129\mathrm{e}-07 $ \\
+A\_0\_3 &   $-1.277\mathrm{e}-11 $ &  $  3.299\mathrm{e}-11$ &  $ -4.466\mathrm{e}-13 $ &  $ -1.834\mathrm{e}-11 $ \\
+B\_0\_3 &   $-2.177\mathrm{e}-10 $ &  $ -2.529\mathrm{e}-10$ &  $ -2.448\mathrm{e}-10 $ &  $ -2.646\mathrm{e}-10 $ \\
+A\_1\_1 &   $ 6.053\mathrm{e}-07 $ &  $  6.554\mathrm{e}-07$ &  $ -3.966\mathrm{e}-07 $ &  $ -6.455\mathrm{e}-07 $ \\
+B\_1\_1 &   $ 5.875\mathrm{e}-07 $ &  $ -4.337\mathrm{e}-07$ &  $  5.017\mathrm{e}-07 $ &  $ -4.399\mathrm{e}-07 $ \\
+A\_1\_2 &   $-2.199\mathrm{e}-10 $ &  $ -2.919\mathrm{e}-10$ &  $ -1.881\mathrm{e}-10 $ &  $ -3.229\mathrm{e}-10 $ \\
+B\_1\_2 &   $ 9.213\mathrm{e}-12 $ &  $  7.527\mathrm{e}-11$ &  $  3.588\mathrm{e}-11 $ &  $ -4.918\mathrm{e}-11 $ \\
+A\_2\_1 &   $-4.114\mathrm{e}-11 $ &  $  7.218\mathrm{e}-11$ &  $ -2.636\mathrm{e}-11 $ &  $ -6.355\mathrm{e}-11 $ \\
+B\_2\_1 &   $-2.118\mathrm{e}-10 $ &  $ -2.506\mathrm{e}-10$ &  $ -1.433\mathrm{e}-10 $ &  $ -2.753\mathrm{e}-10 $
+\enddata
+\tablenotetext{a}{We adopt the \cite{libralato:14} definition of the \HAWKI\ chips, see text.}
+\tablenotetext{b}{The SIP distortion polynomial is defined relative to the reference pixel \textsc{crpix}, which we set to be the center of each detector.  This is different from the default reference pixel in the raw images so the \textsc{crval} values also have to be shifted accordingly.}
+%\footnotetext[2]{Approximate exposure time equivalent at $0\farcs4$ seeing:  $t_{0.4}=\sum_i t_i \cdot (0.4/\mathrm{FWHM}_i)^2$.}
+%\footnotetext[2]{Depth is defined as the 5$\sigma$ limiting magnitude for point sources, measured in $D=0\farcs6$ apertures (\S\ref{s:depth}).} 
+%\footnotetext[3]{Archival observations from ESO program \href{http://archive.eso.org/wdb/wdb/eso/eso_archive_main/query?prog_id=090.A-0458(A)}{090.A-0458} (PI: Infante).}
+\end{deluxetable}
 
 \section{Description of provided data products}
 
