@@ -140,7 +140,7 @@ Katherine E. Whitaker\altaffilmark{15}
 \altaffiltext{11}{\xxx}
 \altaffiltext{12}{\xxx}
 \altaffiltext{13}{Max Planck Institute for Astronomy (MPIA), K\"onigstuhl 17, 69117, Heidelberg, Germany}
-\altaffiltext{14}{\xxx}
+\altaffiltext{14}{School of Physics, Tin Alley, University of Melbourne VIC 3010, Australia}
 \altaffiltext{15}{\xxx}
 % \altaffiltext{6}
 % {Department of Astronomy, Yale University, New Haven, CT 06520, USA}
@@ -173,9 +173,9 @@ While imaging at even longer wavelengths ($\lambda>3$~$\mu$m) is needed to probe
 
 It is not surprising that, given the aforementioned reasons, all successful extragalactic surveys performed in the last fifteen years to investigate galaxies populations in the early universe invested significant resources to obtain deep NIR imaging data with good image quality, especially in the $K$ band, usually adopted as the detection band. Indeed, our understanding of galaxy formation and evolution in the last couple of decades has impressively proceeded forward mostly driven by progressively deeper, wider, and with better image quality, NIR surveys, such as FIRES \citep{labbe:03}, Subaru Super Deep Field (AO) \citep{minowa:05}, MUSYC \citep{quadri:07, taylor:09b}, FIREWORKS \citep{wuyts:fireworks}, MODS \citep{kajisawa:11}, NMBS \citep{whitaker:nmbs}, UltraVISTA \citep{mccracken:ultravista}, TENIS \citep{hsieh:tenis}, WIRDS \citep{bielby:12}, ZFOURGE \citep{spitler:12}, and HUGS \citep{hugs}.
 
-The latest effort to further our knowledge of galaxy formation and evolution is represented by the {\it HST} Frontier Fields (HFF) program (Lotz et al., in prep). The HFF program is a multi-cycle program consisting of $\sim$560 orbits of Director's Discretionary (DD) time that is imaging six deep fields centered on strong lensing galaxy clusters in parallel with six deep blank fields. The primary science goals of the twelve HFF fields are to 1) reveal the population of galaxies at $z=5-10$ that are 10--50 times fainter intrinsically than any presently known, 2) solidify our understanding of the stellar masses and star formation histories of faint galaxies, 3) provide the first statistically meaningful morphological characterization of star-forming galaxies at $z>5$, and 4) to find $z>8$ galaxies magnified by the cluster lensing, with some bright enough to make them accessible to spectroscopic follow-up. Along with {\it HST}, the {\it Spitzer Space Telescope} has devoted 1000 hours of DD time to image the HFF fields at 3.6$\mu$m and 4.5$\mu$m with IRAC (Capak et al., in prep). 
+The latest effort to further our knowledge of galaxy formation and evolution is represented by the {\it HST} Frontier Fields (HFF) program (Lotz et al., in prep). The HFF program is a multi-cycle program consisting of $\sim$560 orbits of Director's Discretionary (DD) time that is imaging six deep fields centered on strong lensing galaxy clusters in parallel with six deep blank fields. The primary science goals of the twelve HFF fields are to 1) reveal the population of galaxies at $z=5-10$ that are 10--50 times fainter intrinsically than any presently known, 2) solidify our understanding of the stellar masses and star formation histories of faint galaxies, 3) provide the first statistically meaningful morphological characterization of star-forming galaxies at $z>5$, and 4) find $z>8$ galaxies magnified by the cluster lensing, with some bright enough to make them accessible to spectroscopic follow-up. Along with {\it HST}, the {\it Spitzer Space Telescope} has devoted 1000 hours of DD time to image the HFF fields at 3.6$\mu$m and 4.5$\mu$m with IRAC (Capak et al., in prep).  
 
-Whereas the main goal of the HFF is to explore the galaxy population in the first billion year of cosmic history, this dataset is also unique for its combination of surveyed area and depth for studies of galaxy evolution across most of the age of the universe, down to, and including, the redshifts of the targeted galaxy clusters ($z\approx$~0.3--0.5). 
+The Frontier Fields initiative has inspired a number of separate supporting general observer programs, such as deep \textit{HST} ultraviolet imaging (Siana et al., in prep) and grism spectroscopy \citep[GLASS, ][]{treu:glass}, and deep far-infrared imaging with \textit{Herschel} \citep{rawle:16}.  Whereas the main goal of the HFF is to explore the galaxy population in the first billion year of cosmic history, this dataset is also unique for its combination of surveyed area, multiwavelength coverage and depth for studies of galaxy evolution across most of the age of the universe, down to, and including, the redshifts of the targeted galaxy clusters ($z\approx$~0.3--0.5). 
 
 The space-based HFF data alone, however, are not sufficient to robustly characterize red galaxies at $z>3$ because the WFC3/IR $H_{160}$ band lies on the UV side of the rest-frame optical Balmer/4000\AA~break at these redshifts, resulting in sub-optimal accuracies in the photometric redshifts and stellar population properties (e.g., stellar mass and rest-frame optical color) of galaxies at $z>2$ and even at $z>4$. Very deep $K$-band imaging is required to significantly improve the precision of both photometric redshifts and derived stellar population properties (see \S\ref{s:discussion}). Moreover, at $z>8-9$, the K-band data helps constraining the Lyman-break redshifts (e.g., \citealt{bouwens:13}) and increases the wavelength lever arm for measuring the redshift evolution of the rest-frame UV slopes (i.e., dust content and/or metallicity) of the first galaxies (\citealt{bouwens:12a}; \citealt{bouwens:13}).
 
@@ -187,44 +187,46 @@ To resolve this issue, i.e., the lack of $K$-band data over the HFF, we executed
 %   Observations
 %                                                                %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Observations \& Data Reduction}
-\label{s:observations}
-
-Table~\ref{tab:summary} provides a summary of the survey fields and the characteristics of the $K_s$-band observational program.  Additional details on the observing strategy and image reduction procedures are provided in the subsections below.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                                                %
 %  Summary table
 %                                                                %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{deluxetable*}{ccccrccccc}
-%\tabletypesize{\footnotesize}
+\begin{deluxetable*}{clrrclcrrr}
+\tabletypesize{\small}
 \tablewidth{0pt} 
 \tablecaption{Field summary \label{tab:summary}} 
 \tablehead{ 
-\colhead{Field} & \colhead{R.A.} & \colhead{Dec.} & \colhead{Instrument} & \colhead{Epoch} & \textit{HST}\tablenotemark{a} & \colhead{$t$, hours} & {Depth\tablenotemark{b}} & \colhead{FWHM}}
+\colhead{Field} & \colhead{$z$\tablenotemark{a}} & \colhead{R.A.} & \colhead{Dec.} & \colhead{Instrument} & \colhead{Epoch} & \textit{HST}\tablenotemark{b} & \colhead{$t$, hours} & {Depth\tablenotemark{c}} & \colhead{FWHM}}
 \startdata 
-Abell 2744   & $00:14:21.2$ & $-30:23:50$ & \textit{VLT}/\HAWKI     & 2013 Oct 24--2013 Dec 24 & C+P & 29.3 &  26.0 & $0\farcs39$ \\ 
-MACS-0416    & $04:16:08.9$ & $-24:04:28$ & \textit{VLT}/\HAWKI     & 2013 Oct 25--2014 Feb 23 & C+P & 25.8 &  26.0 & $0\farcs36$ \\ 
-Abell S1063  & $22:49:01.1$ & $-44:32:13$ & \textit{VLT}/\HAWKI     & 2015 Jul 8--Sep 22       & C+P & 27.9 &  26.0 & $0\farcs39$ \\ 
-Abell 370    & $02:40:03.3$ & $-01:36:23$ & \textit{VLT}/\HAWKI     & 2015 Jul 26--2016 Jan 28 & C+P & 28.3 &  26.0 & $0\farcs35$ \\ 
+Abell 2744   & 0.31 & 00:14:21.2 & $-$30:23:50 & \textit{VLT}/\HAWKI     & 2013 Oct 24--2013 Dec 24 &  C+P & 29.3 &  26.0 & $0\farcs39$ \\ 
+MACS-0416    & 0.40 & 04:16:08.9 & $-$24:04:28 & \textit{VLT}/\HAWKI     & 2013 Oct 25--2014 Feb 23 &  C+P & 25.8 &  26.0 & $0\farcs36$ \\ 
+Abell S1063  & 0.35 & 22:49:01.1 & $-$44:32:13 & \textit{VLT}/\HAWKI     & 2015 Jul 8--Sep 22  &  C+P & 27.9 &  26.0 & $0\farcs39$ \\ 
+Abell 370    & 0.38 & 02:40:03.3 & $-$01:36:23 & \textit{VLT}/\HAWKI     & 2015 Jul 26--2016 Jan 28 & C+P & 28.3 &  26.0 & $0\farcs35$ \\ 
 \vspace {-0.2cm}\\ 
-\multirow{2}{*}{MACS-0717}    & \multirow{2}{*}{$07:17:34.0$} & \multirow{2}{*}{$+37:44:49$} &  \multirow{2}{*}{\textit{Keck}/MOSFIRE}  &  \multirow{2}{*}{2015 Jan 26--27, 2016 Jan 21--22}  & C & 4.3 & 25.3 & $0\farcs42$ \\ 
-                              &                             &                             &                                          &      & P & 3.8 & 25.5 & $0\farcs49$ \\ 
+\multirow{2}{*}{MACS-0717}    & \multirow{2}{*}{0.55} & \multirow{2}{*}{07:17:34.0} & \multirow{2}{*}{$+$37:44:49} &  \multirow{2}{*}{\textit{Keck}/MOSFIRE}  &  \multirow{2}{*}{2015 Jan 26/27, 2016 Jan 21/22}  & C & 4.3 & 25.3 & $0\farcs42$ \\ 
+        &                      &                             &                             &                                          &      & P & 3.8 & 25.5 & $0\farcs49$ \\ 
 \vspace {-0.2cm}\\ 
-\multirow{4}{*}{MACS-1149}    & \multirow{4}{*}{$11:49:36.3$} & \multirow{4}{*}{$+22:23:58$} & \multirow{2}{*}{\textit{Keck}/MOSFIRE}  & \multirow{2}{*}{2015 Feb 24, 2016 Jan 21--22}      & C & 5.5 & 25.2 & $0\farcs53$ \\
-&  &         &      &   & P & 4.8 & 25.1 & $0\farcs54$ \\
+\multirow{4}{*}{MACS-1149}    & \multirow{4}{*}{0.54} & \multirow{4}{*}{11:49:36.3} & \multirow{4}{*}{$+$22:23:58} & \multirow{2}{*}{\textit{Keck}/MOSFIRE}  & \multirow{2}{*}{2015 Feb 24, 2016 Jan 21/22}      & C & 5.5 & 25.2 & $0\farcs53$ \\
+&  & &         &      &   & P & 4.8 & 25.1 & $0\farcs54$ \\
 \vspace {-0.4cm}\\ 
-&  &         & \textit{VLT}/\HAWKI\tablenotemark{c}     & 2013 Mar 21--2014 Jun 9      & C & 5.3 & 25.0 & $0\farcs41$
+&  & &         & \textit{VLT}/\HAWKI\tablenotemark{d}     & 2013 Mar 21--2014 Jun 9      & C & 5.3 & 25.0 & $0\farcs41$ \\
 \enddata 
 %\vspace{-0.8cm} 
-\tablenotetext{a}{Coverage of \textit{Hubble} survey fields: C=Cluster, P=Parallel.  Most \HAWKI\ pointings cover the two \textit{HST} fields simultaneously (C+P; Fig.~\ref{fig:layout}). \\The MOSFIRE observations of MACS-0717 and MACS-1149 require two separate pointings of the instrument to cover the cluster and pa-\\rallel \textit{HST} fields, which have the different characteristics as indicated.}
+\tablenotetext{a}{Cluster redshift.}
+\tablenotetext{b}{Coverage of \textit{Hubble} survey fields: C=Cluster, P=Parallel.  Most \HAWKI\ pointings cover the two \textit{HST} fields simultaneously (C+P; Fig.~\ref{fig:layout}). \\The MOSFIRE observations of MACS-0717 and MACS-1149 require two separate pointings of the instrument to cover the cluster and pa-\\rallel \textit{HST} fields, which have the different characteristics as indicated.}
 %\footnotetext[2]{Approximate exposure time equivalent at $0\farcs4$ seeing:  $t_{0.4}=\sum_i t_i \cdot (0.4/\mathrm{FWHM}_i)^2$.}
-\tablenotetext{b}{Depth is defined as the 5$\sigma$ limiting magnitude for point sources, measured in $D=0\farcs6$ apertures (\S\ref{s:depth}).} 
-\tablenotetext{c}{Archival observations from ESO program \href{http://archive.eso.org/wdb/wdb/eso/eso_archive_main/query?prog_id=090.A-0458(A)}{090.A-0458} (PI: Infante).}
+\tablenotetext{c}{Depth is defined as the 5$\sigma$ limiting magnitude for point sources, measured in $D=0\farcs6$ apertures (\S\ref{s:depth}).} 
+\tablenotetext{d}{Archival observations from ESO program \href{http://archive.eso.org/wdb/wdb/eso/eso_archive_main/query?prog_id=090.A-0458(A)}{090.A-0458} (PI: Infante).}
 \end{deluxetable*}
 %\vspace{1cm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Observations \& Data Reduction}
+\label{s:observations}
+
+Table~\ref{tab:summary} provides a summary of the survey fields and the characteristics of the $K_s$-band observational program.  Additional details on the observing strategy and image reduction procedures are provided in the subsections below.
 
 \subsection{Observation log}
 \label{s:log}
@@ -318,7 +320,7 @@ Finally, we subtract a cell-based background from the final mosaics using an alg
 \begin{figure*}[!t]
 \epsscale{1.17}
 \plotone{curve_of_growth.pdf} % Figures/exposure_map.pdf
-\caption{Curves of growth of stellar profiles in the Frontier Fields $K_s$-band mosaics.  The inverse aperture corrections for point sources in $D=0\farcs6$ apertures are indicated in each panel.  The profiles of stars are well-fit by Moffat profiles with $\mathrm{FWHM}\sim0\farcs4$ in most cases and $\beta\sim2.1$.  These extended Moffat profiles appear to be characteristic of deep $K_s$-band images and they have substantially more flux at large radii ($r>\mathrm{FWHM}/2$) than Gaussian profiles with the same FWHM (orange curves in the left panels). \label{fig:cog}}  
+\caption{Curves of growth of stellar profiles in the Frontier Fields $K_s$-band mosaics.  The \HAWKI\ fields include point sources across the full mosaics that cover both \textit{HST} cluster and parallel fields, while separate curves are given for the cluster and parallel areas of the northern MOSFIRE fields, which required two independent pointings of that instrument (Fig.~\ref{fig:layout}).  The inverse aperture corrections for point sources in $D=0\farcs6$ apertures are indicated in each panel with the small labels.  The profiles of stars are well-fit by Moffat profiles with $\mathrm{FWHM}\sim0\farcs4$ in most cases and $\beta\sim2.1$.  These extended Moffat profiles appear to be characteristic of deep $K_s$-band images and they have substantially more flux at large radii ($r>\mathrm{FWHM}/2$) than Gaussian profiles with the same FWHM, as shown in by the orange curve in the upper-left panel). \label{fig:cog}}  
 \end{figure*}
 %%%%%%%%%%%%%%
 
@@ -397,12 +399,12 @@ We conclude here with a brief comment on the ``HUGS'' ultra-deep \HAWKI\ images 
 
 We compute source detection completeness curves as a function of source brightness following the techniques described by \cite{whitaker:nmbs} and \cite{muzzin:13}.  Briefly, we insert artificial sources in blank regions of the portions of the images covering the \textit{HST} ``parallel'' fields and compute the fraction of sources recovered with SExtractor as a function of the source magnitude.  The resulting completeness curves are shown in Figure~\ref{fig:completeness}.   As in the sensitivity analysis above, we find that the detection completeness curves are nearly identical for the deep \HAWKI\ fields, with 50\% (90\%) source completeness at $K_s\sim25.9$ (25.7) AB.  The completeness thresholds for the shallower northern MACS-1149 and MACS-0717 fields are $\sim$0.75 mag brighter.
 
-We perform this completeness analysis to provide a general characterization of the $K_s$-band image mosaics and to provide a point of comparison for earlier surveys, such as UltraVISTA \citep{muzzin:13}.  However, in the case of the Frontier Fields cluster and parallel fields with much deeper photometry available from \textit{HST} (c.f. 28.7 AB in $H_{160}$), the $K_s$ band images can be more effectively exploited for most applications by detecting objects in the deeper \textit{HST} images and performing forced $K_s$-band photometry at the positions of the \textit{HST} sources.  The generation of such catalogs is beyond the scope of the present work and will be presented in Shipley et al. (2016; in preparation).
+We perform this completeness analysis to provide a general characterization of the $K_s$-band image mosaics and to provide a point of comparison for earlier surveys, such as UltraVISTA \citep{muzzin:13}.  However, in the case of the Frontier Fields cluster and parallel fields with much deeper photometry available from \textit{HST} (c.f. 28.7 AB in $H_{160}$), the $K_s$ band images can be more effectively exploited for most applications by detecting objects in the deeper \textit{HST} images and performing forced $K_s$-band photometry at the positions of the \textit{HST} sources.  \cite{merlin:16} present multiwavelength catalogs of the Abell~2744 and MACS-0416 fields constructed in this way, including incorporating an early version of the \HAWKI\ $K_s$-band mosaics.  The generation of these catalogs is beyond the scope of the present work and will be presented in further detail by Shipley et al. (2016; in preparation).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   Cutout figure
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[!ht]
+\begin{figure}[!t]
 \epsscale{1.17}
 \plotone{image_cutouts.pdf} % Figures/exposure_map.pdf
 \caption{Image cutouts of the MACS 0416 parallel field.  The \textit{RGB} and monochrome panels come from the sources as indicated; the cutouts are all $20\arcsec$ on a side.
@@ -482,7 +484,7 @@ Our ultra-deep K$_{s}$-band mosaics will complement the {\it HST} and {\it Spitz
 
 \acknowledgements
 
-\noindent We gratefully acknowledge funding support from the STScI Director's Discretionary Research Fund. D.M. acknowledges the support of the Research Corporation for Science Advancement's Cottrell Scholarship, and of the National Science Foundation under Grant No. 1513473. D.M. and D.L.-V. acknowledge support from program HST-AR-14302, provided by NASA through a grant from the Space Telescope Science Institute, which is operated by the Association of Universities for Research in Astronomy, Incorporated, under NASA contract NAS5-26555. This work was supported by NASA Keck PI Data Awards, administered by the NASA Exoplanet Science Institute. Some of the data presented in this study were obtained at the W. M. Keck Observatory from telescope time allocated to the National Aeronautics and Space Administration through the agency's scientific partnership with the California Institute of Technology and the University of California. The Observatory was made possible by the generous financial support of the W. M. Keck Foundation. The authors wish to recognize and acknowledge the very significant cultural role and reverence that the summit of Mauna Kea has always had within the indigenous Hawaiian community. We are most fortunate to have the opportunity to conduct observations from this mountain. This research made use of Astropy, a community-developed core Python package for Astronomy \citep{astropy}, open-source Python modules Numpy, Scipy, Matplotlib, and scikit-image, and NASA's Astrophysics Data System (ADS).  \\
+\noindent We gratefully acknowledge funding support from the STScI Director's Discretionary Research Fund. D.M. acknowledges the support of the Research Corporation for Science Advancement's Cottrell Scholarship, and of the National Science Foundation under Grant No. 1513473. D.M. and D.L.-V. acknowledge support from program HST-AR-14302, provided by NASA through a grant from the Space Telescope Science Institute, which is operated by the Association of Universities for Research in Astronomy, Incorporated, under NASA contract NAS5-26555. B.V. acknowledges the support from an Australian Re- search Council Discovery Early Career Researcher Award (PD0028506).  This work was supported by NASA Keck PI Data Awards, administered by the NASA Exoplanet Science Institute. Some of the data presented in this study were obtained at the W. M. Keck Observatory from telescope time allocated to the National Aeronautics and Space Administration through the agency's scientific partnership with the California Institute of Technology and the University of California. The Observatory was made possible by the generous financial support of the W. M. Keck Foundation. The authors wish to recognize and acknowledge the very significant cultural role and reverence that the summit of Mauna Kea has always had within the indigenous Hawaiian community. We are most fortunate to have the opportunity to conduct observations from this mountain. This research made use of Astropy, a community-developed core Python package for Astronomy \citep{astropy}, open-source Python modules Numpy, Scipy, Matplotlib, and scikit-image, and NASA's Astrophysics Data System (ADS).  \\
 
 % \noindent We gratefully acknowledge funding support from the Marie Curie Actions of the European Commission (FP7-COFUND) and STScI
 % grant GO-12177.
