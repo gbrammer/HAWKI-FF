@@ -7,6 +7,8 @@ We provide ultra-deep *K*s-band imaging of all six of the Hubble Frontier Fields
 
 All of these fields have recently been observed with large allocations of Directors' Discretionary Time with the HST and Spitzer telescopes covering 0.4 < &lambda; < 1.6 &mu;m and 3.6–4.5 &mu;m, respectively. *VLT*/**HAWK-I** integrations of the first four fields reach 5&sigma; limiting depths of *K*s~26.0 (AB, point sources) and have excellent image quality (FWHM~0.4"). Shorter *Keck*/**MOSFIRE** integrations of the MACS-0717 (MACS-1149) field better observable in the north reach limiting depths *K*s=25.5 (25.1) with seeing FWHM~0.4" (0.5").  
 
+![image](Doc/cutout.png) 
+
 The *K*s-band at 2.2 &mu;m crucially fills the gap between the reddest HST filter (1.6 &mu;m ~ *H* band) and the IRAC 3.6 &mu;m passband. While reaching the full depths of the space-based imaging is not currently feasible from the ground, the deep Ks-band images provide important constraints on both the redshifts and the stellar population properties of galaxies extending well below the characteristic stellar mass across most of the age of the universe, down to, and including, the redshifts of the targeted galaxy clusters (*z*~0.5). 
 
 A full description of the observations, processing, and data quality are given by Brammer et al., ApJSS, submitted (manuscript and figures [here](Paper0/)).
@@ -27,8 +29,6 @@ All 6 mosaics are provided below, along with inverse variance weight images.  Th
 | Abell 370   |[KIFF_A370_Ks_v1.0_sci.fits](http://www.stsci.edu/~brammer/HFF/Stack/KIFF_A370_Ks_v1.0_sci.fits.gz) | 	[KIFF_A370_Ks_v1.0_wht.fits](http://www.stsci.edu/~brammer/HFF/Stack/KIFF_A370_Ks_v1.0_wht.fits.gz) | 
 | MACS-0717   |[KIFF_M0717_Ks_v1.0_sci.fits](http://www.stsci.edu/~brammer/HFF/Stack/KIFF_M0717_Ks_v1.0_sci.fits.gz) | 	[KIFF_M0717_Ks_v1.0_wht.fits](http://www.stsci.edu/~brammer/HFF/Stack/KIFF_M0717_Ks_v1.0_wht.fits.gz) | 
 | MACS-1149   |[KIFF_M1149_Ks_v1.0_sci.fits](http://www.stsci.edu/~brammer/HFF/Stack/KIFF_M1149_Ks_v1.0_sci.fits.gz) | 	[KIFF_M1149_Ks_v1.0_wht.fits](http://www.stsci.edu/~brammer/HFF/Stack/KIFF_M1149_Ks_v1.0_wht.fits.gz) | 
-
-![image](Doc/cutout.png) 
 
 `Drizzle` image combination
 ---------------------------
