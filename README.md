@@ -3,7 +3,7 @@
 *K*s-band Imaging of the *Hubble* Frontier Fields
 ==================================================
 
-We provide ultra-deep *K*s-band imaging of all six of the Hubble Frontier Fields clusters Abell 2744, MACS-0416, Abell S1063, Abell 370, MACS-0717 and MACS-1149.  
+We provide ultra-deep *K*s-band imaging of all six of the [*Hubble* Frontier Fields](http://www.stsci.edu/hst/campaigns/frontier-fields/) clusters Abell 2744, MACS-0416, Abell S1063, Abell 370, MACS-0717 and MACS-1149.  
 
 All of these fields have recently been observed with large allocations of Directors' Discretionary Time with the HST and Spitzer telescopes covering 0.4 < &lambda; < 1.6 &mu;m and 3.6–4.5 &mu;m, respectively. *VLT*/**HAWK-I** integrations of the first four fields reach 5&sigma; limiting depths of *K*s~26.0 (AB, point sources) and have excellent image quality (FWHM~0.4"). Shorter *Keck*/**MOSFIRE** integrations of the MACS-0717 (MACS-1149) field better observable in the north reach limiting depths *K*s=25.5 (25.1) with seeing FWHM~0.4" (0.5").  
 
