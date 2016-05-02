@@ -22,4 +22,4 @@
 *.out
 *.synctex.gz
 msNotes*
-ms.pdf
+ms*.pdf
