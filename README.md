@@ -45,6 +45,6 @@ Another benefit of `drizzle` is straightforward compensation for geometric disto
 The header ascii files can be read with, e.g., 
 
 ```python
->>> header = astropy.io.fits.Header.fromfile('libralato_hawki_chip1.header').
+>>> header = astropy.io.fits.Header.fromfile('libralato_hawki_chip1.header')
 ```
 
