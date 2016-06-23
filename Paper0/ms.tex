@@ -338,12 +338,6 @@ The image quality obtained here with HAWK-I demonstrates the excellent natural s
 \subsection{Noise properties \& Depth}
 \label{s:depth}
 
-Along with practical benefits mentioned above, the most dramatic benefit of using the drizzle algorithm comes from the fact that the raw detector pixels are only resampled once in the process of generating the output mosaic.  Furthermore, with a large number of dithered raw images we can use drizzle to shrink the raw input pixels by a factor of ten before dropping them into the output grid,\footnote{The pixels are shrunk by adopting pixfrac=0.1 as defined by \cite{fruchter:02}.} and the result is dramatically reduced correlations between neighboring pixels, particularly for output pixel sizes that are somewhat smaller than the native \HAWKI\ or MOSFIRE detector pixels.
-
-A comparison of final combined images created with output $0\farcs1$ and $0\farcs06$ pixel grids using the drizzle implementation to versions created with the SWarp software \citep{swarp} is shown in Fig.~\ref{fig:drizzle_cutout}.  In the later case, the raw pixels are resampled twice before making the final mosaic, once combining the raw exposures in each OB and a second time combining the separate OBs into the final stack with an arbitrary pixel grid.  One could avoid the second resampling and combine all of the raw exposures at once, though SWarp is still limited to dropping the original pixels into the output mosaic preserving the input native pixel grid and therefore a single input pixel maps onto multiple (perhaps many) output pixels.
-
-The fact that the drizzle-combined images in Fig.~\ref{fig:drizzle_cutout} (panels \textit{a} and \textit{b}) appear to the eye to be noisier than their SWarped counterparts (panels \textit{c} and \textit{d}) is simply the result of a smoothing of the pixel noise in the latter case rather than reflecting true underlying differences in their pixel-to-pixel variance.  \cite{casertano:00} discuss how the noise properties of correlated output pixels are affected by the relative sizes of the input and output pixel grids and the adopted drizzle parameters.  With the drizzle algorithm and a small pixfrac, a given input pixel will map to only a single output pixel and therefore correlations between the output pixels should be minimal\footnote{Inter-pixel capacitance and other forms of crosstalk intrinsic to the IR detectors place a lower limit on the correlations between adjacent pixels \citep{finger:05, hilbert:ipc}.}.  
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   Drizzle figure
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -364,6 +358,11 @@ The fact that the drizzle-combined images in Fig.~\ref{fig:drizzle_cutout} (pane
 \label{fig:corr_noise}}  
 \end{figure}
 
+Along with practical benefits mentioned above, the most dramatic benefit of using the drizzle algorithm comes from the fact that the raw detector pixels are only resampled once in the process of generating the output mosaic.  Furthermore, with a large number of dithered raw images we can use drizzle to shrink the raw input pixels by a factor of ten before dropping them into the output grid,\footnote{The pixels are shrunk by adopting pixfrac=0.1 as defined by \cite{fruchter:02}.} and the result is dramatically reduced correlations between neighboring pixels, particularly for output pixel sizes that are somewhat smaller than the native \HAWKI\ or MOSFIRE detector pixels.
+
+A comparison of final combined images created with output $0\farcs1$ and $0\farcs06$ pixel grids using the drizzle implementation to versions created with the SWarp software \citep{swarp} is shown in Fig.~\ref{fig:drizzle_cutout}.  In the later case, the raw pixels are resampled twice before making the final mosaic, once combining the raw exposures in each OB and a second time combining the separate OBs into the final stack with an arbitrary pixel grid.  One could avoid the second resampling and combine all of the raw exposures at once, though SWarp is still limited to dropping the original pixels into the output mosaic preserving the input native pixel grid and therefore a single input pixel maps onto multiple (perhaps many) output pixels.
+
+The fact that the drizzle-combined images in Fig.~\ref{fig:drizzle_cutout} (panels \textit{a} and \textit{b}) appear to the eye to be noisier than their SWarped counterparts (panels \textit{c} and \textit{d}) is simply the result of a smoothing of the pixel noise in the latter case rather than reflecting true underlying differences in their pixel-to-pixel variance.  \cite{casertano:00} discuss how the noise properties of correlated output pixels are affected by the relative sizes of the input and output pixel grids and the adopted drizzle parameters.  With the drizzle algorithm and a small pixfrac, a given input pixel will map to only a single output pixel and therefore correlations between the output pixels should be minimal\footnote{Inter-pixel capacitance and other forms of crosstalk intrinsic to the IR detectors place a lower limit on the correlations between adjacent pixels \citep{finger:05, hilbert:ipc}.}.  
 
 We explore these correlations between the output pixels in Fig.~\ref{fig:corr_noise}.  For the black and red curves in each panel, we measure value differences between random pairs of pixels sorted by the separation between the pixels for the drizzled and SWarped images, respectively.  For perfectly uncorrelated pixels, these curves will be flat and will reflect the intrinsic noise of the image pixels.  In the presence of correlations between adjacent pixels, however, the curves will show a depression at small separations.  As expected, the SWarp-combined images show exactly such a depression for pairs of pixels 1--2 pixels apart.  The yellow curves in Fig.~\ref{fig:corr_noise} show the same pairwise differences for the drizzled images now convolved by small Gaussian kernels as indicated, which agree very well with the curves for the images with correlated pixels.  
 
@@ -520,7 +519,7 @@ The \HAWKI\ instrument has small but non-negligible geometric distortion, result
 %\clearpage
 
 \begin{deluxetable}{lrrrr}
-\tabletypesize{\footnotesize}
+\tabletypesize{\scriptsize}
 \tablewidth{0pt} 
 \tablecaption{\HAWKI\ SIP Header Keywords \label{tab:sip}} 
 \tablehead{ \colhead{Keyword} & \colhead{Chip \#1\tablenotemark{a}} & \colhead{Chip \#2} & \colhead{Chip \#3} & \colhead{Chip \#4} }
