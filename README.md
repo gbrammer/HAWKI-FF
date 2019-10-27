@@ -11,7 +11,7 @@ All of these fields have recently been observed with large allocations of Direct
 
 The *K*s-band at 2.2 &mu;m crucially fills the gap between the reddest HST filter (1.6 &mu;m ~ *H* band) and the IRAC 3.6 &mu;m passband. While reaching the full depths of the space-based imaging is not currently feasible from the ground, the deep Ks-band images provide important constraints on both the redshifts and the stellar population properties of galaxies extending well below the characteristic stellar mass across most of the age of the universe, down to, and including, the redshifts of the targeted galaxy clusters (z~0.5). 
 
-A full description of the observations, processing, and data quality are given by Brammer et al., ApJSS, submitted (manuscript and figures [here](Paper0/)).
+A full description of the observations, processing, and data quality are given by (Brammer et al. (2016))[http://adsabs.harvard.edu/abs/2016ApJS..226....6B]  (manuscript and figures [here](Paper0/)).
 
 Image mosaics
 -------------
@@ -19,16 +19,7 @@ Image mosaics
 
 The HAWK-I field of view is perfectly suited (Abell 2744, MACS-0416, Abell S1063 and Abell 370) for simultaneous imaging of the *HST* cluster+parallel field pairs, which require two separate pointings with MOSFIRE (MACS-0717 and MACS-1149).  The total area of the Ks-band coverage is 490 arcmin2.
 
-All 6 mosaics are provided below, along with inverse variance weight images.  The science images all have AB zeropoint ZP = 26.0 (mag = ZP - 2.5 log10 flux).
-
-|Field   |Science            |Weight            |
-|------- |------------------ |---------------   | 
-| Abell 2744  |[KIFF_A2744_Ks_v1.0_sci.fits](http://www.stsci.edu/~brammer/HFF/Stack/KIFF_A2744_Ks_v1.0_sci.fits.gz) | 	[KIFF_M0416_Ks_v1.0_wht.fits](http://www.stsci.edu/~brammer/HFF/Stack/KIFF_M0416_Ks_v1.0_wht.fits.gz) | 
-| MACS-0416   |[KIFF_M0416_Ks_v1.0_sci.fits](http://www.stsci.edu/~brammer/HFF/Stack/KIFF_M0416_Ks_v1.0_sci.fits.gz) | 	[KIFF_M0416_Ks_v1.0_wht.fits](http://www.stsci.edu/~brammer/HFF/Stack/KIFF_M0416_Ks_v1.0_wht.fits.gz) | 
-| Abell S1063 |[KIFF_S1063_Ks_v1.0_sci.fits](http://www.stsci.edu/~brammer/HFF/Stack/KIFF_S1063_Ks_v1.0_sci.fits.gz) | 	[KIFF_S1063_Ks_v1.0_wht.fits](http://www.stsci.edu/~brammer/HFF/Stack/KIFF_S1063_Ks_v1.0_wht.fits.gz) | 
-| Abell 370   |[KIFF_A370_Ks_v1.0_sci.fits](http://www.stsci.edu/~brammer/HFF/Stack/KIFF_A370_Ks_v1.0_sci.fits.gz) | 	[KIFF_A370_Ks_v1.0_wht.fits](http://www.stsci.edu/~brammer/HFF/Stack/KIFF_A370_Ks_v1.0_wht.fits.gz) | 
-| MACS-0717   |[KIFF_M0717_Ks_v1.0_sci.fits](http://www.stsci.edu/~brammer/HFF/Stack/KIFF_M0717_Ks_v1.0_sci.fits.gz) | 	[KIFF_M0717_Ks_v1.0_wht.fits](http://www.stsci.edu/~brammer/HFF/Stack/KIFF_M0717_Ks_v1.0_wht.fits.gz) | 
-| MACS-1149   |[KIFF_M1149_Ks_v1.0_sci.fits](http://www.stsci.edu/~brammer/HFF/Stack/KIFF_M1149_Ks_v1.0_sci.fits.gz) | 	[KIFF_M1149_Ks_v1.0_wht.fits](http://www.stsci.edu/~brammer/HFF/Stack/KIFF_M1149_Ks_v1.0_wht.fits.gz) | 
+The **KIFF** mosaics are available in as Phase 3 data products in the [ESO archive](http://archive.eso.org/wdb/wdb/adp/phase3_imaging/query?wdbo=html%2fdisplay&max_rows_returned=200&target=&resolver=simbad&wdb_input_file=&coord_sys=eq&coord1=&coord2=&box=02%2009%2000&tab_ra=on&tab_dec=on&tab_filter=on&filter=Any&tab_prodcatg=on&prodcatg=Any&tab_sky_solid_angle=on&sky_solid_angle=&isamp=%25&pixelscale=&tab_abmaglim=on&abmaglim=&abmagsat=&tab_sky_res=on&sky_res=&tel_id=Any&tab_ins_id=on&ins_id=Any&obstech=Any&tab_date_obs=on&date_obs=&mjd_obs=&tab_exptime=on&exptime=&tab_texptime=on&texptime=&multi_ob=%25&tab_collection_name=on&collection_name=092.A-0472&tab_prog_id=on&prog_id=&username=&p3orig=%25&tab_origfile=on&origfile=&tab_dp_id=on&dp_id=&rel_date=&tab_referenc=on&referenc=&batch_id=&publication_date=&wdb_input_file_raw=&order_imaging=dummy&) (and with [release documentation](http://www.eso.org/rm/api/v1/public/releaseDescriptions/75)).  Note that the mosaics northern fields MACS0717 and MACS1149 are provided as ancillary data products when one requests the "A370" field from the ESO archive.  
 
 `Drizzle` image combination
 ---------------------------
