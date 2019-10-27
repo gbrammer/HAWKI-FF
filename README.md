@@ -39,4 +39,4 @@ The header ascii files can be read with, e.g.,
 >>> header = astropy.io.fits.Header.fromtextfile('libralato_hawki_chip1.crpix.header')
 ```
 
-> :warning: **Oct 2019:** The released versions of the KIFF mosaics linked above used an incorrect version of the SIP headers that will result in astrometric errors of order 0.2 arcsec in the mosaic corners. This will be fixed in a subsequent release of the mosaics.
+> :warning: **Oct 2019:** The released versions of the KIFF mosaics linked above used an incorrect version of the SIP headers that will result in astrometric errors of order 0.2 arcsec in the mosaic corners. This will be fixed in a subsequent release of the mosaics.  The correct SIP headers are those linked above in [./Distortion](Distortion/).
