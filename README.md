@@ -11,7 +11,7 @@ All of these fields have recently been observed with large allocations of Direct
 
 The *K*s-band at 2.2 &mu;m crucially fills the gap between the reddest HST filter (1.6 &mu;m ~ *H* band) and the IRAC 3.6 &mu;m passband. While reaching the full depths of the space-based imaging is not currently feasible from the ground, the deep Ks-band images provide important constraints on both the redshifts and the stellar population properties of galaxies extending well below the characteristic stellar mass across most of the age of the universe, down to, and including, the redshifts of the targeted galaxy clusters (z~0.5). 
 
-A full description of the observations, processing, and data quality are given by (Brammer et al. (2016))[http://adsabs.harvard.edu/abs/2016ApJS..226....6B]  (manuscript and figures [here](Paper0/)).
+A full description of the observations, processing, and data quality are given by [Brammer et al. (2016)](http://adsabs.harvard.edu/abs/2016ApJS..226....6B)  (manuscript and figures [here](Paper0/)).
 
 Image mosaics
 -------------

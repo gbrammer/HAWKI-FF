@@ -5,7 +5,7 @@ Another benefit of `drizzle` is straightforward compensation for geometric disto
 
 |Chip #1   |Chip #2  |Chip #3   |Chip #4   |
 |-------   |-------  |-------   |-------   |  
-| [SIP header](Distortion/libralato_hawki_chip1.crpix.header)  | [SIP header](Distortion/libralato_hawki_chip2.crpix.header)  | [SIP header](Distortion/libralato_hawki_chip3.crpix.header)  | [SIP header](Distortion/libralato_hawki_chip4.crpix.header)  
+| [SIP header](libralato_hawki_chip1.crpix.header)  | [SIP header](libralato_hawki_chip2.crpix.header)  | [SIP header](libralato_hawki_chip3.crpix.header)  | [SIP header](libralato_hawki_chip4.crpix.header)  
 
 The header ascii files can be read with, e.g., 
 
