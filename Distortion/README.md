@@ -16,5 +16,5 @@ The header ascii files can be read with, e.g.,
 Update: 27 Oct 2019
 -------------------
 
-The files with extensions like `crpix.header` correctly incorporate the `CRPIX` keywords as implemented in the (SIP FITS convention)[https://fits.gsfc.nasa.gov/registry/sip.html].
+The files with extensions like `crpix.header` correctly incorporate the `CRPIX` keywords as implemented in the [SIP FITS convention](https://fits.gsfc.nasa.gov/registry/sip.html).
 
